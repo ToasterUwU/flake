@@ -3,7 +3,8 @@
 
   users.users.aki = {
     packages = with pkgs; [
-      vscode
+      fira-code
+      vscode-fhs
       nixpkgs-fmt
     ];
   };
