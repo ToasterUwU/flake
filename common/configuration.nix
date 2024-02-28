@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, pkgs, nixpkgs, ... }: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   time.timeZone = "Europe/Berlin";
