@@ -17,7 +17,7 @@
     };
   };
 
-  outputs = { nixpkgs }@inputs: {
+  outputs = { nixpkgs, ... }@inputs: {
     nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
