@@ -18,7 +18,7 @@
           "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
         };
         packages = [
-          flathub:app/camp.nook.nookdesktop
+          flathub:app/camp.nook.nookdesktop/x86_64/stable
         ];
       };
     };
