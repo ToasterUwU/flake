@@ -3,6 +3,10 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
   home-manager = {
     sharedModules = [
       inputs.plasma-manager.homeManagerModules.plasma-manager
