@@ -45,7 +45,11 @@
       vesktop
       jellyfin-media-player
       bitwarden
+
       steam
+
+      papirus-icon-theme
+      papirus-folders
     ];
   };
 
