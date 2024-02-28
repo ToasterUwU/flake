@@ -52,11 +52,12 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-      firefox
-      wget
-      git
-      curl
-      nano
+    hyfetch
+    firefox
+    wget
+    git
+    curl
+    nano
   ];
 
   services.openssh.enable = true;
