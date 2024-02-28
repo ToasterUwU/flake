@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
     nixpkgs-xr = {
       url = "github:nix-community/nixpkgs-xr";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +22,6 @@
       system = "x86_64-linux";
 
       modules = [
-        # you could also import stuff here, but I prefer to do it in my purpose.nix files
         ./hosts/Barbara/default.nix
       ];
 
