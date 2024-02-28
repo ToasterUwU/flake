@@ -22,7 +22,7 @@
       system = "x86_64-linux";
 
       modules = [
-        ./hosts/Barbara/default.nix
+        ./hosts/Barbara
       ];
 
       specialArgs = { inherit inputs; };

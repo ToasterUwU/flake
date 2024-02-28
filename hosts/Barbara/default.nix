@@ -4,8 +4,8 @@
 
     ./hardware-configuration.nix
     ./configuration.nix
+    ./amd-gpu.nix
     ./vr.nix
-    ../../common/default.nix
-    ../../common/amd-gpu.nix
+    ../../common
   ];
 }
