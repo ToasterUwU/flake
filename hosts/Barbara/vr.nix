@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }: {
   imports = [
-    inputs.nixpkgs-xr.nixosModules.default
+    inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
   ];
 
   environment.systemPackages = with pkgs; [
