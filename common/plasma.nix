@@ -1,8 +1,9 @@
 { inputs, ... }: {
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
+  home-manager = {
     sharedModules = [
       inputs.plasma-manager.homeManagerModules.plasma-manager
     ];
