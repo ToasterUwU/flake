@@ -41,6 +41,12 @@
     isNormalUser = true;
     description = "Aki";
     extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      vesktop
+      jellyfin-media-player
+      bitwarden
+      steam
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;
