@@ -45,15 +45,12 @@
       vesktop
       jellyfin-media-player
       bitwarden
-
-      steam
-
-      papirus-icon-theme
-      papirus-folders
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     hyfetch
@@ -62,6 +59,8 @@
     git
     curl
     nano
+    papirus-icon-theme
+    papirus-folders
   ];
 
   services.openssh.enable = true;
