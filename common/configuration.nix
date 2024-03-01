@@ -1,6 +1,8 @@
 { inputs, pkgs, nixpkgs, ... }: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -45,6 +47,8 @@
       vesktop
       jellyfin-media-player
       bitwarden
+      freecad
+      ledger-live-desktop
     ];
   };
 
@@ -52,13 +56,39 @@
 
   programs.steam.enable = true;
 
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [ "aki" ];
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "aki" ];
+
   environment.systemPackages = with pkgs; [
+    fuse
+    sshfs
     hyfetch
-    firefox
     wget
-    git
     curl
+    git
+    python3
+    rustup
+    nodejs
     nano
+    wineWowPackages.stable
+    winetricks
+    angryipscanner
+    teamviewer
+    obs-studio
+    libsForQt5.kdenlive
+    firefox
+    tor-browser
+    spotify
+    onlyoffice-bin
+    obsidian
+    pkgs.gnome.simple-scan
+    handbrake
+    prismlauncher-qt5
+    protonup-qt
     papirus-icon-theme
     papirus-folders
   ];
