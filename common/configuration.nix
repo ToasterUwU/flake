@@ -54,15 +54,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.steam.enable = true;
-
-  virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "aki" ];
-
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "aki" ];
-
   environment.systemPackages = with pkgs; [
     fuse
     sshfs
@@ -70,12 +61,8 @@
     wget
     curl
     git
-    python3
-    rustup
-    nodejs
     nano
     wineWowPackages.stable
-    winetricks
     angryipscanner
     teamviewer
     obs-studio
@@ -87,8 +74,6 @@
     obsidian
     pkgs.gnome.simple-scan
     handbrake
-    prismlauncher-qt5
-    protonup-qt
     papirus-icon-theme
     papirus-folders
   ];

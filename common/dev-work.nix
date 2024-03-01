@@ -6,6 +6,9 @@
       fira-code
       vscode
       nixpkgs-fmt
+      python3
+      rustup
+      nodejs
     ];
   };
 }

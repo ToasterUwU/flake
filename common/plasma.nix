@@ -3,9 +3,18 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager = {
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+      };
+      defaultSession = "plasmawayland";
+    };
+    desktopManager.plasma5.enable = true;
+  };
+
 
   home-manager = {
     sharedModules = [
