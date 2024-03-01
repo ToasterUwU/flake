@@ -63,6 +63,7 @@
     git
     nano
     wineWowPackages.stable
+    gparted
     angryipscanner
     teamviewer
     obs-studio
