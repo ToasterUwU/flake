@@ -76,7 +76,8 @@
     spotify
     onlyoffice-bin
     obsidian
-    pkgs.gnome.simple-scan
+    gnome.gnome-clocks
+    gnome.simple-scan
     handbrake
     papirus-icon-theme
     papirus-folders
