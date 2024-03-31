@@ -6,5 +6,6 @@
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
     index_camera_passthrough
+    envision
   ];
 }
