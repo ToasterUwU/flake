@@ -1,5 +1,27 @@
 {
   "nodes": {
+    "envision": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1711484891,
+        "narHash": "sha256-qZ/Rk7O/cY1YkW/PRPvqHo2WJlFF02rpn4l0/vgv2mM=",
+        "owner": "Scrumplex",
+        "repo": "rex2",
+        "rev": "b3418009342b05c6f0fc861a9d27c2dda3069e30",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "Scrumplex",
+        "ref": "nix",
+        "repo": "rex2",
+        "type": "gitlab"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -38,6 +60,27 @@
       }
     },
     "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "envision",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709336216,
+        "narHash": "sha256-Dt/wOWeW6Sqm11Yh+2+t0dfEWxoMxGBvv3JpIocFl9E=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f7b3c975cf067e56e7cda6cb098ebe3fb4d74ca2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
           "nixpkgs-xr",
@@ -118,7 +161,7 @@
       "inputs": {
         "fenix": "fenix",
         "flake-compat": "flake-compat",
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -178,6 +221,7 @@
     },
     "root": {
       "inputs": {
+        "envision": "envision",
         "flatpaks": "flatpaks",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
