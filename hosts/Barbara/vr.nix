@@ -9,9 +9,11 @@ in
     inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
   ];
 
-  boot.extraModulePackages = (amdgpu-kernel-module.overrideAttrs (prev: {
-    patches = (prev.patches or [ ]) ++ [ inputs.scrumpkgs.kernelPatches.cap_sys_nice_begone.patch ];
-  }));
+  boot.extraModulePackages = [
+    (amdgpu-kernel-module.overrideAttrs (prev: {
+      patches = (prev.patches or [ ]) ++ [ inputs.scrumpkgs.kernelPatches.cap_sys_nice_begone.patch ];
+    }))
+  ];
 
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
