@@ -8,17 +8,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1711484891,
-        "narHash": "sha256-qZ/Rk7O/cY1YkW/PRPvqHo2WJlFF02rpn4l0/vgv2mM=",
+        "lastModified": 1711928565,
+        "narHash": "sha256-kiu/SUPf3LRLNxUGuvi+F+ikpSv8SVcwBUzPaiW78hc=",
         "owner": "Scrumplex",
-        "repo": "rex2",
-        "rev": "b3418009342b05c6f0fc861a9d27c2dda3069e30",
+        "repo": "envision",
+        "rev": "0cf4b4f9ef7ddf833756cedf7fbc7aae1a24ebf5",
         "type": "gitlab"
       },
       "original": {
         "owner": "Scrumplex",
         "ref": "nix",
-        "repo": "rex2",
+        "repo": "envision",
         "type": "gitlab"
       }
     },
