@@ -105,5 +105,11 @@
     randomizedDelaySec = "45min";
   };
 
+  nix.gc = {
+    automatic = true;
+    randomizedDelaySec = "14m";
+    options = "--delete-older-than 10d";
+  };
+
   system.stateVersion = "23.11";
 }
