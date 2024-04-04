@@ -5,6 +5,8 @@
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
+  programs.nix-ld.enable = true;
+
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
