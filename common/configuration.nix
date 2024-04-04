@@ -50,10 +50,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       vesktop
-      jellyfin-media-player
-      bitwarden
       freecad
       ledger-live-desktop
+      chromedriver
     ];
   };
 
@@ -75,10 +74,12 @@
     teamviewer
     obs-studio
     libsForQt5.kdenlive
+    bitwarden
     firefox
     google-chrome
     tor-browser
     spotify
+    jellyfin-media-player
     onlyoffice-bin
     obsidian
     gnome.gnome-clocks
