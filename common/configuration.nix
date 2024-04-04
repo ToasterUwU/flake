@@ -62,9 +62,11 @@
   environment.systemPackages = with pkgs; [
     fuse
     sshfs
+    sshpass
     hyfetch
     wget
     curl
+    gnupg
     git
     nano
     wineWowPackages.stable
@@ -74,6 +76,7 @@
     obs-studio
     libsForQt5.kdenlive
     firefox
+    google-chrome
     tor-browser
     spotify
     onlyoffice-bin
