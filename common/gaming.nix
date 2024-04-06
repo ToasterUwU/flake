@@ -8,6 +8,8 @@
     prismlauncher-qt5
     protonup-qt
   ];
+
+  users.users.scarlett.packages = with pkgs; [
+    heroic
+  ];
 }
-
-

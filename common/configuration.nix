@@ -46,17 +46,23 @@
     #media-session.enable = true;
   };
 
-  users.users.aki = {
-    isNormalUser = true;
-    description = "Aki";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      vesktop
-      freecad
-      ledger-live-desktop
-      chromedriver
-    ];
-  };
+  users.users =
+    {
+      aki = {
+        isNormalUser = true;
+        description = "Aki";
+        extraGroups = [ "networkmanager" "wheel" ];
+        packages = with pkgs; [
+          freecad
+          ledger-live-desktop
+          chromedriver
+        ];
+      };
+      scarlett = {
+        isNormalUser = true;
+        description = "Scarlett";
+      };
+    };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -77,6 +83,7 @@
     obs-studio
     libsForQt5.kdenlive
     bitwarden
+    vesktop
     firefox
     google-chrome
     tor-browser

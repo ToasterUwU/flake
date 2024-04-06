@@ -37,5 +37,21 @@
         };
       };
     };
+    users.scarlett = {
+      programs.plasma = {
+        enable = true;
+        workspace = {
+          clickItemTo = "select";
+          theme = "breeze-dark";
+          colorScheme = "BreezeDark";
+          iconTheme = "Papirus-Dark";
+        };
+
+        kwin.titlebarButtons = {
+          left = [ "on-all-desktops" "keep-above-windows" ];
+          right = [ "minimize" "maximize" "close" ];
+        };
+      };
+    };
   };
 }
