@@ -4,17 +4,14 @@
   ];
 
   services = {
-    xserver =
-      {
+    xserver.enable = true;
+    displayManager = {
+      sddm = {
         enable = true;
-        displayManager = {
-          sddm = {
-            enable = true;
-            autoNumlock = true;
-          };
-          defaultSession = "plasma";
-        };
+        autoNumlock = true;
       };
+      defaultSession = "plasma";
+    };
     desktopManager.plasma6.enable = true;
   };
 
