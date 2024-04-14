@@ -79,7 +79,6 @@
     git
     nano
     gparted
-    collision
     baobab
     angryipscanner
     teamviewer
