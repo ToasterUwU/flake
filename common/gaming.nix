@@ -6,7 +6,6 @@
     winetricks
     protontricks
     prismlauncher-qt5
-    protonup-qt
     wineWowPackages.waylandFull
   ];
 
