@@ -46,6 +46,10 @@
     #media-session.enable = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland
+
   users.users =
     {
       aki = {
@@ -64,8 +68,6 @@
       };
     };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     fuse
     sshfs
@@ -76,8 +78,9 @@
     gnupg
     git
     nano
-    wineWowPackages.stable
     gparted
+    collision
+    baobab
     angryipscanner
     teamviewer
     obs-studio
