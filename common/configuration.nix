@@ -28,6 +28,8 @@
   console.keyMap = "de";
 
   networking.networkmanager.enable = true;
+  networking.wireless.iwd.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
