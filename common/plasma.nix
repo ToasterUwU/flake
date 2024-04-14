@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -15,6 +15,9 @@
     desktopManager.plasma6.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    krename
+  ];
 
   home-manager = {
     sharedModules = [
