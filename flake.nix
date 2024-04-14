@@ -35,5 +35,14 @@
 
       specialArgs = { inherit inputs; };
     };
+    nixosConfigurations.Gertrude = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      modules = [
+        ./hosts/Gertrude
+      ];
+
+      specialArgs = { inherit inputs; };
+    };
   };
 }
