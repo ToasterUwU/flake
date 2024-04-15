@@ -69,6 +69,9 @@
       scarlett = {
         isNormalUser = true;
         description = "Scarlett";
+        packages = with pkgs; [
+          brave
+        ];
       };
     };
 
