@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ ... }: {
   imports = [
     ./dev-work.nix
     ./flatpak.nix

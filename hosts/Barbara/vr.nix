@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, lib, ... }:
+{ inputs, pkgs, config, ... }:
 let
   amdgpu-kernel-module = pkgs.callPackage ./amdgpu-kernel-module.nix {
     kernel = config.boot.kernelPackages.kernel;

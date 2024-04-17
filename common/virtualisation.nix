@@ -1,4 +1,4 @@
-{ inputs, pkgs, nixpkgs, ... }: {
+{ ... }: {
   virtualisation.docker.enable = true;
   users.extraGroups.docker.members = [ "aki" ];
 

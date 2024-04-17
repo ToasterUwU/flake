@@ -1,4 +1,4 @@
-{ inputs, pkgs, nixpkgs, ... }: {
+{ inputs, pkgs, ... }: {
   nixpkgs.overlays = [ inputs.envision.overlays.default ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
