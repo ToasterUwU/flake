@@ -17,10 +17,10 @@
           "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
         };
         packages = [
-          flathub:app/camp.nook.nookdesktop/x86_64/stable
-          flathub:app/com.ultimaker.cura/x86_64/stable
-          flathub:app/dev.geopjr.Collision/x86_64/stable
-          flathub:app/com.vysp3r.ProtonPlus/x86_64/stable
+          "flathub:app/camp.nook.nookdesktop/x86_64/stable"
+          "flathub:app/com.ultimaker.cura/x86_64/stable"
+          "flathub:app/dev.geopjr.Collision/x86_64/stable"
+          "flathub:app/com.vysp3r.ProtonPlus/x86_64/stable"
         ];
       };
     };
@@ -31,7 +31,7 @@
           "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
         };
         packages = [
-          flathub:app/com.vysp3r.ProtonPlus/x86_64/stable
+          "flathub:app/com.vysp3r.ProtonPlus/x86_64/stable"
         ];
       };
     };
