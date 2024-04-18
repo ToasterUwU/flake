@@ -42,6 +42,36 @@
           right = [ "minimize" "maximize" "close" ];
         };
       };
+      xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
+        [Desktop Entry]
+        Type=Service
+        ServiceTypes=KonqPopupMenu/Plugin
+        MimeType=all/all
+        Actions=rename;
+        X-KDE-Priority=TopLevel
+        X-KDE-StartupNotify=false
+        Icon=krename
+
+        [Desktop Action rename]
+        Name=Advanced Rename
+        Name[it]=Rinomina: opzioni avanzate
+        Icon=edit-rename
+        Exec=krename %F
+      '';
+      xdg.dataFile."kio/servicemenus/openinvscode.desktop".text = ''
+        [Desktop Entry]
+        Name = Open In VScode
+        Type=Service
+        ServiceTypes=KonqPopupMenu/Plugin
+        MimeType=all/all;
+        X-KDE-Priority=TopLevel
+        Actions = openvscode
+
+        [Desktop Action openvscode]
+        Name = Open In VSCode
+        Exec=/usr/bin/code %f
+        Icon=visual-studio-code
+      '';
     };
     users.scarlett = {
       programs.plasma = {
@@ -58,6 +88,22 @@
           right = [ "minimize" "maximize" "close" ];
         };
       };
+      xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
+        [Desktop Entry]
+        Type=Service
+        ServiceTypes=KonqPopupMenu/Plugin
+        MimeType=all/all
+        Actions=rename;
+        X-KDE-Priority=TopLevel
+        X-KDE-StartupNotify=false
+        Icon=krename
+
+        [Desktop Action rename]
+        Name=Advanced Rename
+        Name[it]=Rinomina: opzioni avanzate
+        Icon=edit-rename
+        Exec=krename %F
+      '';
     };
   };
 }
