@@ -91,6 +91,7 @@
     angryipscanner
     teamviewer
     obs-studio
+    vlc
     libsForQt5.kdenlive
     bitwarden
     vesktop
