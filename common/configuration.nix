@@ -64,6 +64,7 @@
           freecad
           ledger-live-desktop
           chromedriver
+          protonmail-desktop
         ];
       };
       scarlett = {
