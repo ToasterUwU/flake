@@ -63,7 +63,7 @@
         packages = with pkgs; [
           freecad
           ledger-live-desktop
-          google-chrome
+          chromium
           chromedriver
           protonmail-desktop
         ];
