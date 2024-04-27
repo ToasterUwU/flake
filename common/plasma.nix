@@ -69,7 +69,7 @@
 
         [Desktop Action openvscode]
         Name = Open In VSCode
-        Exec=/usr/bin/code %f
+        Exec=code %f
         Icon=visual-studio-code
       '';
     };
