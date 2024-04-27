@@ -63,6 +63,7 @@
         packages = with pkgs; [
           freecad
           ledger-live-desktop
+          google-chrome
           chromedriver
           protonmail-desktop
         ];
@@ -96,7 +97,6 @@
     bitwarden
     vesktop
     firefox
-    google-chrome
     tor-browser
     spotify
     jellyfin-media-player
