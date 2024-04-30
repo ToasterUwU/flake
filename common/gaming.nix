@@ -10,7 +10,7 @@
     wineWowPackages.waylandFull
     winetricks
     protontricks
-    prismlauncher-qt5
+    prismlauncher
   ];
 
   users.users.scarlett.packages = with pkgs; [
