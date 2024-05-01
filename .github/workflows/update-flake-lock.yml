@@ -1,3 +1,5 @@
+name: "Update flake.lock"
+
 on:
   workflow_dispatch:
   schedule:
@@ -15,6 +17,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/update-flake-lock@main
         id: update
-      - run: "gh pr merge --auto --merge ${{ steps.update.outputs.pull-request-number }}"
+      - run: "gh pr merge --auto --merge --delete-branch ${{ steps.update.outputs.pull-request-number }}"
         env:
           GH_TOKEN: ${{ github.token }}
