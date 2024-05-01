@@ -66,6 +66,7 @@
           chromium
           chromedriver
           protonmail-desktop
+          intiface-central
         ];
       };
       scarlett = {
