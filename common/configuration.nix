@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, config, ... }: {
   nixpkgs.overlays = [ inputs.envision.overlays.default ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -54,11 +54,16 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland
 
+  age.secrets."aki-password".file = ../secrets/common/aki-password.age;
+  age.secrets."scarlett-password".file = ../secrets/common/scarlett-password.age;
+
+  users.mutableUsers = false;
   users.users =
     {
       aki = {
         isNormalUser = true;
         description = "Aki";
+        hashedPasswordFile = config.age.secrets."aki-password".path;
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
           freecad
@@ -72,6 +77,7 @@
       scarlett = {
         isNormalUser = true;
         description = "Scarlett";
+        hashedPasswordFile = config.age.secrets."scarlett-password".path;
         packages = with pkgs; [
           brave
         ];

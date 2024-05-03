@@ -23,14 +23,21 @@
       url = "github:Scrumplex/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { nixpkgs, ... }@inputs: {
+  outputs = { nixpkgs, agenix, ... }@inputs: {
     nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         ./hosts/Barbara
+        agenix.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
@@ -40,6 +47,7 @@
 
       modules = [
         ./hosts/Gertrude
+        agenix.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
