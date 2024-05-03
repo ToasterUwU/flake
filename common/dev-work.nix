@@ -5,9 +5,22 @@
     users.aki = {
       programs.git = {
         enable = true;
+        package = pkgs.gitFull;
+
         userName = "ToasterUwU";
         userEmail = "Aki@ToasterUwU.com";
+
+        lfs.enable = true;
+
+        extraConfig = {
+          init.defaultBranch = "main";
+
+          # Thanks Scrumplex for showing me this from Scott! https://www.youtube.com/watch?v=aolI_Rz0ZqY
+          rerere.enabled = true;
+          core.fsmonitor = true;
+        };
       };
+
       programs.vscode = {
         enable = true;
         package = pkgs.vscode.fhsWithPackages (ps: with ps; [
