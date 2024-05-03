@@ -88,6 +88,7 @@
     gnupg
     git
     nano
+    torrenttools
     gparted
     baobab
     angryipscanner
