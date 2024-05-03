@@ -82,6 +82,7 @@
     fuse
     sshfs
     sshpass
+    fastfetch
     hyfetch
     wget
     curl

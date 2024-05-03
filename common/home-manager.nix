@@ -21,7 +21,7 @@
             custom_colors = [ ];
             fore_back = null;
           };
-          backend = "neofetch";
+          backend = "fastfetch";
           distro = null;
           pride_month_shown = [ ];
         };
@@ -41,7 +41,7 @@
             custom_colors = [ ];
             fore_back = null;
           };
-          backend = "neofetch";
+          backend = "fastfetch";
           distro = null;
           pride_month_shown = [ ];
         };
