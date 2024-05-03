@@ -122,14 +122,13 @@
       "nixpkgs"
       "-L"
     ];
-    dates = "09:00";
-    randomizedDelaySec = "45min";
+    dates = "daily";
   };
 
   nix.gc = {
     automatic = true;
-    randomizedDelaySec = "14m";
-    options = "--delete-older-than 10d";
+    dates = "weekly";
+    options = "--delete-older-than 14d";
   };
 
   system.stateVersion = "23.11";
