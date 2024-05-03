@@ -9,11 +9,6 @@
 
     users.aki = {
       home.stateVersion = "23.11";
-      programs.git = {
-        enable = true;
-        userName = "ToasterUwU";
-        userEmail = "Aki@ToasterUwU.com";
-      };
       programs.hyfetch = {
         enable = true;
         settings = {

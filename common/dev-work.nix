@@ -3,6 +3,11 @@
 
   home-manager = {
     users.aki = {
+      programs.git = {
+        enable = true;
+        userName = "ToasterUwU";
+        userEmail = "Aki@ToasterUwU.com";
+      };
       programs.vscode = {
         enable = true;
         package = pkgs.vscode.fhsWithPackages (ps: with ps; [
