@@ -154,7 +154,7 @@
                   General.launchers = [
                     "applications:org.kde.dolphin.desktop"
                     "applications:vesktop.desktop"
-                    "applications:brave.desktop"
+                    "applications:brave-browser.desktop"
                     "applications:steam.desktop"
                   ];
                 };
