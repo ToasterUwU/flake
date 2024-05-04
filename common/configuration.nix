@@ -103,6 +103,7 @@
       aki = {
         isNormalUser = true;
         description = "Aki";
+        uid = 1000;
         hashedPasswordFile = config.age.secrets."aki-password".path;
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
@@ -117,6 +118,7 @@
       scarlett = {
         isNormalUser = true;
         description = "Scarlett";
+        uid = 1001;
         hashedPasswordFile = config.age.secrets."scarlett-password".path;
         packages = with pkgs; [
           brave
@@ -177,6 +179,36 @@
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
+
+  programs.fuse.userAllowOther = true;
+  fileSystems = {
+    "/home/aki/Gutruhn" = {
+      device = "Aki@toasteruwu.com:/";
+      fsType = "fuse.sshfs";
+      options =
+        [
+          "x-gvfs-show"
+          "delay_connect"
+          "reconnect"
+          "ServerAliveInterval=10"
+          "ServerAliveCountMax=2"
+          "x-systemd.automount"
+          "x-systemd.requires=network-online.target"
+          "_netdev"
+          "user"
+          "transform_symlinks"
+          "IdentityFile=/home/aki/.ssh/id_ed25519"
+          "allow_other"
+          "default_permissions"
+          "uid=1000"
+          "gid=100"
+          "exec"
+        ];
+    };
+  };
+  # systemd.automounts = [
+  #   { where = "/mnt/aki/home/"; automountConfig.TimeoutIdleSec = "5 min"; }
+  # ];
 
   system.stateVersion = "23.11";
 }
