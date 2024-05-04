@@ -130,6 +130,37 @@
           left = [ "on-all-desktops" "keep-above-windows" ];
           right = [ "minimize" "maximize" "close" ];
         };
+
+        panels = [
+          {
+            location = "bottom";
+            height = 40;
+            floating = false;
+            hiding = "normalpanel";
+            widgets = [
+              {
+                name = "org.kde.plasma.kickoff";
+                config = {
+                  General.icon = "nix-snowflake";
+                };
+              }
+              {
+                name = "org.kde.plasma.icontasks";
+                config = {
+                  General.launchers = [
+                    "applications:org.kde.dolphin.desktop"
+                    "applications:vesktop.desktop"
+                    "applications:brave.desktop"
+                    "applications:steam.desktop"
+                  ];
+                };
+              }
+              "org.kde.plasma.marginsseparator"
+              "org.kde.plasma.systemtray"
+              "org.kde.plasma.digitalclock"
+            ];
+          }
+        ];
       };
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
