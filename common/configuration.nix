@@ -87,6 +87,14 @@
       group = "users";
       mode = "644";
     };
+
+    "aki-.wakatime.cfg" = {
+      file = ../secrets/common/aki-.wakatime.cfg.age;
+      path = "/home/aki/.wakatime.cfg";
+      owner = "aki";
+      group = "users";
+      mode = "600";
+    };
   };
 
   users.mutableUsers = false;

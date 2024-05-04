@@ -16,4 +16,6 @@ in
 
   "secrets/common/scarlett-id_ed25519.age".publicKeys = users ++ systems;
   "secrets/common/scarlett-id_ed25519.pub.age".publicKeys = users ++ systems;
+
+  "secrets/common/aki-.wakatime.cfg.age".publicKeys = [ aki ] ++ systems;
 }
