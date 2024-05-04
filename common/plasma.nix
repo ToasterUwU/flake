@@ -20,6 +20,7 @@
 
   environment.systemPackages = with pkgs; [
     krename
+    kdePackages.qtwebsockets
   ];
 
   home-manager = {
@@ -41,6 +42,48 @@
           left = [ "on-all-desktops" "keep-above-windows" ];
           right = [ "minimize" "maximize" "close" ];
         };
+
+        panels = [
+          {
+            location = "bottom";
+            height = 40;
+            floating = false;
+            hiding = "normalpanel";
+            widgets = [
+              {
+                name = "org.kde.plasma.kickoff";
+                config = {
+                  General.icon = "nix-snowflake";
+                };
+              }
+              {
+                name = "org.kde.plasma.icontasks";
+                config = {
+                  General.launchers = [
+                    "applications:org.kde.konsole.desktop"
+                    "applications:bitwarden.desktop"
+                    "applications:org.kde.dolphin.desktop"
+                    "applications:spotify.desktop"
+                    "applications:firefox.desktop"
+                    "applications:vesktop.desktop"
+                    "applications:code-url-handler.desktop"
+                    "applications:steam.desktop"
+                  ];
+                };
+              }
+              {
+                name = "com.github.k-donn.plasmoid-wunderground";
+                config = {
+                  Station.stationID = "IWOLFS45";
+                };
+              }
+              "org.kde.plasma.marginsseparator"
+              "com.github.korapp.homeassistant"
+              "org.kde.plasma.systemtray"
+              "org.kde.plasma.digitalclock"
+            ];
+          }
+        ];
       };
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
