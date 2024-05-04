@@ -54,8 +54,40 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland
 
-  age.secrets."aki-password".file = ../secrets/common/aki-password.age;
-  age.secrets."scarlett-password".file = ../secrets/common/scarlett-password.age;
+  age.secrets = {
+    "aki-password".file = ../secrets/common/aki-password.age;
+    "scarlett-password".file = ../secrets/common/scarlett-password.age;
+
+    "aki-id_ed25519" = {
+      file = ../secrets/common/aki-id_ed25519.age;
+      path = "/home/aki/.ssh/id_ed25519";
+      owner = "aki";
+      group = "users";
+      mode = "600";
+    };
+    "aki-id_ed25519.pub" = {
+      file = ../secrets/common/aki-id_ed25519.pub.age;
+      path = "/home/aki/.ssh/id_ed25519.pub";
+      owner = "aki";
+      group = "users";
+      mode = "644";
+    };
+
+    "scarlett-id_ed25519" = {
+      file = ../secrets/common/scarlett-id_ed25519.age;
+      path = "/home/scarlett/.ssh/id_ed25519";
+      owner = "scarlett";
+      group = "users";
+      mode = "600";
+    };
+    "scarlett-id_ed25519.pub" = {
+      file = ../secrets/common/scarlett-id_ed25519.pub.age;
+      path = "/home/scarlett/.ssh/id_ed25519.pub";
+      owner = "scarlett";
+      group = "users";
+      mode = "644";
+    };
+  };
 
   users.mutableUsers = false;
   users.users =
