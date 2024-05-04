@@ -31,6 +31,7 @@
     users.aki = {
       programs.plasma = {
         enable = true;
+        overrideConfig = true;
         workspace = {
           clickItemTo = "select";
           theme = "breeze-dark";
@@ -121,6 +122,7 @@
     users.scarlett = {
       programs.plasma = {
         enable = true;
+        overrideConfig = true;
         workspace = {
           clickItemTo = "select";
           theme = "breeze-dark";
