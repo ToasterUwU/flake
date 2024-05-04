@@ -43,6 +43,8 @@
           right = [ "minimize" "maximize" "close" ];
         };
 
+        configFile.kcminputrc.Keyboard.NumLock.value = 0;
+
         panels = [
           {
             location = "bottom";
@@ -130,6 +132,8 @@
           left = [ "on-all-desktops" "keep-above-windows" ];
           right = [ "minimize" "maximize" "close" ];
         };
+
+        configFile.kcminputrc.Keyboard.NumLock.value = 0;
 
         panels = [
           {
