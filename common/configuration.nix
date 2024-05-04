@@ -107,6 +107,8 @@
         hashedPasswordFile = config.age.secrets."aki-password".path;
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
+          fd
+          ripgrep
           freecad
           ledger-live-desktop
           chromium
