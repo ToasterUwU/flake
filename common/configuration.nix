@@ -182,8 +182,77 @@
 
   programs.fuse.userAllowOther = true;
   fileSystems = {
-    "/home/aki/Gutruhn" = {
-      device = "Aki@toasteruwu.com:/";
+    "/home/aki/Gutruhn/home" = {
+      device = "Aki@toasteruwu.com:/home";
+      fsType = "fuse.sshfs";
+      options =
+        [
+          "x-gvfs-show"
+          "delay_connect"
+          "reconnect"
+          "ServerAliveInterval=10"
+          "ServerAliveCountMax=2"
+          "x-systemd.automount"
+          "x-systemd.requires=network-online.target"
+          "_netdev"
+          "user"
+          "transform_symlinks"
+          "IdentityFile=/home/aki/.ssh/id_ed25519"
+          "allow_other"
+          "default_permissions"
+          "uid=1000"
+          "gid=100"
+          "exec"
+        ];
+    };
+    "/home/aki/Gutruhn/backups" = {
+      device = "Aki@toasteruwu.com:/backups";
+      fsType = "fuse.sshfs";
+      options =
+        [
+          "x-gvfs-show"
+          "delay_connect"
+          "reconnect"
+          "ServerAliveInterval=10"
+          "ServerAliveCountMax=2"
+          "x-systemd.automount"
+          "x-systemd.requires=network-online.target"
+          "_netdev"
+          "user"
+          "transform_symlinks"
+          "IdentityFile=/home/aki/.ssh/id_ed25519"
+          "allow_other"
+          "default_permissions"
+          "uid=1000"
+          "gid=100"
+          "exec"
+        ];
+    };
+    "/home/aki/Gutruhn/data" = {
+      device = "Aki@toasteruwu.com:/data";
+      fsType = "fuse.sshfs";
+      options =
+        [
+          "x-gvfs-show"
+          "delay_connect"
+          "reconnect"
+          "ServerAliveInterval=10"
+          "ServerAliveCountMax=2"
+          "x-systemd.automount"
+          "x-systemd.requires=network-online.target"
+          "_netdev"
+          "user"
+          "transform_symlinks"
+          "IdentityFile=/home/aki/.ssh/id_ed25519"
+          "allow_other"
+          "default_permissions"
+          "uid=1000"
+          "gid=100"
+          "exec"
+        ];
+    };
+    "/home/aki/Gutruhn/web" = {
+      device = "Aki@toasteruwu.com:/web";
       fsType = "fuse.sshfs";
       options =
         [
@@ -206,9 +275,6 @@
         ];
     };
   };
-  # systemd.automounts = [
-  #   { where = "/mnt/aki/home/"; automountConfig.TimeoutIdleSec = "5 min"; }
-  # ];
 
   system.stateVersion = "23.11";
 }
