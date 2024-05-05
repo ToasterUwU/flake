@@ -27,6 +27,15 @@
           pride_month_shown = [ ];
         };
       };
+      xdg.configFile."autostart/vesktop.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=Vesktop
+        Comment=Vesktop autostart script
+        Exec=vesktop
+        StartupNotify=false
+        Terminal=false
+      '';
     };
     users.scarlett = {
       home.stateVersion = "23.11";
@@ -47,6 +56,36 @@
           pride_month_shown = [ ];
         };
       };
+      xdg.configFile."autostart/vesktop.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=Vesktop
+        Comment=Vesktop autostart script
+        Exec=vesktop
+        StartupNotify=false
+        Terminal=false
+      '';
+      xdg.configFile."autostart/brave-browser.desktop".text = ''
+        [Desktop Entry]
+        Version=1.0
+        Name=Brave Web Browser
+        Exec=brave %U
+        StartupNotify=true
+        Terminal=false
+        Icon=brave-browser
+        Type=Application
+        Categories=Network;WebBrowser;
+      '';
+      xdg.configFile."autostart/steam.desktop".text = ''
+        [Desktop Entry]
+        Name=Steam
+        Exec=steam %U
+        Icon=steam
+        Terminal=false
+        Type=Application
+        PrefersNonDefaultGPU=true
+        X-KDE-RunOnDiscreteGpu=true
+      '';
     };
   };
 }
