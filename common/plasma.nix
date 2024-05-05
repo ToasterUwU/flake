@@ -81,7 +81,12 @@
                 };
               }
               "org.kde.plasma.marginsseparator"
-              "com.github.korapp.homeassistant"
+              {
+                name = "com.github.korapp.homeassistant";
+                config = {
+                  General.url = "https://hassio.toasteruwu.com";
+                };
+              }
               "org.kde.plasma.systemtray"
               "org.kde.plasma.digitalclock"
             ];
