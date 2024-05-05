@@ -136,6 +136,7 @@
     hyfetch
     wget
     curl
+    vdhcoapp
     gnupg
     git
     nano
