@@ -36,6 +36,14 @@
         StartupNotify=false
         Terminal=false
       '';
+      xdg.configFile."autostart/vdhcoapp-install.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=Vdhcoapp Install
+        Exec=vdhcoapp install
+        StartupNotify=false
+        Terminal=false
+      '';
     };
     users.scarlett = {
       home.stateVersion = "23.11";
@@ -85,6 +93,14 @@
         Type=Application
         PrefersNonDefaultGPU=true
         X-KDE-RunOnDiscreteGpu=true
+      '';
+      xdg.configFile."autostart/vdhcoapp-install.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=Vdhcoapp Install
+        Exec=vdhcoapp install
+        StartupNotify=false
+        Terminal=false
       '';
     };
   };
