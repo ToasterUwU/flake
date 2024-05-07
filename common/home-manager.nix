@@ -27,6 +27,13 @@
           pride_month_shown = [ ];
         };
       };
+      programs.bash = {
+        enable = true;
+        bashrcExtra = ''
+        eval "$(zoxide init --cmd cd bash)"
+        hyfetch
+        '';
+      };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]
         Type=Application
