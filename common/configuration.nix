@@ -134,6 +134,8 @@
     sshpass
     fastfetch
     hyfetch
+    pciutils
+    bottom
     wget
     curl
     zoxide
