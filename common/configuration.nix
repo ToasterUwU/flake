@@ -136,6 +136,7 @@
     hyfetch
     pciutils
     bottom
+    tealdeer
     wget
     curl
     zoxide
