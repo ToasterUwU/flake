@@ -52,5 +52,15 @@
 
       specialArgs = { inherit inputs; };
     };
+    nixosConfigurations.Waltraud = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      modules = [
+        ./hosts/Waltraud
+        agenix.nixosModules.default
+      ];
+
+      specialArgs = { inherit inputs; };
+    };
   };
 }
