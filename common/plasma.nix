@@ -134,6 +134,10 @@
         };
 
         configFile.kcminputrc.Keyboard.NumLock.value = 0;
+        configFile.kxkbrc.Layout = {
+          LayoutList = "gb";
+          Use = true;
+        };
 
         panels = [
           {
