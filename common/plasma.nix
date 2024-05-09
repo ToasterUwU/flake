@@ -20,6 +20,7 @@
 
   environment.systemPackages = with pkgs; [
     krename
+    kdePackages.kalk
   ];
 
   home-manager = {
