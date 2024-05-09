@@ -20,6 +20,7 @@ in
     wlx-overlay-s
     index_camera_passthrough
     envision
+    BeatSaberModManager
   ];
 
   home-manager = {
