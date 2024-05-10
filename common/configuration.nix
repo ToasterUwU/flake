@@ -120,6 +120,7 @@
       scarlett = {
         isNormalUser = true;
         description = "Scarlett";
+        extraGroups = [ "networkmanager" "wheel" ];
         uid = 1001;
         hashedPasswordFile = config.age.secrets."scarlett-password".path;
         packages = with pkgs; [
