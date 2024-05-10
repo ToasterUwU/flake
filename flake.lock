@@ -12,11 +12,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1715101957,
-        "narHash": "sha256-fs5uVQFTfgb4L9pnhldeyTHNcYwn1U4nKYoCBJ6W3W4=",
+        "lastModified": 1715290355,
+        "narHash": "sha256-2T7CHTqBXJJ3ZC6R/4TXTcKoXWHcvubKNj9SfomURnw=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "07479c2e7396acaaaac5925483498154034ea80a",
+        "rev": "8d37c5bdeade12b6479c85acd133063ab53187a0",
         "type": "github"
       },
       "original": {
@@ -309,11 +309,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715216609,
-        "narHash": "sha256-MaCETsHB712UVe65AcZhCw7RUaPPfvWx3Q9Tz1XBtrM=",
+        "lastModified": 1715303029,
+        "narHash": "sha256-YxhD8W9wz8rt3dO0a+E2GHPcJeHMPG0iCpR//Jr8HW4=",
         "owner": "nix-community",
         "repo": "nixpkgs-xr",
-        "rev": "89bef2da80738cffd3a0666ddb6188b6c2f7984d",
+        "rev": "5fbd92887e6cacf524c7c487b310760608809c31",
         "type": "github"
       },
       "original": {
@@ -428,11 +428,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1715204420,
-        "narHash": "sha256-FpZ/wu6SwuK42iGLYGgQ+zB9+2DEskvZE0snDNHiWBA=",
+        "lastModified": 1715241263,
+        "narHash": "sha256-inMIDhKHYR++OEmTdOwOYSn8Zg+AnmY3BPpxizL5+TQ=",
         "owner": "Scrumplex",
         "repo": "pkgs",
-        "rev": "34d5bc43ed4b2b044b8bf4b571976456d7d3d208",
+        "rev": "dbb057e94a25553985820808540616423c1ccbcc",
         "type": "github"
       },
       "original": {
