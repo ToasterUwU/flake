@@ -428,11 +428,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1715241263,
-        "narHash": "sha256-inMIDhKHYR++OEmTdOwOYSn8Zg+AnmY3BPpxizL5+TQ=",
+        "lastModified": 1715415680,
+        "narHash": "sha256-FwMqcMNTf1KqbTLo4Dyq3yCQfPjS7kqQ3D9VA0oACMM=",
         "owner": "Scrumplex",
         "repo": "pkgs",
-        "rev": "dbb057e94a25553985820808540616423c1ccbcc",
+        "rev": "e59ec453b733b86b19b4c0d5d47840dfb97abc87",
         "type": "github"
       },
       "original": {
