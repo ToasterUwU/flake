@@ -8,7 +8,7 @@ in
 
   virtualisation.virtualbox.host.enable = !isWaltraud;
   virtualisation.virtualbox.host.enableExtensionPack = !isWaltraud;
-  users.extraGroups.vboxusers.members = if isWaltraud then [] else [ "aki" ];
+  users.extraGroups.vboxusers.members = if isWaltraud then [ ] else [ "aki" ];
 
   virtualisation.waydroid.enable = true;
 }
