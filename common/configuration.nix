@@ -26,6 +26,7 @@
     variant = "";
   };
   console.keyMap = "de";
+  services.libinput.touchpad.tapping = true;
 
   networking.networkmanager.enable = true;
   networking.wireless.iwd.enable = true;
