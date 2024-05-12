@@ -174,6 +174,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:ToasterUwU/flake";
+    flags = [ "-L" ];
     dates = "daily";
   };
 
