@@ -8,6 +8,10 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
+    sharedModules = [
+      inputs.catppuccin.homeManagerModules.catppuccin
+    ];
+
     users.aki = {
       home.stateVersion = "23.11";
       programs = {
@@ -41,6 +45,10 @@
             auto_update = true;
             auto_update_interval_hours = 24;
           };
+        };
+        bottom = {
+          enable = true;
+          catppuccin.enable = true;
         };
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''

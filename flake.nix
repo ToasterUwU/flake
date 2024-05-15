@@ -29,14 +29,16 @@
       inputs.darwin.follows = "";
       inputs.home-manager.follows = "home-manager";
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { nixpkgs, agenix, ... }@inputs: {
+  outputs = { nixpkgs, agenix, catppuccin, ... }@inputs: {
     nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         ./hosts/Barbara
+        catppuccin.nixosModules.catppuccin
         agenix.nixosModules.default
       ];
 
@@ -47,6 +49,7 @@
 
       modules = [
         ./hosts/Gertrude
+        catppuccin.nixosModules.catppuccin
         agenix.nixosModules.default
       ];
 
@@ -57,6 +60,7 @@
 
       modules = [
         ./hosts/Waltraud
+        catppuccin.nixosModules.catppuccin
         agenix.nixosModules.default
       ];
 

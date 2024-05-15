@@ -174,6 +174,9 @@
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
+  catppuccin.flavour = "mocha";
+  catppuccin.accent = "pink";
+
   system.autoUpgrade = {
     enable = true;
     flake = "github:ToasterUwU/flake";

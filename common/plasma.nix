@@ -10,6 +10,7 @@
         enable = true;
         autoNumlock = true;
         wayland.enable = true;
+        catppuccin.enable = true;
       };
       defaultSession = "plasma";
     };
@@ -21,6 +22,10 @@
   environment.systemPackages = with pkgs; [
     krename
     kdePackages.kalk
+    (catppuccin-kde.override {
+      flavour = [ "mocha" ];
+      accents = [ "pink" ];
+    })
   ];
 
   home-manager = {
@@ -34,8 +39,9 @@
         overrideConfig = true;
         workspace = {
           clickItemTo = "select";
-          theme = "breeze-dark";
-          colorScheme = "BreezeDark";
+          theme = "catpuccin-mocha-pink";
+          lookAndFeel = "Catppuccin-Mocha-Pink";
+          colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
         };
 
