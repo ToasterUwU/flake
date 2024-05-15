@@ -169,6 +169,8 @@
     papirus-folders
   ];
 
+  hardware.ledger.enable = true;
+
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
