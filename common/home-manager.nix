@@ -38,12 +38,19 @@
         };
         starship = {
           enable = true;
+          enableBashIntegration = true;
           catppuccin.enable = true;
+          settings = {
+            directory = {
+              truncation_length = 12;
+              truncate_to_repo = false;
+              truncation_symbol = "…/";
+            };
+          };
         };
         bash = {
           enable = true;
           bashrcExtra = ''
-            eval "$(starship init bash)"
             eval "$(zoxide init --cmd cd bash)"
             hyfetch
           '';

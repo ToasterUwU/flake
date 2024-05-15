@@ -24,7 +24,6 @@
       programs.vscode = {
         enable = true;
         package = pkgs.vscode.fhsWithPackages (ps: with ps; [
-          fira-code
           nil
           zlib
           gcc

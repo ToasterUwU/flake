@@ -137,6 +137,8 @@
     fastfetch
     hyfetch
     pciutils
+    fira-code
+    fira-code-nerdfont
     starship
     bat
     bottom
