@@ -137,6 +137,7 @@
     fastfetch
     hyfetch
     pciutils
+    starship
     bat
     bottom
     tealdeer

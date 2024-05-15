@@ -36,9 +36,14 @@
             pride_month_shown = [ ];
           };
         };
+        starship = {
+          enable = true;
+          catppuccin.enable = true;
+        };
         bash = {
           enable = true;
           bashrcExtra = ''
+            eval "$(starship init bash)"
             eval "$(zoxide init --cmd cd bash)"
             hyfetch
           '';
