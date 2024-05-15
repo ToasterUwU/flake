@@ -14,6 +14,10 @@
 
     users.aki = {
       home.stateVersion = "23.11";
+      gtk = {
+        enable = true;
+        catppuccin.enable = true;
+      };
       programs = {
         hyfetch = {
           enable = true;
