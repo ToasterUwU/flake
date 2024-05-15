@@ -30,6 +30,7 @@
       flavor = "mocha";
       accent = "pink";
     })
+    catppuccin-cursors.mochaPink
   ];
 
   home-manager = {
@@ -47,6 +48,7 @@
           lookAndFeel = "Catppuccin-Mocha-Pink";
           colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
+          cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
         };
 
         kwin.titlebarButtons = {
