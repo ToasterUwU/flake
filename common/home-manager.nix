@@ -48,10 +48,13 @@
             };
           };
         };
+        zoxide = {
+          enable = true;
+          enableBashIntegration = true;
+        };
         bash = {
           enable = true;
           bashrcExtra = ''
-            eval "$(zoxide init --cmd cd bash)"
             hyfetch
           '';
         };
