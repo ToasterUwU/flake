@@ -106,7 +106,7 @@
         description = "Aki";
         uid = 1000;
         hashedPasswordFile = config.age.secrets."aki-password".path;
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "plugdev" ];
         packages = with pkgs; [
           fd
           ripgrep
@@ -121,7 +121,7 @@
       scarlett = {
         isNormalUser = true;
         description = "Scarlett";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "plugdev" ];
         uid = 1001;
         hashedPasswordFile = config.age.secrets."scarlett-password".path;
         packages = with pkgs; [
