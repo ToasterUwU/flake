@@ -26,6 +26,10 @@
       flavour = [ "mocha" ];
       accents = [ "pink" ];
     })
+    (catppuccin-papirus-folders.override {
+      flavor = "mocha";
+      accent = "pink";
+    })
   ];
 
   home-manager = {

@@ -166,8 +166,6 @@
     gnome.gnome-clocks
     gnome.simple-scan
     handbrake
-    papirus-icon-theme
-    papirus-folders
   ];
 
   hardware.ledger.enable = true;
