@@ -137,6 +137,7 @@
     fastfetch
     hyfetch
     pciutils
+    bat
     bottom
     tealdeer
     wget

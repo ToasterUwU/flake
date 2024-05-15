@@ -46,6 +46,10 @@
             auto_update_interval_hours = 24;
           };
         };
+        bat = {
+          enable = true;
+          catppuccin.enable = true;
+        };
         bottom = {
           enable = true;
           catppuccin.enable = true;
