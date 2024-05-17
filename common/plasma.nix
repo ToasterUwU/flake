@@ -53,6 +53,7 @@
           colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
           cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
+          wallpaperSlideShow.path = ../wallpapers;
         };
 
         kwin.titlebarButtons = {
