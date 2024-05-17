@@ -19,6 +19,10 @@
 
   programs.kdeconnect.enable = true;
 
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    kate
+  ];
+
   environment.systemPackages = with pkgs; [
     krename
     kdePackages.kalk
