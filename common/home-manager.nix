@@ -101,6 +101,66 @@
         icon = "system-software-update";
         terminal = true;
       };
+      home.file.".ssh/config" = {
+        target = ".ssh/config_source";
+        onChange = ''cat ~/.ssh/config_source > ~/.ssh/config && chmod 400 ~/.ssh/config'';
+        text = ''
+          Host hiltrud
+              Hostname 192.168.178.167
+              User mks
+
+          Host discord-bots
+              HostName 192.168.178.10
+
+          Host discord-bots-root
+              HostName 192.168.178.10
+              User root
+
+          Host internet-vm
+              HostName 192.168.178.2
+
+          Host mongo-db
+              HostName 192.168.178.9
+
+          Host smart-home
+              HostName 192.168.178.6
+
+          Host airvpn-tunnel-vm
+              HostName 192.168.178.14
+
+          Host surreal-db
+              HostName 192.168.178.69
+
+          Host video-station
+              HostName 192.168.178.30
+
+          Host tor-node
+              HostName 192.168.178.18
+
+          Host xen-orchestra
+              HostName 192.168.178.5
+
+          Host minecraft-vm
+              HostName 192.168.178.42
+
+          Host ollama
+              HostName 192.168.178.24
+
+          Host gutruhn
+              HostName 192.168.178.3
+
+          Host hedwig
+              HostName 192.168.178.4
+              User root
+
+          Host barbara
+              HostName 192.168.178.100
+
+          Host *
+              StrictHostKeyChecking accept-new
+              User aki
+        '';
+      };
       home.file."update_vms.sh" = {
         executable = true;
         text = ''
