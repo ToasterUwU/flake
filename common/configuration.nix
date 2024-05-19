@@ -108,8 +108,7 @@
         hashedPasswordFile = config.age.secrets."aki-password".path;
         extraGroups = [ "networkmanager" "wheel" "plugdev" ];
         packages = with pkgs; [
-          fd
-          ripgrep
+          openscad-unstable
           freecad
           ledger-live-desktop
           chromium
@@ -140,6 +139,8 @@
     fira-code
     fira-code-nerdfont
     starship
+    fd
+    ripgrep
     bat
     bottom
     tealdeer
