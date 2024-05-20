@@ -24,11 +24,11 @@
       programs.vscode = {
         enable = true;
         package = pkgs.vscode.fhsWithPackages (ps: with ps; [
-          nil
           zlib
           gcc
           pkg-config
-          rustup
+          rustc
+          cargo
           openssl.dev
           systemd.dev
         ]);
@@ -38,6 +38,7 @@
 
   users.users.aki = {
     packages = with pkgs; [
+      nil
       nixpkgs-fmt
       python3
       nodejs
