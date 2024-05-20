@@ -178,6 +178,7 @@
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
+  catppuccin.enable = true;
   catppuccin.flavour = "mocha";
   catppuccin.accent = "pink";
 

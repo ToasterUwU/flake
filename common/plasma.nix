@@ -10,7 +10,6 @@
         enable = true;
         autoNumlock = true;
         wayland.enable = true;
-        catppuccin.enable = true;
       };
       defaultSession = "plasma";
     };
@@ -26,16 +25,37 @@
   environment.systemPackages = with pkgs; [
     krename
     kdePackages.kalk
-    (catppuccin-kde.override {
-      flavour = [ "mocha" ];
-      accents = [ "pink" ];
-    })
-    (catppuccin-papirus-folders.override {
-      flavor = "mocha";
-      accent = "pink";
-    })
-    catppuccin-cursors.mochaPink
   ];
+
+  users.users =
+    {
+      aki = {
+        packages = with pkgs; [
+          (catppuccin-kde.override {
+            flavour = [ "mocha" ];
+            accents = [ "pink" ];
+          })
+          (catppuccin-papirus-folders.override {
+            flavor = "mocha";
+            accent = "pink";
+          })
+          catppuccin-cursors.mochaPink
+        ];
+      };
+      scarlett = {
+        packages = with pkgs; [
+          (catppuccin-kde.override {
+            flavour = [ "mocha" ];
+            accents = [ "red" ];
+          })
+          (catppuccin-papirus-folders.override {
+            flavor = "mocha";
+            accent = "red";
+          })
+          catppuccin-cursors.mochaRed
+        ];
+      };
+    };
 
   home-manager = {
     sharedModules = [
@@ -161,9 +181,12 @@
         overrideConfig = true;
         workspace = {
           clickItemTo = "select";
-          theme = "breeze-dark";
-          colorScheme = "BreezeDark";
+          theme = "catpuccin-mocha-red";
+          lookAndFeel = "Catppuccin-Mocha-Red";
+          colorScheme = "CatpuccinMochaRed";
           iconTheme = "Papirus-Dark";
+          cursorTheme = "Catppuccin-Mocha-Red-Cursors";
+          wallpaper = ../wallpapers/red_nebula.jpg;
         };
 
         kwin.titlebarButtons = {
@@ -208,6 +231,23 @@
           }
         ];
       };
+      programs.konsole = {
+        enable = true;
+        defaultProfile = "Catppuccin";
+        profiles.catppuccin = {
+          name = "Catppuccin";
+          colorScheme = "Catppuccin-Mocha";
+        };
+      };
+      xdg.dataFile."konsole/Catppuccin-Mocha.colorscheme".source =
+        pkgs.fetchFromGitHub
+          {
+            owner = "catppuccin";
+            repo = "konsole";
+            rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
+            sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
+          }
+        + "/Catppuccin-Mocha.colorscheme";
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
         Type=Service
