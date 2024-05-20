@@ -14,9 +14,13 @@
 
     users.aki = {
       home.stateVersion = "23.11";
+
+      catppuccin.enable = true;
+      catppuccin.flavour = "mocha";
+      catppuccin.accent = "pink";
+
       gtk = {
         enable = true;
-        catppuccin.enable = true;
       };
       programs = {
         hyfetch = {
@@ -39,7 +43,6 @@
         starship = {
           enable = true;
           enableBashIntegration = true;
-          catppuccin.enable = true;
           settings = {
             directory = {
               truncation_length = 12;
@@ -70,11 +73,11 @@
         };
         bat = {
           enable = true;
-          catppuccin.enable = true;
+          
         };
         bottom = {
           enable = true;
-          catppuccin.enable = true;
+          
         };
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
@@ -203,6 +206,11 @@
     };
     users.scarlett = {
       home.stateVersion = "23.11";
+
+      catppuccin.enable = true;
+      catppuccin.flavour = "mocha";
+      catppuccin.accent = "red";
+
       programs.hyfetch = {
         enable = true;
         settings = {
