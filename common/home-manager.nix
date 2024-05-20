@@ -19,9 +19,8 @@
       catppuccin.flavour = "mocha";
       catppuccin.accent = "pink";
 
-      gtk = {
-        enable = true;
-      };
+      gtk.enable = true;
+
       programs = {
         hyfetch = {
           enable = true;
@@ -71,12 +70,8 @@
             auto_update_interval_hours = 24;
           };
         };
-        bat = {
-          enable = true;
-        };
-        bottom = {
-          enable = true;
-        };
+        bat.enable = true;
+        bottom.enable = true;
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]
@@ -209,22 +204,59 @@
       catppuccin.flavour = "mocha";
       catppuccin.accent = "red";
 
-      programs.hyfetch = {
-        enable = true;
-        settings = {
-          preset = "akiosexual";
-          mode = "rgb";
-          light_dark = "dark";
-          lightness = 0.65;
-          color_align = {
-            mode = "horizontal";
-            custom_colors = [ ];
-            fore_back = null;
+      gtk.enable = true;
+
+      programs = {
+        hyfetch = {
+          enable = true;
+          settings = {
+            preset = "akiosexual";
+            mode = "rgb";
+            light_dark = "dark";
+            lightness = 0.65;
+            color_align = {
+              mode = "horizontal";
+              custom_colors = [ ];
+              fore_back = null;
+            };
+            backend = "fastfetch";
+            distro = null;
+            pride_month_shown = [ ];
           };
-          backend = "fastfetch";
-          distro = null;
-          pride_month_shown = [ ];
         };
+        starship = {
+          enable = true;
+          enableBashIntegration = true;
+          settings = {
+            directory = {
+              truncation_length = 12;
+              truncate_to_repo = false;
+              truncation_symbol = "…/";
+            };
+          };
+        };
+        zoxide = {
+          enable = true;
+          enableBashIntegration = true;
+          options = [
+            "--cmd cd"
+          ];
+        };
+        bash = {
+          enable = true;
+          bashrcExtra = ''
+            hyfetch
+          '';
+        };
+        tealdeer = {
+          enable = true;
+          settings.updates = {
+            auto_update = true;
+            auto_update_interval_hours = 24;
+          };
+        };
+        bat.enable = true;
+        bottom.enable = true;
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]
