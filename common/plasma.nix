@@ -194,7 +194,10 @@
           right = [ "minimize" "maximize" "close" ];
         };
 
-        configFile.kcminputrc.Keyboard.NumLock.value = 0;
+        configFile.kcminputrc = {
+          Keyboard.NumLock.value = 0;
+          Mouse.cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
+        };
         configFile.kxkbrc.Layout = {
           LayoutList = "gb";
           Use = true;
