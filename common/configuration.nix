@@ -35,6 +35,9 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
+  hardware.ledger.enable = true;
+  hardware.enableAllFirmware = true;
+
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -171,8 +174,6 @@
     gnome.simple-scan
     handbrake
   ];
-
-  hardware.ledger.enable = true;
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
