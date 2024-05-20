@@ -73,11 +73,9 @@
         };
         bat = {
           enable = true;
-          
         };
         bottom = {
           enable = true;
-          
         };
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
