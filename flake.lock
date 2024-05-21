@@ -27,11 +27,11 @@
     },
     "catppuccin": {
       "locked": {
-        "lastModified": 1716250107,
-        "narHash": "sha256-F6ivCjEi0QLodnznKkA0XQ1uiFG/04AJM03FmlZMta4=",
+        "lastModified": 1716325071,
+        "narHash": "sha256-8Af4YMLRB4ca+fKPFB+R6eB9xQrlAl+UJesOsFJuj2s=",
         "owner": "catppuccin",
         "repo": "nix",
-        "rev": "9999d33b51988644c9cdddc58f317689b3974fbe",
+        "rev": "1f11b0aeb0a321e427f491aa2c5270daf0b13c1f",
         "type": "github"
       },
       "original": {
@@ -49,11 +49,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714679740,
-        "narHash": "sha256-OSa5mcfmaEKDQieNaYMs7LJ0aRc4Cc2sehrYUgtMfiw=",
+        "lastModified": 1716324003,
+        "narHash": "sha256-zgYv8ROc0CcBxCE77MxCHppf8gwesZEJkgSEs5dbgvk=",
         "owner": "Scrumplex",
         "repo": "envision",
-        "rev": "edc341401e9150effcc6caf4cdd714fa9dbc4f16",
+        "rev": "fbc27499afa3dc11a25b4ce06fc6d6548cbbff6f",
         "type": "gitlab"
       },
       "original": {
@@ -154,11 +154,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712014858,
-        "narHash": "sha256-sB4SWl2lX95bExY2gMFG5HIzvva5AVMJd4Igm+GpZNw=",
+        "lastModified": 1715865404,
+        "narHash": "sha256-/GJvTdTpuDjNn84j82cU6bXztE0MSkdnTWClUCRub78=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "9126214d0a59633752a136528f5f3b9aa8565b7d",
+        "rev": "8dc45382d5206bd292f9c2768b8058a8fd8311d9",
         "type": "github"
       },
       "original": {
@@ -372,11 +372,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715870890,
-        "narHash": "sha256-nacSOeXtUEM77Gn0G4bTdEOeFIrkCBXiyyFZtdGwuH0=",
+        "lastModified": 1716213921,
+        "narHash": "sha256-xrsYFST8ij4QWaV6HEokCUNIZLjjLP1bYC60K8XiBVA=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "fa606cccd7b0ccebe2880051208e4a0f61bfc8c1",
+        "rev": "0e8fcc54b842ad8428c9e705cb5994eaf05c26a0",
         "type": "github"
       },
       "original": {
@@ -425,11 +425,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1716107835,
-        "narHash": "sha256-qbKlwpSTDViHmXaESHj/ZQIv9gaFS1H1jS2anVus2rs=",
+        "lastModified": 1716277031,
+        "narHash": "sha256-7yPFptp1rXNRRKjaqv3dErxCDLIf3h8DxnNFMtAbBP8=",
         "owner": "Scrumplex",
         "repo": "pkgs",
-        "rev": "b03caa41138a78f5e90d0641f52c2b6d23d54277",
+        "rev": "c81316d765fc232d9501f515aced278e1c634fee",
         "type": "github"
       },
       "original": {
