@@ -127,7 +127,6 @@
         uid = 1001;
         hashedPasswordFile = config.age.secrets."scarlett-password".path;
         packages = with pkgs; [
-          grapejuice
           brave
         ];
       };
