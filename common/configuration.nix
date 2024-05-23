@@ -180,7 +180,7 @@
   programs.ssh.startAgent = true;
 
   catppuccin.enable = true;
-  catppuccin.flavour = "mocha";
+  catppuccin.flavor = "mocha";
   catppuccin.accent = "pink";
 
   system.autoUpgrade = {
