@@ -16,7 +16,7 @@
       home.stateVersion = "23.11";
 
       catppuccin.enable = true;
-      catppuccin.flavour = "mocha";
+      catppuccin.flavor = "mocha";
       catppuccin.accent = "pink";
 
       gtk.enable = true;
@@ -201,7 +201,7 @@
       home.stateVersion = "23.11";
 
       catppuccin.enable = true;
-      catppuccin.flavour = "mocha";
+      catppuccin.flavor = "mocha";
       catppuccin.accent = "red";
 
       gtk.enable = true;
