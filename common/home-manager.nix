@@ -1,7 +1,28 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  systemd.services.delete-home-manager-blocking-files = {
+    description = "Delete .gtkrc-2.0.backup in every user's home directory";
+    script = ''
+      while true; do
+        for dir in /home/*; do
+          if [ -d "$dir" ]; then
+            FILE_PATH="$dir/.gtkrc-2.0.backup"
+            if [ -e "$FILE_PATH" ]; then
+              rm -f "$FILE_PATH"
+              echo "File $FILE_PATH has been deleted."
+            fi
+          fi
+        done
+        sleep 1
+      done
+    '';
+    path = [ pkgs.bash ];
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+  };
 
   home-manager = {
     backupFileExtension = "backup";
