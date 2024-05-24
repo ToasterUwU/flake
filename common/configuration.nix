@@ -176,7 +176,13 @@
   ];
 
   services.openssh.enable = true;
-  programs.ssh.startAgent = true;
+  programs.ssh = {
+    startAgent = true;
+    extraConfig = ''
+      Host *
+        StrictHostKeyChecking accept-new
+    '';
+  };
 
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
