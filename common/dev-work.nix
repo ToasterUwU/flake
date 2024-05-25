@@ -43,6 +43,8 @@
     packages = with pkgs; [
       nil
       nixpkgs-fmt
+      openscad-lsp
+      clang-tools
       python3
       nodejs
     ];
