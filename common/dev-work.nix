@@ -26,6 +26,9 @@
         package = pkgs.vscode.fhsWithPackages (ps: with ps; [
           zlib
           gcc
+          glibc
+          binutils
+          gnumake
           pkg-config
           rustc
           cargo
