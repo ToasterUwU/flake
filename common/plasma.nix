@@ -72,7 +72,6 @@
           lookAndFeel = "Catppuccin-Mocha-Pink";
           colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
-          cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
           wallpaperSlideShow.path = ../wallpapers;
         };
 
@@ -196,7 +195,6 @@
 
         configFile.kcminputrc = {
           Keyboard.NumLock.value = 0;
-          Mouse.cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
         };
         configFile.kxkbrc.Layout = {
           LayoutList = "gb";
