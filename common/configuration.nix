@@ -57,6 +57,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland
+  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1"; # Allow unfree software when using nix-shell
 
   age.secrets = {
     "aki-password".file = ../secrets/common/aki-password.age;
