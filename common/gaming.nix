@@ -12,6 +12,7 @@
     winetricks
     protontricks
     prismlauncher
+    lutris
   ];
 
   users.users.scarlett.packages = with pkgs; [
