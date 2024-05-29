@@ -32,6 +32,7 @@
         };
         packages = [
           "flathub:app/com.vysp3r.ProtonPlus/x86_64/stable"
+          "flathub:app/io.github.hmlendea.geforcenow-electron/x86_64/stable"
         ];
       };
     };
