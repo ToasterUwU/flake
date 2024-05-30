@@ -11,6 +11,7 @@
     wineWowPackages.waylandFull
     winetricks
     protontricks
+    steamtinkerlaunch
     prismlauncher
     lutris
   ];
