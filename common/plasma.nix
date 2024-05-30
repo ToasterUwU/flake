@@ -72,6 +72,7 @@
           lookAndFeel = "Catppuccin-Mocha-Pink";
           colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
+          cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
           wallpaperSlideShow.path = ../wallpapers;
         };
 
@@ -80,10 +81,7 @@
           right = [ "minimize" "maximize" "close" ];
         };
 
-        configFile.kcminputrc = {
-          Keyboard.NumLock.value = 0;
-          Mouse.cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
-        };
+        configFile.kcminputrc.Keyboard.NumLock.value = 0;
 
         panels = [
           {
@@ -193,9 +191,7 @@
           right = [ "minimize" "maximize" "close" ];
         };
 
-        configFile.kcminputrc = {
-          Keyboard.NumLock.value = 0;
-        };
+        configFile.kcminputrc.Keyboard.NumLock.value = 0;
         configFile.kxkbrc.Layout = {
           LayoutList = "gb";
           Use = true;
