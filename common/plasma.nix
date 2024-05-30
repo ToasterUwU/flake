@@ -73,7 +73,7 @@
           colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
           cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
-          wallpaperSlideShow.path = ../wallpapers;
+          wallpaperSlideShow.path = ../assets/wallpapers;
         };
 
         kwin.titlebarButtons = {
@@ -184,7 +184,7 @@
           colorScheme = "CatpuccinMochaRed";
           iconTheme = "Papirus-Dark";
           cursorTheme = "Catppuccin-Mocha-Red-Cursors";
-          wallpaper = ../wallpapers/red_nebula.jpg;
+          wallpaper = ../assets/wallpapers/red_nebula.jpg;
         };
 
         kwin.titlebarButtons = {
