@@ -26,7 +26,7 @@ in
           hash = "sha256-idg/1R5dkv+81EyT82t3JQOfpbONcRt+TowFUofIoVY=";
         };
         cargoDeps = final.rustPlatform.importCargoLock {
-          lockFile = ../../assets/Cargo.lock;
+          lockFile = ../../assets/wlx-overlay-s-Cargo.lock;
           outputHashes = {
             "wlx-capture-0.3.8" = "sha256-cbu5tmeGOHKd6BryjK509GuiBPUEhsaS/6mW92nRbO0=";
             "vulkano-0.34.0" = "sha256-0ZIxU2oItT35IFnS0YTVNmM775x21gXOvaahg/B9sj8=";
