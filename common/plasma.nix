@@ -82,6 +82,7 @@
         };
 
         configFile.kcminputrc.Keyboard.NumLock.value = 0;
+        configFile.kwinrc.Effect-overview.BorderActivate = 9;
 
         panels = [
           {
@@ -192,6 +193,7 @@
         };
 
         configFile.kcminputrc.Keyboard.NumLock.value = 0;
+        configFile.kwinrc.Effect-overview.BorderActivate = 9;
         configFile.kxkbrc.Layout = {
           LayoutList = "gb";
           Use = true;
