@@ -12,6 +12,7 @@
     winetricks
     protontricks
     steamtinkerlaunch
+    r2modman
     prismlauncher
     lutris
   ];
