@@ -115,7 +115,6 @@
           openscad-unstable
           freecad
           ledger-live-desktop
-          chromium
           chromedriver
           protonmail-desktop
           intiface-central
@@ -167,6 +166,7 @@
     vesktop
     firefox
     tor-browser
+    chromium
     spotify
     jellyfin-media-player
     onlyoffice-bin
