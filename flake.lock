@@ -306,11 +306,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1717117483,
-        "narHash": "sha256-3NypzS1MenaEcdqcSjVjidySIBFla32tsxVPRJJqRw8=",
+        "lastModified": 1717204087,
+        "narHash": "sha256-oOtqDv3CKzX3xwWk7qs0wSQgq44kMQFU6K+MzVVhXig=",
         "owner": "nix-community",
         "repo": "nixpkgs-xr",
-        "rev": "4c87d2ea5d1834fb1ec2fdda9443880f6b0a6179",
+        "rev": "8109dfab5e479bd7ba82ba006ef3a95f3a899564",
         "type": "github"
       },
       "original": {
@@ -345,11 +345,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716902607,
-        "narHash": "sha256-jShqpVupP/7ksp6gCBVG9/05zYSX8Q+z6eGe9HLYtUs=",
+        "lastModified": 1717187140,
+        "narHash": "sha256-FBO7osTyKp6d5xFIxDrIV1DU7q9uT1B92alOUpBnwXA=",
         "owner": "pjones",
         "repo": "plasma-manager",
-        "rev": "4a255e5ea6bf2c7815d893a693c5c801d835ba6b",
+        "rev": "2636bb4c0646931b1d9e7a17cea19e3a04a1ea60",
         "type": "github"
       },
       "original": {
@@ -425,11 +425,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1717086351,
-        "narHash": "sha256-f6JuqNLdk/RtIiFvzKeXnUfv962FX3QD7g1mvkUZoeg=",
+        "lastModified": 1717139775,
+        "narHash": "sha256-A47QqFKZ98RhkESudTqU0YiriuzCyygymoY0CpjRKIo=",
         "owner": "Scrumplex",
         "repo": "pkgs",
-        "rev": "c76e3e6c8070c00674c2ccb01c85ebc72286653a",
+        "rev": "25c7221ba7103ebd6340ff92c607e7a8e07bf6b6",
         "type": "github"
       },
       "original": {
