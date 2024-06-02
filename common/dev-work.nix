@@ -43,6 +43,7 @@
     packages = with pkgs; [
       nil
       nixpkgs-fmt
+      nixpkgs-review
       openscad-lsp
       clang-tools
       python3
