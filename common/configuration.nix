@@ -184,6 +184,7 @@
     obsidian
     gnome.gnome-clocks
     gnome.simple-scan
+    pdfarranger
     handbrake
   ];
 
