@@ -48,6 +48,7 @@
       clang-tools
       python3
       nodejs
+      usbimager
     ];
   };
 }
