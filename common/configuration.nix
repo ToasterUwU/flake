@@ -35,8 +35,19 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  hardware.ledger.enable = true;
   hardware.enableAllFirmware = true;
+
+  hardware.ledger.enable = true;
+
+  hardware.sane.enable = true;
+  services.printing.enable = true;
+  hardware.sane.extraBackends =  with pkgs; [ hplipWithPlugin sane-airscan samsung-unified-linux-driver ];
+  services.printing.drivers = with pkgs; [ hplipWithPlugin sane-airscan samsung-unified-linux-driver ];
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -110,7 +121,7 @@
         description = "Aki";
         uid = 1000;
         hashedPasswordFile = config.age.secrets."aki-password".path;
-        extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+        extraGroups = [ "networkmanager" "wheel" "plugdev" "scanner" "lp" ];
         packages = with pkgs; [
           openscad-unstable
           freecad
@@ -123,7 +134,7 @@
       scarlett = {
         isNormalUser = true;
         description = "Scarlett";
-        extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+        extraGroups = [ "networkmanager" "wheel" "plugdev" "scanner" "lp" ];
         uid = 1001;
         hashedPasswordFile = config.age.secrets."scarlett-password".path;
         packages = with pkgs; [
