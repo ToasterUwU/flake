@@ -68,6 +68,8 @@
     #media-session.enable = true;
   };
 
+  services.fstrim.enable = true;
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland
 
   age.secrets = {
