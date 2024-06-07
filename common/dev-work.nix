@@ -46,6 +46,7 @@
       nixpkgs-review
       openscad-lsp
       clang-tools
+      rust-analyzer
       python3
       nodejs
     ];
