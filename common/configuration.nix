@@ -169,6 +169,7 @@
     nano
     torrenttools
     gparted
+    usbimager
     baobab
     angryipscanner
     teamviewer
