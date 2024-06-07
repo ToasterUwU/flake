@@ -3,6 +3,9 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nixpkgs.config.allowUnfree = true;
+  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1"; # Allow unfree software when using nix-shell
+
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   programs.nix-ld.enable = true;
@@ -21,6 +24,8 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  hardware.enableAllFirmware = true;
+
   services.xserver.xkb = {
     layout = "de";
     variant = "";
@@ -34,8 +39,6 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  hardware.enableAllFirmware = true;
 
   hardware.ledger.enable = true;
 
@@ -65,10 +68,7 @@
     #media-session.enable = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland
-  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1"; # Allow unfree software when using nix-shell
 
   age.secrets = {
     "aki-password".file = ../secrets/common/aki-password.age;
