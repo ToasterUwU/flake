@@ -56,11 +56,11 @@ in
               "name": "Custom",
               "xrservice_type": "Monado",
               "xrservice_path": "/home/aki/.local/share/envision/ce88bb0e-a05f-4de4-ad09-b2561b9b0ad1/xrservice",
-              "xrservice_repo": "https://gitlab.freedesktop.org/ToasterUwU/monado#vive_tracker3",
+              "xrservice_repo": "https://gitlab.freedesktop.org/Galister/monado#main",
               "xrservice_branch": null,
               "xrservice_cmake_flags": {},
               "opencomposite_path": "/home/aki/.local/share/envision/ce88bb0e-a05f-4de4-ad09-b2561b9b0ad1/opencomposite",
-              "opencomposite_repo": "https://gitlab.com/BabbleBones/OpenOVR#htcx-fbt",
+              "opencomposite_repo": "https://gitlab.com/BabbleBones/OpenOVR#forsarah",
               "opencomposite_branch": null,
               "features": {
                 "libsurvive": {
@@ -130,11 +130,11 @@ in
               "name": "Custom",
               "xrservice_type": "Monado",
               "xrservice_path": "/home/scarlett/.local/share/envision/ce88bb0e-a05f-4de4-ad09-b2561b9b0ad1/xrservice",
-              "xrservice_repo": "https://gitlab.freedesktop.org/ToasterUwU/monado#vive_tracker3",
+              "xrservice_repo": "https://gitlab.freedesktop.org/Galister/monado#main",
               "xrservice_branch": null,
               "xrservice_cmake_flags": {},
               "opencomposite_path": "/home/scarlett/.local/share/envision/ce88bb0e-a05f-4de4-ad09-b2561b9b0ad1/opencomposite",
-              "opencomposite_repo": "https://gitlab.com/BabbleBones/OpenOVR#htcx-fbt",
+              "opencomposite_repo": "https://gitlab.com/BabbleBones/OpenOVR#forsarah",
               "opencomposite_branch": null,
               "features": {
                 "libsurvive": {
