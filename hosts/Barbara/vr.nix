@@ -175,7 +175,7 @@ in
               "pull_on_build": true,
               "lighthouse_driver": "SteamVR",
               "xrservice_launch_options": "",
-              "autostart_command": "LIBMONADO_PATH=\"/home/aki/.local/share/envision/prefixes/ce88bb0e-a05f-4de4-ad09-b2561b9b0ad1/lib64/libmonado.so\" wlx-overlay-s"
+              "autostart_command": "LIBMONADO_PATH=\"/home/scarlett/.local/share/envision/prefixes/ce88bb0e-a05f-4de4-ad09-b2561b9b0ad1/lib64/libmonado.so\" wlx-overlay-s"
             }
           ],
           "win_size": [
