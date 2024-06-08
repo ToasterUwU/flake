@@ -16,27 +16,6 @@ in
     }))
   ];
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      wlx-overlay-s = prev.wlx-overlay-s.overrideAttrs {
-        src = final.fetchFromGitHub {
-          owner = "RinLovesYou";
-          repo = "wlx-overlay-s";
-          rev = "48666b8ecfacbccd1d2bc0300bce2f06ff49d681";
-          hash = "sha256-idg/1R5dkv+81EyT82t3JQOfpbONcRt+TowFUofIoVY=";
-        };
-        cargoDeps = final.rustPlatform.importCargoLock {
-          lockFile = ../../assets/wlx-overlay-s-Cargo.lock;
-          outputHashes = {
-            "wlx-capture-0.3.8" = "sha256-cbu5tmeGOHKd6BryjK509GuiBPUEhsaS/6mW92nRbO0=";
-            "vulkano-0.34.0" = "sha256-0ZIxU2oItT35IFnS0YTVNmM775x21gXOvaahg/B9sj8=";
-            "ovr_overlay-0.0.0" = "sha256-b2sGzBOB2aNNJ0dsDBjgV2jH3ROO/Cdu8AIHPSXMCPg=";
-          };
-        };
-      };
-    })
-  ];
-
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
     index_camera_passthrough
