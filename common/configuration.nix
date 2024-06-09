@@ -172,7 +172,6 @@
     usbimager
     baobab
     angryipscanner
-    teamviewer
     obs-studio
     vlc
     libsForQt5.kdenlive
@@ -190,6 +189,8 @@
     pdfarranger
     handbrake
   ];
+
+  services.teamviewer.enable = true;
 
   services.openssh.enable = true;
   programs.ssh = {
