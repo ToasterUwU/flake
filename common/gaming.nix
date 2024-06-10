@@ -11,7 +11,7 @@
     wineWowPackages.waylandFull
     winetricks
     protontricks
-    steamtinkerlaunch
+    nexusmods-app
     r2modman
     prismlauncher
     lutris
