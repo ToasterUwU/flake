@@ -35,6 +35,60 @@
     users.aki = {
       home.stateVersion = "23.11";
 
+      xdg.mimeApps = {
+        enable = true;
+        associations.added = {
+          "application/x-extension-htm" = "firefox.desktop";
+          "application/x-extension-html" = "firefox.desktop";
+          "application/x-extension-shtml" = "firefox.desktop";
+          "application/x-extension-xht" = "firefox.desktop";
+          "application/x-extension-xhtml" = "firefox.desktop";
+          "application/xhtml+xml" = "firefox.desktop";
+          "text/html" = "firefox.desktop";
+          "x-scheme-handler/chrome" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
+          "model/stl" = "com.ultimaker.cura.desktop";
+          "text/x.gcode" = "com.ultimaker.cura.desktop";
+          "application/x-shellscript" = "code.desktop";
+        };
+        defaultApplications = {
+          "application/x-extension-htm" = "firefox.desktop";
+          "application/x-extension-html" = "firefox.desktop";
+          "application/x-extension-shtml" = "firefox.desktop";
+          "application/x-extension-xht" = "firefox.desktop";
+          "application/x-extension-xhtml" = "firefox.desktop";
+          "text/html" = "firefox.desktop";
+          "application/xhtml+xml" = "firefox.desktop";
+          "x-scheme-handler/chrome" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
+          "model/stl" = "com.ultimaker.cura.desktop";
+          "text/x.gcode" = "com.ultimaker.cura.desktop";
+          "x-scheme-handler/ror2mm" = "r2modman.desktop";
+          "image/svg+xml" = "code.desktop";
+          "application/json" = "code.desktop";
+          "application/xml" = "code.desktop";
+          "application/yaml" = "code.desktop";
+          "application/toml" = "code.desktop";
+          "application/x-shellscript" = "code.desktop";
+          "text/x-python" = "code.desktop";
+          "text/rust" = "code.desktop";
+          "text/javascript" = "code.desktop";
+          "text/css" = "code.desktop";
+          "text/x-cmake" = "code.desktop";
+          "text/x-c++src" = "code.desktop";
+          "text/x-c++hdr" = "code.desktop";
+          "text/x-systemd-unit" = "code.desktop";
+          "text/markdown" = "code.desktop";
+          "text/plain" = "code.desktop";
+          "x-scheme-handler/bitwarden" = "Bitwarden.desktop";
+          "x-scheme-handler/beatsaver" = "BeatSaberModManager-url-beatsaver.desktop";
+          "x-scheme-handler/bsplaylist" = "BeatSaberModManager-url-bsplaylist.desktop";
+          "x-scheme-handler/modelsaber" = "BeatSaberModManager-url-modelsaber.desktop";
+        };
+      };
+
       catppuccin.enable = true;
       catppuccin.flavor = "mocha";
       catppuccin.accent = "pink";
