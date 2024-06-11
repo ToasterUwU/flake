@@ -29,8 +29,8 @@
   };
 
   age.secrets = {
-    "nixpkgs-review-github-token" = {
-      file = ../secrets/common/nixpkgs-review-github-token.age;
+    "aki-nixpkgs-review-github-token" = {
+      file = ../secrets/common/aki-nixpkgs-review-github-token.age;
       mode = "700";
       owner = "aki";
       group = "users";
@@ -44,7 +44,7 @@
       (writeScriptBin "nixpkgs-review" ''
         #!/usr/bin/env bash
 
-        export GITHUB_TOKEN=$(cat ${config.age.secrets."nixpkgs-review-github-token".path})
+        export GITHUB_TOKEN=$(cat ${config.age.secrets."aki-nixpkgs-review-github-token".path})
         exec ${pkgs.nixpkgs-review}/bin/nixpkgs-review "$@"
       '')
       openscad-lsp
