@@ -19,4 +19,6 @@ in
   "secrets/common/scarlett-id_ed25519.pub.age".publicKeys = users ++ systems;
 
   "secrets/common/aki-.wakatime.cfg.age".publicKeys = [ aki ] ++ systems;
+
+  "secrets/common/nixpkgs-review-github-token.age".publicKeys = [ aki ] ++ systems;
 }

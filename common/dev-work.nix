@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, config, ... }: {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   home-manager = {
@@ -28,11 +28,25 @@
     };
   };
 
+  age.secrets = {
+    "nixpkgs-review-github-token" = {
+      file = ../secrets/common/nixpkgs-review-github-token.age;
+      mode = "700";
+      owner = "aki";
+      group = "users";
+    };
+  };
+
   users.users.aki = {
     packages = with pkgs; [
       nil
       nixpkgs-fmt
-      nixpkgs-review
+      (writeScriptBin "nixpkgs-review" ''
+        #!/usr/bin/env bash
+
+        export GITHUB_TOKEN=$(cat ${config.age.secrets."nixpkgs-review-github-token".path})
+        exec ${pkgs.nixpkgs-review}/bin/nixpkgs-review "$@"
+      '')
       openscad-lsp
       binutils
       gcc
