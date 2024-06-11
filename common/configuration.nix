@@ -188,7 +188,7 @@
     gnome.simple-scan
     pdfarranger
     handbrake
-  ];
+  ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
 
   services.teamviewer.enable = true;
 
