@@ -210,6 +210,7 @@
     flake = "github:ToasterUwU/flake";
     flags = [ "--verbose" ];
     dates = "daily";
+    operation = "boot";
   };
 
   nix.gc = {
