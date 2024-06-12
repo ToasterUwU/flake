@@ -23,7 +23,16 @@
 
       programs.vscode = {
         enable = true;
-        package = pkgs.vscode-fhs;
+        package = pkgs.vscode.fhsWithPackages (ps: with ps; [
+          zlib
+          gcc
+          glibc
+          binutils
+          gnumake
+          pkg-config
+          openssl.dev
+          systemd.dev
+        ]);
       };
     };
   };
@@ -48,14 +57,6 @@
         exec ${pkgs.nixpkgs-review}/bin/nixpkgs-review "$@"
       '')
       openscad-lsp
-      binutils
-      gcc
-      glibc
-      zlib
-      openssl.dev
-      systemd.dev
-      gnumake
-      pkg-config
       clang-tools
       (rust-bin.stable.latest.default.override {
         extensions = [ "rust-src" "rustfmt" "rustc-dev" ];
