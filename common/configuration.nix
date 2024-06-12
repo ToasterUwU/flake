@@ -183,7 +183,6 @@
     spotify
     jellyfin-media-player
     onlyoffice-bin
-    obsidian
     gnome.gnome-clocks
     gnome.simple-scan
     pdfarranger
