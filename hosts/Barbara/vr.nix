@@ -16,7 +16,22 @@ in
     }))
   ];
 
+  services.monado = {
+    enable = true;
+    package = pkgs.monado.overrideAttrs (prevAttrs: {
+      patches = prevAttrs.patches or [ ] ++ [
+        ../../assets/vr/patches/playspacer-mover-monado.patch
+      ];
+    });
+    defaultRuntime = true;
+  };
+
   environment.systemPackages = with pkgs; [
+    (pkgs.opencomposite.overrideAttrs (prevAttrs: {
+      patches = prevAttrs.patches or [ ] ++ [
+        ../../assets/vr/patches/generic-vive-tracker-fbt-and-index-controller-grip-opencomposite.patch
+      ];
+    }))
     wlx-overlay-s
     index_camera_passthrough
     BeatSaberModManager
@@ -32,6 +47,26 @@ in
         terminal = false;
         startupNotify = true;
       };
+      xdg.configFile."openvr/openvrpaths.vrpath".text = ''
+          {
+          "config" :
+          [
+            "/home/aki/.local/share/Steam/config"
+          ],
+          "external_drivers" : null,
+          "jsonid" : "vrpathreg",
+          "log" :
+          [
+            "/home/aki/.local/share/Steam/logs"
+          ],
+          "runtime" :
+          [
+            "${pkgs.opencomposite}/lib/opencomposite",
+            "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
+          ],
+          "version" : 1
+        }
+      '';
     };
     users.scarlett = {
       xdg.desktopEntries."BeatSaberModManager" = {
@@ -42,6 +77,26 @@ in
         terminal = false;
         startupNotify = true;
       };
+      xdg.configFile."openvr/openvrpaths.vrpath".text = ''
+          {
+          "config" :
+          [
+            "/home/scarlett/.local/share/Steam/config"
+          ],
+          "external_drivers" : null,
+          "jsonid" : "vrpathreg",
+          "log" :
+          [
+            "/home/scarlett/.local/share/Steam/logs"
+          ],
+          "runtime" :
+          [
+            "${pkgs.opencomposite}/lib/opencomposite",
+            "/home/scarlett/.local/share/Steam/steamapps/common/SteamVR"
+          ],
+          "version" : 1
+        }
+      '';
     };
   };
 }

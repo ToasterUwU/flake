@@ -1,0 +1,244 @@
+From b6a04b92199346b41e33ad44197ca6ba33b686e0 Mon Sep 17 00:00:00 2001
+From: galister <3123227-galister@users.noreply.gitlab.com>
+Date: Wed, 5 Jun 2024 20:19:40 +0900
+Subject: [PATCH]  u/space_overseer,ipc: apply_stage_offset
+
+---
+ src/xrt/auxiliary/util/u_space_overseer.c     | 47 +++++++++++++++++++
+ src/xrt/include/xrt/xrt_space.h               | 15 ++++++
+ .../ipc/client/ipc_client_space_overseer.c    |  9 ++++
+ src/xrt/ipc/server/ipc_server_handler.c       |  8 ++++
+ src/xrt/ipc/shared/proto.json                 |  6 +++
+ src/xrt/targets/libmonado/CMakeLists.txt      |  1 +
+ src/xrt/targets/libmonado/libmonado.def       |  1 +
+ src/xrt/targets/libmonado/monado.c            | 12 +++++
+ src/xrt/targets/libmonado/monado.h            |  4 ++
+ 9 files changed, 103 insertions(+)
+
+diff --git a/src/xrt/auxiliary/util/u_space_overseer.c b/src/xrt/auxiliary/util/u_space_overseer.c
+index 7bda1add37..2c1fe6f411 100644
+--- a/src/xrt/auxiliary/util/u_space_overseer.c
++++ b/src/xrt/auxiliary/util/u_space_overseer.c
+@@ -802,6 +802,52 @@ err_unlock:
+ 	return XRT_ERROR_RECENTERING_NOT_SUPPORTED;
+ }
+ 
++static xrt_result_t
++apply_stage_offset(struct xrt_space_overseer *xso, const struct xrt_pose *offset)
++{
++	struct u_space_overseer *uso = u_space_overseer(xso);
++	xrt_result_t xret;
++
++	pthread_rwlock_wrlock(&uso->lock);
++
++	// Can we do recentering, check with lock held.
++	if (uso->can_do_local_spaces_recenter) {
++		goto err_unlock;
++	}
++
++	struct u_space *ustage = u_space(xso->semantic.stage);
++	assert(ustage != NULL);
++
++	ustage->type = U_SPACE_TYPE_OFFSET;
++
++	update_offset_write_locked(ustage, offset);
++
++	// Push the events.
++	union xrt_session_event xse = XRT_STRUCT_INIT;
++
++	// Basics
++	xse.ref_change.event_type = XRT_SESSION_EVENT_REFERENCE_SPACE_CHANGE_PENDING;
++	xse.ref_change.pose_valid = false;
++	xse.ref_change.pose_in_previous_space = (struct xrt_pose)XRT_POSE_IDENTITY;
++	xse.ref_change.timestamp_ns = os_monotonic_get_ns();
++
++	// Event for stage space.
++	xse.ref_change.ref_type = XRT_SPACE_REFERENCE_TYPE_STAGE;
++	xret = xrt_session_event_sink_push(uso->broadcast, &xse);
++	if (xret != XRT_SUCCESS) {
++		U_LOG_E("Failed to push event STAGE!");
++	}
++
++	pthread_rwlock_unlock(&uso->lock);
++
++	return XRT_SUCCESS;
++
++err_unlock:
++	pthread_rwlock_unlock(&uso->lock);
++
++	return XRT_ERROR_RECENTERING_NOT_SUPPORTED;
++}
++
+ static void
+ destroy(struct xrt_space_overseer *xso)
+ {
+@@ -842,6 +888,7 @@ u_space_overseer_create(struct xrt_session_event_sink *broadcast)
+ 	uso->base.ref_space_inc = ref_space_inc;
+ 	uso->base.ref_space_dec = ref_space_dec;
+ 	uso->base.recenter_local_spaces = recenter_local_spaces;
++	uso->base.apply_stage_offset = apply_stage_offset;
+ 	uso->base.destroy = destroy;
+ 	uso->broadcast = broadcast;
+ 
+diff --git a/src/xrt/include/xrt/xrt_space.h b/src/xrt/include/xrt/xrt_space.h
+index 3869139451..63803600f9 100644
+--- a/src/xrt/include/xrt/xrt_space.h
++++ b/src/xrt/include/xrt/xrt_space.h
+@@ -236,6 +236,8 @@ struct xrt_space_overseer
+ 	 */
+ 	xrt_result_t (*recenter_local_spaces)(struct xrt_space_overseer *xso);
+ 
++	xrt_result_t (*apply_stage_offset)(struct xrt_space_overseer *xso, const struct xrt_pose *offset);
++
+ 	/*!
+ 	 * Destroy function.
+ 	 *
+@@ -373,6 +375,19 @@ xrt_space_overseer_recenter_local_spaces(struct xrt_space_overseer *xso)
+ 	return xso->recenter_local_spaces(xso);
+ }
+ 
++/*!
++ * @copydoc xrt_space_overseer::apply_stage_offset
++ *
++ * Helper for calling through the function pointer.
++ *
++ * @public @memberof xrt_space_overseer
++ */
++static inline xrt_result_t
++xrt_space_overseer_apply_stage_offset(struct xrt_space_overseer *xso, const struct xrt_pose *offset)
++{
++	return xso->apply_stage_offset(xso, offset);
++}
++
+ /*!
+  * Helper for calling through the function pointer: does a null check and sets
+  * xc_ptr to null if freed.
+diff --git a/src/xrt/ipc/client/ipc_client_space_overseer.c b/src/xrt/ipc/client/ipc_client_space_overseer.c
+index 152582c185..eb13527331 100644
+--- a/src/xrt/ipc/client/ipc_client_space_overseer.c
++++ b/src/xrt/ipc/client/ipc_client_space_overseer.c
+@@ -282,6 +282,14 @@ recenter_local_spaces(struct xrt_space_overseer *xso)
+ 	return ipc_call_space_recenter_local_spaces(icspo->ipc_c);
+ }
+ 
++static xrt_result_t
++apply_stage_offset(struct xrt_space_overseer *xso, const struct xrt_pose *offset)
++{
++	struct ipc_client_space_overseer *icspo = ipc_client_space_overseer(xso);
++
++	return ipc_call_space_apply_stage_offset(icspo->ipc_c, offset);
++}
++
+ static void
+ destroy(struct xrt_space_overseer *xso)
+ {
+@@ -334,6 +342,7 @@ ipc_client_space_overseer_create(struct ipc_connection *ipc_c)
+ 	icspo->base.ref_space_inc = ref_space_inc;
+ 	icspo->base.ref_space_dec = ref_space_dec;
+ 	icspo->base.recenter_local_spaces = recenter_local_spaces;
++	icspo->base.apply_stage_offset = apply_stage_offset;
+ 	icspo->base.destroy = destroy;
+ 	icspo->ipc_c = ipc_c;
+ 
+diff --git a/src/xrt/ipc/server/ipc_server_handler.c b/src/xrt/ipc/server/ipc_server_handler.c
+index cacf2078c8..f940fcce64 100644
+--- a/src/xrt/ipc/server/ipc_server_handler.c
++++ b/src/xrt/ipc/server/ipc_server_handler.c
+@@ -715,6 +715,14 @@ ipc_handle_space_recenter_local_spaces(volatile struct ipc_client_state *ics)
+ 	return xrt_space_overseer_recenter_local_spaces(xso);
+ }
+ 
++xrt_result_t
++ipc_handle_space_apply_stage_offset(volatile struct ipc_client_state *ics, const struct xrt_pose *offset)
++{
++	struct xrt_space_overseer *xso = ics->server->xso;
++
++	return xrt_space_overseer_apply_stage_offset(xso, offset);
++}
++
+ xrt_result_t
+ ipc_handle_compositor_get_info(volatile struct ipc_client_state *ics, struct xrt_compositor_info *out_info)
+ {
+diff --git a/src/xrt/ipc/shared/proto.json b/src/xrt/ipc/shared/proto.json
+index 269290f03a..f79f5c00af 100644
+--- a/src/xrt/ipc/shared/proto.json
++++ b/src/xrt/ipc/shared/proto.json
+@@ -174,6 +174,12 @@
+ 	"space_recenter_local_spaces": {
+ 	},
+ 
++    "space_apply_stage_offset": {
++        "in": [
++            {"name": "offset", "type": "struct xrt_pose"}
++        ]
++    },
++
+ 	"compositor_get_info": {
+ 		"out": [
+ 			{"name": "info", "type": "struct xrt_compositor_info"}
+diff --git a/src/xrt/targets/libmonado/CMakeLists.txt b/src/xrt/targets/libmonado/CMakeLists.txt
+index bea792db96..ea7a7ca165 100644
+--- a/src/xrt/targets/libmonado/CMakeLists.txt
++++ b/src/xrt/targets/libmonado/CMakeLists.txt
+@@ -4,6 +4,7 @@
+ add_library(monado SHARED monado.c libmonado.def)
+ set(LIBMONADO_HEADER_DIR ${CMAKE_INSTALL_INCLUDEDIR}/monado)
+ target_link_libraries(monado PRIVATE aux_util ipc_client)
++target_link_libraries(monado INTERFACE xrt-interfaces)
+ target_include_directories(
+ 	monado INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+ 			 $<INSTALL_INTERFACE:${LIBMONADO_HEADER_DIR}>
+diff --git a/src/xrt/targets/libmonado/libmonado.def b/src/xrt/targets/libmonado/libmonado.def
+index b33c98b07e..946f2131f0 100644
+--- a/src/xrt/targets/libmonado/libmonado.def
++++ b/src/xrt/targets/libmonado/libmonado.def
+@@ -14,3 +14,4 @@ EXPORTS
+     mnd_root_get_device_info
+     mnd_root_get_device_from_role
+     mnd_root_recenter_local_spaces
++    mnd_root_apply_stage_offset
+diff --git a/src/xrt/targets/libmonado/monado.c b/src/xrt/targets/libmonado/monado.c
+index 0317fb78b0..07acf817fe 100644
+--- a/src/xrt/targets/libmonado/monado.c
++++ b/src/xrt/targets/libmonado/monado.c
+@@ -463,3 +463,15 @@ mnd_root_recenter_local_spaces(mnd_root_t *root)
+ 	default: PE("Internal error, shouldn't get here"); return MND_ERROR_OPERATION_FAILED;
+ 	}
+ }
++
++mnd_result_t
++mnd_root_apply_stage_offset(mnd_root_t *root, struct xrt_pose *offset)
++{
++	xrt_result_t xret = ipc_call_space_apply_stage_offset(&root->ipc_c, offset);
++	switch (xret) {
++	case XRT_SUCCESS: return MND_SUCCESS;
++	case XRT_ERROR_RECENTERING_NOT_SUPPORTED: return MND_ERROR_RECENTERING_NOT_SUPPORTED;
++	case XRT_ERROR_IPC_FAILURE: PE("Connection error!"); return MND_ERROR_OPERATION_FAILED;
++	default: PE("Internal error, shouldn't get here"); return MND_ERROR_OPERATION_FAILED;
++	}
++}
+diff --git a/src/xrt/targets/libmonado/monado.h b/src/xrt/targets/libmonado/monado.h
+index 6eae4e62ef..aa7be7e1b6 100644
+--- a/src/xrt/targets/libmonado/monado.h
++++ b/src/xrt/targets/libmonado/monado.h
+@@ -7,6 +7,7 @@
+  * @author Rylie Pavlik <rylie.pavlik@collabora.com>
+  */
+ 
++#include "xrt/xrt_defines.h"
+ #include <stdint.h>
+ #include <stdbool.h>
+ 
+@@ -349,6 +350,9 @@ mnd_root_get_device_from_role(mnd_root_t *root, const char *role_name, int32_t *
+ mnd_result_t
+ mnd_root_recenter_local_spaces(mnd_root_t *root);
+ 
++mnd_result_t
++mnd_root_apply_stage_offset(mnd_root_t *root, struct xrt_pose *offset);
++
+ 
+ #ifdef __cplusplus
+ }
+-- 
+GitLab
+
