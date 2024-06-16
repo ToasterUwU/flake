@@ -322,7 +322,10 @@
         bash = {
           enable = true;
           bashrcExtra = ''
-            hyfetch
+            if [ -n "$PS1" ]; then
+                # Run hyfetch if the shell is interactive
+                hyfetch
+            fi
           '';
         };
         tealdeer = {
