@@ -72,7 +72,7 @@
           lookAndFeel = "Catppuccin-Mocha-Pink";
           colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
-          cursorTheme = "Catppuccin-Mocha-Pink-Cursors";
+          cursor.theme = "Catppuccin-Mocha-Pink-Cursors";
           wallpaperSlideShow.path = ../assets/wallpapers;
         };
 
@@ -184,7 +184,7 @@
           lookAndFeel = "Catppuccin-Mocha-Red";
           colorScheme = "CatpuccinMochaRed";
           iconTheme = "Papirus-Dark";
-          cursorTheme = "Catppuccin-Mocha-Red-Cursors";
+          cursor.theme = "Catppuccin-Mocha-Red-Cursors";
           wallpaper = ../assets/wallpapers/red_nebula.jpg;
         };
 
