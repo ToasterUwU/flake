@@ -25,6 +25,14 @@ in
     });
     defaultRuntime = true;
   };
+  systemd.user.services.monado.environment = {
+    STEAMVR_LH_ENABLE = "1";
+    XRT_COMPOSITOR_COMPUTE = "1";
+  };
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     (pkgs.opencomposite.overrideAttrs (prevAttrs: {
@@ -47,22 +55,30 @@ in
         terminal = false;
         startupNotify = true;
       };
+      xdg.configFile."openxr/1/active_runtime.json".text = ''
+        {
+          "file_format_version": "1.0.0",
+          "runtime": {
+              "name": "Monado",
+              "library_path": "${pkgs.monado}/lib/libopenxr_monado.so"
+          }
+        }
+      '';
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
-          {
+        {
           "config" :
           [
-            "/home/aki/.local/share/Steam/config"
+            "/home/aki/Steam/config"
           ],
           "external_drivers" : null,
           "jsonid" : "vrpathreg",
           "log" :
           [
-            "/home/aki/.local/share/Steam/logs"
+            "/home/aki/Steam/logs"
           ],
           "runtime" :
           [
-            "${pkgs.opencomposite}/lib/opencomposite",
-            "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
+            "${pkgs.opencomposite}/lib/opencomposite"
           ],
           "version" : 1
         }
@@ -77,22 +93,30 @@ in
         terminal = false;
         startupNotify = true;
       };
+      xdg.configFile."openxr/1/active_runtime.json".text = ''
+        {
+          "file_format_version": "1.0.0",
+          "runtime": {
+              "name": "Monado",
+              "library_path": "${pkgs.monado}/lib/libopenxr_monado.so"
+          }
+        }
+      '';
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
-          {
+        {
           "config" :
           [
-            "/home/scarlett/.local/share/Steam/config"
+            "/home/scarlett/Steam/config"
           ],
           "external_drivers" : null,
           "jsonid" : "vrpathreg",
           "log" :
           [
-            "/home/scarlett/.local/share/Steam/logs"
+            "/home/scarlett/Steam/logs"
           ],
           "runtime" :
           [
-            "${pkgs.opencomposite}/lib/opencomposite",
-            "/home/scarlett/.local/share/Steam/steamapps/common/SteamVR"
+            "${pkgs.opencomposite}/lib/opencomposite"
           ],
           "version" : 1
         }
