@@ -9,6 +9,10 @@
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   programs.nix-ld.enable = true;
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
