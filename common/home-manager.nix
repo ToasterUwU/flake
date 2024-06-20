@@ -159,6 +159,15 @@
         StartupNotify=false
         Terminal=false
       '';
+      xdg.configFile."autostart/openrgb.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=OpenRGB
+        Comment=OpenRGB autostart script
+        Exec=openrgb
+        StartupNotify=false
+        Terminal=false
+      '';
       xdg.configFile."autostart/vdhcoapp-install.desktop".text = ''
         [Desktop Entry]
         Type=Application
@@ -344,6 +353,15 @@
         Name=Vesktop
         Comment=Vesktop autostart script
         Exec=vesktop
+        StartupNotify=false
+        Terminal=false
+      '';
+      xdg.configFile."autostart/openrgb.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=OpenRGB
+        Comment=OpenRGB autostart script
+        Exec=openrgb
         StartupNotify=false
         Terminal=false
       '';
