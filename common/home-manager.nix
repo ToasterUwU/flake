@@ -164,7 +164,7 @@
         Type=Application
         Name=OpenRGB
         Comment=OpenRGB autostart script
-        Exec=openrgb
+        Exec=openrgb --startminimized --profile Pink
         StartupNotify=false
         Terminal=false
       '';
@@ -361,7 +361,7 @@
         Type=Application
         Name=OpenRGB
         Comment=OpenRGB autostart script
-        Exec=openrgb
+        Exec=openrgb --startminimized --profile Red
         StartupNotify=false
         Terminal=false
       '';
