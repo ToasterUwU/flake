@@ -53,6 +53,7 @@
           "application/x-shellscript" = "code.desktop";
         };
         defaultApplications = {
+          "application/vhd.microsoft.portable-executable" = "wine64.desktop";
           "application/x-extension-htm" = "firefox.desktop";
           "application/x-extension-html" = "firefox.desktop";
           "application/x-extension-shtml" = "firefox.desktop";
