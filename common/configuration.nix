@@ -5,6 +5,7 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1"; # Allow unfree software when using nix-shell
+  hardware.enableAllFirmware = true;
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
@@ -28,7 +29,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  hardware.enableAllFirmware = true;
 
   services.xserver.xkb = {
     layout = "de";
