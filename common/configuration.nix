@@ -316,6 +316,29 @@
           "exec"
         ];
     };
+    "/home/aki/Gutruhn/docker" = {
+      device = "Aki@toasteruwu.com:/docker";
+      fsType = "fuse.sshfs";
+      options =
+        [
+          "x-gvfs-show"
+          "delay_connect"
+          "reconnect"
+          "ServerAliveInterval=10"
+          "ServerAliveCountMax=2"
+          "x-systemd.automount"
+          "x-systemd.requires=network-online.target"
+          "_netdev"
+          "user"
+          "transform_symlinks"
+          "IdentityFile=/home/aki/.ssh/id_ed25519"
+          "allow_other"
+          "default_permissions"
+          "uid=1000"
+          "gid=100"
+          "exec"
+        ];
+    };
   };
 
   system.stateVersion = "23.11";
