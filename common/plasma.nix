@@ -87,6 +87,7 @@
 
         panels = [
           {
+            screen = 0;
             location = "bottom";
             height = 40;
             floating = false;
@@ -202,6 +203,7 @@
 
         panels = [
           {
+            screen = 0;
             location = "bottom";
             height = 40;
             floating = false;
