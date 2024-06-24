@@ -187,7 +187,6 @@
     spotify
     jellyfin-media-player
     onlyoffice-bin
-    gnome.gnome-clocks
     gnome.simple-scan
     pdfarranger
     handbrake
