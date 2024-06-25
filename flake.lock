@@ -345,11 +345,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719145147,
-        "narHash": "sha256-Es/sgvSvVzv3DfWcl3OMABIuBUWiYXx2uwT94hQO4Io=",
+        "lastModified": 1719241096,
+        "narHash": "sha256-36De9zA7fp976ZPxATQ2LHcQohUUISCGlAcCKJqRC/0=",
         "owner": "pjones",
         "repo": "plasma-manager",
-        "rev": "5db39ce2fa95f4dfe1bdfe371fd9a90c65b3a9a0",
+        "rev": "d67f2f550a26da44554f239c7043112e0cfbb231",
         "type": "github"
       },
       "original": {
@@ -423,11 +423,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719195554,
-        "narHash": "sha256-bFXHMjpYlEERexzXa1gLGJO/1l8dxaAtSNE56YALuTg=",
+        "lastModified": 1719281921,
+        "narHash": "sha256-LIBMfhM9pMOlEvBI757GOK5l0R58SRi6YpwfYMbf4yc=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "577ee84c69ba89894ac622d71a678a14d746b2f7",
+        "rev": "b6032d3a404d8a52ecfc8571ff0c26dfbe221d07",
         "type": "github"
       },
       "original": {
@@ -446,11 +446,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1719060718,
-        "narHash": "sha256-awZL3jaZJhjRNwcR8N9iCrm79xQbEAV254osdlT7WMo=",
+        "lastModified": 1719228790,
+        "narHash": "sha256-4XVGu9xR7rCdkt/yJo5tvpxtjFYcocrcR75dxXoTrwk=",
         "owner": "Scrumplex",
         "repo": "pkgs",
-        "rev": "d8380903df5d81a65054f02b50e72f3daacce707",
+        "rev": "b4998ddba94dfec6296475b0f170f68dd8e781fe",
         "type": "github"
       },
       "original": {
