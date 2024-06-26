@@ -5,10 +5,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:pjones/plasma-manager";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
     nixpkgs-xr = {
@@ -36,7 +35,7 @@
     };
   };
 
-  outputs = { nixpkgs, agenix, catppuccin, ... }@inputs: {
+  outputs = { nixpkgs, agenix, catppuccin, nixos-cosmic, ... }@inputs: {
     nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -44,6 +43,13 @@
         ./hosts/Barbara
         catppuccin.nixosModules.catppuccin
         agenix.nixosModules.default
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+        }
+        nixos-cosmic.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
@@ -55,6 +61,13 @@
         ./hosts/Gertrude
         catppuccin.nixosModules.catppuccin
         agenix.nixosModules.default
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+        }
+        nixos-cosmic.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
@@ -66,6 +79,13 @@
         ./hosts/Waltraud
         catppuccin.nixosModules.catppuccin
         agenix.nixosModules.default
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+        }
+        nixos-cosmic.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
