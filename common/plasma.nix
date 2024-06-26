@@ -18,6 +18,7 @@
 
   programs.kdeconnect.enable = true;
   programs.kclock.enable = true;
+  programs.k3b.enable = true;
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kate
