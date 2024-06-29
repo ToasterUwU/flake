@@ -258,7 +258,6 @@
           HOSTS_TO_UPDATE="airvpn-tunnel-vm
           discord-bots
           mongo-db
-          ollama
           smart-home
           video-station
           xen-orchestra"
