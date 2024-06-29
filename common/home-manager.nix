@@ -51,9 +51,15 @@
           "model/stl" = "com.ultimaker.cura.desktop";
           "text/x.gcode" = "com.ultimaker.cura.desktop";
           "application/x-shellscript" = "code.desktop";
+          "application/vhd.microsoft.portable-executable" = "wine.desktop";
         };
         defaultApplications = {
-          "application/vhd.microsoft.portable-executable" = "wine64.desktop";
+          "application/x-ms-dos-executable" = "wine.desktop";
+          "application/x-msi" = "wine.desktop";
+          "application/x-ms-shortcut" = "wine.desktop";
+          "application/x-bat" = "wine.desktop";
+          "application/x-mswinurl" = "wine.desktop";
+          "application/vhd.microsoft.portable-executable" = "wine.desktop";
           "application/x-extension-htm" = "firefox.desktop";
           "application/x-extension-html" = "firefox.desktop";
           "application/x-extension-shtml" = "firefox.desktop";

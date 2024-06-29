@@ -8,8 +8,8 @@
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     piper
+    wine
     wine64
-    wineWowPackages.waylandFull
     winetricks
     protontricks
     r2modman
