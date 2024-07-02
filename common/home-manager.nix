@@ -175,14 +175,6 @@
         StartupNotify=false
         Terminal=false
       '';
-      xdg.configFile."autostart/vdhcoapp-install.desktop".text = ''
-        [Desktop Entry]
-        Type=Application
-        Name=Vdhcoapp Install
-        Exec=vdhcoapp install
-        StartupNotify=false
-        Terminal=false
-      '';
       xdg.desktopEntries."Update VMs" = {
         type = "Application";
         name = "Update VMs";
@@ -391,14 +383,6 @@
         Type=Application
         PrefersNonDefaultGPU=true
         X-KDE-RunOnDiscreteGpu=true
-      '';
-      xdg.configFile."autostart/vdhcoapp-install.desktop".text = ''
-        [Desktop Entry]
-        Type=Application
-        Name=Vdhcoapp Install
-        Exec=vdhcoapp install
-        StartupNotify=false
-        Terminal=false
       '';
     };
   };

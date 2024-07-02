@@ -27,6 +27,7 @@
   environment.systemPackages = with pkgs; [
     krename
     kdePackages.kalk
+    kdePackages.plasma-browser-integration
   ];
 
   users.users =

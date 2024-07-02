@@ -181,7 +181,6 @@
     libsForQt5.kdenlive
     bitwarden
     vesktop
-    firefox
     tor-browser
     chromium
     spotify
@@ -191,6 +190,11 @@
     pdfarranger
     handbrake
   ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
+
+  programs.firefox = {
+    enable = true;
+    nativeMessagingHosts.packages = with pkgs; [ vdhcoapp ];
+  };
 
   services.teamviewer.enable = true;
 
