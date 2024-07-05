@@ -93,6 +93,8 @@
           "x-scheme-handler/beatsaver" = "BeatSaberModManager-url-beatsaver.desktop";
           "x-scheme-handler/bsplaylist" = "BeatSaberModManager-url-bsplaylist.desktop";
           "x-scheme-handler/modelsaber" = "BeatSaberModManager-url-modelsaber.desktop";
+          "application/x-modrinth-modpack+zip" = "org.prismlauncher.PrismLauncher.desktop";
+          "x-scheme-handler/curseforge" = "org.prismlauncher.PrismLauncher.desktop";
         };
       };
 
