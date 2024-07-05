@@ -186,7 +186,7 @@
     spotify
     jellyfin-media-player
     onlyoffice-bin
-    gnome.simple-scan
+    simple-scan
     pdfarranger
     handbrake
   ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
