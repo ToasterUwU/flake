@@ -32,6 +32,7 @@
           pkg-config
           openssl.dev
           systemd.dev
+          craftos-pc
         ]);
       };
     };
