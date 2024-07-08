@@ -33,6 +33,7 @@
           openssl.dev
           systemd.dev
           craftos-pc
+          nodejs_22
         ]);
       };
     };
