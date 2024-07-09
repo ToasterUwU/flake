@@ -48,6 +48,7 @@
     };
   };
 
+  nixpkgs.config.allowBroken = true; # This is for shiboken2 being broken because of the switch to python 3.12 as the default
   users.users.aki = {
     packages = with pkgs; [
       nil
@@ -65,7 +66,7 @@
         targets = [ "aarch64-unknown-linux-gnu" "x86_64-pc-windows-gnu" "x86_64-unknown-linux-gnu" "wasm32-unknown-unknown" "x86_64-apple-darwin" "aarch64-apple-darwin" ];
       })
       rust-analyzer
-      python3
+      python311
       nodejs
     ];
   };
