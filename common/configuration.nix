@@ -48,8 +48,8 @@
 
   hardware.sane.enable = true;
   services.printing.enable = true;
-  hardware.sane.extraBackends = with pkgs; [ hplipWithPlugin sane-airscan samsung-unified-linux-driver ];
-  services.printing.drivers = with pkgs; [ hplipWithPlugin sane-airscan samsung-unified-linux-driver ];
+  hardware.sane.extraBackends = with pkgs; [ sane-airscan samsung-unified-linux-driver ];
+  services.printing.drivers = with pkgs; [ sane-airscan samsung-unified-linux-driver ];
   services.avahi = {
     enable = true;
     nssmdns4 = true;
