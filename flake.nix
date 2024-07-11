@@ -15,10 +15,6 @@
       url = "github:nix-community/nixpkgs-xr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    envision = {
-      url = "gitlab:Scrumplex/envision/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     scrumpkgs = {
       url = "github:Scrumplex/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
