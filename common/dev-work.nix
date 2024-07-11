@@ -48,7 +48,6 @@
     };
   };
 
-  nixpkgs.config.allowBroken = true; # This is for shiboken2 being broken because of the switch to python 3.12 as the default
   users.users.aki = {
     packages = with pkgs; [
       nil
