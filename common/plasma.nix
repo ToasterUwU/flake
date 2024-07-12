@@ -86,6 +86,7 @@
 
         configFile.kcminputrc.Keyboard.NumLock.value = 0;
         configFile.kwinrc.Effect-overview.BorderActivate = 9;
+        configFile.kwinrc.EdgeBarrier.EdgeBarrier = 0;
         configFile.powerdevilrc."AC/SuspendAndShutdown".AutoSuspendAction = 0; # When charging or when Desktop, no sleep
 
         panels = [
