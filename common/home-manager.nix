@@ -269,7 +269,11 @@
 
           for host in $HOSTS_TO_UPDATE; do
               echo -e "\033[1m\033[32m$host\033[0m"
-              sshpass -p $PASSWORD ssh $host "echo $PASSWORD | DEBIAN_FRONTEND=noninteractive sudo -S bash update.sh"
+
+              # Run interactive shell on remote machine
+              ssh -t $host "bash <<EOF
+          echo $PASSWORD | sudo -S dpkg --configure -a && bash update.sh
+          EOF"
               echo -e "\033[1m\033[32mDone\033[0m"
               echo ""
           done
