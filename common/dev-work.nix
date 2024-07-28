@@ -58,15 +58,21 @@
         export GITHUB_TOKEN=$(cat ${config.age.secrets."aki-nixpkgs-review-github-token".path})
         exec ${pkgs.nixpkgs-review}/bin/nixpkgs-review "$@"
       '')
+
       openscad-lsp
       clang-tools
+
       (rust-bin.stable.latest.default.override {
         extensions = [ "rust-src" "rustfmt" "rustc-dev" ];
         targets = [ "aarch64-unknown-linux-gnu" "x86_64-pc-windows-gnu" "x86_64-unknown-linux-gnu" "wasm32-unknown-unknown" "x86_64-apple-darwin" "aarch64-apple-darwin" ];
       })
       rust-analyzer
-      python311
+
       nodejs
+
+      python311
+      python311Packages.nodriver
+      python311Packages.undetected-chromedriver
     ];
   };
 }
