@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
-let
-  isWaltraud = config.networking.hostName == "Waltraud";
-in
+{ pkgs, ... }:
 {
   virtualisation.containers.enable = true;
   virtualisation = {
@@ -17,11 +14,10 @@ in
     dive # look into docker image layers
     podman-tui # status of containers in the terminal
     podman-compose # start group of containers
-  ];
 
-  virtualisation.virtualbox.host.enable = !isWaltraud;
-  virtualisation.virtualbox.host.enableExtensionPack = !isWaltraud;
-  users.extraGroups.vboxusers.members = if isWaltraud then [ ] else [ "aki" ];
+    quickemu # QEMU with downloader and one command starter
+    quickgui # GUI for quickget and quickemu
+  ];
 
   virtualisation.waydroid.enable = true;
 }
