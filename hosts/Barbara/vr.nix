@@ -1,20 +1,20 @@
-{ inputs, pkgs, config, ... }:
-let
-  amdgpu-kernel-module = pkgs.callPackage ./amdgpu-kernel-module.nix {
-    kernel = config.boot.kernelPackages.kernel;
-  };
-in
+{ inputs, pkgs, ... }:
 {
   imports = [
     inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  boot.extraModulePackages = [
-    (amdgpu-kernel-module.overrideAttrs (prev: {
-      patches = (prev.patches or [ ]) ++ [ inputs.scrumpkgs.kernelPatches.cap_sys_nice_begone.patch ];
-    }))
-  ];
+  boot.kernelPatches = [
+  {
+    name = "amdgpu-ignore-ctx-privileges";
+    patch = pkgs.fetchpatch {
+      name = "cap_sys_nice_begone.patch";
+      url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+      hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+    };
+  }
+];
 
   programs.envision.enable = true;
   environment.systemPackages = with pkgs; [
