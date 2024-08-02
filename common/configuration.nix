@@ -7,7 +7,7 @@
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1"; # Allow unfree software when using nix-shell
   hardware.enableAllFirmware = true;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   programs.nix-ld.enable = true;
   programs.appimage = {
