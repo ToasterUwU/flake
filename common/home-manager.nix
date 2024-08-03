@@ -107,6 +107,9 @@
 
       gtk = {
         enable = true;
+        gtk2.extraConfig = { gtk-application-prefer-dark-theme = true; };
+        gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
+        gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
         theme = {
           name = "catppuccin-mocha-pink-standard";
           package = (pkgs.catppuccin-gtk.override {
@@ -308,6 +311,9 @@
 
       gtk = {
         enable = true;
+        gtk2.extraConfig = { gtk-application-prefer-dark-theme = true; };
+        gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
+        gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
         theme = {
           name = "catppuccin-mocha-red-standard";
           package = (pkgs.catppuccin-gtk.override {
