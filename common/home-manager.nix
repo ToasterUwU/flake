@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -99,7 +99,16 @@
       catppuccin.flavor = "mocha";
       catppuccin.accent = "pink";
 
-      gtk.enable = true;
+      gtk = {
+        enable = true;
+        theme = {
+          name = "catppuccin-mocha-pink-standard";
+          package = (pkgs.catppuccin-gtk.override {
+            variant = "mocha";
+            accents = [ "pink" ];
+          });
+        };
+      };
 
       programs = {
         hyfetch = {
@@ -291,7 +300,16 @@
       catppuccin.flavor = "mocha";
       catppuccin.accent = "red";
 
-      gtk.enable = true;
+      gtk = {
+        enable = true;
+        theme = {
+          name = "catppuccin-mocha-red-standard";
+          package = (pkgs.catppuccin-gtk.override {
+            variant = "mocha";
+            accents = [ "red" ];
+          });
+        };
+      };
 
       programs = {
         hyfetch = {
