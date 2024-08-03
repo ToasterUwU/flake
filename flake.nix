@@ -15,10 +15,6 @@
       url = "github:nix-community/nixpkgs-xr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    scrumpkgs = {
-      url = "github:Scrumplex/pkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
