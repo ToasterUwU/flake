@@ -24,14 +24,6 @@
       programs.vscode = {
         enable = true;
         package = pkgs.vscode.fhsWithPackages (ps: with ps; [
-          zlib
-          gcc
-          glibc
-          binutils
-          gnumake
-          pkg-config
-          openssl.dev
-          systemd.dev
           craftos-pc
           nodejs_22
         ]);
@@ -61,6 +53,16 @@
 
       openscad-lsp
       clang-tools
+
+      zlib
+      gcc
+      glibc
+      binutils
+      gnumake
+      pkg-config
+      openssl.dev
+      systemd.dev
+      gtk3.dev
 
       (rust-bin.stable.latest.default.override {
         extensions = [ "rust-src" "rustfmt" "rustc-dev" ];
