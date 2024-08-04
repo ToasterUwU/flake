@@ -29,7 +29,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-
   services.xserver.xkb = {
     layout = "de";
     variant = "";
@@ -178,7 +177,7 @@
     angryipscanner
     obs-studio
     vlc
-    libsForQt5.kdenlive
+    kdePackages.kdenlive
     bitwarden
     vesktop
     tor-browser
