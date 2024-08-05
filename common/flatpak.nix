@@ -4,9 +4,6 @@
   services.flatpak.enable = true;
 
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-
     sharedModules = [
       inputs.flatpaks.homeManagerModules.declarative-flatpak
     ];
