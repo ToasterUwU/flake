@@ -1,8 +1,4 @@
 { inputs, pkgs, ... }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
-
   services = {
     xserver.enable = true;
     displayManager = {

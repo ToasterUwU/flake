@@ -1,6 +1,4 @@
-{ inputs, pkgs, config, ... }: {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
-
+{ pkgs, config, ... }: {
   home-manager = {
     users.aki = {
       programs.git = {
