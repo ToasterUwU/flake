@@ -1,4 +1,8 @@
 { inputs, pkgs, config, ... }: {
+  imports = [
+    inputs.catppuccin.nixosModules.catppuccin
+    inputs.agenix.nixosModules.default
+  ];
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -28,14 +28,12 @@
     };
   };
 
-  outputs = { nixpkgs, agenix, catppuccin, ... }@inputs: {
+  outputs = { nixpkgs, ... }@inputs: {
     nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         ./hosts/Barbara
-        catppuccin.nixosModules.catppuccin
-        agenix.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
@@ -45,8 +43,6 @@
 
       modules = [
         ./hosts/Gertrude
-        catppuccin.nixosModules.catppuccin
-        agenix.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
@@ -56,8 +52,6 @@
 
       modules = [
         ./hosts/Waltraud
-        catppuccin.nixosModules.catppuccin
-        agenix.nixosModules.default
       ];
 
       specialArgs = { inherit inputs; };
