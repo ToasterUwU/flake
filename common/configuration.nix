@@ -3,10 +3,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  nixpkgs.config.allowUnfree = true;
-  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1"; # Allow unfree software when using nix-shell
-  hardware.enableAllFirmware = true;
-
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   programs.nix-ld.enable = true;
