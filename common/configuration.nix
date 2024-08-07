@@ -146,7 +146,6 @@
     chromium
     spotify
     jellyfin-media-player
-    onlyoffice-bin
     simple-scan
     pdfarranger
     handbrake
