@@ -140,7 +140,7 @@
     obs-studio
     vlc
     kdePackages.kdenlive
-    bitwarden
+    bitwarden-desktop
     vesktop
     element-desktop
     tor-browser
