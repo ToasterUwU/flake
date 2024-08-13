@@ -142,6 +142,7 @@
     kdePackages.kdenlive
     bitwarden
     vesktop
+    element-desktop
     tor-browser
     chromium
     spotify
