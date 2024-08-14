@@ -94,7 +94,6 @@
           ledger-live-desktop
           monero-gui
           chromedriver
-          protonmail-desktop
           intiface-central
         ];
       };
