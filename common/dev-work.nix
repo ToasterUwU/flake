@@ -1,30 +1,38 @@
 { pkgs, config, ... }: {
   home-manager = {
     users.aki = {
-      programs.git = {
-        enable = true;
-        package = pkgs.gitFull;
+      programs = {
+        git = {
+          enable = true;
+          package = pkgs.gitFull;
 
-        userName = "ToasterUwU";
-        userEmail = "Aki@ToasterUwU.com";
+          userName = "ToasterUwU";
+          userEmail = "Aki@ToasterUwU.com";
 
-        lfs.enable = true;
+          lfs.enable = true;
 
-        extraConfig = {
-          init.defaultBranch = "main";
+          extraConfig = {
+            init.defaultBranch = "main";
 
-          # Thanks Scrumplex for showing me this from Scott! https://www.youtube.com/watch?v=aolI_Rz0ZqY
-          rerere.enabled = true;
-          core.fsmonitor = true;
+            # Thanks Scrumplex for showing me this from Scott! https://www.youtube.com/watch?v=aolI_Rz0ZqY
+            rerere.enabled = true;
+            core.fsmonitor = true;
+          };
         };
-      };
 
-      programs.vscode = {
-        enable = true;
-        package = pkgs.vscode.fhsWithPackages (ps: with ps; [
-          craftos-pc
-          nodejs_22
-        ]);
+        direnv = {
+          enable = true;
+          enableBashIntegration = true;
+          nix-direnv.enable = true;
+        };
+
+        vscode = {
+          enable = true;
+          package = pkgs.vscode.fhsWithPackages (ps: with ps; [
+            craftos-pc
+            nodejs_22
+          ]);
+        };
       };
     };
   };
