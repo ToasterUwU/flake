@@ -18,7 +18,6 @@
           "flathub:app/com.ultimaker.cura/x86_64/stable"
           "flathub:app/dev.geopjr.Collision/x86_64/stable"
           "flathub:app/com.vysp3r.ProtonPlus/x86_64/stable"
-          "flathub:app/io.github.pyfa_org.Pyfa/x86_64/stable"
         ];
       };
     };
