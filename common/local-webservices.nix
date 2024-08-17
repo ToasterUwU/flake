@@ -6,5 +6,5 @@
     host = "localhost";
   };
 
-  # services.open-webui.enable = true;
+  services.open-webui.enable = true;
 }
