@@ -186,6 +186,25 @@
     operation = "boot";
   };
 
+  systemd.services.nixos-upgrade = {
+    onFailure = [ "notify-upgrade-failure.service" ];
+  };
+
+  systemd.services.notify-upgrade-failure = {
+    description = "Notify on NixOS upgrade failure";
+    after = [ "network-online.target" ];
+    requires = [ "network-online.target" ];
+    environment = {
+      "DESKTOP" = ":0";
+      "DBUS_SESSION_BUS_ADDRESS" = "unix:path=/run/user/1000/bus";
+    };
+    serviceConfig = {
+      User="aki";
+      Type = "oneshot";
+      ExecStart = "${pkgs.libnotify}/bin/notify-send -u critical -a 'NixOS Upgrade' -i nix-snowflake 'Upgrade Failed' 'Check the logs for more info'";
+    };
+  };
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
