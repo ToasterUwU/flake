@@ -155,6 +155,7 @@
     simple-scan
     pdfarranger
     handbrake
+    gearlever
   ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
 
   programs.firefox = {
