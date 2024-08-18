@@ -199,7 +199,7 @@
       "DBUS_SESSION_BUS_ADDRESS" = "unix:path=/run/user/1000/bus";
     };
     serviceConfig = {
-      User="aki";
+      User = "aki";
       Type = "oneshot";
       ExecStart = "${pkgs.libnotify}/bin/notify-send -u critical -a 'NixOS Upgrade' -i nix-snowflake 'Upgrade Failed' 'Check the logs for more info'";
     };
