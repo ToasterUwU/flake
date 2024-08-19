@@ -8,4 +8,6 @@
     package = pkgs.ollama-rocm;
     acceleration = "rocm";
   };
+
+  nixpkgs.config.rocmSupport = true;
 }
