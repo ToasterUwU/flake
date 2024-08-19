@@ -31,48 +31,45 @@
   };
 
   outputs = { nixpkgs, flake-utils, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        overlays = [ ];
-        pkgs = import nixpkgs {
-          inherit system overlays;
-        };
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nixpkgs-fmt
-            nil
-          ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
-        };
+    let
+      shellPkgs = import nixpkgs {
+        system = "x86_64-linux";
+      };
+    in
+    {
+      devShells.x86_64-linux.default = shellPkgs.mkShell {
+        buildInputs = with shellPkgs; [
+          nixpkgs-fmt
+          nil
+        ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
+      };
 
-        nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+      nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-          modules = [
-            ./hosts/Barbara
-          ];
+        modules = [
+          ./hosts/Barbara
+        ];
 
-          specialArgs = { inherit inputs; };
-        };
-        nixosConfigurations.Gertrude = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+      };
+      nixosConfigurations.Gertrude = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-          modules = [
-            ./hosts/Gertrude
-          ];
+        modules = [
+          ./hosts/Gertrude
+        ];
 
-          specialArgs = { inherit inputs; };
-        };
-        nixosConfigurations.Waltraud = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+      };
+      nixosConfigurations.Waltraud = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-          modules = [
-            ./hosts/Waltraud
-          ];
+        modules = [
+          ./hosts/Waltraud
+        ];
 
-          specialArgs = { inherit inputs; };
-        };
-      }
-    );
+        specialArgs = { inherit inputs; };
+      };
+    };
 }
