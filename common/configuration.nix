@@ -28,7 +28,7 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   programs.nix-ld.enable = true;
   programs.appimage = {
