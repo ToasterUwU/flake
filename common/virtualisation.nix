@@ -14,10 +14,10 @@
     dive # look into docker image layers
     podman-tui # status of containers in the terminal
     podman-compose # start group of containers
-
-    quickemu # QEMU with downloader and one command starter
-    quickgui # GUI for quickget and quickemu
   ];
 
   virtualisation.waydroid.enable = true;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 }
