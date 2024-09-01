@@ -10,14 +10,19 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-  environment.systemPackages = with pkgs; [
-    dive # look into docker image layers
-    podman-tui # status of containers in the terminal
-    podman-compose # start group of containers
-  ];
 
   virtualisation.waydroid.enable = true;
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    dive # look into docker image layers
+    podman-tui # status of containers in the terminal
+    podman-compose # start group of containers
+
+    gnome.gnome-boxes
+
+    virtiofsd
+  ];
 }
