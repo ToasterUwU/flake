@@ -163,7 +163,6 @@ in
     usbimager
     baobab
     angryipscanner
-    obs-studio
     vlc
     kdePackages.kdenlive
     bitwarden-desktop
@@ -177,7 +176,18 @@ in
     pdfarranger
     handbrake
     gearlever
-  ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
+  ] ++ [
+    (pkgs.wrapOBS {
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-vkcapture
+        obs-vaapi
+        obs-pipewire-audio-capture
+        obs-mute-filter
+      ];
+    })
+  ] ++ [
+    inputs.agenix.packages.x86_64-linux.default
+  ];
 
   programs.firefox = {
     enable = true;
