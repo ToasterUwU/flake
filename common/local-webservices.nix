@@ -9,7 +9,7 @@
     serviceConfig = {
       ExecStart = "${pkgs.rqbit}/bin/rqbit server start ~/Downloads/";
     };
-    wantedBy = ["default.target"];
+    wantedBy = [ "default.target" ];
   };
 
   services.ollama = {
