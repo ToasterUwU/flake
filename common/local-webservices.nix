@@ -9,6 +9,7 @@
     serviceConfig = {
       ExecStart = "${pkgs.rqbit}/bin/rqbit server start ~/Downloads/";
     };
+    after = [ "network-online.target" ];
     wantedBy = [ "default.target" ];
   };
 }
