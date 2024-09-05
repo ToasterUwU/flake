@@ -11,10 +11,4 @@
     };
     wantedBy = [ "default.target" ];
   };
-
-  services.ollama = {
-    enable = true;
-    host = "localhost";
-  };
-  services.open-webui.enable = true;
 }

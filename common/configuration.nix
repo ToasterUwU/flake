@@ -176,6 +176,7 @@ in
     pdfarranger
     handbrake
     gearlever
+    gpt4all
   ] ++ [
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
