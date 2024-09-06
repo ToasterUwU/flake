@@ -214,7 +214,7 @@ in
     enable = true;
     flake = "github:ToasterUwU/flake";
     flags = [ "--verbose" ];
-    dates = "daily";
+    dates = "6:00";
     operation = "boot";
   };
 
