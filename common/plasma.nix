@@ -80,7 +80,15 @@
           right = [ "minimize" "maximize" "close" ];
         };
 
+        shortcuts = {
+          "kmix"."mic_mute" = [
+            "Meta+Alt+V"
+          ];
+        };
+
         configFile.kcminputrc.Keyboard.NumLock.value = 0;
+        configFile.kcminputrc."ButtonRebinds/Mouse".ExtraButton1.value = "Key,Meta+Alt+V";
+
         configFile.kwinrc.Effect-overview.BorderActivate = 9;
         configFile.kwinrc.EdgeBarrier.EdgeBarrier = 0;
 
