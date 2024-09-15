@@ -5,5 +5,5 @@
   networking.hostName = "Barbara";
   networking.interfaces.enp16s0.wakeOnLan.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 2324 ];
+  networking.firewall.enable = false;
 }
