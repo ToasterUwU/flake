@@ -53,6 +53,15 @@
 
         specialArgs = { inherit inputs; };
       };
+      nixosConfigurations.Rouge = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          ./hosts/Rouge
+        ];
+
+        specialArgs = { inherit inputs; };
+      };
       nixosConfigurations.Gertrude = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
