@@ -191,6 +191,16 @@ in
     inputs.agenix.packages.x86_64-linux.default
   ];
 
+  # OBS Virtual Cam
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  '';
+  security.polkit.enable = true;
+
   programs.firefox = {
     enable = true;
     nativeMessagingHosts.packages = with pkgs; [ vdhcoapp ];
