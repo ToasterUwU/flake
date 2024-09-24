@@ -27,6 +27,7 @@ in
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "aki" ];
 
   # boot.kernelPackages = pkgs.linuxPackages_zen;
 
