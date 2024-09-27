@@ -15,6 +15,7 @@
         };
         packages = [
           "flathub:app/camp.nook.nookdesktop/x86_64/stable"
+          "flathub:app/org.freecadweb.FreeCAD/x86_64/stable"
           "flathub:app/com.ultimaker.cura/x86_64/stable"
           "flathub:app/dev.geopjr.Collision/x86_64/stable"
           "flathub:app/com.vysp3r.ProtonPlus/x86_64/stable"

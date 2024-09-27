@@ -118,7 +118,6 @@ in
         extraGroups = [ "networkmanager" "wheel" "plugdev" "scanner" "lp" ];
         packages = with pkgs; [
           openscad-unstable
-          freecad
           ledger-live-desktop
           monero-gui
           chromedriver
