@@ -330,7 +330,7 @@
 
               # Run interactive shell on remote machine
               ssh -t $host "bash <<EOF
-          echo $PASSWORD | sudo -S dpkg --configure -a && bash update.sh
+          echo $PASSWORD | sudo -S dpkg --configure -a && NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive bash update.sh
           EOF"
               echo -e "\033[1m\033[32mDone\033[0m"
               echo ""
