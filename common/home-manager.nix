@@ -293,6 +293,9 @@
           Host barbara
               HostName 192.168.178.100
 
+          Host rouge
+              HostName 192.168.178.178
+
           Host *
               StrictHostKeyChecking accept-new
               User aki
