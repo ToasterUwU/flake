@@ -92,7 +92,10 @@
         configFile.kwinrc.Effect-overview.BorderActivate = 9;
         configFile.kwinrc.EdgeBarrier.EdgeBarrier = 0;
 
-        powerdevil.AC.autoSuspend.action = "nothing"; # When charging or when Desktop, no sleep
+        powerdevil.AC = {
+          autoSuspend.action = "nothing"; # When charging or when Desktop, no sleep
+          powerButtonAction = "shutDown";
+        };
 
         panels = [
           {
@@ -214,6 +217,11 @@
         configFile.kxkbrc.Layout = {
           LayoutList = "gb";
           Use = true;
+        };
+
+        powerdevil.AC = {
+          autoSuspend.action = "nothing"; # When charging or when Desktop, no sleep
+          powerButtonAction = "shutDown";
         };
 
         panels = [
