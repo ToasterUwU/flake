@@ -154,7 +154,6 @@ in
     wget
     curl
     zoxide
-    vdhcoapp
     gnupg
     git
     nano
