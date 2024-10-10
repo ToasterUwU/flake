@@ -458,6 +458,14 @@
         PrefersNonDefaultGPU=true
         X-KDE-RunOnDiscreteGpu=true
       '';
+      xdg.configFile."autostart/set-ratbagd-profile.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=Set Ratbagd Profile
+        Exec=ratbagctl hollering-marmot profile active set 2
+        StartupNotify=false
+        Terminal=false
+      '';
     };
   };
 }
