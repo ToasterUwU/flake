@@ -122,6 +122,7 @@ in
           monero-gui
           chromedriver
           intiface-central
+          pyfa
         ];
       };
       scarlett = {
