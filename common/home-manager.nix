@@ -103,6 +103,7 @@
           "application/x-mswinurl" = "wine.desktop";
           "application/vhd.microsoft.portable-executable" = "wine.desktop";
           "video/mp4" = "vlc.desktop";
+          "video/x-matroska" = "vlc.desktop";
           "application/x-extension-htm" = "firefox.desktop";
           "application/x-extension-html" = "firefox.desktop";
           "application/x-extension-shtml" = "firefox.desktop";
