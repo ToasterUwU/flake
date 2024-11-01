@@ -291,6 +291,10 @@
               HostName 192.168.178.4
               User root
 
+          Host errol
+              HostName 192.168.178.11
+              User root
+
           Host barbara
               HostName 192.168.178.100
 
