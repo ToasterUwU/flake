@@ -162,7 +162,8 @@ in
     gparted
     usbimager
     baobab
-    angryipscanner
+    rustscan
+    nmap
     vlc
     kdePackages.kdenlive
     bitwarden-desktop
