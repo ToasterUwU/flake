@@ -1,4 +1,14 @@
 { pkgs, config, ... }: {
+  age.secrets = {
+    "aki-nixpkgs-review-github-token" = {
+      file = ../secrets/common/aki-nixpkgs-review-github-token.age;
+      mode = "700";
+      owner = "aki";
+      group = "users";
+    };
+  };
+
+
   home-manager = {
     users.aki = {
       programs = {
@@ -35,16 +45,26 @@
         };
       };
     };
-  };
+    users.scarlett = {
+      programs = {
+        direnv = {
+          enable = true;
+          enableBashIntegration = true;
+          nix-direnv.enable = true;
+        };
 
-  age.secrets = {
-    "aki-nixpkgs-review-github-token" = {
-      file = ../secrets/common/aki-nixpkgs-review-github-token.age;
-      mode = "700";
-      owner = "aki";
-      group = "users";
+        vscode = {
+          enable = true;
+          package = pkgs.vscode.fhsWithPackages (ps: with ps; [ ]);
+        };
+      };
     };
   };
+
+
+  environment.systemPackages = with pkgs; [
+    godot_4
+  ];
 
   users.users.aki = {
     packages = with pkgs; [
