@@ -65,6 +65,8 @@
     };
   };
 
+  programs.fuse.userAllowOther = true;
+
   home-manager = {
     backupFileExtension = "backup";
     useGlobalPkgs = true;
@@ -76,6 +78,87 @@
 
     users.aki = {
       home.stateVersion = "23.11";
+
+      systemd.user.services."sshfs-aki-home" = {
+        Unit = {
+          Description = "SSHFS Mount for Akis Home";
+          After = [ "network-online.target" ];
+          Wants = [ "network-online.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/home /home/aki/NAS/home";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/home";
+          Restart = "on-failure";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/home";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+      systemd.user.services."sshfs-aki-data" = {
+        Unit = {
+          Description = "SSHFS Mount for /data";
+          After = [ "network-online.target" ];
+          Wants = [ "network-online.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/data /home/aki/NAS/data";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/data";
+          Restart = "on-failure";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/data";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+      systemd.user.services."sshfs-aki-backups" = {
+        Unit = {
+          Description = "SSHFS Mount for /backups";
+          After = [ "network-online.target" ];
+          Wants = [ "network-online.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/backups /home/aki/NAS/backups";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/backups";
+          Restart = "on-failure";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/backups";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+      systemd.user.services."sshfs-aki-web" = {
+        Unit = {
+          Description = "SSHFS Mount for /web";
+          After = [ "network-online.target" ];
+          Wants = [ "network-online.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/web /home/aki/NAS/web";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/web";
+          Restart = "on-failure";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/web";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+      systemd.user.services."sshfs-aki-docker" = {
+        Unit = {
+          Description = "SSHFS Mount for /docker";
+          After = [ "network-online.target" ];
+          Wants = [ "network-online.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/docker /home/aki/NAS/docker";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/docker";
+          Restart = "on-failure";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/docker";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
 
       xdg.mimeApps = {
         enable = true;
@@ -351,6 +434,23 @@
     };
     users.scarlett = {
       home.stateVersion = "23.11";
+
+      systemd.user.services."sshfs-scarlett-home" = {
+        Unit = {
+          Description = "SSHFS Mount for Scarletts Home";
+          After = [ "network-online.target" ];
+          Wants = [ "network-online.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/scarlett/.ssh/id_ed25519,allow_other,default_permissions,uid=1001,gid=100,exec Scar@toasteruwu.com:/home /home/scarlett/NAS/home";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/scarlett/NAS/home";
+          Restart = "on-failure";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/scarlett/NAS/home";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
 
       catppuccin.enable = true;
       catppuccin.flavor = "mocha";

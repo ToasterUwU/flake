@@ -1,24 +1,4 @@
 { inputs, pkgs, config, ... }:
-let
-  sshfsOptions = [
-    "x-gvfs-show"
-    "delay_connect"
-    "reconnect"
-    "ServerAliveInterval=10"
-    "ServerAliveCountMax=2"
-    "x-systemd.automount"
-    "x-systemd.requires=network-online.target"
-    "_netdev"
-    "user"
-    "transform_symlinks"
-    "IdentityFile=/home/aki/.ssh/id_ed25519"
-    "allow_other"
-    "default_permissions"
-    "uid=1000"
-    "gid=100"
-    "exec"
-  ];
-in
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
@@ -252,35 +232,6 @@ in
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
-  };
-
-  programs.fuse.userAllowOther = true;
-  fileSystems = {
-    "/home/aki/Gutruhn/home" = {
-      device = "Aki@toasteruwu.com:/home";
-      fsType = "fuse.sshfs";
-      options = sshfsOptions;
-    };
-    "/home/aki/Gutruhn/backups" = {
-      device = "Aki@toasteruwu.com:/backups";
-      fsType = "fuse.sshfs";
-      options = sshfsOptions;
-    };
-    "/home/aki/Gutruhn/data" = {
-      device = "Aki@toasteruwu.com:/data";
-      fsType = "fuse.sshfs";
-      options = sshfsOptions;
-    };
-    "/home/aki/Gutruhn/web" = {
-      device = "Aki@toasteruwu.com:/web";
-      fsType = "fuse.sshfs";
-      options = sshfsOptions;
-    };
-    "/home/aki/Gutruhn/docker" = {
-      device = "Aki@toasteruwu.com:/docker";
-      fsType = "fuse.sshfs";
-      options = sshfsOptions;
-    };
   };
 
   system.stateVersion = "23.11";
