@@ -95,6 +95,7 @@
         powerdevil.AC = {
           autoSuspend.action = "nothing"; # When charging or when Desktop, no sleep
           powerButtonAction = "shutDown";
+          whenLaptopLidClosed = "lockScreen";
         };
 
         panels = [
