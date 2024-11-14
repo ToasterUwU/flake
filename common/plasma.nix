@@ -21,6 +21,8 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    qt6.qtwebengine
+
     krename
     kdePackages.kalk
     kdePackages.plasma-browser-integration
