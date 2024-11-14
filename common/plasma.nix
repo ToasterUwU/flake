@@ -247,6 +247,7 @@
                     "applications:vesktop.desktop"
                     "applications:brave-browser.desktop"
                     "applications:steam.desktop"
+                    "applications:org.prismlauncher.PrismLauncher.desktop"
                   ];
                 };
               }
