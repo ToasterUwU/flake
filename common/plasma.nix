@@ -54,6 +54,8 @@
             accent = "red";
           })
           catppuccin-cursors.mochaRed
+
+          kdePackages.kate
         ];
       };
     };
