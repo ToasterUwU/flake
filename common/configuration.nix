@@ -171,11 +171,13 @@
     inputs.agenix.packages.x86_64-linux.default
   ];
 
+  # MakeMKV requires sg kernel module, v4l2loopback for OBS virtual cam
+  boot.kernelModules = [ "sg" "v4l2loopback" ];
+
   # OBS Virtual Cam
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
-  boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
