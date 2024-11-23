@@ -155,6 +155,7 @@
     jellyfin-media-player
     simple-scan
     pdfarranger
+    makemkv
     handbrake
     gearlever
     gpt4all
