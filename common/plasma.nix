@@ -78,6 +78,7 @@
           cursor.theme = "catppuccin-mocha-pink-cursors";
           wallpaperSlideShow.path = ../assets/wallpapers;
         };
+        kscreenlocker.appearance.wallpaperSlideShow.path = ../assets/wallpapers;
 
         kwin.titlebarButtons = {
           left = [ "on-all-desktops" "keep-above-windows" ];
@@ -205,6 +206,7 @@
           cursor.theme = "catppuccin-mocha-red-cursors";
           wallpaper = ../assets/wallpapers/red_nebula.jpg;
         };
+        kscreenlocker.appearance.wallpaper = ../assets/wallpapers/red_nebula.jpg;
 
         kwin.titlebarButtons = {
           left = [ "on-all-desktops" "keep-above-windows" ];
