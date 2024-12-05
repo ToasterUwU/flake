@@ -125,7 +125,7 @@
     hyfetch
     pciutils
     fira-code
-    fira-code-nerdfont
+    nerd-fonts.fira-code
     starship
     fd
     ripgrep
