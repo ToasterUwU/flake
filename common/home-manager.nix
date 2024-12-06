@@ -394,11 +394,8 @@
         text = ''
           #!/bin/bash
 
-          HOSTS_TO_UPDATE="airvpn-tunnel-vm
-          discord-bots
+          HOSTS_TO_UPDATE="discord-bots
           mongo-db
-          smart-home
-          video-station
           xen-orchestra"
 
           # Get Password
