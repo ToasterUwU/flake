@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   age.secrets = {
     "aki-nixpkgs-review-github-token" = {
       file = ../secrets/common/aki-nixpkgs-review-github-token.age;

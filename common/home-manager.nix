@@ -67,6 +67,16 @@
 
   programs.fuse.userAllowOther = true;
 
+  # Fix for FHS wrapped software thinking the permissions and ownership of the ssh config are mangled
+  nixpkgs.overlays = [
+    (final: prev: {
+      openssh = prev.openssh.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [ ../assets/openssh-nocheckcfg.patch ];
+        doCheck = false;
+      });
+    })
+  ];
+
   home-manager = {
     backupFileExtension = "backup";
     useGlobalPkgs = true;
@@ -287,6 +297,66 @@
             fi
           '';
         };
+        ssh = {
+          enable = true;
+          matchBlocks = {
+            hiltrud = {
+              hostname = "192.168.178.167";
+              user = "mks";
+            };
+
+            discord-bots = {
+              hostname = "192.168.178.10";
+            };
+
+            discord-bots-root = {
+              hostname = "192.168.178.10";
+              user = "root";
+            };
+
+            mongo-db = {
+              hostname = "192.168.178.9";
+            };
+
+            smart-home = {
+              hostname = "192.168.178.6";
+            };
+
+            tor-node = {
+              hostname = "192.168.178.18";
+            };
+
+            xen-orchestra = {
+              hostname = "192.168.178.5";
+            };
+
+            gutruhn = {
+              hostname = "192.168.178.3";
+            };
+
+            hedwig = {
+              hostname = "192.168.178.4";
+              user = "root";
+            };
+
+            errol = {
+              hostname = "192.168.178.11";
+              user = "root";
+            };
+
+            barbara = {
+              hostname = "192.168.178.100";
+            };
+
+            rouge = {
+              hostname = "192.168.178.178";
+            };
+          };
+          extraConfig = ''
+            StrictHostKeyChecking accept-new
+            User aki
+          '';
+        };
         tealdeer = {
           enable = true;
           settings.updates = {
@@ -321,73 +391,6 @@
         exec = "bash /home/aki/update_vms.sh";
         icon = "system-software-update";
         terminal = true;
-      };
-      home.file.".ssh/config" = {
-        target = ".ssh/config_source";
-        onChange = ''cat ~/.ssh/config_source > ~/.ssh/config && chmod 400 ~/.ssh/config'';
-        text = ''
-          Host hiltrud
-              Hostname 192.168.178.167
-              User mks
-
-          Host discord-bots
-              HostName 192.168.178.10
-
-          Host discord-bots-root
-              HostName 192.168.178.10
-              User root
-
-          Host internet-vm
-              HostName 192.168.178.2
-
-          Host mongo-db
-              HostName 192.168.178.9
-
-          Host smart-home
-              HostName 192.168.178.6
-
-          Host airvpn-tunnel-vm
-              HostName 192.168.178.14
-
-          Host surreal-db
-              HostName 192.168.178.69
-
-          Host video-station
-              HostName 192.168.178.30
-
-          Host tor-node
-              HostName 192.168.178.18
-
-          Host xen-orchestra
-              HostName 192.168.178.5
-
-          Host minecraft-vm
-              HostName 192.168.178.42
-
-          Host ollama
-              HostName 192.168.178.24
-
-          Host gutruhn
-              HostName 192.168.178.3
-
-          Host hedwig
-              HostName 192.168.178.4
-              User root
-
-          Host errol
-              HostName 192.168.178.11
-              User root
-
-          Host barbara
-              HostName 192.168.178.100
-
-          Host rouge
-              HostName 192.168.178.178
-
-          Host *
-              StrictHostKeyChecking accept-new
-              User aki
-        '';
       };
       home.file."update_vms.sh" = {
         executable = true;
