@@ -157,6 +157,7 @@
     pdfarranger
     makemkv
     handbrake
+    mediainfo
     gearlever
     gpt4all
   ] ++ [
