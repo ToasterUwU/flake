@@ -142,6 +142,7 @@
     gparted
     usbimager
     baobab
+    dua
     rustscan
     nmap
     vlc
