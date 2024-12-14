@@ -10,6 +10,10 @@
   nix.settings.trusted-users = [ "aki" ];
 
   # boot.kernelPackages = pkgs.linuxPackages_zen;
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 32 * 1024;
+  }];
 
   programs.nix-ld.enable = true;
   programs.appimage = {
