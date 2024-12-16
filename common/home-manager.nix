@@ -184,6 +184,7 @@
           "x-scheme-handler/http" = "firefox.desktop";
           "x-scheme-handler/https" = "firefox.desktop";
           "model/stl" = "com.ultimaker.cura.desktop";
+          "model/3mf" = "com.ultimaker.cura.desktop";
           "text/x.gcode" = "com.ultimaker.cura.desktop";
           "application/x-shellscript" = "code.desktop";
           "application/vhd.microsoft.portable-executable" = "wine.desktop";
@@ -208,6 +209,7 @@
           "x-scheme-handler/http" = "firefox.desktop";
           "x-scheme-handler/https" = "firefox.desktop";
           "model/stl" = "com.ultimaker.cura.desktop";
+          "model/3mf" = "com.ultimaker.cura.desktop";
           "text/x.gcode" = "com.ultimaker.cura.desktop";
           "x-scheme-handler/ror2mm" = "r2modman.desktop";
           "image/svg+xml" = "code.desktop";
