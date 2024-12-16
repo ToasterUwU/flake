@@ -163,6 +163,7 @@
     makemkv
     handbrake
     mediainfo
+    ffmpeg-full
     gearlever
     gpt4all
   ] ++ [
