@@ -125,6 +125,7 @@ in
         extraGroups = [ "networkmanager" "wheel" "plugdev" "scanner" "lp" ];
         packages = with pkgs; [
           openscad-unstable
+          orca-slicer
           ledger-live-desktop
           monero-gui
           chromedriver
