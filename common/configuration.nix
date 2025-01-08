@@ -149,6 +149,7 @@ in
     fuse
     sshfs
     sshpass
+    kitty
     fastfetch
     hyfetch
     pciutils
@@ -158,7 +159,7 @@ in
     fd
     ripgrep
     bat
-    bottom
+    btop
     tealdeer
     wget
     curl

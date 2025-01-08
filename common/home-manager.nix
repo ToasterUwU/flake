@@ -59,6 +59,12 @@
               rm -f "$FILE_PATH"
               echo "File $FILE_PATH has been deleted."
             fi
+
+            FILE_PATH="$dir/.config/fontconfig/conf.d/10-hm-fonts.conf.backup"
+            if [ -e "$FILE_PATH" ]; then
+              rm -f "$FILE_PATH"
+              echo "File $FILE_PATH has been deleted."
+            fi
           fi
         done
       '';
@@ -255,6 +261,14 @@
       };
 
       programs = {
+        kitty = {
+          enable = true;
+          shellIntegration.enableBashIntegration = true;
+          font = {
+            name = "Fira Code";
+            package = pkgs.nerd-fonts.fira-code;
+          };
+        };
         hyfetch = {
           enable = true;
           settings = {
@@ -367,7 +381,7 @@
           };
         };
         bat.enable = true;
-        bottom.enable = true;
+        btop.enable = true;
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]
@@ -472,6 +486,14 @@
       };
 
       programs = {
+        kitty = {
+          enable = true;
+          shellIntegration.enableBashIntegration = true;
+          font = {
+            name = "Fira Code";
+            package = pkgs.nerd-fonts.fira-code;
+          };
+        };
         hyfetch = {
           enable = true;
           settings = {
@@ -524,7 +546,7 @@
           };
         };
         bat.enable = true;
-        bottom.enable = true;
+        btop.enable = true;
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]

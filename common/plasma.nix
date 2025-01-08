@@ -18,6 +18,7 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kate
+    konsole
   ];
 
   environment.systemPackages = with pkgs; [
@@ -121,7 +122,7 @@
                 name = "org.kde.plasma.icontasks";
                 config = {
                   General.launchers = [
-                    "applications:org.kde.konsole.desktop"
+                    "applications:kitty.desktop"
                     "applications:bitwarden.desktop"
                     "applications:org.kde.dolphin.desktop"
                     "applications:spotify.desktop"
@@ -145,23 +146,6 @@
           }
         ];
       };
-      programs.konsole = {
-        enable = true;
-        defaultProfile = "Catppuccin";
-        profiles.catppuccin = {
-          name = "Catppuccin";
-          colorScheme = "Catppuccin-Mocha";
-        };
-      };
-      xdg.dataFile."konsole/Catppuccin-Mocha.colorscheme".source =
-        pkgs.fetchFromGitHub
-          {
-            owner = "catppuccin";
-            repo = "konsole";
-            rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
-            sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
-          }
-        + "/Catppuccin-Mocha.colorscheme";
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
         Type=Service
@@ -264,23 +248,6 @@
           }
         ];
       };
-      programs.konsole = {
-        enable = true;
-        defaultProfile = "Catppuccin";
-        profiles.catppuccin = {
-          name = "Catppuccin";
-          colorScheme = "Catppuccin-Mocha";
-        };
-      };
-      xdg.dataFile."konsole/Catppuccin-Mocha.colorscheme".source =
-        pkgs.fetchFromGitHub
-          {
-            owner = "catppuccin";
-            repo = "konsole";
-            rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
-            sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
-          }
-        + "/Catppuccin-Mocha.colorscheme";
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
         Type=Service
