@@ -144,6 +144,23 @@
           }
         ];
       };
+      programs.konsole = {
+        enable = true;
+        defaultProfile = "Catppuccin";
+        profiles.catppuccin = {
+          name = "Catppuccin";
+          colorScheme = "Catppuccin-Mocha";
+        };
+      };
+      xdg.dataFile."konsole/Catppuccin-Mocha.colorscheme".source =
+        pkgs.fetchFromGitHub
+          {
+            owner = "catppuccin";
+            repo = "konsole";
+            rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
+            sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
+          }
+        + "/Catppuccin-Mocha.colorscheme";
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
         Type=Service
@@ -246,6 +263,23 @@
           }
         ];
       };
+      programs.konsole = {
+        enable = true;
+        defaultProfile = "Catppuccin";
+        profiles.catppuccin = {
+          name = "Catppuccin";
+          colorScheme = "Catppuccin-Mocha";
+        };
+      };
+      xdg.dataFile."konsole/Catppuccin-Mocha.colorscheme".source =
+        pkgs.fetchFromGitHub
+          {
+            owner = "catppuccin";
+            repo = "konsole";
+            rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
+            sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
+          }
+        + "/Catppuccin-Mocha.colorscheme";
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
         Type=Service
