@@ -11,10 +11,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
-    nixpkgs-xr = {
-      url = "github:nix-community/nixpkgs-xr";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";

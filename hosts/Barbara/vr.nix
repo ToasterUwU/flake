@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -17,7 +16,6 @@
   programs.envision.enable = true;
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
-    index_camera_passthrough
     BeatSaberModManager
   ];
 
