@@ -126,7 +126,7 @@
                     "applications:spotify.desktop"
                     "applications:firefox.desktop"
                     "applications:vesktop.desktop"
-                    "applications:code-url-handler.desktop"
+                    "applications:code.desktop"
                     "applications:steam.desktop"
                   ];
                 };
