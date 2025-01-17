@@ -149,7 +149,7 @@ in
     fuse
     sshfs
     sshpass
-    kitty
+    ghostty
     fastfetch
     hyfetch
     pciutils

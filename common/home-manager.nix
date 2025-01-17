@@ -262,13 +262,9 @@
       };
 
       programs = {
-        kitty = {
+        ghostty = {
           enable = true;
-          shellIntegration.enableBashIntegration = true;
-          font = {
-            name = "Fira Code";
-            package = pkgs.nerd-fonts.fira-code;
-          };
+          enableBashIntegration = true;
         };
         hyfetch = {
           enable = true;
@@ -520,13 +516,9 @@
       };
 
       programs = {
-        kitty = {
+        ghostty = {
           enable = true;
-          shellIntegration.enableBashIntegration = true;
-          font = {
-            name = "Fira Code";
-            package = pkgs.nerd-fonts.fira-code;
-          };
+          enableBashIntegration = true;
         };
         hyfetch = {
           enable = true;

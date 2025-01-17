@@ -120,7 +120,7 @@
                 name = "org.kde.plasma.icontasks";
                 config = {
                   General.launchers = [
-                    "applications:kitty.desktop"
+                    "applications:com.mitchellh.ghostty.desktop"
                     "applications:bitwarden.desktop"
                     "applications:org.kde.dolphin.desktop"
                     "applications:spotify.desktop"
