@@ -181,7 +181,6 @@ in
     element-desktop
     tor-browser
     chromium
-    spotify
     jellyfin-media-player
     simple-scan
     pdfarranger

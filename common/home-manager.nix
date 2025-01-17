@@ -90,6 +90,7 @@
 
     sharedModules = [
       inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.spicetify-nix.homeManagerModules.default
     ];
 
     users.aki = {
@@ -382,6 +383,46 @@
         };
         bat.enable = true;
         btop.enable = true;
+        spicetify =
+          let
+            spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+          in
+          {
+            enable = true;
+            enabledExtensions = with spicePkgs.extensions; [
+              shuffle
+              loopyLoop
+              groupSession
+              goToSong
+              listPlaylistsWithSong
+              playlistIntersection
+              skipStats
+              phraseToPlaylist
+              showQueueDuration
+              copyToClipboard
+              history
+              betterGenres
+              savePlaylists
+              autoSkip
+              playNext
+              volumePercentage
+              playingSource
+              randomBadToTheBoneRiff
+              oneko
+              starRatings
+            ];
+            enabledCustomApps = with spicePkgs.apps; [
+              newReleases
+              lyricsPlus
+              marketplace
+              localFiles
+              ncsVisualizer
+              historyInSidebar
+              betterLibrary
+            ];
+            theme = spicePkgs.themes.catppuccin;
+            colorScheme = "mocha";
+          };
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]
