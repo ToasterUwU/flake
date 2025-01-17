@@ -167,7 +167,7 @@ in
     gnupg
     git
     nano
-    torrenttools
+    # torrenttools
     gparted
     usbimager
     baobab
