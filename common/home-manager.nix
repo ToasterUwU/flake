@@ -391,9 +391,7 @@
             enable = true;
             enabledExtensions = with spicePkgs.extensions; [
               shuffle
-              loopyLoop
               groupSession
-              goToSong
               listPlaylistsWithSong
               playlistIntersection
               skipStats
@@ -407,18 +405,13 @@
               playNext
               volumePercentage
               playingSource
-              randomBadToTheBoneRiff
               oneko
               starRatings
             ];
             enabledCustomApps = with spicePkgs.apps; [
               newReleases
-              lyricsPlus
               marketplace
               localFiles
-              ncsVisualizer
-              historyInSidebar
-              betterLibrary
             ];
             theme = spicePkgs.themes.catppuccin;
             colorScheme = "mocha";
