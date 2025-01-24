@@ -100,7 +100,6 @@
       nodejs
 
       python311
-      python311Packages.nodriver
     ];
   };
 }
