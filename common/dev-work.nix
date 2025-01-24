@@ -101,7 +101,6 @@
 
       python311
       python311Packages.nodriver
-      python311Packages.undetected-chromedriver
     ];
   };
 }
