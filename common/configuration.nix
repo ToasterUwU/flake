@@ -68,9 +68,6 @@ in
   networking.networkmanager.enable = true;
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
-  networking.hosts = {
-    "127.0.0.1" = [ "winter15.gosredirector.ea.com" ]; # A fix for "Mirrors Edge Catalyst". Without this it will try to ping a server that has been shutdown, then fail and crash
-  };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
