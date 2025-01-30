@@ -1,9 +1,78 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
+  age.secrets = {
+    "tdarr-apiKey" = {
+      file = ../secrets/common/tdarr-apiKey.age;
+      mode = "700";
+      owner = "aki";
+      group = "users";
+    };
+  };
+
   virtualisation.containers.enable = true;
   virtualisation = {
     docker = {
       enable = true;
+    };
+    arion = {
+      backend = "docker";
+    };
+  };
+  users.users.aki.extraGroups = [ "docker" ];
+
+  virtualisation.arion.projects = {
+    containers = {
+      settings.services = {
+        watchtower.service = {
+          stop_grace_period = "5m";
+          container_name = "watchtower";
+          image = "containrrr/watchtower:latest";
+          volumes = [
+            "/var/run/docker.sock:/var/run/docker.sock"
+            "/etc/localtime:/etc/localtime:ro"
+          ];
+          environment = {
+            WATCHTOWER_CLEANUP = "true";
+            WATCHTOWER_REMOVE_VOLUMES = "true";
+            WATCHTOWER_SCHEDULE = "0 0 * * * *";
+          };
+          restart = "unless-stopped";
+        };
+        tdarr-node.service = {
+          stop_grace_period = "5m";
+          container_name = "tdarr-node";
+          image = "ghcr.io/haveagitgat/tdarr_node:latest";
+          volumes = [
+            "/home/aki/Tdarr/configs:/app/configs"
+            "/home/aki/Tdarr/logs:/app/logs"
+            "/home/aki/NAS/data/Video Station:/media"
+            "/home/aki/Tdarr/transcode_cache:/temp"
+          ];
+          ports = [ "8268:8268" ];
+          environment = {
+            nodeName = config.networking.hostName;
+            serverIP = "192.168.178.11";
+            serverPort = "8266";
+            inContainer = "true";
+            ffmpegVersion = "6";
+            TZ = "Europe/Berlin";
+            PUID = "1000";
+            PGID = "1000";
+          };
+          env_file = [
+            config.age.secrets."tdarr-apiKey".path
+          ];
+          restart = "unless-stopped";
+        };
+      };
+    };
+  };
+  systemd.services.arion-containers = {
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      User = "aki";
+      Group = "users";
     };
   };
 

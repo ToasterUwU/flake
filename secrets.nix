@@ -22,4 +22,6 @@ in
   "secrets/common/aki-.wakatime.cfg.age".publicKeys = [ aki ] ++ systems;
 
   "secrets/common/aki-nixpkgs-review-github-token.age".publicKeys = [ aki ] ++ systems;
+
+  "secrets/common/tdarr-apiKey.age".publicKeys = [ aki ] ++ systems;
 }

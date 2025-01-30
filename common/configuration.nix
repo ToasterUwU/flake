@@ -26,6 +26,7 @@ in
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
     inputs.agenix.nixosModules.default
+    inputs.arion.nixosModules.arion
   ];
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
 
