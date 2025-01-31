@@ -190,7 +190,7 @@ in
     mediainfo
     ffmpeg-full
     gearlever
-    gpt4all
+    lmstudio
   ] ++ [
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
