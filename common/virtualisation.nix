@@ -34,7 +34,7 @@
           environment = {
             WATCHTOWER_CLEANUP = "true";
             WATCHTOWER_REMOVE_VOLUMES = "true";
-            WATCHTOWER_SCHEDULE = "0 0 * * * *";
+            WATCHTOWER_SCHEDULE = "0 0/15 * * * *";
           };
           restart = "unless-stopped";
         };
