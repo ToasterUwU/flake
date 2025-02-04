@@ -21,7 +21,7 @@
   users.users.aki.extraGroups = [ "docker" ];
 
   virtualisation.arion.projects = {
-    containers = {
+    watchtower = {
       settings.services = {
         watchtower.service = {
           stop_grace_period = "5m";
@@ -38,6 +38,10 @@
           };
           restart = "unless-stopped";
         };
+      };
+    };
+    tdarr-node = {
+      settings.services = {
         tdarr-node.service = {
           stop_grace_period = "5m";
           container_name = "tdarr-node";
@@ -67,7 +71,7 @@
       };
     };
   };
-  systemd.services.arion-containers = {
+  systemd.services.arion-tdarr-node = {
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     serviceConfig = {
