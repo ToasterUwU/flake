@@ -12,4 +12,11 @@
     after = [ "network-online.target" ];
     wantedBy = [ "default.target" ];
   };
+
+  services.ollama = {
+    enable = true;
+  };
+  services.open-webui = {
+    enable = true;
+  };
 }
