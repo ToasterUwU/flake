@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -19,8 +19,39 @@
     BeatSaberModManager
   ];
 
+  services.monado = {
+    enable = true;
+    defaultRuntime = true;
+  };
+
+  systemd.user.services."monado".environment = {
+    STEAMVR_LH_ENABLE = "true";
+    XRT_COMPOSITOR_COMPUTE = "1";
+  };
+
   home-manager = {
     users.aki = {
+      xdg.configFile."openvr/openvrpaths.vrpath".text = ''
+        {
+          "config" :
+          [
+            "/home/aki/.local/share/Steam/config"
+          ],
+          "external_drivers" : null,
+          "jsonid" : "vrpathreg",
+          "log" :
+          [
+            "/home/aki/.local/share/Steam/logs"
+          ],
+          "runtime" :
+          [
+            "${pkgs.opencomposite}/lib/opencomposite",
+            "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
+          ],
+          "version" : 1
+        }
+      '';
+      xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
       xdg.desktopEntries."BeatSaberModManager" = {
         name = "BeatSaber ModManager";
         comment = "BeatSaber ModManager";
@@ -31,6 +62,27 @@
       };
     };
     users.scarlett = {
+      xdg.configFile."openvr/openvrpaths.vrpath".text = ''
+        {
+          "config" :
+          [
+            "/home/scarlett/.local/share/Steam/config"
+          ],
+          "external_drivers" : null,
+          "jsonid" : "vrpathreg",
+          "log" :
+          [
+            "/home/scarlett/.local/share/Steam/logs"
+          ],
+          "runtime" :
+          [
+            "${pkgs.opencomposite}/lib/opencomposite",
+            "/home/scarlett/.local/share/Steam/steamapps/common/SteamVR"
+          ],
+          "version" : 1
+        }
+      '';
+      xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
       xdg.desktopEntries."BeatSaberModManager" = {
         name = "BeatSaber ModManager";
         comment = "BeatSaber ModManager";

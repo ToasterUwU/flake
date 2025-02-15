@@ -31,6 +31,7 @@
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
   outputs = { nixpkgs, flake-utils, ... }@inputs:
