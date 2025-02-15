@@ -90,6 +90,10 @@
           ];
         };
 
+        configFile.kdeglobals.General = {
+          TerminalApplication = "ghostty";
+          TerminalService = "com.mitchellh.ghostty.desktop";
+        };
         configFile.kcminputrc.Keyboard.NumLock.value = 0;
         configFile.kcminputrc."ButtonRebinds/Mouse".ExtraButton1.value = "Key,Meta+Alt+V";
 
@@ -218,6 +222,10 @@
           ];
         };
 
+        configFile.kdeglobals.General = {
+          TerminalApplication = "ghostty";
+          TerminalService = "com.mitchellh.ghostty.desktop";
+        };
         configFile.kcminputrc.Keyboard.NumLock.value = 0;
         configFile.kwinrc.Effect-overview.BorderActivate = 9;
         configFile.kxkbrc.Layout = {
