@@ -1,33 +1,11 @@
 { inputs, pkgs, config, ... }:
-let
-  # Define extract-audio package
-  extractAudio = pkgs.stdenv.mkDerivation {
-    pname = "extract-audio";
-    version = "1.0";
-
-    # Specify the script directly as the source
-    src = ../assets/scripts/extract-audio; # The folder containing your Python script
-
-    buildInputs = [ pkgs.ffmpeg-full pkgs.python3 ];
-
-    # Install the script into $out/bin
-    installPhase = ''
-      mkdir -p $out/bin
-      cp $src/main.py $out/bin/extract-audio
-      chmod +x $out/bin/extract-audio
-    '';
-
-    meta = with pkgs.lib; {
-      description = "Extract and trim audio from MKV video files.";
-    };
-  };
-in
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
     inputs.agenix.nixosModules.default
     inputs.arion.nixosModules.arion
     inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+    ../pkgs/general-utils.nix
   ];
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
 
@@ -203,7 +181,6 @@ in
     })
   ] ++ [
     inputs.agenix.packages.x86_64-linux.default
-    extractAudio
   ];
 
   # MakeMKV requires sg kernel module, v4l2loopback for OBS virtual cam

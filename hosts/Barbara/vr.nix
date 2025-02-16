@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ../../pkgs/vr.nix
   ];
 
   boot.kernelPatches = [{
@@ -27,6 +28,7 @@
   systemd.user.services."monado".environment = {
     STEAMVR_LH_ENABLE = "true";
     XRT_COMPOSITOR_COMPUTE = "1";
+    XRT_COMPOSITOR_SCALE_PERCENTAGE = "140";
   };
 
   home-manager = {
@@ -52,6 +54,20 @@
         }
       '';
       xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
+
+      xdg.desktopEntries.start-monado = {
+        exec = "monado-start";
+        icon = "steamvr";
+        name = "Start Monado";
+        terminal = true;
+      };
+      xdg.desktopEntries.stop-monado = {
+        exec = "monado-stop";
+        icon = "steamvr";
+        name = "Stop Monado";
+        terminal = true;
+      };
+
       xdg.desktopEntries."BeatSaberModManager" = {
         name = "BeatSaber ModManager";
         comment = "BeatSaber ModManager";
@@ -83,6 +99,20 @@
         }
       '';
       xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
+
+      xdg.desktopEntries.start-monado = {
+        exec = "monado-start";
+        icon = "steamvr";
+        name = "Start Monado";
+        terminal = true;
+      };
+      xdg.desktopEntries.stop-monado = {
+        exec = "monado-stop";
+        icon = "steamvr";
+        name = "Stop Monado";
+        terminal = true;
+      };
+
       xdg.desktopEntries."BeatSaberModManager" = {
         name = "BeatSaber ModManager";
         comment = "BeatSaber ModManager";
