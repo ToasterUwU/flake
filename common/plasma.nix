@@ -138,7 +138,7 @@
               {
                 name = "com.github.k-donn.plasmoid-wunderground";
                 config = {
-                  Station.stationID = "IWOLFS45";
+                  Station.stationID = "IWOLFS59";
                 };
               }
               "org.kde.plasma.marginsseparator"
