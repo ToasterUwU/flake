@@ -17,6 +17,7 @@
   programs.envision.enable = true;
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
+    wayvr-dashboard
     BeatSaberModManager
     vrcx
   ];
@@ -69,6 +70,57 @@
         terminal = true;
       };
 
+      xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
+        version: 1
+
+        run_compositor_at_start: false
+
+        auto_hide: true
+        auto_hide_delay: 750
+
+        keyboard_repeat_delay: 200
+        keyboard_repeat_rate: 50
+
+        dashboard:
+          exec: "wayvr_dashboard"
+          args: ""
+          env: ["GDK_BACKEND=wayland"]
+
+        displays:
+          Watch:
+            width: 400
+            height: 600
+            scale: 0.4
+            attach_to: "HandRight" # HandLeft, HandRight
+            pos: [0.0, 0.0, 0.125]
+            rotation: {axis: [1.0, 0.0, 0.0], angle: -45.0}
+          Disp1:
+            width: 640
+            height: 480
+            primary: true # Required if you want to attach external processes (not spawned by WayVR itself) without WAYVR_DISPLAY_NAME set
+          Disp2:
+            width: 1280
+            height: 720
+            scale: 2.0
+
+        catalogs:
+          default_catalog:
+            apps:
+              - name: "Calc"
+                target_display: "Disp1"
+                exec: "kcalc"
+                shown_at_start: false
+
+              - name: "btop"
+                target_display: "Watch"
+                exec: "konsole"
+                args: "-e btop"
+
+              - name: "Browser"
+                target_display: "Disp2"
+                exec: "firefox"
+      '';
+
       xdg.desktopEntries."BeatSaberModManager" = {
         name = "BeatSaber ModManager";
         comment = "BeatSaber ModManager";
@@ -113,6 +165,57 @@
         name = "Stop Monado";
         terminal = true;
       };
+
+      xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
+        version: 1
+
+        run_compositor_at_start: false
+
+        auto_hide: true
+        auto_hide_delay: 750
+
+        keyboard_repeat_delay: 200
+        keyboard_repeat_rate: 50
+
+        dashboard:
+          exec: "wayvr_dashboard"
+          args: ""
+          env: ["GDK_BACKEND=wayland"]
+
+        displays:
+          Watch:
+            width: 400
+            height: 600
+            scale: 0.4
+            attach_to: "HandRight" # HandLeft, HandRight
+            pos: [0.0, 0.0, 0.125]
+            rotation: {axis: [1.0, 0.0, 0.0], angle: -45.0}
+          Disp1:
+            width: 640
+            height: 480
+            primary: true # Required if you want to attach external processes (not spawned by WayVR itself) without WAYVR_DISPLAY_NAME set
+          Disp2:
+            width: 1280
+            height: 720
+            scale: 2.0
+
+        catalogs:
+          default_catalog:
+            apps:
+              - name: "Calc"
+                target_display: "Disp1"
+                exec: "kcalc"
+                shown_at_start: false
+
+              - name: "btop"
+                target_display: "Watch"
+                exec: "konsole"
+                args: "-e btop"
+
+              - name: "Browser"
+                target_display: "Disp2"
+                exec: "firefox"
+      '';
 
       xdg.desktopEntries."BeatSaberModManager" = {
         name = "BeatSaber ModManager";
