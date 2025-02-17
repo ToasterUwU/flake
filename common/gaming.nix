@@ -9,7 +9,13 @@
   services.ratbagd.enable = true;
   services.libinput.mouse.accelProfile = "flat";
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    localNetworkGameTransfers.openFirewall = true;
+    remotePlay.openFirewall = true;
+    protontricks.enable = true;
+  };
   environment.systemPackages = with pkgs; [
     piper
     wine
