@@ -21,7 +21,6 @@
     wine
     wine64
     winetricks
-    protontricks
     protonplus
     r2modman
     prismlauncher
