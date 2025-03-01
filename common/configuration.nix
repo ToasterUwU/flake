@@ -195,11 +195,6 @@
   '';
   security.polkit.enable = true;
 
-  programs.firefox = {
-    enable = true;
-    nativeMessagingHosts.packages = with pkgs; [ vdhcoapp ];
-  };
-
   services.teamviewer.enable = true;
 
   services.openssh.enable = true;
