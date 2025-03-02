@@ -262,7 +262,14 @@
       };
 
       programs = {
-        librewolf.enable = true;
+        librewolf = {
+          enable = true;
+          settings = {
+            "privacy.resistFingerprinting" = false;
+            "privacy.fingerprintingProtection" = true;
+            "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme,-JSDateTimeUTC";
+          };
+        };
         ghostty = {
           enable = true;
           enableBashIntegration = true;
