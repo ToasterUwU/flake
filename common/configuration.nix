@@ -111,6 +111,7 @@
           chromedriver
           intiface-central
           pyfa
+          vdhcoapp
         ];
       };
       scarlett = {
