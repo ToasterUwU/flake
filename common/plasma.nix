@@ -128,7 +128,7 @@
                     "applications:bitwarden.desktop"
                     "applications:org.kde.dolphin.desktop"
                     "applications:spotify.desktop"
-                    "applications:librewolf.desktop"
+                    "applications:firefox.desktop"
                     "applications:vesktop.desktop"
                     "applications:code.desktop"
                     "applications:steam.desktop"

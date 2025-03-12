@@ -182,7 +182,7 @@
           Description = "Makes sure vdhcoapp is setup to work with all browsers";
         };
         Service = {
-          ExecStart = "${pkgs.vdhcoapp}/bin/vdhcoapp install";
+          ExecStart = "${pkgs.vdhcoapp}/bin/vdhcoapp install --user";
           Type = "oneshot";
         };
         Install = {
@@ -193,16 +193,16 @@
       xdg.mimeApps = {
         enable = true;
         associations.added = {
-          "application/x-extension-htm" = "librewolf.desktop";
-          "application/x-extension-html" = "librewolf.desktop";
-          "application/x-extension-shtml" = "librewolf.desktop";
-          "application/x-extension-xht" = "librewolf.desktop";
-          "application/x-extension-xhtml" = "librewolf.desktop";
-          "application/xhtml+xml" = "librewolf.desktop";
-          "text/html" = "librewolf.desktop";
-          "x-scheme-handler/chrome" = "librewolf.desktop";
-          "x-scheme-handler/http" = "librewolf.desktop";
-          "x-scheme-handler/https" = "librewolf.desktop";
+          "application/x-extension-htm" = "firefox.desktop";
+          "application/x-extension-html" = "firefox.desktop";
+          "application/x-extension-shtml" = "firefox.desktop";
+          "application/x-extension-xht" = "firefox.desktop";
+          "application/x-extension-xhtml" = "firefox.desktop";
+          "application/xhtml+xml" = "firefox.desktop";
+          "text/html" = "firefox.desktop";
+          "x-scheme-handler/chrome" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
           "model/stl" = "OrcaSlicer.desktop";
           "model/3mf" = "OrcaSlicer.desktop";
           "text/x.gcode" = "OrcaSlicer.desktop";
@@ -218,16 +218,16 @@
           "application/vhd.microsoft.portable-executable" = "wine.desktop";
           "video/mp4" = "vlc.desktop";
           "video/x-matroska" = "vlc.desktop";
-          "application/x-extension-htm" = "librewolf.desktop";
-          "application/x-extension-html" = "librewolf.desktop";
-          "application/x-extension-shtml" = "librewolf.desktop";
-          "application/x-extension-xht" = "librewolf.desktop";
-          "application/x-extension-xhtml" = "librewolf.desktop";
-          "text/html" = "librewolf.desktop";
-          "application/xhtml+xml" = "librewolf.desktop";
-          "x-scheme-handler/chrome" = "librewolf.desktop";
-          "x-scheme-handler/http" = "librewolf.desktop";
-          "x-scheme-handler/https" = "librewolf.desktop";
+          "application/x-extension-htm" = "firefox.desktop";
+          "application/x-extension-html" = "firefox.desktop";
+          "application/x-extension-shtml" = "firefox.desktop";
+          "application/x-extension-xht" = "firefox.desktop";
+          "application/x-extension-xhtml" = "firefox.desktop";
+          "text/html" = "firefox.desktop";
+          "application/xhtml+xml" = "firefox.desktop";
+          "x-scheme-handler/chrome" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
           "model/stl" = "OrcaSlicer.desktop";
           "model/3mf" = "OrcaSlicer.desktop";
           "text/x.gcode" = "OrcaSlicer.desktop";
@@ -275,14 +275,6 @@
       };
 
       programs = {
-        librewolf = {
-          enable = true;
-          settings = {
-            "privacy.resistFingerprinting" = false;
-            "privacy.fingerprintingProtection" = true;
-            "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme,-JSDateTimeUTC";
-          };
-        };
         ghostty = {
           enable = true;
           enableBashIntegration = true;

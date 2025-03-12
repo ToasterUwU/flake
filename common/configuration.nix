@@ -111,7 +111,6 @@
           chromedriver
           intiface-central
           pyfa
-          vdhcoapp
         ];
       };
       scarlett = {
@@ -125,6 +124,24 @@
         ];
       };
     };
+
+  programs.firefox = {
+    enable = true;
+    policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      Preferences = {
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "privacy.resistFingerprinting" = false;
+        "privacy.fingerprintingProtection" = true;
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme,-JSDateTimeUTC";
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+        "network.cookie.lifetimePolicy" = 0;
+        "webgl.disabled" = false;
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     fuse

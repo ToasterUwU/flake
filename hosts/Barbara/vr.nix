@@ -122,7 +122,7 @@
 
               - name: "Browser"
                 target_display: "Disp2"
-                exec: "librewolf"
+                exec: "firefox"
       '';
 
       xdg.desktopEntries."BeatSaberModManager" = {
@@ -218,7 +218,7 @@
 
               - name: "Browser"
                 target_display: "Disp2"
-                exec: "librewolf"
+                exec: "firefox"
       '';
 
       xdg.desktopEntries."BeatSaberModManager" = {
