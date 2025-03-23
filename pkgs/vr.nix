@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   monado-run-scripts = pkgs.stdenv.mkDerivation {
-    pname = "extract-audio";
+    pname = "monado-run-scripts";
     version = "1.0";
 
     src = ../assets/scripts/monado-run-scripts;
