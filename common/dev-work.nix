@@ -99,7 +99,7 @@
 
       nodejs
 
-      python311
+      python3
     ];
   };
 }
