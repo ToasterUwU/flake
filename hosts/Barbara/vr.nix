@@ -22,7 +22,7 @@
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
     wayvr-dashboard
-    BeatSaberModManager
+    bs-manager
     vrcx
   ];
 
