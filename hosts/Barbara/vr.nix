@@ -29,6 +29,7 @@
   services.monado = {
     enable = true;
     defaultRuntime = true;
+    highPriority = true;
   };
 
   systemd.user.services."monado".environment = {
