@@ -45,8 +45,19 @@
 
         vscode = {
           enable = true;
+          profiles.default = {
           enableUpdateCheck = false;
-          package = pkgs.vscode.fhsWithPackages (ps: with ps; [
+            userSettings = {
+              "catppuccin.accentColor" = "pink";
+              "editor.semanticHighlighting.enabled" = true;
+              "terminal.integrated.minimumContrastRatio" = 1;
+              "window.titleBarStyle" = "custom";
+              "workbench.colorTheme" = "Catppuccin Mocha";
+              "files.autoSave" = "afterDelay";
+            };
+          };
+          package = pkgs.vscode.fhsWithPackages (
+            ps: with ps; [
             craftos-pc
             nodejs_22
           ]);
