@@ -45,6 +45,7 @@
 
         vscode = {
           enable = true;
+          enableUpdateCheck = false;
           package = pkgs.vscode.fhsWithPackages (ps: with ps; [
             craftos-pc
             nodejs_22
