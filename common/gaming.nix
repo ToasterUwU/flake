@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }:
+let
+  elfenermarcellPkgs = import inputs.nixpkgs-elfenermarcell { system = "x86_64-linux"; };
+  jiriks74Pkgs = import inputs.nixpkgs-jiriks74 { system = "x86_64-linux"; };
+in
+{
   imports = [ ];
 
   networking.hosts = {
@@ -16,18 +21,22 @@
     remotePlay.openFirewall = true;
     protontricks.enable = true;
   };
-  environment.systemPackages = with pkgs; [
-    piper
-    wine
-    wine64
-    winetricks
-    protonplus
-    r2modman
-    prismlauncher
-    lutris
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      piper
+      wine
+      wine64
+      winetricks
+      protonplus
+      r2modman
+      prismlauncher
+      lutris
+    ]
+    ++ [
+      elfenermarcellPkgs.ed-odyssey-materials-helper
+      jiriks74Pkgs.min-ed-launcher
+    ];
 
-  users.users.scarlett.packages = with pkgs; [
-    heroic
-  ];
+  users.users.scarlett.packages = with pkgs; [ heroic ];
 }

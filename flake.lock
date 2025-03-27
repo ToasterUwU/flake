@@ -266,6 +266,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-jiriks74": {
+      "locked": {
+        "lastModified": 1743106269,
+        "narHash": "sha256-NU27R1HWJo2+cOUMk4OWkQcPX3kd0QplW+aEkYeDF3E=",
+        "owner": "jiriks74",
+        "repo": "nixpkgs",
+        "rev": "b360f2aedeb10306d65a26c46e9239a7e98a9e0e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jiriks74",
+        "ref": "add_min-ed-launcher",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-update": {
       "inputs": {
         "mmdoc": "mmdoc",
@@ -419,6 +435,7 @@
         "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-elfenermarcell": "nixpkgs-elfenermarcell",
+        "nixpkgs-jiriks74": "nixpkgs-jiriks74",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager",
