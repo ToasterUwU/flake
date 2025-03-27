@@ -1,4 +1,9 @@
-{ pkgs, config, inputs, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 {
   age.secrets = {
     "aki-nixpkgs-review-github-token" = {
@@ -14,7 +19,6 @@
       group = "users";
     };
   };
-
 
   home-manager = {
     users.aki = {
@@ -46,7 +50,7 @@
         vscode = {
           enable = true;
           profiles.default = {
-          enableUpdateCheck = false;
+            enableUpdateCheck = false;
             userSettings = {
               "catppuccin.accentColor" = "pink";
               "editor.semanticHighlighting.enabled" = true;
@@ -58,9 +62,10 @@
           };
           package = pkgs.vscode.fhsWithPackages (
             ps: with ps; [
-            craftos-pc
-            nodejs_22
-          ]);
+              craftos-pc
+              nodejs_22
+            ]
+          );
         };
       };
     };
@@ -80,10 +85,7 @@
     };
   };
 
-
-  environment.systemPackages = with pkgs; [
-    godot_4
-  ];
+  environment.systemPackages = with pkgs; [ godot_4 ];
 
   users.users.aki = {
     packages = with pkgs; [
@@ -116,8 +118,19 @@
       gtk3.dev
 
       (rust-bin.stable.latest.default.override {
-        extensions = [ "rust-src" "rustfmt" "rustc-dev" ];
-        targets = [ "aarch64-unknown-linux-gnu" "x86_64-pc-windows-gnu" "x86_64-unknown-linux-gnu" "wasm32-unknown-unknown" "x86_64-apple-darwin" "aarch64-apple-darwin" ];
+        extensions = [
+          "rust-src"
+          "rustfmt"
+          "rustc-dev"
+        ];
+        targets = [
+          "aarch64-unknown-linux-gnu"
+          "x86_64-pc-windows-gnu"
+          "x86_64-unknown-linux-gnu"
+          "wasm32-unknown-unknown"
+          "x86_64-apple-darwin"
+          "aarch64-apple-darwin"
+        ];
       })
       rust-analyzer
 
