@@ -2,9 +2,26 @@
 let
   monado-run-scripts = pkgs.stdenv.mkDerivation {
     pname = "monado-run-scripts";
-    version = "1.0";
+    version = "1.1";
 
     src = ../assets/scripts/monado-run-scripts;
+
+    desktopItems = [
+      (pkgs.makeDesktopItem {
+        exec = "monado-start";
+        icon = "steamvr";
+        name = "Start Monado";
+        desktopName = "Start Monado";
+        terminal = true;
+      })
+      (pkgs.makeDesktopItem {
+        exec = "monado-stop";
+        icon = "steamvr";
+        name = "Stop Monado";
+        desktopName = "Stop Monado";
+        terminal = true;
+      })
+    ];
 
     buildInputs = [ pkgs.bash ];
 

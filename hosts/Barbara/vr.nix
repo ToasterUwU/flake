@@ -62,19 +62,6 @@
       '';
       xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
 
-      xdg.desktopEntries.start-monado = {
-        exec = "monado-start";
-        icon = "steamvr";
-        name = "Start Monado";
-        terminal = true;
-      };
-      xdg.desktopEntries.stop-monado = {
-        exec = "monado-stop";
-        icon = "steamvr";
-        name = "Stop Monado";
-        terminal = true;
-      };
-
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
         version: 1
 
@@ -148,19 +135,6 @@
         }
       '';
       xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
-
-      xdg.desktopEntries.start-monado = {
-        exec = "monado-start";
-        icon = "steamvr";
-        name = "Start Monado";
-        terminal = true;
-      };
-      xdg.desktopEntries.stop-monado = {
-        exec = "monado-stop";
-        icon = "steamvr";
-        name = "Stop Monado";
-        terminal = true;
-      };
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
         version: 1
