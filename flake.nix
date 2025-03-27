@@ -33,6 +33,7 @@
     };
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
+    nixpkgs-elfenermarcell.url = "github:elfenermarcell/nixpkgs/ed-odyssey-materials-helper";
   };
 
   outputs = { nixpkgs, flake-utils, ... }@inputs:

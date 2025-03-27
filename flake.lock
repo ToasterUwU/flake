@@ -199,11 +199,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742996658,
-        "narHash": "sha256-snxgTLVq6ooaD3W3mPHu7LVWpoZKczhxHAUZy2ea4oA=",
+        "lastModified": 1743097780,
+        "narHash": "sha256-5tUbaMBKYbfTe/4aXACxmiXG22TgwPBNcfZ8Kg3rt+g=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "693840c01b9bef9e54100239cef937e53d4661bf",
+        "rev": "b14a70c40f4fd0b73d095ab04a7c6e31fbc18e52",
         "type": "github"
       },
       "original": {
@@ -246,6 +246,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-elfenermarcell": {
+      "locked": {
+        "lastModified": 1743017891,
+        "narHash": "sha256-qR/PMCvx3cK46R2VVTt83r22tPkPiKAdJWcm0+N1Iho=",
+        "owner": "elfenermarcell",
+        "repo": "nixpkgs",
+        "rev": "51cd330971615d9ea902a93b780192b4f0906346",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elfenermarcell",
+        "ref": "ed-odyssey-materials-helper",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -356,8 +372,8 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1742669843,
-        "narHash": "sha256-G5n+FOXLXcRx+3hCJ6Rt6ZQyF1zqQ0DL0sWAMn2Nk0w=",
+        "lastModified": 1742889210,
+        "narHash": "sha256-hw63HnwnqU3ZQfsMclLhMvOezpM7RSB0dMAtD5/sOiw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "698214a32beb4f4c8e3942372c694f40848b360d",
@@ -402,6 +418,7 @@
         "flatpaks": "flatpaks",
         "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-elfenermarcell": "nixpkgs-elfenermarcell",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager",

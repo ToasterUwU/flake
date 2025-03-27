@@ -1,4 +1,9 @@
 { inputs, pkgs, config, ... }:
+let
+  elfenermarcellPkgs = import inputs.nixpkgs-elfenermarcell {
+        system = "x86_64-linux";
+      };
+in
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
@@ -199,6 +204,7 @@
     })
   ] ++ [
     inputs.agenix.packages.x86_64-linux.default
+    elfenermarcellPkgs.ed-odyssey-materials-helper
   ];
 
   # MakeMKV requires sg kernel module, v4l2loopback for OBS virtual cam
