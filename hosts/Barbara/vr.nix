@@ -125,15 +125,6 @@
                 target_display: "Disp2"
                 exec: "firefox"
       '';
-
-      xdg.desktopEntries."BeatSaberModManager" = {
-        name = "BeatSaber ModManager";
-        comment = "BeatSaber ModManager";
-        type = "Application";
-        exec = "BeatSaberModManager";
-        terminal = false;
-        startupNotify = true;
-      };
     };
     users.scarlett = {
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
@@ -221,15 +212,6 @@
                 target_display: "Disp2"
                 exec: "firefox"
       '';
-
-      xdg.desktopEntries."BeatSaberModManager" = {
-        name = "BeatSaber ModManager";
-        comment = "BeatSaber ModManager";
-        type = "Application";
-        exec = "BeatSaberModManager";
-        terminal = false;
-        startupNotify = true;
-      };
     };
   };
 }
