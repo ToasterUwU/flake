@@ -1,8 +1,14 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 {
   age.secrets = {
     "aki-nixpkgs-review-github-token" = {
       file = ../secrets/common/aki-nixpkgs-review-github-token.age;
+      mode = "700";
+      owner = "aki";
+      group = "users";
+    };
+    "aki-nixpkgs-update-github-token" = {
+      file = ../secrets/common/aki-nixpkgs-update-github-token.age;
       mode = "700";
       owner = "aki";
       group = "users";
@@ -76,6 +82,12 @@
 
         export GITHUB_TOKEN=$(cat ${config.age.secrets."aki-nixpkgs-review-github-token".path})
         exec ${pkgs.nixpkgs-review}/bin/nixpkgs-review "$@"
+      '')
+      (writeScriptBin "nixpkgs-update" ''
+        #!/usr/bin/env bash
+
+        export GITHUB_TOKEN=$(cat ${config.age.secrets."aki-nixpkgs-update-github-token".path})
+        exec ${inputs.nixpkgs-update.packages.x86_64-linux.default}/bin/nixpkgs-update "$@"
       '')
 
       openscad-lsp

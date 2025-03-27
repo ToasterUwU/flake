@@ -32,6 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    nixpkgs-update.url = "github:ryantm/nixpkgs-update";
   };
 
   outputs = { nixpkgs, flake-utils, ... }@inputs:
