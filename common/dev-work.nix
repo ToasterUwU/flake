@@ -58,6 +58,8 @@
               "window.titleBarStyle" = "custom";
               "workbench.colorTheme" = "Catppuccin Mocha";
               "files.autoSave" = "afterDelay";
+              "git.enableSmartCommit" = true;
+              "git.confirmSync" = false;
             };
           };
           package = pkgs.vscode.fhsWithPackages (
