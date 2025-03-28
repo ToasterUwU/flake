@@ -46,7 +46,7 @@
     {
       devShells.x86_64-linux.default = shellPkgs.mkShell {
         buildInputs = with shellPkgs; [
-          nixpkgs-fmt
+          nixfmt-rfc-style
           nil
         ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
       };
