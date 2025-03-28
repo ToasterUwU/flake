@@ -6,7 +6,10 @@ let
 
     src = ../assets/scripts/extract-audio;
 
-    buildInputs = [ pkgs.ffmpeg-full pkgs.python3 ];
+    buildInputs = [
+      pkgs.ffmpeg-full
+      pkgs.python3
+    ];
 
     installPhase = ''
       mkdir -p $out/bin
@@ -20,7 +23,5 @@ let
   };
 in
 {
-  environment.systemPackages = [
-    extractAudio
-  ];
+  environment.systemPackages = [ extractAudio ];
 }

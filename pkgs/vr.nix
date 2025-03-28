@@ -39,7 +39,5 @@ let
   };
 in
 {
-  environment.systemPackages = [
-    monado-run-scripts
-  ];
+  environment.systemPackages = [ monado-run-scripts ];
 }

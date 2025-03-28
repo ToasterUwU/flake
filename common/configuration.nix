@@ -1,4 +1,9 @@
-{ inputs, pkgs, config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
@@ -9,14 +14,19 @@
   ];
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.settings.trusted-users = [ "aki" ];
 
   # boot.kernelPackages = pkgs.linuxPackages_zen;
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 32 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
 
   programs.nix-ld.enable = true;
   programs.appimage = {
@@ -95,35 +105,44 @@
   };
 
   users.mutableUsers = false;
-  users.users =
-    {
-      aki = {
-        isNormalUser = true;
-        description = "Aki";
-        uid = 1000;
-        hashedPasswordFile = config.age.secrets."aki-password".path;
-        extraGroups = [ "networkmanager" "wheel" "plugdev" "scanner" "lp" ];
-        packages = with pkgs; [
-          openscad-unstable
-          orca-slicer
-          ledger-live-desktop
-          monero-gui
-          chromedriver
-          intiface-central
-          pyfa
-        ];
-      };
-      scarlett = {
-        isNormalUser = true;
-        description = "Scarlett";
-        extraGroups = [ "networkmanager" "wheel" "plugdev" "scanner" "lp" ];
-        uid = 1001;
-        hashedPasswordFile = config.age.secrets."scarlett-password".path;
-        packages = with pkgs; [
-          brave
-        ];
-      };
+  users.users = {
+    aki = {
+      isNormalUser = true;
+      description = "Aki";
+      uid = 1000;
+      hashedPasswordFile = config.age.secrets."aki-password".path;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "plugdev"
+        "scanner"
+        "lp"
+      ];
+      packages = with pkgs; [
+        openscad-unstable
+        orca-slicer
+        ledger-live-desktop
+        monero-gui
+        chromedriver
+        intiface-central
+        pyfa
+      ];
     };
+    scarlett = {
+      isNormalUser = true;
+      description = "Scarlett";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "plugdev"
+        "scanner"
+        "lp"
+      ];
+      uid = 1001;
+      hashedPasswordFile = config.age.secrets."scarlett-password".path;
+      packages = with pkgs; [ brave ];
+    };
+  };
 
   programs.firefox = {
     enable = true;
@@ -143,71 +162,74 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    fuse
-    sshfs
-    sshpass
-    ghostty
-    fastfetch
-    hyfetch
-    pciutils
-    fira-code
-    nerd-fonts.fira-code
-    starship
-    fd
-    ripgrep
-    bat
-    btop
-    tealdeer
-    wget
-    curl
-    zoxide
-    gnupg
-    git
-    nano
-    # torrenttools
-    gparted
-    usbimager
-    baobab
-    dua
-    rustscan
-    nmap
-    vlc
-    kdePackages.kdenlive
-    bitwarden-desktop
-    vesktop
-    element-desktop
-    tor-browser
-    chromium
-    jellyfin-media-player
-    simple-scan
-    pdfarranger
-    makemkv
-    handbrake
-    mediainfo
-    ffmpeg-full
-    gearlever
-    lmstudio
-  ] ++ [
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-vkcapture
-        obs-vaapi
-        obs-pipewire-audio-capture
-        obs-mute-filter
-      ];
-    })
-  ] ++ [
-    inputs.agenix.packages.x86_64-linux.default
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      fuse
+      sshfs
+      sshpass
+      ghostty
+      fastfetch
+      hyfetch
+      pciutils
+      fira-code
+      nerd-fonts.fira-code
+      starship
+      fd
+      ripgrep
+      bat
+      btop
+      tealdeer
+      wget
+      curl
+      zoxide
+      gnupg
+      git
+      nano
+      # torrenttools
+      gparted
+      usbimager
+      baobab
+      dua
+      rustscan
+      nmap
+      vlc
+      kdePackages.kdenlive
+      bitwarden-desktop
+      vesktop
+      element-desktop
+      tor-browser
+      chromium
+      jellyfin-media-player
+      simple-scan
+      pdfarranger
+      makemkv
+      handbrake
+      mediainfo
+      ffmpeg-full
+      gearlever
+      lmstudio
+    ]
+    ++ [
+      (pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [
+          obs-vkcapture
+          obs-vaapi
+          obs-pipewire-audio-capture
+          obs-mute-filter
+        ];
+      })
+    ]
+    ++ [ inputs.agenix.packages.x86_64-linux.default ];
 
   # MakeMKV requires sg kernel module, v4l2loopback for OBS virtual cam
-  boot.kernelModules = [ "sg" "v4l2loopback" ];
+  boot.kernelModules = [
+    "sg"
+    "v4l2loopback"
+  ];
 
   # OBS Virtual Cam
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';

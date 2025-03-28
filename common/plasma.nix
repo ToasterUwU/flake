@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   services = {
     xserver.enable = true;
     displayManager = {
@@ -15,9 +16,7 @@
   programs.kdeconnect.enable = true;
   programs.kclock.enable = true;
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    kate
-  ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [ kate ];
 
   environment.systemPackages = with pkgs; [
     qt6.qtwebengine
@@ -27,42 +26,39 @@
     kdePackages.plasma-browser-integration
   ];
 
-  users.users =
-    {
-      aki = {
-        packages = with pkgs; [
-          (catppuccin-kde.override {
-            flavour = [ "mocha" ];
-            accents = [ "pink" ];
-          })
-          (catppuccin-papirus-folders.override {
-            flavor = "mocha";
-            accent = "pink";
-          })
-          catppuccin-cursors.mochaPink
-        ];
-      };
-      scarlett = {
-        packages = with pkgs; [
-          (catppuccin-kde.override {
-            flavour = [ "mocha" ];
-            accents = [ "red" ];
-          })
-          (catppuccin-papirus-folders.override {
-            flavor = "mocha";
-            accent = "red";
-          })
-          catppuccin-cursors.mochaRed
-
-          kdePackages.kate
-        ];
-      };
+  users.users = {
+    aki = {
+      packages = with pkgs; [
+        (catppuccin-kde.override {
+          flavour = [ "mocha" ];
+          accents = [ "pink" ];
+        })
+        (catppuccin-papirus-folders.override {
+          flavor = "mocha";
+          accent = "pink";
+        })
+        catppuccin-cursors.mochaPink
+      ];
     };
+    scarlett = {
+      packages = with pkgs; [
+        (catppuccin-kde.override {
+          flavour = [ "mocha" ];
+          accents = [ "red" ];
+        })
+        (catppuccin-papirus-folders.override {
+          flavor = "mocha";
+          accent = "red";
+        })
+        catppuccin-cursors.mochaRed
+
+        kdePackages.kate
+      ];
+    };
+  };
 
   home-manager = {
-    sharedModules = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
-    ];
+    sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
 
     users.aki = {
       programs.plasma = {
@@ -80,14 +76,19 @@
         kscreenlocker.appearance.wallpaperSlideShow.path = ../assets/wallpapers;
 
         kwin.titlebarButtons = {
-          left = [ "on-all-desktops" "keep-above-windows" ];
-          right = [ "minimize" "maximize" "close" ];
+          left = [
+            "on-all-desktops"
+            "keep-above-windows"
+          ];
+          right = [
+            "minimize"
+            "maximize"
+            "close"
+          ];
         };
 
         shortcuts = {
-          "kmix"."mic_mute" = [
-            "Meta+Alt+V"
-          ];
+          "kmix"."mic_mute" = [ "Meta+Alt+V" ];
         };
 
         configFile.kdeglobals.General = {
@@ -157,13 +158,12 @@
         };
       };
       xdg.dataFile."konsole/Catppuccin-Mocha.colorscheme".source =
-        pkgs.fetchFromGitHub
-          {
-            owner = "catppuccin";
-            repo = "konsole";
-            rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
-            sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
-          }
+        pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "konsole";
+          rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
+          sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
+        }
         + "/Catppuccin-Mocha.colorscheme";
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]
@@ -212,14 +212,19 @@
         kscreenlocker.appearance.wallpaper = ../assets/wallpapers/red_nebula.jpg;
 
         kwin.titlebarButtons = {
-          left = [ "on-all-desktops" "keep-above-windows" ];
-          right = [ "minimize" "maximize" "close" ];
+          left = [
+            "on-all-desktops"
+            "keep-above-windows"
+          ];
+          right = [
+            "minimize"
+            "maximize"
+            "close"
+          ];
         };
 
         shortcuts = {
-          "kmix"."mic_mute" = [
-            "Pause"
-          ];
+          "kmix"."mic_mute" = [ "Pause" ];
         };
 
         configFile.kdeglobals.General = {
@@ -280,13 +285,12 @@
         };
       };
       xdg.dataFile."konsole/Catppuccin-Mocha.colorscheme".source =
-        pkgs.fetchFromGitHub
-          {
-            owner = "catppuccin";
-            repo = "konsole";
-            rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
-            sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
-          }
+        pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "konsole";
+          rev = "7d86b8a1e56e58f6b5649cdaac543a573ac194ca";
+          sha256 = "EwSJMTxnaj2UlNJm1t6znnatfzgm1awIQQUF3VPfCTM=";
+        }
         + "/Catppuccin-Mocha.colorscheme";
       xdg.dataFile."kio/servicemenus/krename.desktop".text = ''
         [Desktop Entry]

@@ -1,18 +1,25 @@
-{ inputs, pkgs, config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ../../pkgs/vr.nix
   ];
 
-  boot.kernelPatches = [{
-    name = "amdgpu-ignore-ctx-privileges";
-    patch = pkgs.fetchpatch {
-      name = "cap_sys_nice_begone.patch";
-      url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-      hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-    };
-  }];
+  boot.kernelPatches = [
+    {
+      name = "amdgpu-ignore-ctx-privileges";
+      patch = pkgs.fetchpatch {
+        name = "cap_sys_nice_begone.patch";
+        url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+      };
+    }
+  ];
 
   programs.steam = {
     extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
@@ -60,7 +67,8 @@
           "version" : 1
         }
       '';
-      xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
+      xdg.configFile."openxr/1/active_runtime.json".source =
+        config.environment.etc."xdg/openxr/1/active_runtime.json".source;
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
         version: 1
@@ -134,7 +142,8 @@
           "version" : 1
         }
       '';
-      xdg.configFile."openxr/1/active_runtime.json".source = config.environment.etc."xdg/openxr/1/active_runtime.json".source;
+      xdg.configFile."openxr/1/active_runtime.json".source =
+        config.environment.etc."xdg/openxr/1/active_runtime.json".source;
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
         version: 1

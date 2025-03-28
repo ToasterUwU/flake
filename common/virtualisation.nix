@@ -63,9 +63,7 @@
             PUID = "1000";
             PGID = "1000";
           };
-          env_file = [
-            config.age.secrets."tdarr-apiKey".path
-          ];
+          env_file = [ config.age.secrets."tdarr-apiKey".path ];
           restart = "unless-stopped";
         };
       };

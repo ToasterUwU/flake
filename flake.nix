@@ -37,55 +37,57 @@
     nixpkgs-jiriks74.url = "github:jiriks74/nixpkgs/add_min-ed-launcher";
   };
 
-  outputs = { nixpkgs, flake-utils, ... }@inputs:
+  outputs =
+    { nixpkgs, flake-utils, ... }@inputs:
     let
-      shellPkgs = import nixpkgs {
-        system = "x86_64-linux";
-      };
+      shellPkgs = import nixpkgs { system = "x86_64-linux"; };
     in
     {
       devShells.x86_64-linux.default = shellPkgs.mkShell {
-        buildInputs = with shellPkgs; [
-          nixfmt-rfc-style
-          nil
-        ] ++ [ inputs.agenix.packages.x86_64-linux.default ];
+        buildInputs =
+          with shellPkgs;
+          [
+            nixfmt-rfc-style
+            nil
+          ]
+          ++ [ inputs.agenix.packages.x86_64-linux.default ];
       };
 
       nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [
-          ./hosts/Barbara
-        ];
+        modules = [ ./hosts/Barbara ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+        };
       };
       nixosConfigurations.Rouge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [
-          ./hosts/Rouge
-        ];
+        modules = [ ./hosts/Rouge ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+        };
       };
       nixosConfigurations.Gertrude = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [
-          ./hosts/Gertrude
-        ];
+        modules = [ ./hosts/Gertrude ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+        };
       };
       nixosConfigurations.Waltraud = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [
-          ./hosts/Waltraud
-        ];
+        modules = [ ./hosts/Waltraud ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+        };
       };
     };
 }

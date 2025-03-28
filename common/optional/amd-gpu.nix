@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [ ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];

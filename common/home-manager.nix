@@ -1,7 +1,6 @@
-{ inputs, pkgs, ... }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+{ inputs, pkgs, ... }:
+{
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   age.secrets = {
     "aki-id_ed25519" = {
@@ -263,14 +262,20 @@
 
       gtk = {
         enable = true;
-        gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
-        gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
+        gtk3.extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+        };
+        gtk4.extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+        };
         theme = {
           name = "catppuccin-mocha-pink-standard";
-          package = (pkgs.catppuccin-gtk.override {
-            variant = "mocha";
-            accents = [ "pink" ];
-          });
+          package = (
+            pkgs.catppuccin-gtk.override {
+              variant = "mocha";
+              accents = [ "pink" ];
+            }
+          );
         };
       };
 
@@ -310,9 +315,7 @@
         zoxide = {
           enable = true;
           enableBashIntegration = true;
-          options = [
-            "--cmd cd"
-          ];
+          options = [ "--cmd cd" ];
         };
         bash = {
           enable = true;
@@ -517,14 +520,20 @@
 
       gtk = {
         enable = true;
-        gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
-        gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
+        gtk3.extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+        };
+        gtk4.extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+        };
         theme = {
           name = "catppuccin-mocha-red-standard";
-          package = (pkgs.catppuccin-gtk.override {
-            variant = "mocha";
-            accents = [ "red" ];
-          });
+          package = (
+            pkgs.catppuccin-gtk.override {
+              variant = "mocha";
+              accents = [ "red" ];
+            }
+          );
         };
       };
 
@@ -564,9 +573,7 @@
         zoxide = {
           enable = true;
           enableBashIntegration = true;
-          options = [
-            "--cmd cd"
-          ];
+          options = [ "--cmd cd" ];
         };
         bash = {
           enable = true;
