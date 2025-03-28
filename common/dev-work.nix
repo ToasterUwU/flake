@@ -62,6 +62,7 @@
               "git.confirmSync" = false;
               "nix.enableLanguageServer" = true;
               "nix.serverPath" = "nil";
+              "nix.formatterPath" = "nixfmt";
             };
           };
           package = pkgs.vscode.fhsWithPackages (
