@@ -60,12 +60,15 @@
               "files.autoSave" = "afterDelay";
               "git.enableSmartCommit" = true;
               "git.confirmSync" = false;
+              "nix.enableLanguageServer" = true;
+              "nix.serverPath" = "nil";
             };
           };
           package = pkgs.vscode.fhsWithPackages (
             ps: with ps; [
               craftos-pc
               nodejs_22
+              nil
             ]
           );
         };
