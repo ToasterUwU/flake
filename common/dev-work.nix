@@ -62,6 +62,13 @@
               "git.confirmSync" = false;
               "nix.enableLanguageServer" = true;
               "nix.serverPath" = "nil";
+              "nix.serverSettings" = {
+                "nil" = {
+                  "formatting" = {
+                    "command" = [ "nixfmt" ];
+                  };
+                };
+              };
               "nix.formatterPath" = "nixfmt";
             };
           };
