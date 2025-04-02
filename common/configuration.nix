@@ -201,7 +201,7 @@
       tor-browser
       chromium
       jellyfin-media-player
-      supersonic-wayland
+      supersonic
       simple-scan
       pdfarranger
       makemkv

@@ -89,7 +89,6 @@
 
     sharedModules = [
       inputs.catppuccin.homeModules.catppuccin
-      inputs.spicetify-nix.homeManagerModules.default
     ];
 
     users.aki = {
@@ -395,39 +394,6 @@
         };
         bat.enable = true;
         btop.enable = true;
-        spicetify =
-          let
-            spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-          in
-          {
-            enable = true;
-            enabledExtensions = with spicePkgs.extensions; [
-              shuffle
-              groupSession
-              listPlaylistsWithSong
-              playlistIntersection
-              skipStats
-              phraseToPlaylist
-              showQueueDuration
-              copyToClipboard
-              history
-              betterGenres
-              savePlaylists
-              autoSkip
-              playNext
-              volumePercentage
-              playingSource
-              oneko
-              starRatings
-            ];
-            enabledCustomApps = with spicePkgs.apps; [
-              newReleases
-              marketplace
-              localFiles
-            ];
-            theme = spicePkgs.themes.catppuccin;
-            colorScheme = "mocha";
-          };
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]
