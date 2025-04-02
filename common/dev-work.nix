@@ -70,6 +70,8 @@
                 };
               };
               "nix.formatterPath" = "nixfmt";
+              "editor.fontFamily" = "Fira Code";
+              "editor.fontLigatures" = true;
             };
           };
           package = pkgs.vscode.fhsWithPackages (
