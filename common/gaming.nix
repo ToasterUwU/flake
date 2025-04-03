@@ -2,6 +2,7 @@
 let
   elfenermarcellPkgs = import inputs.nixpkgs-elfenermarcell { system = "x86_64-linux"; };
   jiriks74Pkgs = import inputs.nixpkgs-jiriks74 { system = "x86_64-linux"; };
+  edmcPkgs = import inputs.nixpkgs-edmc { system = "x86_64-linux"; };
 in
 {
   imports = [ ];
@@ -36,6 +37,7 @@ in
     ++ [
       elfenermarcellPkgs.ed-odyssey-materials-helper
       jiriks74Pkgs.min-ed-launcher
+      edmcPkgs.edmarketconnector
     ];
 
   users.users.scarlett.packages = with pkgs; [ heroic ];

@@ -250,6 +250,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-edmc": {
+      "locked": {
+        "lastModified": 1743105277,
+        "narHash": "sha256-h2tyITZkeAa1+8hbX2yC5zRLCuzS+KQklc+Q8oraTHU=",
+        "owner": "jiriks74",
+        "repo": "nixpkgs",
+        "rev": "f7358432d8971f438d215465fe2ce6d069b3187b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jiriks74",
+        "ref": "add_EDMarketConnector",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-elfenermarcell": {
       "locked": {
         "lastModified": 1743017891,
@@ -434,6 +450,7 @@
         "flatpaks": "flatpaks",
         "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-edmc": "nixpkgs-edmc",
         "nixpkgs-elfenermarcell": "nixpkgs-elfenermarcell",
         "nixpkgs-jiriks74": "nixpkgs-jiriks74",
         "nixpkgs-update": "nixpkgs-update",
