@@ -14,7 +14,6 @@
     extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
   };
 
-  programs.envision.enable = true;
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
     wayvr-dashboard
