@@ -22,6 +22,19 @@ in
     remotePlay.openFirewall = true;
     protontricks.enable = true;
   };
+
+  services.ananicy = { # https://github.com/NixOS/nixpkgs/issues/351516
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-cpp;
+    extraRules = [
+      {
+        "name" = "gamescope";
+        "nice" = -20;
+      }
+    ];
+  };
+
   environment.systemPackages =
     with pkgs;
     [
