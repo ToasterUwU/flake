@@ -15,8 +15,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wlx-overlay-s
-    wayvr-dashboard
     bs-manager
     vrcx
   ];
@@ -31,10 +29,12 @@
     STEAMVR_LH_ENABLE = "true";
     XRT_COMPOSITOR_COMPUTE = "1";
     XRT_COMPOSITOR_SCALE_PERCENTAGE = "140";
+    U_PACING_COMP_MIN_TIME_MS = "3";
   };
 
   home-manager = {
     users.aki = {
+      xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -55,61 +55,29 @@
           "version" : 1
         }
       '';
-      xdg.configFile."openxr/1/active_runtime.json".source =
-        config.environment.etc."xdg/openxr/1/active_runtime.json".source;
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
-        version: 1
-
-        run_compositor_at_start: false
-
-        auto_hide: true
-        auto_hide_delay: 750
-
-        keyboard_repeat_delay: 200
-        keyboard_repeat_rate: 50
-
         dashboard:
           exec: "wayvr_dashboard"
           args: ""
           env: ["GDK_BACKEND=wayland"]
+      '';
 
-        displays:
-          Watch:
-            width: 400
-            height: 600
-            scale: 0.4
-            attach_to: "HandRight" # HandLeft, HandRight
-            pos: [0.0, 0.0, 0.125]
-            rotation: {axis: [1.0, 0.0, 0.0], angle: -45.0}
-          Disp1:
-            width: 640
-            height: 480
-            primary: true # Required if you want to attach external processes (not spawned by WayVR itself) without WAYVR_DISPLAY_NAME set
-          Disp2:
-            width: 1280
-            height: 720
-            scale: 2.0
+      xdg.configFile."index_camera_passthrough/index_camera_passthrough.toml".text = ''
+        backend="openxr"
+        open_delay = "0s"
 
-        catalogs:
-          default_catalog:
-            apps:
-              - name: "Calc"
-                target_display: "Disp1"
-                exec: "kcalc"
-                shown_at_start: false
+        [overlay.position]
+        mode = "Hmd"
+        distance = 0.7
 
-              - name: "btop"
-                target_display: "Watch"
-                exec: "konsole"
-                args: "-e btop"
-
-              - name: "Browser"
-                target_display: "Disp2"
-                exec: "firefox"
+        [display_mode]
+        mode = "Stereo"
+        projection_mode = "FromEye"
       '';
     };
     users.scarlett = {
+      xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -130,58 +98,26 @@
           "version" : 1
         }
       '';
-      xdg.configFile."openxr/1/active_runtime.json".source =
-        config.environment.etc."xdg/openxr/1/active_runtime.json".source;
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
-        version: 1
-
-        run_compositor_at_start: false
-
-        auto_hide: true
-        auto_hide_delay: 750
-
-        keyboard_repeat_delay: 200
-        keyboard_repeat_rate: 50
-
         dashboard:
           exec: "wayvr_dashboard"
           args: ""
           env: ["GDK_BACKEND=wayland"]
+      '';
 
-        displays:
-          Watch:
-            width: 400
-            height: 600
-            scale: 0.4
-            attach_to: "HandRight" # HandLeft, HandRight
-            pos: [0.0, 0.0, 0.125]
-            rotation: {axis: [1.0, 0.0, 0.0], angle: -45.0}
-          Disp1:
-            width: 640
-            height: 480
-            primary: true # Required if you want to attach external processes (not spawned by WayVR itself) without WAYVR_DISPLAY_NAME set
-          Disp2:
-            width: 1280
-            height: 720
-            scale: 2.0
+      xdg.configFile."index_camera_passthrough/index_camera_passthrough.toml".text = ''
+        backend="openxr"
+        toggle_button = "Menu"
+        open_delay = "0s"
 
-        catalogs:
-          default_catalog:
-            apps:
-              - name: "Calc"
-                target_display: "Disp1"
-                exec: "kcalc"
-                shown_at_start: false
+        [overlay.position]
+        mode = "Hmd"
+        distance = 0.7
 
-              - name: "btop"
-                target_display: "Watch"
-                exec: "konsole"
-                args: "-e btop"
-
-              - name: "Browser"
-                target_display: "Disp2"
-                exec: "firefox"
+        [display_mode]
+        mode = "Stereo"
+        projection_mode = "FromEye"
       '';
     };
   };
