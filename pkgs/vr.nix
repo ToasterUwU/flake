@@ -124,9 +124,11 @@ let
         [
           wlx-overlay-s
           wayvr-dashboard
-          index_camera_passthrough
+          # index_camera_passthrough
         ]
-        ++ [ lovr-playspace ];
+        ++ [
+          # lovr-playspace
+        ];
 
       text = ''
         #! /usr/bin/env bash
@@ -143,9 +145,14 @@ let
 
         systemctl --user restart monado.service
 
-        lovr-playspace &
+        # lovr-playspace &
         wlx-overlay-s &
-        index_camera_passthrough
+        # index_camera_passthrough &
+
+        trap "echo 'CTRL+C pressed. Exiting...'; clean_up; exit" SIGINT
+        while true; do
+            sleep 1
+        done
       '';
     };
 
