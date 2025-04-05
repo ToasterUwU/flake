@@ -72,6 +72,9 @@
               "nix.formatterPath" = "nixfmt";
               "editor.fontFamily" = "Fira Code";
               "editor.fontLigatures" = true;
+              "[python]" = {
+                "editor.defaultFormatter" = "charliermarsh.ruff";
+              };
             };
           };
           package = pkgs.vscode.fhsWithPackages (
