@@ -125,6 +125,7 @@ let
           wlx-overlay-s
           wayvr-dashboard
           # index_camera_passthrough
+          kdePackages.kde-cli-tools
         ]
         ++ [
           # lovr-playspace
