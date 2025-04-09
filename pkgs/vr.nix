@@ -148,6 +148,7 @@ let
         # lovr-playspace &
         wlx-overlay-s --replace &
         # index_camera_passthrough &
+        kde-inhibit --power --screenSaver sleep infinity &
 
         trap "echo 'CTRL+C pressed. Exiting...'; clean_up; exit" SIGINT
         while true; do
