@@ -146,7 +146,7 @@ let
         systemctl --user restart monado.service
 
         # lovr-playspace &
-        wlx-overlay-s &
+        wlx-overlay-s --replace &
         # index_camera_passthrough &
 
         trap "echo 'CTRL+C pressed. Exiting...'; clean_up; exit" SIGINT
