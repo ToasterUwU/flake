@@ -10,6 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    steam-launch-options = {
+      url = "github:ToasterUwU/steam-launch-options-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
     agenix = {
       url = "github:ryantm/agenix";

@@ -456,7 +456,8 @@
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "steam-launch-options": "steam-launch-options"
       }
     },
     "runtimeDeps": {
@@ -492,6 +493,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "steam-launch-options": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744570106,
+        "narHash": "sha256-OsceFtHXLAdYPnjhmlrm5332HMk7pje8t1FhndbbDOc=",
+        "owner": "ToasterUwU",
+        "repo": "steam-launch-options-nix",
+        "rev": "ceecaa357ff4b018b3ca7d843d3e93f8b62f1be0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ToasterUwU",
+        "repo": "steam-launch-options-nix",
         "type": "github"
       }
     },

@@ -56,9 +56,9 @@ in
     "127.0.0.1" = [ "winter15.gosredirector.ea.com" ]; # A fix for "Mirrors Edge Catalyst". Without this it will try to ping a server that has been shutdown, then fail and crash
   };
 
-  home-manager.users = {
-    aki = {
-      imports = [ ../modules/home-manager/steam-game-launch-options ];
+  home-manager = {
+    sharedModules = [ inputs.steam-launch-options.homeManagerModules.steam-launch-options ];
+    users.aki = {
       programs.steam-launch-options = {
         enable = true;
         userId = "149816402";
@@ -72,8 +72,10 @@ in
           "620980" = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%"; # Beat Saber
           "2441700" = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%"; # UNDERDOGS
           "1755100" = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%"; # The Last Clockwinder
-          "1225570" = "for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}'); do export $var=$(echo \${!var} | rev | cut -c 1-2000 | rev); done ; %command%"; # Unravel Two, EA Launcher Fix
-          "1233570" = "for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}'); do export $var=$(echo \${!var} | rev | cut -c 1-2000 | rev); done ; %command%"; # Mirror's Edge Catalyst, EA Launcher Fix
+          "1225570" =
+            "for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}'); do export $var=$(echo \${!var} | rev | cut -c 1-2000 | rev); done ; %command%"; # Unravel Two, EA Launcher Fix
+          "1233570" =
+            "for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}'); do export $var=$(echo \${!var} | rev | cut -c 1-2000 | rev); done ; %command%"; # Mirror's Edge Catalyst, EA Launcher Fix
         };
       };
     };
