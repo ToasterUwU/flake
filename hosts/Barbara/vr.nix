@@ -58,7 +58,7 @@
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
         dashboard:
-          exec: "wayvr_dashboard"
+          exec: "wayvr-dashboard"
           args: ""
           env: ["GDK_BACKEND=wayland"]
       '';
@@ -101,7 +101,7 @@
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
         dashboard:
-          exec: "wayvr_dashboard"
+          exec: "wayvr-dashboard"
           args: ""
           env: ["GDK_BACKEND=wayland"]
       '';
