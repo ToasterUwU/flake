@@ -202,6 +202,7 @@
       chromium
       jellyfin-media-player
       feishin
+      mpv
       simple-scan
       pdfarranger
       makemkv
