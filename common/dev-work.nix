@@ -102,8 +102,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ godot_4 ];
-
   users.users.aki = {
     packages = with pkgs; [
       nil
