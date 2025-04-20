@@ -79,7 +79,6 @@
           };
           package = pkgs.vscode.fhsWithPackages (
             ps: with ps; [
-              craftos-pc
               nodejs_22
               nil
             ]
