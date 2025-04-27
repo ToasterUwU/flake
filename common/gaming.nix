@@ -1,6 +1,5 @@
 { pkgs, inputs, ... }:
 let
-  elfenermarcellPkgs = import inputs.nixpkgs-elfenermarcell { system = "x86_64-linux"; };
   jiriks74Pkgs = import inputs.nixpkgs-jiriks74 { system = "x86_64-linux"; };
   edmcPkgs = import inputs.nixpkgs-edmc { system = "x86_64-linux"; };
 in
@@ -43,9 +42,9 @@ in
       r2modman
       prismlauncher
       lutris
+      ed-odyssey-materials-helper
     ]
     ++ [
-      elfenermarcellPkgs.ed-odyssey-materials-helper
       jiriks74Pkgs.min-ed-launcher
       edmcPkgs.edmarketconnector
     ];

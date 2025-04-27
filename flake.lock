@@ -266,22 +266,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-elfenermarcell": {
-      "locked": {
-        "lastModified": 1744880754,
-        "narHash": "sha256-yukJg0dj2NNT0TeeTMxbHnVnIkq6ZDC4MChwBf8H8rQ=",
-        "owner": "elfenermarcell",
-        "repo": "nixpkgs",
-        "rev": "0bc5c733a72a42aadb7687158e0656121a1ca7c0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "elfenermarcell",
-        "ref": "ed-odyssey-materials-helper",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-jiriks74": {
       "locked": {
         "lastModified": 1745088063,
@@ -451,7 +435,6 @@
         "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-edmc": "nixpkgs-edmc",
-        "nixpkgs-elfenermarcell": "nixpkgs-elfenermarcell",
         "nixpkgs-jiriks74": "nixpkgs-jiriks74",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",
