@@ -198,6 +198,7 @@
       bitwarden-desktop
       vesktop
       element-desktop
+      signal-desktop
       tor-browser
       chromium
       jellyfin-media-player
