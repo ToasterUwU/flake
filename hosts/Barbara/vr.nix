@@ -28,7 +28,8 @@
   systemd.user.services."monado".environment = {
     STEAMVR_LH_ENABLE = "true";
     XRT_COMPOSITOR_COMPUTE = "1";
-    XRT_COMPOSITOR_SCALE_PERCENTAGE = "140";
+    XRT_COMPOSITOR_SCALE_PERCENTAGE = "250";
+    XRT_COMPOSITOR_DESIRED_MODE = "2"; # Valve Index: 0=90hz 1=80hz 2=120hz 3=144hz (default=4)
     U_PACING_COMP_MIN_TIME_MS = "3";
   };
 
