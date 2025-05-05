@@ -86,20 +86,6 @@
         };
       };
     };
-    users.scarlett = {
-      programs = {
-        direnv = {
-          enable = true;
-          enableBashIntegration = true;
-          nix-direnv.enable = true;
-        };
-
-        vscode = {
-          enable = true;
-          package = pkgs.vscode.fhsWithPackages (ps: with ps; [ ]);
-        };
-      };
-    };
   };
 
   users.users.aki = {

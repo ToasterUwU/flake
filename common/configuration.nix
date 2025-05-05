@@ -101,7 +101,6 @@
 
   age.secrets = {
     "aki-password".file = ../secrets/common/aki-password.age;
-    "scarlett-password".file = ../secrets/common/scarlett-password.age;
   };
 
   users.mutableUsers = false;
@@ -127,20 +126,6 @@
         intiface-central
         pyfa
       ];
-    };
-    scarlett = {
-      isNormalUser = true;
-      description = "Scarlett";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "plugdev"
-        "scanner"
-        "lp"
-      ];
-      uid = 1001;
-      hashedPasswordFile = config.age.secrets."scarlett-password".path;
-      packages = with pkgs; [ brave ];
     };
   };
 

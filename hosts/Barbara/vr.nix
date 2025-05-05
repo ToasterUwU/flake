@@ -77,49 +77,5 @@
         projection_mode = "FromEye"
       '';
     };
-    users.scarlett = {
-      xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
-      xdg.configFile."openvr/openvrpaths.vrpath".text = ''
-        {
-          "config" :
-          [
-            "/home/scarlett/.local/share/Steam/config"
-          ],
-          "external_drivers" : null,
-          "jsonid" : "vrpathreg",
-          "log" :
-          [
-            "/home/scarlett/.local/share/Steam/logs"
-          ],
-          "runtime" :
-          [
-            "${pkgs.opencomposite}/lib/opencomposite",
-            "/home/scarlett/.local/share/Steam/steamapps/common/SteamVR"
-          ],
-          "version" : 1
-        }
-      '';
-
-      xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
-        dashboard:
-          exec: "wayvr-dashboard"
-          args: ""
-          env: ["GDK_BACKEND=wayland"]
-      '';
-
-      xdg.configFile."index_camera_passthrough/index_camera_passthrough.toml".text = ''
-        backend="openxr"
-        toggle_button = "Menu"
-        open_delay = "0s"
-
-        [overlay.position]
-        mode = "Hmd"
-        distance = 0.7
-
-        [display_mode]
-        mode = "Stereo"
-        projection_mode = "FromEye"
-      '';
-    };
   };
 }
