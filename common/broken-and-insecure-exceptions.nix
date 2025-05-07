@@ -11,6 +11,4 @@
     "dotnet-sdk-wrapped-7.0.410"
     "electron-33.4.11"
   ];
-
-  home-manager.users.aki.catppuccin.mako.enable = false;
 }
