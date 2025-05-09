@@ -14,10 +14,13 @@
     extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages =
+    with pkgs;
+    [
     bs-manager
     vrcx
-  ];
+    ]
+    ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
 
   services.monado = {
     enable = true;

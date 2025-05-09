@@ -47,6 +47,27 @@
         "type": "github"
       }
     },
+    "buttplug-lite": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746756020,
+        "narHash": "sha256-kfVG9cguKBCLVYKCu/I1RGZsxB188DL31wstriw5U+I=",
+        "owner": "ToasterUwU",
+        "repo": "buttplug-lite",
+        "rev": "892815c49c0a50582a3b7843f332e2085058a46a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ToasterUwU",
+        "ref": "add-nix-packaging",
+        "repo": "buttplug-lite",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -429,6 +450,7 @@
       "inputs": {
         "agenix": "agenix",
         "arion": "arion",
+        "buttplug-lite": "buttplug-lite",
         "catppuccin": "catppuccin",
         "flake-utils": "flake-utils",
         "flatpaks": "flatpaks",
