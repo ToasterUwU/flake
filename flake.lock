@@ -54,16 +54,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1746847880,
-        "narHash": "sha256-KK0smRuC5MoEys1p4jUxUXfygnotYyiTrqWNaMj0L8k=",
-        "owner": "ToasterUwU",
+        "lastModified": 1746883472,
+        "narHash": "sha256-hTc69GL44u/PzWR6XZlsRepVuw+6YCYYMYXwNTuQNAE=",
+        "owner": "runtime-shady-backroom",
         "repo": "buttplug-lite",
-        "rev": "a62c69c7f4d1c2bc1fa4fe60d5291ffde27857eb",
+        "rev": "a17b9382b07a5e34eb34c85e4764f14fd5cccf58",
         "type": "github"
       },
       "original": {
-        "owner": "ToasterUwU",
-        "ref": "add-nix-packaging",
+        "owner": "runtime-shady-backroom",
         "repo": "buttplug-lite",
         "type": "github"
       }

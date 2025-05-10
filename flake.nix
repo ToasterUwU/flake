@@ -36,7 +36,7 @@
     nixpkgs-jiriks74.url = "github:jiriks74/nixpkgs/add_min-ed-launcher";
     nixpkgs-edmc.url = "github:jiriks74/nixpkgs/add_EDMarketConnector";
     buttplug-lite = {
-      url = "github:ToasterUwU/buttplug-lite/add-nix-packaging";
+      url = "github:runtime-shady-backroom/buttplug-lite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
