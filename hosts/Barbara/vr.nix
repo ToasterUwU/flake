@@ -17,8 +17,8 @@
   environment.systemPackages =
     with pkgs;
     [
-    bs-manager
-    vrcx
+      bs-manager
+      eepyxr
     ]
     ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
 
@@ -61,6 +61,222 @@
           ],
           "version" : 1
         }
+      '';
+
+      xdg.configFile."wlxoverlay/watch.yaml".text = ''
+        width: 0.115
+
+        size: [400, 200]
+
+        elements:
+          # batteries
+          - type: BatteryList
+            rect: [0, 5, 400, 30]
+            corner_radius: 4
+            font_size: 16
+            fg_color: "#8bd5ca"
+            fg_color_low: "#B06060"
+            fg_color_charging: "#6080A0"
+            num_devices: 9
+            layout: Horizontal
+            low_threshold: 33
+
+          # background panel
+          - type: Panel
+            rect: [0, 30, 400, 130]
+            corner_radius: 20
+            bg_color: "#24273a"
+
+          # local clock
+          - type: Label
+            rect: [13, 85, 200, 50]
+            corner_radius: 4
+            font_size: 46 # Use 32 for 12-hour time
+            fg_color: "#cad3f5"
+            source: Clock
+            format: "%H:%M" # 23:59
+            #format: "%I:%M %p" # 11:59 PM
+
+          # local date
+          - type: Label
+            rect: [15, 125, 200, 20]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            source: Clock
+            format: "%x" # local date representation
+
+          # local day-of-week
+          - type: Label
+            rect: [15, 145, 200, 50]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            source: Clock
+            format: "%A" # Tuesday
+            #format: "%a" # Tue
+
+          # Open eepyxr
+          - type: Button
+            rect: [187, 42, 73, 32]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "eep"
+            click_down:
+              - type: Exec
+                command: ["eepyxr"]
+          # Close eepyxr
+          - type: Button
+            rect: [264, 42, 73, 32]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "awak"
+            click_down:
+              - type: Exec
+                command: ["pkill", "eepyxr"]
+
+          # Previous track
+          - type: Button
+            rect: [187, 112, 73, 32]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "⏮️"
+            click_down:
+              - type: Exec
+                command: ["playerctl", "previous"]
+          # Next track
+          - type: Button
+            rect: [264, 112, 73, 32]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "⏭️"
+            click_down:
+              - type: Exec
+                command: ["playerctl", "next"]
+
+          ## Volume buttons
+          # Vol+
+          - type: Button
+            rect: [355, 42, 30, 32]
+            corner_radius: 4
+            font_size: 13
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "🔊"
+            click_down:
+              - type: Exec
+                command: ["pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%"]
+          # Play/Pause
+          - type: Button
+            rect: [355, 79, 30, 32]
+            corner_radius: 4
+            font_size: 13
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "⏯"
+            click_down:
+              - type: Exec
+                command: ["playerctl", "play-pause"]
+          # Vol-
+          - type: Button
+            rect: [355, 116, 30, 32]
+            corner_radius: 4
+            font_size: 13
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "🔉"
+            click_down:
+              - type: Exec
+                command: ["pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%"]
+
+          ## Bottom button row
+          # Config button
+          - type: Button
+            rect: [2, 162, 26, 36]
+            corner_radius: 4
+            font_size: 15
+            bg_color: "#c6a0f6"
+            fg_color: "#24273a"
+            text: "C"
+            click_up: # destroy if exists, otherwise create
+              - type: Window
+                target: settings
+                action: ShowUi # only triggers if not exists
+              - type: Window
+                target: settings
+                action: Destroy # only triggers if exists since before current frame
+
+          # Dashboard toggle button
+          - type: Button
+            rect: [32, 162, 48, 36]
+            corner_radius: 4
+            font_size: 15
+            bg_color: "#2288FF"
+            fg_color: "#24273a"
+            text: "Dash"
+            click_up:
+              - type: WayVR
+                action: ToggleDashboard
+
+          # Keyboard button
+          - type: Button
+            rect: [84, 162, 48, 36]
+            corner_radius: 4
+            font_size: 15
+            fg_color: "#24273a"
+            bg_color: "#a6da95"
+            text: Kbd
+            click_up:
+              - type: Overlay
+                target: "kbd"
+                action: ToggleVisible
+            long_click_up:
+              - type: Overlay
+                target: "kbd"
+                action: Reset
+            right_up:
+              - type: Overlay
+                target: "kbd"
+                action: ToggleImmovable
+            middle_up:
+              - type: Overlay
+                target: "kbd"
+                action: ToggleInteraction
+            scroll_up:
+              - type: Overlay
+                target: "kbd"
+                action:
+                  Opacity: { delta: 0.025 }
+            scroll_down:
+              - type: Overlay
+                target: "kbd"
+                action:
+                  Opacity: { delta: -0.025 }
+
+          # bottom row, of keyboard + overlays
+          - type: OverlayList
+            rect: [134, 160, 266, 40]
+            corner_radius: 4
+            font_size: 15
+            fg_color: "#cad3f5"
+            bg_color: "#1e2030"
+            layout: Horizontal
+            click_up: ToggleVisible
+            long_click_up: Reset
+            right_up: ToggleImmovable
+            middle_up: ToggleInteraction
+            scroll_up:
+              Opacity: { delta: 0.025 }
+            scroll_down:
+              Opacity: { delta: -0.025 }
       '';
 
       xdg.configFile."wlxoverlay/wayvr.yaml".text = ''
