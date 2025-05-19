@@ -14,7 +14,7 @@
       url = "github:ToasterUwU/steam-launch-options-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -5,7 +5,7 @@
   services.flatpak.enable = true;
 
   home-manager = {
-    sharedModules = [ inputs.flatpaks.homeManagerModules.declarative-flatpak ];
+    sharedModules = [ inputs.flatpaks.homeModule ];
 
     users.aki = {
       services.flatpak = {
