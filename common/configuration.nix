@@ -118,7 +118,7 @@
         "lp"
       ];
       packages = with pkgs; [
-        openscad-unstable
+          # openscad-unstable
         orca-slicer
         ledger-live-desktop
         monero-gui
