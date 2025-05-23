@@ -103,31 +103,37 @@
     "aki-password".file = ../secrets/common/aki-password.age;
   };
 
-  users.mutableUsers = false;
-  users.users = {
-    aki = {
-      isNormalUser = true;
-      description = "Aki";
-      uid = 1000;
-      hashedPasswordFile = config.age.secrets."aki-password".path;
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "plugdev"
-        "scanner"
-        "lp"
-      ];
-      packages = with pkgs; [
+  users = {
+    mutableUsers = false;
+    users = {
+      aki = {
+        shell = pkgs.fish;
+        isNormalUser = true;
+        description = "Aki";
+        uid = 1000;
+        hashedPasswordFile = config.age.secrets."aki-password".path;
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "plugdev"
+          "scanner"
+          "lp"
+        ];
+        packages = with pkgs; [
           # openscad-unstable
-        orca-slicer
-        ledger-live-desktop
-        monero-gui
-        chromedriver
-        intiface-central
-        pyfa
-      ];
+          orca-slicer
+          ledger-live-desktop
+          monero-gui
+          chromedriver
+          intiface-central
+          pyfa
+        ];
+      };
     };
   };
+
+  programs.fish.enable = true;
+  environment.shells = [ pkgs.fish ];
 
   programs.firefox = {
     enable = true;
@@ -153,21 +159,12 @@
       fuse
       sshfs
       sshpass
-      ghostty
-      fastfetch
-      hyfetch
       pciutils
       fira-code
       nerd-fonts.fira-code
-      starship
-      fd
-      ripgrep
-      bat
-      btop
-      tealdeer
+      uutils-coreutils-noprefix
       wget
       curl
-      zoxide
       gnupg
       git
       nano

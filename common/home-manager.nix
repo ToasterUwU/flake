@@ -89,7 +89,7 @@
           ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/home /home/aki/NAS/home";
           ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/home";
           Restart = "on-failure";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/home";
+          ExecStartPre = "${pkgs.uutils-coreutils-noprefix}/bin/mkdir -p /home/aki/NAS/home";
         };
         Install = {
           WantedBy = [ "default.target" ];
@@ -105,7 +105,7 @@
           ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/data /home/aki/NAS/data";
           ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/data";
           Restart = "on-failure";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/data";
+          ExecStartPre = "${pkgs.uutils-coreutils-noprefix}/bin/mkdir -p /home/aki/NAS/data";
         };
         Install = {
           WantedBy = [ "default.target" ];
@@ -121,7 +121,7 @@
           ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/backups /home/aki/NAS/backups";
           ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/backups";
           Restart = "on-failure";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/backups";
+          ExecStartPre = "${pkgs.uutils-coreutils-noprefix}/bin/mkdir -p /home/aki/NAS/backups";
         };
         Install = {
           WantedBy = [ "default.target" ];
@@ -137,7 +137,7 @@
           ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/web /home/aki/NAS/web";
           ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/web";
           Restart = "on-failure";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/web";
+          ExecStartPre = "${pkgs.uutils-coreutils-noprefix}/bin/mkdir -p /home/aki/NAS/web";
         };
         Install = {
           WantedBy = [ "default.target" ];
@@ -153,7 +153,7 @@
           ExecStart = "${pkgs.sshfs}/bin/sshfs -f -o delay_connect,reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,_netdev,user,transform_symlinks,IdentityFile=/home/aki/.ssh/id_ed25519,allow_other,default_permissions,uid=1000,gid=100,exec Aki@toasteruwu.com:/docker /home/aki/NAS/docker";
           ExecStop = "${pkgs.fuse}/bin/fusermount -u /home/aki/NAS/docker";
           Restart = "on-failure";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/aki/NAS/docker";
+          ExecStartPre = "${pkgs.uutils-coreutils-noprefix}/bin/mkdir -p /home/aki/NAS/docker";
         };
         Install = {
           WantedBy = [ "default.target" ];
@@ -266,7 +266,10 @@
       programs = {
         ghostty = {
           enable = true;
-          enableBashIntegration = true;
+          enableFishIntegration = true;
+        };
+        fastfetch = {
+          enable = true;
         };
         hyfetch = {
           enable = true;
@@ -285,9 +288,16 @@
             pride_month_shown = [ ];
           };
         };
+        fish = {
+          enable = true;
+          interactiveShellInit = "hyfetch";
+          shellAliases = {
+            "ls" = "eza";
+          };
+        };
         starship = {
           enable = true;
-          enableBashIntegration = true;
+          enableFishIntegration = true;
           settings = {
             directory = {
               truncation_length = 12;
@@ -296,20 +306,37 @@
             };
           };
         };
+        eza = {
+          enable = true;
+          enableFishIntegration = true;
+        };
         zoxide = {
           enable = true;
-          enableBashIntegration = true;
+          enableFishIntegration = true;
           options = [ "--cmd cd" ];
         };
-        bash = {
+        zellij = {
           enable = true;
-          bashrcExtra = ''
-            if [ -n "$PS1" ]; then
-                # Run hyfetch if the shell is interactive
-                hyfetch
-            fi
-          '';
+          enableFishIntegration = true;
+          settings = {
+            show_startup_tips = false;
+          };
+          exitShellOnExit = true;
         };
+        tealdeer = {
+          enable = true;
+          settings.updates = {
+            auto_update = true;
+            auto_update_interval_hours = 24;
+          };
+        };
+        bat.enable = true;
+        ripgrep.enable = true;
+        ripgrep-all.enable = true;
+        fd.enable  = true;
+        btop.enable = true;
+        bottom.enable = true;
+        gitui.enable = true;
         ssh = {
           enable = true;
           matchBlocks = {
@@ -370,15 +397,6 @@
             User aki
           '';
         };
-        tealdeer = {
-          enable = true;
-          settings.updates = {
-            auto_update = true;
-            auto_update_interval_hours = 24;
-          };
-        };
-        bat.enable = true;
-        btop.enable = true;
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
         [Desktop Entry]
