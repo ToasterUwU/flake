@@ -196,7 +196,6 @@
       mediainfo
       ffmpeg-full
       gearlever
-      lmstudio
     ]
     ++ [
       (pkgs.wrapOBS {
