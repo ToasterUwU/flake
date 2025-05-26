@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 let
   jiriks74Pkgs = import inputs.nixpkgs-jiriks74 { system = "x86_64-linux"; };
-  edmcPkgs = import inputs.nixpkgs-edmc { system = "x86_64-linux"; };
 in
 {
   imports = [ ];
@@ -43,10 +42,10 @@ in
       prismlauncher
       lutris
       ed-odyssey-materials-helper
+      edmarketconnector
     ]
     ++ [
       jiriks74Pkgs.min-ed-launcher
-      edmcPkgs.edmarketconnector
     ];
 
   networking.hosts = {
