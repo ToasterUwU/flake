@@ -33,7 +33,6 @@
     };
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
-    nixpkgs-jiriks74.url = "github:jiriks74/nixpkgs/add_min-ed-launcher";
     buttplug-lite = {
       url = "github:runtime-shady-backroom/buttplug-lite";
       inputs.nixpkgs.follows = "nixpkgs";

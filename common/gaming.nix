@@ -1,7 +1,4 @@
 { pkgs, inputs, ... }:
-let
-  jiriks74Pkgs = import inputs.nixpkgs-jiriks74 { system = "x86_64-linux"; };
-in
 {
   imports = [ ];
 
@@ -43,9 +40,7 @@ in
       lutris
       ed-odyssey-materials-helper
       edmarketconnector
-    ]
-    ++ [
-      jiriks74Pkgs.min-ed-launcher
+      min-ed-launcher
     ];
 
   networking.hosts = {
