@@ -74,6 +74,7 @@
               "[python]" = {
                 "editor.defaultFormatter" = "charliermarsh.ruff";
               };
+              "python.analysis.typeCheckingMode" = "standard";
             };
           };
           package = pkgs.vscode.fhsWithPackages (
