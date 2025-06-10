@@ -30,6 +30,7 @@
     [
       bs-manager
       eepyxr
+      wlx-overlay-s
     ]
     ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
 
