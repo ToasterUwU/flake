@@ -68,17 +68,6 @@
         };
       };
     };
-    rtmp-server = {
-      settings.services = {
-        rtmp-server.service = {
-          stop_grace_period = "5m";
-          container_name = "rtmp-server";
-          image = "tiangolo/nginx-rtmp";
-          ports = [ "1935:1935" ];
-          restart = "unless-stopped";
-        };
-      };
-    };
   };
   systemd.services.arion-tdarr-node = {
     after = [ "network-online.target" ];

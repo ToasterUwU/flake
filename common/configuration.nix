@@ -206,6 +206,17 @@
     ]
     ++ [ inputs.agenix.packages.x86_64-linux.default ];
 
+  services.mediamtx = {
+    enable = true;
+    settings = {
+      paths = {
+        discordSucksSoIUseOBS = {
+        };
+      };
+      webrtc = true;
+    };
+  };
+
   # MakeMKV requires sg kernel module, v4l2loopback for OBS virtual cam
   boot.kernelModules = [
     "sg"
