@@ -184,7 +184,7 @@
       mediainfo
       ffmpeg-full
       gearlever
-      openscad-unstable
+      # openscad-unstable
       orca-slicer
       ledger-live-desktop
       monero-gui
