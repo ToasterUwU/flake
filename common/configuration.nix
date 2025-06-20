@@ -119,15 +119,6 @@
           "scanner"
           "lp"
         ];
-        packages = with pkgs; [
-          openscad-unstable
-          orca-slicer
-          ledger-live-desktop
-          monero-gui
-          chromedriver
-          intiface-central
-          pyfa
-        ];
       };
     };
   };
@@ -193,6 +184,13 @@
       mediainfo
       ffmpeg-full
       gearlever
+      openscad-unstable
+      orca-slicer
+      ledger-live-desktop
+      monero-gui
+      chromedriver
+      intiface-central
+      pyfa
     ]
     ++ [
       (pkgs.wrapOBS {
