@@ -240,6 +240,7 @@
         StrictHostKeyChecking accept-new
     '';
   };
+  services.gnome.gcr-ssh-agent.enable = false;
 
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
