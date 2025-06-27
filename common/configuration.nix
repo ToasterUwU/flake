@@ -186,7 +186,10 @@
       gearlever
       # openscad-unstable
       orca-slicer
-      ledger-live-desktop
+      (pkgs.writeShellScriptBin "ledger-live-desktop" ''
+        # unset NIXOS_OZONE_WL for this app only
+        exec env -u NIXOS_OZONE_WL ${pkgs.ledger-live-desktop}/bin/ledger-live-desktop "$@"
+      '')
       monero-gui
       chromedriver
       intiface-central
