@@ -184,6 +184,7 @@
       mediainfo
       ffmpeg-full
       gearlever
+      blender
       # openscad-unstable
       orca-slicer
       (pkgs.writeShellScriptBin "ledger-live-desktop" ''
