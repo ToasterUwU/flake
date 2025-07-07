@@ -184,6 +184,7 @@
       mediainfo
       ffmpeg-full
       gearlever
+      gimp3
       blender
       # openscad-unstable
       orca-slicer
