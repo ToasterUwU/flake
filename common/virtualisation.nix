@@ -13,6 +13,7 @@
   virtualisation = {
     docker = {
       enable = true;
+      liveRestore = false;
     };
     arion = {
       backend = "docker";
