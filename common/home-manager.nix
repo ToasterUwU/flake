@@ -379,7 +379,7 @@
               user = "root";
             };
 
-            errol = {
+            nixos-homeserver = {
               hostname = "192.168.178.11";
               user = "root";
             };
