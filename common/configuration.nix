@@ -112,6 +112,7 @@
         description = "Aki";
         uid = 1000;
         hashedPasswordFile = config.age.secrets."aki-password".path;
+        linger = true;
         extraGroups = [
           "networkmanager"
           "wheel"
