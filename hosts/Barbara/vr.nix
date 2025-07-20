@@ -1,9 +1,29 @@
 {
   inputs,
   pkgs,
-  config,
   ...
 }:
+let
+  opencomposite = pkgs.opencomposite.overrideAttrs {
+    src = pkgs.fetchFromGitLab {
+      owner = "knah";
+      repo = "OpenOVR";
+      rev = "0815bcd70176968d657f96b72db5c0cc42ffbda8";
+      fetchSubmodules = true;
+      hash = "sha256-pEkqGCB59Wxa7GMfAxZIZdpqJEs41QyKz2ybh7eGIO0=";
+    };
+  };
+
+  monado = pkgs.monado.overrideAttrs {
+    src = pkgs.fetchFromGitLab {
+      domain = "gitlab.freedesktop.org";
+      owner = "Supreeeme";
+      repo = "monado";
+      rev = "f9e3d49bb64bd95896ae1907e93f29f6332078c6";
+      hash = "sha256-ehl12w2CdVormWiq8tC402IWasx4MU6zASmO9r+ZTmo=";
+    };
+  };
+in
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -39,6 +59,7 @@
     enable = true;
     defaultRuntime = true;
     highPriority = true;
+    package = monado;
   };
 
   systemd.user.services."monado".environment = {
@@ -53,7 +74,8 @@
 
   home-manager = {
     users.aki = {
-      xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+      xdg.configFile."openxr/1/active_runtime.json".source =
+        "${monado}/share/openxr/1/openxr_monado.json";
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -68,7 +90,7 @@
           ],
           "runtime" :
           [
-            "${pkgs.opencomposite}/lib/opencomposite",
+            "${opencomposite}/lib/opencomposite",
             "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
           ],
           "version" : 1
