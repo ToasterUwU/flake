@@ -40,6 +40,7 @@
       r2modman
       prismlauncher
       lutris
+      pcsx2
       ed-odyssey-materials-helper
       edmarketconnector
       min-ed-launcher
