@@ -188,6 +188,7 @@
       gearlever
       gimp3
       blender
+      unityhub
       openscad-unstable
       orca-slicer
       (pkgs.writeShellScriptBin "ledger-live-desktop" ''
