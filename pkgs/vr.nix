@@ -128,7 +128,7 @@ let
           kdePackages.kde-cli-tools
         ]
         ++ [
-          # lovr-playspace
+          lovr-playspace
         ];
 
       text = ''
@@ -146,7 +146,7 @@ let
 
         systemctl --user restart monado.service
 
-        # lovr-playspace &
+        lovr-playspace &
         wlx-overlay-s --replace &
         # index_camera_passthrough &
         kde-inhibit --power --screenSaver sleep infinity &
@@ -174,5 +174,8 @@ let
   };
 in
 {
-  environment.systemPackages = [ monado-start ];
+  environment.systemPackages = [
+    monado-start
+    lovr-playspace
+  ];
 }

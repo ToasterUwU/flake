@@ -173,9 +173,32 @@ in
               - type: Exec
                 command: ["pkill", "eepyxr"]
 
+          # Open lovr-playspace
+          - type: Button
+            rect: [187, 79, 73, 32]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "caged"
+            click_down:
+              - type: Exec
+                command: ["lovr-playspace"]
+          # Close lovr-playspace
+          - type: Button
+            rect: [264, 79, 73, 32]
+            corner_radius: 4
+            font_size: 14
+            fg_color: "#cad3f5"
+            bg_color: "#5b6078"
+            text: "free"
+            click_down:
+              - type: Exec
+                command: ["pkill", "lovr"]
+
           # Previous track
           - type: Button
-            rect: [187, 112, 73, 32]
+            rect: [187, 116, 73, 32]
             corner_radius: 4
             font_size: 14
             fg_color: "#cad3f5"
@@ -186,7 +209,7 @@ in
                 command: ["playerctl", "previous"]
           # Next track
           - type: Button
-            rect: [264, 112, 73, 32]
+            rect: [264, 116, 73, 32]
             corner_radius: 4
             font_size: 14
             fg_color: "#cad3f5"
@@ -331,6 +354,13 @@ in
         [display_mode]
         mode = "Stereo"
         projection_mode = "FromEye"
+      '';
+
+      xdg.dataFile."lovr-playspace/fade_start.txt".text = ''
+        0.1
+      '';
+      xdg.dataFile."lovr-playspace/fade_stop.txt".text = ''
+        0.2
       '';
     };
   };
