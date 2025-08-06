@@ -343,6 +343,10 @@ in
           env: ["GDK_BACKEND=wayland"]
       '';
 
+      xdg.configFile."wlxoverlay/conf.d/skybox.yaml".text = ''
+        skybox_texture: ${../../assets/battlefront-2.dds}
+      '';
+
       xdg.configFile."index_camera_passthrough/index_camera_passthrough.toml".text = ''
         backend="openxr"
         open_delay = "0s"
