@@ -416,6 +416,7 @@
         StartupNotify=false
         Terminal=false
       '';
+      xdg.configFile."supersonic/themes/catppuccin-mocha-pink.toml".source = ../assets/supersonic/catppuccin-mocha-pink.toml;
       xdg.desktopEntries."Update VMs" = {
         type = "Application";
         name = "Update VMs";
