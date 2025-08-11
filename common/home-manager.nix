@@ -160,6 +160,21 @@
         };
       };
 
+      systemd.user.services."mprisence" = {
+        Unit = {
+          Description = "Run my favorite all in one Discord Rich Presence Music bridge";
+        };
+        Service = {
+          ExecStart = "${inputs.nixpkgs-mprisence.legacyPackages.x86_64-linux.mprisence}/bin/mprisence";
+          Type = "simple";
+          Restart = "always";
+          RestartSec = 10;
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+
       systemd.user.services."vdhcoapp" = {
         Unit = {
           Description = "Makes sure vdhcoapp is setup to work with all browsers";

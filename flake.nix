@@ -37,6 +37,10 @@
       url = "github:runtime-shady-backroom/buttplug-lite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-mprisence = {
+      url = "github:ToasterUwU/nixpkgs/add-mprisence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
