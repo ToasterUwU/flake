@@ -11,5 +11,6 @@
     "dotnet-sdk-wrapped-7.0.410"
     "electron-33.4.11"
     "libsoup-2.74.3"
+    "libxml2-2.13.8"
   ];
 }
