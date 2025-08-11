@@ -113,7 +113,7 @@
                     "applications:com.mitchellh.ghostty.desktop"
                     "applications:bitwarden.desktop"
                     "applications:org.kde.dolphin.desktop"
-                    "applications:feishin.desktop"
+                    "applications:supersonic.desktop"
                     "applications:firefox.desktop"
                     "applications:vesktop.desktop"
                     "applications:code.desktop"

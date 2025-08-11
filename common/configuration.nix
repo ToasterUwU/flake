@@ -177,7 +177,7 @@
       tor-browser
       chromium
       jellyfin-media-player
-      feishin
+      supersonic
       mpv
       simple-scan
       pdfarranger
