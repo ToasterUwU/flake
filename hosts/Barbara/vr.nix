@@ -14,13 +14,24 @@ let
     };
   };
 
+  xrizer = inputs.nixpkgs.legacyPackages.x86_64-linux.xrizer.overrideAttrs {
+    src = pkgs.fetchFromGitHub {
+      owner = "RinLovesYou";
+      repo = "xrizer";
+      rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
+      hash = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+    };
+
+    doCheck = false;
+  };
+
   monado = pkgs.monado.overrideAttrs {
     src = pkgs.fetchFromGitLab {
       domain = "gitlab.freedesktop.org";
       owner = "Supreeeme";
       repo = "monado";
-      rev = "f9e3d49bb64bd95896ae1907e93f29f6332078c6";
-      hash = "sha256-ehl12w2CdVormWiq8tC402IWasx4MU6zASmO9r+ZTmo=";
+      rev = "e57d5411f53ab72e715b4ce91d26ff96c80ac711";
+      hash = "sha256-lXLSE1WwyoN2dU5OrhMKho+xreJZjAnnOUhSA3lRVOs=";
     };
   };
 in
@@ -90,7 +101,7 @@ in
           ],
           "runtime" :
           [
-            "${opencomposite}/lib/opencomposite",
+            "${xrizer}/lib/xrizer",
             "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
           ],
           "version" : 1
