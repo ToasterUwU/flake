@@ -30,8 +30,8 @@ let
       domain = "gitlab.freedesktop.org";
       owner = "Supreeeme";
       repo = "monado";
-      rev = "e57d5411f53ab72e715b4ce91d26ff96c80ac711";
-      hash = "sha256-lXLSE1WwyoN2dU5OrhMKho+xreJZjAnnOUhSA3lRVOs=";
+      rev = "f9e3d49bb64bd95896ae1907e93f29f6332078c6";
+      hash = "sha256-ehl12w2CdVormWiq8tC402IWasx4MU6zASmO9r+ZTmo=";
     };
   };
 in
