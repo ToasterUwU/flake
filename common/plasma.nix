@@ -121,12 +121,6 @@
                   ];
                 };
               }
-              {
-                name = "com.github.k-donn.plasmoid-wunderground";
-                config = {
-                  Station.stationID = "IWOLFS59";
-                };
-              }
               "org.kde.plasma.marginsseparator"
               "org.kde.plasma.systemtray"
               "org.kde.plasma.digitalclock"
