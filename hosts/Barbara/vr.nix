@@ -108,6 +108,31 @@ in
         }
       '';
 
+      xdg.configFile."wlxoverlay/conf.d/zz-saved-config.json5".text = ''
+        {
+          "watch_pos": [
+            -0.059999954,
+            -0.022,
+            0.1760001
+          ],
+          "watch_rot": [
+            -0.6760993,
+            0.11002616,
+            0.707073,
+            -0.17551248
+          ],
+          "watch_hand": "Left",
+          "watch_view_angle_min": 0.5,
+          "watch_view_angle_max": 0.7,
+          "notifications_enabled": true,
+          "notifications_sound_enabled": true,
+          "realign_on_showhide": true,
+          "allow_sliding": true,
+          "space_drag_multiplier": 1.0,
+          "block_game_input": true
+        }
+      '';
+
       xdg.configFile."wlxoverlay/watch.yaml".text = ''
         width: 0.115
 
