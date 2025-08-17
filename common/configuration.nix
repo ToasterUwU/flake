@@ -220,8 +220,7 @@
     enable = true;
     settings = {
       paths = {
-        discordSucksSoIUseOBS = {
-        };
+        discordSucksSoIUseOBS = { };
       };
       webrtc = true;
     };
