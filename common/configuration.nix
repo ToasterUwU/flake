@@ -56,7 +56,10 @@
   console.keyMap = "de";
   services.libinput.touchpad.tapping = true;
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [ networkmanager-openvpn ];
+  };
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
 
