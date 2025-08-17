@@ -158,6 +158,7 @@
       uutils-coreutils-noprefix
       wget
       curl
+      yt-dlp
       gnupg
       git
       nano
