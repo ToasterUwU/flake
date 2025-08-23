@@ -81,6 +81,7 @@
             ps: with ps; [
               nodejs_22
               nil
+              act
             ]
           );
         };
