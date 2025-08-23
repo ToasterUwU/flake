@@ -165,7 +165,7 @@
           Description = "Run my favorite all in one Discord Rich Presence Music bridge";
         };
         Service = {
-          ExecStart = "${inputs.nixpkgs-mprisence.legacyPackages.x86_64-linux.mprisence}/bin/mprisence";
+          ExecStart = "${pkgs.mprisence}/bin/mprisence";
           Type = "simple";
           Restart = "always";
           RestartSec = 10;

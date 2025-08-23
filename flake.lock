@@ -245,22 +245,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-mprisence": {
-      "locked": {
-        "lastModified": 1755064861,
-        "narHash": "sha256-TpTjpFadz+/oPvgMGbawQkWElXS5KhtREcpa2penw6s=",
-        "owner": "ToasterUwU",
-        "repo": "nixpkgs",
-        "rev": "0c08b21a748456085fda4f9f05076e58e68d4fdc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ToasterUwU",
-        "ref": "add-mprisence",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-update": {
       "inputs": {
         "mmdoc": "mmdoc",
@@ -382,7 +366,6 @@
         "flatpaks": "flatpaks",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-mprisence": "nixpkgs-mprisence",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager",

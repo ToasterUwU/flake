@@ -176,6 +176,7 @@
       kdePackages.kdenlive
       bitwarden-desktop
       vesktop
+      mprisence
       element-desktop
       signal-desktop
       tor-browser
@@ -216,7 +217,6 @@
     ]
     ++ [
       inputs.agenix.packages.x86_64-linux.default
-      inputs.nixpkgs-mprisence.legacyPackages.x86_64-linux.mprisence
     ];
 
   services.mediamtx = {
