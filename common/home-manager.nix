@@ -72,9 +72,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    sharedModules = [
-      inputs.catppuccin.homeModules.catppuccin
-    ];
+    sharedModules = [ inputs.catppuccin.homeModules.catppuccin ];
 
     users.aki = {
       home.stateVersion = "23.11";
@@ -348,7 +346,7 @@
         bat.enable = true;
         ripgrep.enable = true;
         ripgrep-all.enable = true;
-        fd.enable  = true;
+        fd.enable = true;
         btop.enable = true;
         bottom.enable = true;
         gitui.enable = true;
