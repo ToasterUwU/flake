@@ -352,7 +352,15 @@
         gitui.enable = true;
         ssh = {
           enable = true;
+          enableDefaultConfig = false;
           matchBlocks = {
+            "*" = {
+              user = "aki";
+              extraOptions = {
+                StrictHostKeyChecking = "accept-new";
+              };
+            };
+
             hiltrud = {
               hostname = "192.168.178.167";
               user = "mks";
@@ -405,10 +413,6 @@
               hostname = "192.168.178.178";
             };
           };
-          extraConfig = ''
-            StrictHostKeyChecking accept-new
-            User aki
-          '';
         };
       };
       xdg.configFile."autostart/vesktop.desktop".text = ''
