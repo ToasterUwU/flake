@@ -121,6 +121,18 @@
                   ];
                 };
               }
+              {
+                name = "org.kde.plasma.weather";
+                config = {
+                  WeatherStation = {
+                    source = "bbcukmet|weather|Wolfsburg, Germany, DE|2806654";
+                  };
+                  Appearance = {
+                    showPressureInTooltip = true;
+                    showTemperatureInCompactMode = true;
+                  };
+                };
+              }
               "org.kde.plasma.marginsseparator"
               "org.kde.plasma.systemtray"
               "org.kde.plasma.digitalclock"
