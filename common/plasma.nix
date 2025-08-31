@@ -14,16 +14,14 @@
   };
 
   programs.kdeconnect.enable = true;
-  programs.kclock.enable = true;
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [ kate ];
 
   environment.systemPackages = with pkgs; [
-    qt6.qtwebengine
-
     krename
     kdePackages.kalk
     kdePackages.plasma-browser-integration
+    kdePackages.kclock
   ];
 
   users.users = {
