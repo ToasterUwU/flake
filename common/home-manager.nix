@@ -299,6 +299,7 @@
             backend = "fastfetch";
             distro = null;
             pride_month_shown = [ ];
+            pride_month_disable = false;
           };
         };
         fish = {
