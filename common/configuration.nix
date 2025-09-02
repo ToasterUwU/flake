@@ -260,7 +260,7 @@
     enable = true;
     flake = "github:ToasterUwU/flake";
     flags = [ "--verbose" ];
-    dates = "6:00";
+    dates = "9:00";
     operation = "boot";
   };
 
