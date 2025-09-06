@@ -146,7 +146,7 @@ let
 
         systemctl --user restart monado.service
 
-        lovr-playspace &
+        rm ~/.local/share/LOVR/lovr-playspace/points.json; lovr-playspace &
         wlx-overlay-s --replace &
         # index_camera_passthrough &
         kde-inhibit --power --screenSaver sleep infinity &
