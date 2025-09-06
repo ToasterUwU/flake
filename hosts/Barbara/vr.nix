@@ -396,11 +396,11 @@ in
         projection_mode = "FromEye"
       '';
 
-      xdg.dataFile."lovr-playspace/fade_start.txt".text = ''
+      xdg.dataFile."LOVR/lovr-playspace/fade_start.txt".text = ''
         0.1
       '';
-      xdg.dataFile."lovr-playspace/fade_stop.txt".text = ''
-        0.2
+      xdg.dataFile."LOVR/lovr-playspace/fade_stop.txt".text = ''
+        0.3
       '';
     };
   };
