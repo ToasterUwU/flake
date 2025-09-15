@@ -32,6 +32,7 @@ let
       openxr-loader
       vulkan-loader
       ode
+      libxcb
       xorg.libX11
       xorg.libXrandr
       xorg.libXinerama
