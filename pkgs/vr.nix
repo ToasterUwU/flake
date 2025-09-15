@@ -2,15 +2,15 @@
 let
   lovr = pkgs.stdenv.mkDerivation rec {
     pname = "lovr";
-    version = "v0.17.1";
+    version = "0.18.0";
     src = [
       (pkgs.fetchFromGitHub {
         name = pname;
         owner = "bjornbytes";
         repo = pname;
         fetchSubmodules = true;
-        rev = "161856b5ed4e6db38653552f515d58b6b485bf9b"; # latest release is broken
-        hash = "sha256-cO9cJH1/9hy0LmAuINXOERZ64nzwna9kPZlFGndsL+g=";
+        rev = "v${version}";
+        hash = "sha256-SyKJv9FmJyLGc3CT0JBNewvjtsmXKxiqaptysWiY4co=";
       })
       (pkgs.fetchFromGitHub {
         # This gets pulled in via cmake and not as a submodule, so we need to get it and tell cmake that we already have it
@@ -68,7 +68,7 @@ let
 
   lovr-playspace = pkgs.symlinkJoin rec {
     pname = "lovr-playspace";
-    version = "0.1.0";
+    version = "0.2.1";
     paths = [
       lovr
       (pkgs.stdenv.mkDerivation {
@@ -80,7 +80,7 @@ let
           repo = pname;
           tag = "${version}";
           fetchSubmodules = true;
-          hash = "sha256-nW4hyEf35NlfqljKKy47NC2pr3EuCKb4HbsFh8+CGRQ=";
+          hash = "sha256-3OfXFMjfSyr7e37N0Zw96/xFoCgriatxE/PFyfPJg90=";
         };
 
         dontUseCmakeConfigure = true;
@@ -147,7 +147,7 @@ let
 
         systemctl --user restart monado.service
 
-        rm ~/.local/share/LOVR/lovr-playspace/points.json; lovr-playspace &
+        lovr-playspace &
         wlx-overlay-s --replace &
         # index_camera_passthrough &
         kde-inhibit --power --screenSaver sleep infinity &
