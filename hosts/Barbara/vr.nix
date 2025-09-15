@@ -1,44 +1,54 @@
-{
-  inputs,
-  pkgs,
-  ...
-}:
-let
-  opencomposite = pkgs.opencomposite.overrideAttrs {
-    src = pkgs.fetchFromGitLab {
-      owner = "knah";
-      repo = "OpenOVR";
-      rev = "0815bcd70176968d657f96b72db5c0cc42ffbda8";
-      fetchSubmodules = true;
-      hash = "sha256-pEkqGCB59Wxa7GMfAxZIZdpqJEs41QyKz2ybh7eGIO0=";
-    };
-  };
-
-  xrizer = inputs.nixpkgs.legacyPackages.x86_64-linux.xrizer.overrideAttrs {
-    src = pkgs.fetchFromGitHub {
-      owner = "RinLovesYou";
-      repo = "xrizer";
-      rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
-      hash = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
-    };
-
-    doCheck = false;
-  };
-
-  monado = pkgs.monado.overrideAttrs {
-    src = pkgs.fetchFromGitLab {
-      domain = "gitlab.freedesktop.org";
-      owner = "Supreeeme";
-      repo = "monado";
-      rev = "f9e3d49bb64bd95896ae1907e93f29f6332078c6";
-      hash = "sha256-ehl12w2CdVormWiq8tC402IWasx4MU6zASmO9r+ZTmo=";
-    };
-  };
-in
+{ inputs, pkgs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ../../pkgs/vr.nix
+  ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      monado = prev.monado.overrideAttrs (old: {
+        src = final.fetchFromGitHub {
+          owner = "ToasterUwU";
+          repo = "monado";
+          rev = "8f85280c406ce2e23939c58bc925cf939f36e1e8";
+          hash = "sha256-ZeSmnAZ2gDiLTdlVAKQeS3cc6fcRBcSjYZf/M6eI8j4=";
+        };
+
+        # Fix for "File already exists in database" crash at startup
+        cmakeFlags = old.cmakeFlags ++ [
+          (final.lib.cmakeBool "XRT_HAVE_OPENCV" false)
+        ];
+      });
+
+      xrizer = prev.xrizer.overrideAttrs rec {
+        src = final.fetchFromGitHub {
+          owner = "RinLovesYou";
+          repo = "xrizer";
+          rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
+          hash = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+        };
+
+        cargoDeps = final.rustPlatform.fetchCargoVendor {
+          inherit src;
+          hash = "sha256-87JcULH1tAA487VwKVBmXhYTXCdMoYM3gOQTkM53ehE=";
+        };
+
+        patches = [ ];
+
+        doCheck = false;
+      };
+
+      opencomposite = prev.opencomposite.overrideAttrs {
+        src = final.fetchFromGitLab {
+          owner = "knah";
+          repo = "OpenOVR";
+          rev = "0815bcd70176968d657f96b72db5c0cc42ffbda8";
+          fetchSubmodules = true;
+          hash = "sha256-pEkqGCB59Wxa7GMfAxZIZdpqJEs41QyKz2ybh7eGIO0=";
+        };
+      };
+    })
   ];
 
   # SteamVR async reprojection patch
@@ -70,23 +80,25 @@ in
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = monado;
   };
 
-  systemd.user.services."monado".environment = {
-    STEAMVR_LH_ENABLE = "true";
-    XRT_COMPOSITOR_COMPUTE = "1";
-    XRT_COMPOSITOR_SCALE_PERCENTAGE = "150";
-    XRT_COMPOSITOR_DESIRED_MODE = "2";
-    # 0: 2880x1600@90.00 1: 2880x1600@144.00 2: 2880x1600@120.02 3: 2880x1600@80.00 4: 1920x1200@90.00
-    # 5: 1920x1080@90.00 6: 1600x1200@90.00 7: 1680x1050@90.00 8: 1280x1024@90.00 9: 1440x900@90.00
-    # 10: 1280x800@90.00 11: 1280x720@90.00 12: 1024x768@90.00 13: 800x600@90.00 14: 640x480@90.00
+  systemd.user.services.monado = {
+    serviceConfig.LimitNOFILE = 8192;
+    environment = {
+      STEAMVR_LH_ENABLE = "true";
+      XRT_COMPOSITOR_COMPUTE = "1";
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "150";
+      XRT_COMPOSITOR_DESIRED_MODE = "2";
+      # 0: 2880x1600@90.00 1: 2880x1600@144.00 2: 2880x1600@120.02 3: 2880x1600@80.00 4: 1920x1200@90.00
+      # 5: 1920x1080@90.00 6: 1600x1200@90.00 7: 1680x1050@90.00 8: 1280x1024@90.00 9: 1440x900@90.00
+      # 10: 1280x800@90.00 11: 1280x720@90.00 12: 1024x768@90.00 13: 800x600@90.00 14: 640x480@90.00
+    };
   };
 
   home-manager = {
     users.aki = {
       xdg.configFile."openxr/1/active_runtime.json".source =
-        "${monado}/share/openxr/1/openxr_monado.json";
+        "${pkgs.monado}/share/openxr/1/openxr_monado.json";
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -101,7 +113,7 @@ in
           ],
           "runtime" :
           [
-            "${xrizer}/lib/xrizer",
+            "${pkgs.xrizer}/lib/xrizer",
             "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
           ],
           "version" : 1
