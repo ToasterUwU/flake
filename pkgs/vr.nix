@@ -115,7 +115,7 @@ let
 
   monado-start = pkgs.stdenv.mkDerivation {
     pname = "monado-start";
-    version = "3.0";
+    version = "3.1.0";
 
     src = pkgs.writeShellApplication {
       name = "monado-start";
@@ -146,9 +146,11 @@ let
             rm -f "$GROUP_PID_FILE"
           fi
 
-          systemctl --user stop monado.service &
+          systemctl --user --no-block stop monado.service
           lighthouse -vv --state off &
           wait
+
+          exit 0
         }
 
         function on() {
@@ -168,7 +170,9 @@ let
           echo "$PGID" > "$GROUP_PID_FILE"
         }
 
+        trap off EXIT INT TERM
         echo "Press ENTER to turn everything OFF."
+
         on
         read -r
         off
