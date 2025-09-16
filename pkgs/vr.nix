@@ -126,6 +126,7 @@ let
           wlx-overlay-s
           wayvr-dashboard
           # index_camera_passthrough
+          lighthouse-steamvr
           kdePackages.kde-cli-tools
         ]
         ++ [
@@ -139,6 +140,7 @@ let
             echo "exiting"
             jobs -p | xargs kill
             systemctl --user stop monado.service
+            lighthouse -vv --state off
             echo "bye!"
         }
         export -f clean_up
@@ -147,6 +149,7 @@ let
 
         systemctl --user restart monado.service
 
+        lighthouse -vv --state on &
         lovr-playspace &
         wlx-overlay-s --replace &
         # index_camera_passthrough &
@@ -178,5 +181,6 @@ in
   environment.systemPackages = [
     monado-start
     lovr-playspace
+    pkgs.lighthouse-steamvr
   ];
 }
