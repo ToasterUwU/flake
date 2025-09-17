@@ -49,6 +49,12 @@
               rm -f "$FILE_PATH"
               echo "File $FILE_PATH has been deleted."
             fi
+
+            FILE_PATH="$dir/.config/openvr/openvrpaths.vrpath.backup"
+            if [ -e "$FILE_PATH" ]; then
+              rm -f "$FILE_PATH"
+              echo "File $FILE_PATH has been deleted."
+            fi
           fi
         done
       '';
