@@ -1,4 +1,10 @@
 { inputs, pkgs, ... }:
+let
+  wallpapers = pkgs.runCommand "wallpapers" {} ''
+    mkdir -p $out/share/wallpapers
+    cp -a ${../assets/wallpapers}/* $out/share/wallpapers/
+  '';
+in
 {
   services = {
     xserver.enable = true;
@@ -54,9 +60,9 @@
           colorScheme = "CatpuccinMochaPink";
           iconTheme = "Papirus-Dark";
           cursor.theme = "catppuccin-mocha-pink-cursors";
-          wallpaperSlideShow.path = ../assets/wallpapers;
+          wallpaperSlideShow.path = "${wallpapers}/share/wallpapers";
         };
-        kscreenlocker.appearance.wallpaperSlideShow.path = ../assets/wallpapers;
+        kscreenlocker.appearance.wallpaperSlideShow.path = "${wallpapers}/share/wallpapers";
 
         kwin.titlebarButtons = {
           left = [
