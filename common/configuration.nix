@@ -259,7 +259,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:ToasterUwU/flake";
-    flags = [ "--verbose" ];
+    flags = [ "--verbose" "-j 1" ];
     dates = "9:00";
     operation = "boot";
   };
