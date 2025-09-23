@@ -101,7 +101,10 @@
 
   services.fstrim.enable = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland
+  environment.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto"; # Electron Apps in Wayland
+    NIXOS_OZONE_WL = "1"; # Electron Apps in Wayland NixOS specific
+  };
 
   age.secrets = {
     "aki-password".file = ../secrets/common/aki-password.age;
@@ -259,7 +262,10 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:ToasterUwU/flake";
-    flags = [ "--verbose" "-j 1" ];
+    flags = [
+      "--verbose"
+      "-j 1"
+    ];
     dates = "9:00";
     operation = "boot";
   };
