@@ -207,6 +207,7 @@
       chromedriver
       intiface-central
       pyfa
+      scrcpy
     ]
     ++ [
       (pkgs.wrapOBS {
