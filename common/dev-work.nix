@@ -69,7 +69,7 @@
                 };
               };
               "nix.formatterPath" = "nixfmt";
-              "editor.fontFamily" = "Fira Code";
+              "editor.fontFamily" = "FiraCode Nerd Font Mono";
               "editor.fontLigatures" = true;
               "[python]" = {
                 "editor.defaultFormatter" = "charliermarsh.ruff";
