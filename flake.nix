@@ -37,6 +37,7 @@
       url = "github:runtime-shady-backroom/buttplug-lite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs =
@@ -60,7 +61,15 @@
       nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [ ./hosts/Barbara ];
+        modules = [
+          ./hosts/Barbara
+          inputs.niri.nixosModules.niri
+          inputs.home-manager.nixosModules.home-manager
+          inputs.catppuccin.nixosModules.catppuccin
+          inputs.agenix.nixosModules.default
+          inputs.arion.nixosModules.arion
+          inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+        ];
 
         specialArgs = {
           inherit inputs;
@@ -69,7 +78,14 @@
       nixosConfigurations.Gertrude = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [ ./hosts/Gertrude ];
+        modules = [
+          ./hosts/Gertrude
+          inputs.niri.nixosModules.niri
+          inputs.home-manager.nixosModules.home-manager
+          inputs.catppuccin.nixosModules.catppuccin
+          inputs.agenix.nixosModules.default
+          inputs.arion.nixosModules.arion
+        ];
 
         specialArgs = {
           inherit inputs;

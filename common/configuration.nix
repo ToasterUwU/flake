@@ -6,10 +6,6 @@
 }:
 {
   imports = [
-    inputs.catppuccin.nixosModules.catppuccin
-    inputs.agenix.nixosModules.default
-    inputs.arion.nixosModules.arion
-    inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
     ../pkgs/general-utils.nix
   ];
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];

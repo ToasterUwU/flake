@@ -1,7 +1,5 @@
 { inputs, pkgs, ... }:
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
-
   age.secrets = {
     "aki-id_ed25519" = {
       file = ../secrets/common/aki-id_ed25519.age;
