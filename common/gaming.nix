@@ -6,6 +6,11 @@
   services.ratbagd.enable = true;
   services.libinput.mouse.accelProfile = "flat";
 
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+
   programs.steam = {
     enable = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
