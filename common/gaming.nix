@@ -56,7 +56,7 @@
         userId = "149816402";
         launchOptions = {
           "359320" =
-            "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc OXR_PARALLEL_VIEWS=1 MinEdLauncher %command% /autorun /autoquit /edo /vr /restart 15"; # Elite Dangerous
+            "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc OXR_PARALLEL_VIEWS=1 VR_OVERRIDE=${pkgs.opencomposite}/lib/opencomposite MinEdLauncher %command% /autorun /autoquit /edo /vr /restart 15"; # Elite Dangerous
           "2519830" =
             "env -u TZ PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc OXR_PARALLEL_VIEWS=1 ./run_monkeyloader.sh %command%"; # Resonite
           "438100" = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%"; # VRChat

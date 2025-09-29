@@ -73,6 +73,8 @@
       bs-manager
       eepyxr
       wlx-overlay-s
+      opencomposite
+      xrizer
     ]
     ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
 
