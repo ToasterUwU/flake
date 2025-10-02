@@ -1,54 +1,41 @@
 { inputs, pkgs, ... }:
+let
+  custom-monado = pkgs.monado.overrideAttrs (old: {
+    src = pkgs.fetchFromGitHub {
+      owner = "ToasterUwU";
+      repo = "monado";
+      rev = "8f85280c406ce2e23939c58bc925cf939f36e1e8";
+      hash = "sha256-ZeSmnAZ2gDiLTdlVAKQeS3cc6fcRBcSjYZf/M6eI8j4=";
+    };
+
+    # Fix for "File already exists in database" crash at startup
+    cmakeFlags = old.cmakeFlags ++ [
+      (pkgs.lib.cmakeBool "XRT_HAVE_OPENCV" false)
+    ];
+  });
+
+  custom-xrizer = pkgs.xrizer.overrideAttrs rec {
+    src = pkgs.fetchFromGitHub {
+      owner = "RinLovesYou";
+      repo = "xrizer";
+      rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
+      hash = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+    };
+
+    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+      inherit src;
+      hash = "sha256-87JcULH1tAA487VwKVBmXhYTXCdMoYM3gOQTkM53ehE=";
+    };
+
+    patches = [ ];
+
+    doCheck = false;
+  };
+in
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ../../pkgs/vr.nix
-  ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      monado = prev.monado.overrideAttrs (old: {
-        src = final.fetchFromGitHub {
-          owner = "ToasterUwU";
-          repo = "monado";
-          rev = "8f85280c406ce2e23939c58bc925cf939f36e1e8";
-          hash = "sha256-ZeSmnAZ2gDiLTdlVAKQeS3cc6fcRBcSjYZf/M6eI8j4=";
-        };
-
-        # Fix for "File already exists in database" crash at startup
-        cmakeFlags = old.cmakeFlags ++ [
-          (final.lib.cmakeBool "XRT_HAVE_OPENCV" false)
-        ];
-      });
-
-      xrizer = prev.xrizer.overrideAttrs rec {
-        src = final.fetchFromGitHub {
-          owner = "RinLovesYou";
-          repo = "xrizer";
-          rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
-          hash = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
-        };
-
-        cargoDeps = final.rustPlatform.fetchCargoVendor {
-          inherit src;
-          hash = "sha256-87JcULH1tAA487VwKVBmXhYTXCdMoYM3gOQTkM53ehE=";
-        };
-
-        patches = [ ];
-
-        doCheck = false;
-      };
-
-      opencomposite = prev.opencomposite.overrideAttrs {
-        src = final.fetchFromGitLab {
-          owner = "knah";
-          repo = "OpenOVR";
-          rev = "0815bcd70176968d657f96b72db5c0cc42ffbda8";
-          fetchSubmodules = true;
-          hash = "sha256-pEkqGCB59Wxa7GMfAxZIZdpqJEs41QyKz2ybh7eGIO0=";
-        };
-      };
-    })
   ];
 
   # SteamVR async reprojection patch
@@ -73,8 +60,6 @@
       bs-manager
       eepyxr
       wlx-overlay-s
-      opencomposite
-      xrizer
     ]
     ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
 
@@ -82,6 +67,7 @@
     enable = true;
     defaultRuntime = true;
     highPriority = true;
+    package = custom-monado;
   };
 
   systemd.user.services.monado = {
@@ -100,7 +86,7 @@
   home-manager = {
     users.aki = {
       xdg.configFile."openxr/1/active_runtime.json".source =
-        "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+        "${custom-monado}/share/openxr/1/openxr_monado.json";
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -115,7 +101,7 @@
           ],
           "runtime" :
           [
-            "${pkgs.xrizer}/lib/xrizer",
+            "${custom-xrizer}/lib/xrizer",
             "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
           ],
           "version" : 1
