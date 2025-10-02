@@ -25,40 +25,6 @@
     };
   };
 
-  system.userActivationScripts = {
-    removeConflictingFiles = {
-      text = ''
-        for dir in /home/*; do
-          if [ -d "$dir" ]; then
-            FILE_PATH="$dir/.gtkrc-2.0.backup"
-            if [ -e "$FILE_PATH" ]; then
-              rm -f "$FILE_PATH"
-              echo "File $FILE_PATH has been deleted."
-            fi
-
-            FILE_PATH="$dir/.config/gtk-4.0/gtk.css.backup"
-            if [ -e "$FILE_PATH" ]; then
-              rm -f "$FILE_PATH"
-              echo "File $FILE_PATH has been deleted."
-            fi
-
-            FILE_PATH="$dir/.config/fontconfig/conf.d/10-hm-fonts.conf.backup"
-            if [ -e "$FILE_PATH" ]; then
-              rm -f "$FILE_PATH"
-              echo "File $FILE_PATH has been deleted."
-            fi
-
-            FILE_PATH="$dir/.config/openvr/openvrpaths.vrpath.backup"
-            if [ -e "$FILE_PATH" ]; then
-              rm -f "$FILE_PATH"
-              echo "File $FILE_PATH has been deleted."
-            fi
-          fi
-        done
-      '';
-    };
-  };
-
   programs.fuse.userAllowOther = true;
 
   # Fix for FHS wrapped software thinking the permissions and ownership of the ssh config are mangled
@@ -73,6 +39,7 @@
 
   home-manager = {
     backupFileExtension = "backup";
+    overwriteBackup = true;
     useGlobalPkgs = true;
     useUserPackages = true;
 
