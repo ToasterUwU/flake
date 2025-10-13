@@ -204,6 +204,7 @@
       intiface-central
       pyfa
       scrcpy
+      qpwgraph
     ]
     ++ [
       (pkgs.wrapOBS {
