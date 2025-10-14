@@ -75,6 +75,7 @@
                 "editor.defaultFormatter" = "charliermarsh.ruff";
               };
               "python.analysis.typeCheckingMode" = "standard";
+              "lldb.suppressUpdateNotifications" = true;
             };
           };
           package = pkgs.vscode.fhsWithPackages (
