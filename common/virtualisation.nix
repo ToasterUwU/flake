@@ -59,7 +59,6 @@
             serverIP = "192.168.178.11";
             serverPort = "8266";
             inContainer = "true";
-            ffmpegVersion = "6";
             TZ = "Europe/Berlin";
             PUID = "1000";
             PGID = "1000";
