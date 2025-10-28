@@ -27,12 +27,13 @@
           enable = true;
           package = pkgs.gitFull;
 
-          userName = "ToasterUwU";
-          userEmail = "Aki@ToasterUwU.com";
-
           lfs.enable = true;
+          settings = {
+            user = {
+              name = "ToasterUwU";
+              email = "Aki@ToasterUwU.com";
+            };
 
-          extraConfig = {
             init.defaultBranch = "main";
 
             # Thanks Scrumplex for showing me this from Scott! https://www.youtube.com/watch?v=aolI_Rz0ZqY
