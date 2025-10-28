@@ -988,9 +988,9 @@
 
                 "Mod+W".action = toggle-column-tabbed-display;
 
-                "Print".action = screenshot;
+                "Print".action.screenshot = [ ];
                 "Ctrl+Print".action.screenshot-screen = [ ]; # Temp fix for https://github.com/sodiboo/niri-flake/issues/922
-                "Alt+Print".action = screenshot-window;
+                "Alt+Print".action.screenshot-window = [ ];
 
                 "Mod+Escape" = {
                   allow-inhibiting = false;
