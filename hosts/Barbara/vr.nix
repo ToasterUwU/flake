@@ -1,17 +1,11 @@
 { inputs, pkgs, ... }:
 let
   custom-monado = pkgs.monado.overrideAttrs (old: {
-    src = pkgs.fetchFromGitHub {
-      owner = "ToasterUwU";
-      repo = "monado";
-      rev = "8f85280c406ce2e23939c58bc925cf939f36e1e8";
-      hash = "sha256-ZeSmnAZ2gDiLTdlVAKQeS3cc6fcRBcSjYZf/M6eI8j4=";
+    src = pkgs.fetchgit {
+      url = "https://tangled.org/@matrixfurry.com/monado";
+      rev = "8214b14685a19d4cd14d54036276a84156670de9";
+      hash = "sha256-DM5+NUMGIceD5668saUBRnYfMml4/3GXB+xns2ENygc=";
     };
-
-    # Fix for "File already exists in database" crash at startup
-    cmakeFlags = old.cmakeFlags ++ [
-      (pkgs.lib.cmakeBool "XRT_HAVE_OPENCV" false)
-    ];
   });
 
   custom-xrizer = pkgs.xrizer.overrideAttrs rec {
@@ -50,6 +44,53 @@ in
   #   }
   # ];
 
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernelPackages = pkgs.linuxPackagesFor (
+    pkgs.linux_6_17.override {
+      argsOverride = rec {
+        src = pkgs.fetchurl {
+          url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+          hash = "sha256-PsyGGdiltfZ1Ik0vUscdH8Cbw/nAGdi9gtBYHgNolJk=";
+        };
+        version = "6.17.3";
+        modDirVersion = "6.17.3";
+      };
+    }
+  );
+
+  # Bigscreen Beyond Kernel patches from LVRA Discord Thread
+  boot.kernelPatches = [
+    {
+      name = "0001-drm-edid-parse-DRM-VESA-dsc-bpp-target";
+      patch = pkgs.fetchpatch {
+        name = "0001-drm-edid-parse-DRM-VESA-dsc-bpp-target.patch";
+        url = "https://cdn.discordapp.com/attachments/1428185501008924672/1428194883746795580/0001-drm-edid-parse-DRM-VESA-dsc-bpp-target.patch?ex=69021862&is=6900c6e2&hm=d3da5d3a023ae44ce136b9bfa82bff6148ac6043a882cf88d3f884b35a90501e&";
+        hash = "sha256-u3sN68VxVUs7zQ6qHnniDonrsWJXtlQQ9IB5fb2gw0U=";
+      };
+    }
+    {
+      name = "0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid";
+      patch = pkgs.fetchpatch {
+        name = "0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch";
+        url = "https://cdn.discordapp.com/attachments/1428185501008924672/1428194884006838402/0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch?ex=69021862&is=6900c6e2&hm=dbbb8f02aef9ffe1f72228c69221d8088b8ac106a2c3d04453ca7b14da2b1040&";
+        hash = "sha256-out98KclJZAOz79enYH7jHP/wCRQGc7jvscatmYAp9A=";
+      };
+    }
+  ];
+
+  # Udev rules for Bigscreen devices
+  services.udev.extraRules = ''
+    # Bigscreen Beyond
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0101", MODE="0660", TAG+="uaccess"
+    # Bigscreen Bigeye
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0202", MODE="0660", TAG+="uaccess"
+    # Bigscreen Beyond Audio Strap
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0105", MODE="0660", TAG+="uaccess"
+    # Bigscreen Beyond Firmware Mode?
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="4004", MODE="0660", TAG+="uaccess"
+  '';
+
   programs.steam = {
     extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
   };
@@ -75,11 +116,10 @@ in
     environment = {
       STEAMVR_LH_ENABLE = "true";
       XRT_COMPOSITOR_COMPUTE = "1";
-      XRT_COMPOSITOR_SCALE_PERCENTAGE = "150";
-      XRT_COMPOSITOR_DESIRED_MODE = "2";
-      # 0: 2880x1600@90.00 1: 2880x1600@144.00 2: 2880x1600@120.02 3: 2880x1600@80.00 4: 1920x1200@90.00
-      # 5: 1920x1080@90.00 6: 1600x1200@90.00 7: 1680x1050@90.00 8: 1280x1024@90.00 9: 1440x900@90.00
-      # 10: 1280x800@90.00 11: 1280x720@90.00 12: 1024x768@90.00 13: 800x600@90.00 14: 640x480@90.00
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
+      XRT_COMPOSITOR_DESIRED_MODE = "0";
+      # XRT_COMPOSITOR_DESIRED_MODE=0 is the 75hz mode
+      # XRT_COMPOSITOR_DESIRED_MODE=1 is the 90hz mode
     };
   };
 
