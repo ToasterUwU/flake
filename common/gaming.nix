@@ -62,11 +62,11 @@
         gameOverrides = {
           "359320" = {
             # Elite Dangerous
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc VR_OVERRIDE=${pkgs.opencomposite}/lib/opencomposite MinEdLauncher %command% /autorun /autoquit /edo /vr /restart 15";
+            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc VR_OVERRIDE=${pkgs.opencomposite}/lib/opencomposite OXR_PARALLEL_VIEWS=1 MinEdLauncher %command% /autorun /autoquit /edo /vr /restart 15";
           };
           "2519830" = {
             # Resonite
-            launchOptions = "env -u TZ PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc ./run_monkeyloader.sh %command%";
+            launchOptions = "env -u TZ PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc OXR_PARALLEL_VIEWS=1 ./run_monkeyloader.sh %command%";
             protonOverride = "GE-Proton-rtsp";
           };
           "438100" = {
