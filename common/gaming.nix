@@ -66,7 +66,7 @@
           };
           "2519830" = {
             # Resonite
-            launchOptions = "env -u TZ PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc OXR_PARALLEL_VIEWS=1 ./run_monkeyloader.sh %command%";
+            launchOptions = "env -u TZ PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc ./run_monkeyloader.sh %command%";
             protonOverride = "GE-Proton-rtsp";
           };
           "438100" = {
