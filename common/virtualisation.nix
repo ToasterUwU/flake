@@ -35,7 +35,7 @@
           environment = {
             WATCHTOWER_CLEANUP = "true";
             WATCHTOWER_REMOVE_VOLUMES = "true";
-            WATCHTOWER_SCHEDULE = "0 0 5 * * *";
+            WATCHTOWER_SCHEDULE = "0 0 8 * * 3" ; # every Wednesday at 8am
           };
           restart = "unless-stopped";
         };
