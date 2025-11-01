@@ -54,11 +54,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751324238,
-        "narHash": "sha256-Z6e3eD7P67j1ck5ATMNi6bovWbtl6SProMA1oRfTax0=",
+        "lastModified": 1761979459,
+        "narHash": "sha256-xYMvIqdw/wjt/ercwFNBM4B02a+ueVrv/A1LTjBQ4Sk=",
         "owner": "runtime-shady-backroom",
         "repo": "buttplug-lite",
-        "rev": "27b49440fba7ba03f70187286c17b149a9f08141",
+        "rev": "9410ff5185c5af0d261a071001195b24fbb0fbc3",
         "type": "github"
       },
       "original": {
@@ -381,11 +381,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1761672384,
-        "narHash": "sha256-o9KF3DJL7g7iYMZq9SWgfS1BFlNbsm6xplRjVlOCkXI=",
+        "lastModified": 1761907660,
+        "narHash": "sha256-kJ8lIZsiPOmbkJypG+B5sReDXSD1KGu2VEPNqhRa/ew=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "08dacfca559e1d7da38f3cf05f1f45ee9bfd213c",
+        "rev": "2fb006b87f04c4d3bdf08cfdbc7fab9c13d94a15",
         "type": "github"
       },
       "original": {
