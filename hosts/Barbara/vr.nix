@@ -63,19 +63,11 @@ in
   boot.kernelPatches = [
     {
       name = "0001-drm-edid-parse-DRM-VESA-dsc-bpp-target";
-      patch = pkgs.fetchpatch {
-        name = "0001-drm-edid-parse-DRM-VESA-dsc-bpp-target.patch";
-        url = "https://cdn.discordapp.com/attachments/1428185501008924672/1428194883746795580/0001-drm-edid-parse-DRM-VESA-dsc-bpp-target.patch?ex=69021862&is=6900c6e2&hm=d3da5d3a023ae44ce136b9bfa82bff6148ac6043a882cf88d3f884b35a90501e&";
-        hash = "sha256-u3sN68VxVUs7zQ6qHnniDonrsWJXtlQQ9IB5fb2gw0U=";
-      };
+      patch = ../../assets/kernel/0001-drm-edid-parse-DRM-VESA-dsc-bpp-target.patch;
     }
     {
       name = "0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid";
-      patch = pkgs.fetchpatch {
-        name = "0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch";
-        url = "https://cdn.discordapp.com/attachments/1428185501008924672/1428194884006838402/0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch?ex=69021862&is=6900c6e2&hm=dbbb8f02aef9ffe1f72228c69221d8088b8ac106a2c3d04453ca7b14da2b1040&";
-        hash = "sha256-out98KclJZAOz79enYH7jHP/wCRQGc7jvscatmYAp9A=";
-      };
+      patch = ../../assets/kernel/0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch;
     }
   ];
 
