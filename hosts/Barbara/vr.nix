@@ -94,6 +94,8 @@ in
       bs-manager
       eepyxr
       wlx-overlay-s
+      lovr-playspace
+      resolute
     ]
     ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
 
