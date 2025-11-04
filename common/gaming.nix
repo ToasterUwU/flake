@@ -17,6 +17,11 @@
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
     protontricks.enable = true;
+    package = pkgs.steam.override {
+      extraProfile = ''
+        unset TZ
+      '';
+    };
   };
 
   programs.corectrl.enable = true;
@@ -54,62 +59,137 @@
   };
 
   home-manager = {
-    sharedModules = [ inputs.steam-launch-options.homeManagerModules.steam-launch-options ];
+    sharedModules = [ inputs.steam-config-nix.homeModules.default ];
     users.aki = {
-      programs.steam-launch-options = {
+      programs.steam.config = {
         enable = true;
-        defaultProton = "GE-Proton";
-        gameOverrides = {
-          "359320" = {
-            # Elite Dangerous
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc VR_OVERRIDE=${pkgs.opencomposite}/lib/opencomposite OXR_PARALLEL_VIEWS=1 MinEdLauncher %command% /autorun /autoquit /edo /vr /restart 15";
+        closeSteam = true;
+        apps = {
+          elite-dangerous = {
+            id = 359320;
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                VR_OVERRIDE = "${pkgs.opencomposite}/lib/opencomposite";
+                OXR_PARALLEL_VIEWS = true;
+              };
+              wrappers = [ "MinEdLauncher" ];
+              args = [
+                "/autorun"
+                "/autoquit"
+                "/edo"
+                "/vr"
+                "/restart"
+                15
+              ];
+            };
           };
-          "2519830" = {
-            # Resonite
-            launchOptions = "env -u TZ PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc ./run_monkeyloader.sh %command%";
-            protonOverride = "GE-Proton-rtsp";
+          resonite = {
+            id = 2519830;
+            compatTool = "GE-Proton-rtsp";
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+              wrappers = [ "./run_monkeyloader.sh" ];
+              args = [
+                "-Device SteamVR"
+              ];
+            };
           };
-          "438100" = {
-            # VRChat
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%";
-            protonOverride = "GE-Proton-rtsp";
+          vrchat = {
+            id = 438100;
+            compatTool = "GE-Proton-rtsp";
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+            };
           };
-          "1292040" = {
-            # Stride
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%";
+          stride = {
+            id = 1292040;
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+            };
           };
-          "620980" = {
-            # Beat Saber
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%";
+          beat-saber = {
+            id = 620980;
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+            };
           };
-          "2441700" = {
-            # UNDERDOGS
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%";
+          underdogs = {
+            id = 2441700;
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+            };
           };
-          "1755100" = {
-            # The Last Clockwinder
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%";
+          last-clockwinder = {
+            id = 1755100;
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+            };
           };
-          "1225570" = {
-            # Unravel Two, EA Launcher Fix
-            launchOptions = "for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}'); do export $var=$(echo \${!var} | rev | cut -c 1-2000 | rev); done ; %command%";
+          unravel-two = {
+            id = 1225570;
+            # EA Launcher Fix
+            launchOptions = {
+              extraConfig = ''
+                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                do
+                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                done
+              '';
+            };
           };
-          "1233570" = {
-            # Mirror's Edge Catalyst, EA Launcher Fix
-            launchOptions = "for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}'); do export $var=$(echo \${!var} | rev | cut -c 1-2000 | rev); done ; %command%";
-            protonOverride = "proton_8";
+          mirrors-edge-catalyst = {
+            id = 1233570;
+            # EA Launcher Fix
+            launchOptions = {
+              extraConfig = ''
+                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                do
+                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                done
+              '';
+            };
           };
-          "1238080" = {
-            # Burnout Paradise Remastered, EA Launcher Fix
-            launchOptions = "for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}'); do export $var=$(echo \${!var} | rev | cut -c 1-2000 | rev); done ; %command%";
+          burnout-paradise-remastered = {
+            id = 1238080;
+            # EA Launcher Fix
+            launchOptions = {
+              extraConfig = ''
+                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                do
+                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                done
+              '';
+            };
           };
-          "450540" = {
-            # H3VR
-            launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%";
+          h3vr = {
+            id = 450540;
+            launchOptions = {
+              extraConfig = ''
+                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                do
+                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                done
+              '';
+            };
           };
-          "244850" = {
-            # Space Engineers
-            launchOptions = "%command% -useallavailablecores";
+          space-engineers = {
+            id = 244850;
+            launchOptions = {
+              args = [ "-useallavailablecores" ];
+            };
           };
         };
       };

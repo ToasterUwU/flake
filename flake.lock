@@ -463,7 +463,7 @@
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager",
         "rust-overlay": "rust-overlay",
-        "steam-launch-options": "steam-launch-options"
+        "steam-config-nix": "steam-config-nix"
       }
     },
     "runtimeDeps": {
@@ -502,23 +502,24 @@
         "type": "github"
       }
     },
-    "steam-launch-options": {
+    "steam-config-nix": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1760475791,
-        "narHash": "sha256-0jpv8Z14R+yYWd1DyUZB0qqVAqea2IepyWZOFjrXPzc=",
-        "owner": "ToasterUwU",
-        "repo": "steam-launch-options-nix",
-        "rev": "d297130a99a25571d0a1106f3faa61f6212d1658",
+        "lastModified": 1762040116,
+        "narHash": "sha256-OMx25zErA/vVG6p6m0ulyYqvmr1c6Wsn27JMXkY56j0=",
+        "owner": "different-name",
+        "repo": "steam-config-nix",
+        "rev": "6030d4906f6f88cb3c909b73fd19dac284078b23",
         "type": "github"
       },
       "original": {
-        "owner": "ToasterUwU",
-        "repo": "steam-launch-options-nix",
+        "owner": "different-name",
+        "repo": "steam-config-nix",
         "type": "github"
       }
     },
@@ -579,6 +580,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },

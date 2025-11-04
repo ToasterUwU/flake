@@ -10,8 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    steam-launch-options = {
-      url = "github:ToasterUwU/steam-launch-options-nix";
+    steam-config-nix = {
+      url = "github:different-name/steam-config-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak";
