@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [ ];
 
@@ -73,7 +78,7 @@
                 VR_OVERRIDE = "${pkgs.opencomposite}/lib/opencomposite";
                 OXR_PARALLEL_VIEWS = true;
               };
-              wrappers = [ "MinEdLauncher" ];
+              wrappers = [ "${lib.getExe pkgs.min-ed-launcher}" ];
               args = [
                 "/autorun"
                 "/autoquit"
