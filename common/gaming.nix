@@ -98,7 +98,8 @@
               };
               wrappers = [ "./run_monkeyloader.sh" ];
               args = [
-                "-Device SteamVR"
+                "-Device"
+                "SteamVR"
               ];
             };
           };
