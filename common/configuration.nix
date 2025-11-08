@@ -264,7 +264,7 @@
       "--verbose"
       "-j 1"
     ];
-    dates = "9:00";
+    dates = "13:00";
     operation = "boot";
   };
 
@@ -289,7 +289,7 @@
 
   nix.gc = {
     automatic = true;
-    dates = "8:00";
+    dates = "14:00";
     options = "--delete-older-than 7d";
   };
 
