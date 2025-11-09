@@ -91,7 +91,7 @@
           };
           resonite = {
             id = 2519830;
-            compatTool = "GE-Proton-rtsp";
+            compatTool = "GE-Proton";
             launchOptions = {
               env = {
                 PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
