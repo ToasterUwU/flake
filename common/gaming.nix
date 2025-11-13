@@ -66,6 +66,38 @@
   home-manager = {
     sharedModules = [ inputs.steam-config-nix.homeModules.default ];
     users.aki = {
+      xdg.configFile."min-ed-launcher/settings.json".text = ''
+          {
+            "apiUri": "https://api.zaonce.net",
+            "watchForCrashes": false,
+            "language": null,
+            "autoUpdate": true,
+            "checkForLauncherUpdates": true,
+            "maxConcurrentDownloads": 4,
+            "forceUpdate": "",
+            "processes": [
+              {
+                "fileName": "${lib.getExe pkgs.ed-odyssey-materials-helper}",
+                "keepOpen": true
+              },
+              {
+                "fileName": "${lib.getExe pkgs.edmarketconnector}",
+                "keepOpen": true
+              },
+              {
+                "fileName": "${lib.getExe pkgs.steam}",
+                "arguments": "steam://rungameid/12396075390739677184",
+                "keepOpen": true
+              }
+            ],
+            "shutdownProcesses": [],
+            "filterOverrides": [
+                { "sku": "FORC-FDEV-DO-1000", "filter": "edo" },
+                { "sku": "FORC-FDEV-DO-38-IN-40", "filter": "edh4" }
+            ],
+            "additionalProducts": []
+        }
+      '';
       programs.steam.config = {
         enable = true;
         closeSteam = true;
