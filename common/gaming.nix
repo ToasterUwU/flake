@@ -127,16 +127,7 @@
             launchOptions = {
               env = {
                 PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-                SDL_AUDIO_DRIVER = "pulseaudio";
-                PULSE_LATENCY_MSEC = "15";
-                PULSE_BUFFER_MSEC = "250";
-                PULSE_FRAGMENT_SIZE_MSEC = "25";
               };
-              wrappers = [ "./run_monkeyloader.sh" ];
-              args = [
-                "-Device"
-                "SteamVR"
-              ];
             };
           };
           vrchat = {
