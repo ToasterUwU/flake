@@ -180,7 +180,6 @@
       signal-desktop
       tor-browser
       chromium
-      # jellyfin-media-player
       supersonic
       mpv
       simple-scan
