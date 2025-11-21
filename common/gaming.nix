@@ -128,6 +128,7 @@
               env = {
                 PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
               };
+              wrappers = [ "./run_monkeyloader.sh" ];
             };
           };
           vrchat = {
