@@ -44,20 +44,20 @@ in
   #   }
   # ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.kernelPackages = pkgs.linuxPackagesFor (
-    pkgs.linux_6_17.override {
-      argsOverride = rec {
-        src = pkgs.fetchurl {
-          url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-          hash = "sha256-PsyGGdiltfZ1Ik0vUscdH8Cbw/nAGdi9gtBYHgNolJk=";
-        };
-        version = "6.17.3";
-        modDirVersion = "6.17.3";
-      };
-    }
-  );
+  # boot.kernelPackages = pkgs.linuxPackagesFor (
+  #   pkgs.linux_6_17.override {
+  #     argsOverride = rec {
+  #       src = pkgs.fetchurl {
+  #         url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+  #         hash = "sha256-PsyGGdiltfZ1Ik0vUscdH8Cbw/nAGdi9gtBYHgNolJk=";
+  #       };
+  #       version = "6.17.3";
+  #       modDirVersion = "6.17.3";
+  #     };
+  #   }
+  # );
 
   # Bigscreen Beyond Kernel patches from LVRA Discord Thread
   boot.kernelPatches = [
