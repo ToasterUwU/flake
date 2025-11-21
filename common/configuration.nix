@@ -192,7 +192,7 @@
       gimp3
       blender
       unityhub
-      # openscad-unstable
+      openscad-unstable
       orca-slicer
       (pkgs.writeShellScriptBin "ledger-live-desktop" ''
         # unset NIXOS_OZONE_WL for this app only
