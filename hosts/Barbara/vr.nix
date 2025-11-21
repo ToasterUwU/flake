@@ -32,32 +32,7 @@ in
     ../../pkgs/vr.nix
   ];
 
-  # SteamVR async reprojection patch
-  # boot.kernelPatches = [
-  #   {
-  #     name = "amdgpu-ignore-ctx-privileges";
-  #     patch = pkgs.fetchpatch {
-  #       name = "cap_sys_nice_begone.patch";
-  #       url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-  #       hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-  #     };
-  #   }
-  # ];
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # boot.kernelPackages = pkgs.linuxPackagesFor (
-  #   pkgs.linux_6_17.override {
-  #     argsOverride = rec {
-  #       src = pkgs.fetchurl {
-  #         url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-  #         hash = "sha256-PsyGGdiltfZ1Ik0vUscdH8Cbw/nAGdi9gtBYHgNolJk=";
-  #       };
-  #       version = "6.17.3";
-  #       modDirVersion = "6.17.3";
-  #     };
-  #   }
-  # );
 
   # Bigscreen Beyond Kernel patches from LVRA Discord Thread
   boot.kernelPatches = [
