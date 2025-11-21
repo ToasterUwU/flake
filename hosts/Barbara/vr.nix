@@ -3,8 +3,8 @@ let
   custom-monado = pkgs.monado.overrideAttrs (old: {
     src = pkgs.fetchgit {
       url = "https://tangled.org/@matrixfurry.com/monado";
-      rev = "1e1799e20c1cd3368c54dd93051d97ba261f93aa";
-      hash = "sha256-6p2c4DSn0x4RyylONT3U+xFEULt/f4QKQ75/bxWM+5E=";
+      rev = "7877317b711e9b526954b97ba4ff41093143cdea";
+      hash = "sha256-iwVshTy5bCwUII8/RAQDv5vSDV6qJ4cI/FTkmz/eje0=";
     };
   });
 
