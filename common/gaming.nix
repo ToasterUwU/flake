@@ -57,6 +57,7 @@
     ed-odyssey-materials-helper
     edmarketconnector
     min-ed-launcher
+    pyfa
   ];
 
   networking.hosts = {

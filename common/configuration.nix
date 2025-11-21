@@ -202,7 +202,6 @@
       monero-gui
       chromedriver
       intiface-central
-      pyfa
       scrcpy
       qpwgraph
     ]
