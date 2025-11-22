@@ -20,7 +20,6 @@ let
         [
           wlx-overlay-s
           wayvr-dashboard
-          # index_camera_passthrough
           lighthouse-steamvr
           kdePackages.kde-cli-tools
         ]
@@ -57,7 +56,6 @@ let
           setsid sh -c '
             lovr-playspace &
             wlx-overlay-s --replace &
-            # index_camera_passthrough &
             kde-inhibit --power --screenSaver sleep infinity &
             wait
           ' &
