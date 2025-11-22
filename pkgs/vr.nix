@@ -68,7 +68,7 @@ let
 
         on
         read -r
-        off
+        exit
       '';
     };
 
