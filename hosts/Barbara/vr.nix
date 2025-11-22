@@ -71,6 +71,7 @@ in
       wlx-overlay-s
       lovr-playspace
       resolute
+      lighthouse-steamvr
     ]
     ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
 
