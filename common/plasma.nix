@@ -20,6 +20,7 @@ in
     kdePackages.kalk
     kdePackages.plasma-browser-integration
     kdePackages.kclock
+    kdePackages.wallpaper-engine-plugin
   ];
 
   users.users = {
