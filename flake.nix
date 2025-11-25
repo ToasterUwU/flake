@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,27 +39,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
+    nixpkgs-patch-baballonia = {
+      url = "https://github.com/NixOS/nixpkgs/pull/459868.diff";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixpkgs, flake-utils, ... }@inputs:
-    let
-      shellPkgs = import nixpkgs { system = "x86_64-linux"; };
-    in
+    { nixpkgs-patcher, flake-utils, ... }@inputs:
     {
-      devShells.x86_64-linux.default = shellPkgs.mkShell {
-        buildInputs =
-          with shellPkgs;
-          [
-            nixfmt-rfc-style
-            nil
-            python3
-            python3Packages.vdf
-          ]
-          ++ [ inputs.agenix.packages.x86_64-linux.default ];
-      };
-
-      nixosConfigurations.Barbara = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.Barbara = nixpkgs-patcher.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
@@ -71,11 +61,9 @@
           inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
         ];
 
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = inputs;
       };
-      nixosConfigurations.Gertrude = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.Gertrude = nixpkgs-patcher.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
@@ -87,9 +75,7 @@
           inputs.arion.nixosModules.arion
         ];
 
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = inputs;
       };
     };
 }

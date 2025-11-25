@@ -1,6 +1,6 @@
-{ inputs, pkgs, ... }:
+{ pkgs, plasma-manager, ... }:
 let
-  wallpapers = pkgs.runCommand "wallpapers" {} ''
+  wallpapers = pkgs.runCommand "wallpapers" { } ''
     mkdir -p $out/share/wallpapers
     cp -a ${../assets/wallpapers}/* $out/share/wallpapers/
   '';
@@ -40,7 +40,7 @@ in
   };
 
   home-manager = {
-    sharedModules = [ inputs.plasma-manager.homeModules.plasma-manager ];
+    sharedModules = [ plasma-manager.homeModules.plasma-manager ];
 
     users.aki = {
       programs.plasma = {

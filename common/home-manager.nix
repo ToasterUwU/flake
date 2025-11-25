@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, catppuccin, ... }:
 {
   age.secrets = {
     "aki-id_ed25519" = {
@@ -43,7 +43,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    sharedModules = [ inputs.catppuccin.homeModules.catppuccin ];
+    sharedModules = [ catppuccin.homeModules.catppuccin ];
 
     users.aki = {
       home.stateVersion = "23.11";

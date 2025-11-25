@@ -1,7 +1,7 @@
 {
   pkgs,
-  inputs,
   lib,
+  steam-config-nix,
   ...
 }:
 {
@@ -65,7 +65,7 @@
   };
 
   home-manager = {
-    sharedModules = [ inputs.steam-config-nix.homeModules.default ];
+    sharedModules = [ steam-config-nix.homeModules.default ];
     users.aki = {
       xdg.configFile."min-ed-launcher/settings.json".text = ''
           {

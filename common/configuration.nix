@@ -1,14 +1,13 @@
 {
-  inputs,
   pkgs,
   config,
+  rust-overlay,
+  agenix,
   ...
 }:
 {
-  imports = [
-    ../pkgs/general-utils.nix
-  ];
-  nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
+  imports = [ ../pkgs/general-utils.nix ];
+  nixpkgs.overlays = [ rust-overlay.overlays.default ];
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -214,7 +213,7 @@
         ];
       })
     ]
-    ++ [ inputs.agenix.packages.x86_64-linux.default ];
+    ++ [ agenix.packages.x86_64-linux.default ];
 
   services.mediamtx = {
     enable = true;

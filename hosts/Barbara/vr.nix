@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  pkgs,
+  home-manager,
+  buttplug-lite,
+  ...
+}:
 let
   custom-monado = pkgs.monado.overrideAttrs (old: {
     src = pkgs.fetchgit {
@@ -24,7 +29,7 @@ let
 in
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
+    home-manager.nixosModules.home-manager
     ../../pkgs/vr.nix
   ];
 
@@ -68,8 +73,9 @@ in
       lovr-playspace
       resolute
       lighthouse-steamvr
+      baballonia
     ]
-    ++ [ inputs.buttplug-lite.packages.x86_64-linux.default ];
+    ++ [ buttplug-lite.packages.x86_64-linux.default ];
 
   services.monado = {
     enable = true;
@@ -92,8 +98,7 @@ in
 
   home-manager = {
     users.aki = {
-      xdg.configFile."openxr/1/active_runtime.json".source =
-        "${custom-monado}/share/openxr/1/openxr_monado.json";
+      xdg.configFile."openxr/1/active_runtime.json".source = "${custom-monado}/share/openxr/1/openxr_monado.json";
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
         {
           "config" :

@@ -304,6 +304,33 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-baballonia": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-NfQQt6rVTGICJwkxD3mB2U0fkN7E9weQ6o2UqusZOeA=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/459868.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/459868.diff"
+      }
+    },
+    "nixpkgs-patcher": {
+      "locked": {
+        "lastModified": 1762257953,
+        "narHash": "sha256-k5nRdIiYlOXCKaHwL8lnNW6Q7VcOsHNQzE8Oo/Q0e4w=",
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "rev": "2ca07dcc1204b25757cf2f0e5a9335d9b36b2298",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1763948260,
@@ -459,6 +486,8 @@
         "home-manager": "home-manager",
         "niri": "niri",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-patch-baballonia": "nixpkgs-patch-baballonia",
+        "nixpkgs-patcher": "nixpkgs-patcher",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager",

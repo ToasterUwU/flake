@@ -1,11 +1,11 @@
-{ inputs, ... }:
+{ flatpaks, ... }:
 {
   imports = [ ];
 
   services.flatpak.enable = true;
 
   home-manager = {
-    sharedModules = [ inputs.flatpaks.homeModules.default ];
+    sharedModules = [ flatpaks.homeModules.default ];
 
     users.aki = {
       services.flatpak = {

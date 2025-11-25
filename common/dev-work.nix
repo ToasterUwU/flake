@@ -1,7 +1,7 @@
 {
   pkgs,
   config,
-  inputs,
+  nixpkgs-update,
   ...
 }:
 {
@@ -105,7 +105,7 @@
         #!/usr/bin/env bash
 
         export GITHUB_TOKEN=$(cat ${config.age.secrets."aki-nixpkgs-update-github-token".path})
-        exec ${inputs.nixpkgs-update.packages.x86_64-linux.default}/bin/nixpkgs-update "$@"
+        exec ${nixpkgs-update.packages.x86_64-linux.default}/bin/nixpkgs-update "$@"
       '')
 
       openscad-lsp
