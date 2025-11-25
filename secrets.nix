@@ -1,8 +1,6 @@
 let
   aki = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMV93pUyoE8y3oFfFrgPaaObAP7J9O7aChY1gIWKKTMS";
-  users = [
-    aki
-  ];
+  users = [ aki ];
 
   Barbara = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEivYBAuarGiTOHscBYXP0LpG6RGCUDjzDCc/5lT+5sZ root@Barbara";
   Rouge = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKJXX0hscmQH+yPf8GoBrVLftzw2jaL3fmBQsrDva9AJ root@Rouge";
