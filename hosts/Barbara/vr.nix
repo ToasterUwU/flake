@@ -10,20 +10,16 @@ let
 
   custom-xrizer = pkgs.xrizer.overrideAttrs rec {
     src = pkgs.fetchFromGitHub {
-      owner = "RinLovesYou";
+      owner = "ImSapphire";
       repo = "xrizer";
-      rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
-      hash = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+      rev = "494617d132c59fceeb10cc70c865b3065e6070c1";
+      hash = "sha256-D9jLaxWNce8XHfYePyOF2HEmJuDMKhuty+VO0CP8I38=";
     };
 
     cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
       inherit src;
-      hash = "sha256-87JcULH1tAA487VwKVBmXhYTXCdMoYM3gOQTkM53ehE=";
+      hash = "sha256-tLPwiwKkEBdsRxXgdcTM9TLJeNRZV32W11qUbyCVdHw=";
     };
-
-    patches = [ ];
-
-    doCheck = false;
   };
 in
 {
