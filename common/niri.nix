@@ -41,7 +41,7 @@
   #             enable = true;
   #             settings = {
   #               default-timeout = 30000;
-  #               output = "DP-1";
+  #               output = "DP-3";
   #             };
   #             # Dont ever remove notifications that are important
   #             extraConfig = ''
@@ -749,7 +749,7 @@
   #                   y = 0;
   #                 };
   #               };
-  #               "DP-1" = {
+  #               "DP-3" = {
   #                 position = {
   #                   x = 2560;
   #                   y = 0;
