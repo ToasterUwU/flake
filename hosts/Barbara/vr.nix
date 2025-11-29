@@ -8,8 +8,8 @@ let
   custom-monado = pkgs.monado.overrideAttrs (old: {
     src = pkgs.fetchgit {
       url = "https://tangled.org/@matrixfurry.com/monado";
-      rev = "c51275cb06738cdbcd6a356c3b2fcf508ab92f1e";
-      hash = "sha256-RK3bCj0V/44/efDD0VFWerAGMLJhpR4/V5NK4BmDUs0=";
+      rev = "ecf484dd36c2bb475616189dbc222f5dc9c1c396";
+      hash = "sha256-+Y6Y3J+UDa7UuYAlEMPwlhl2+FRxu7diXdBr5m8TIYs=";
     };
   });
 
@@ -17,8 +17,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ImSapphire";
       repo = "xrizer";
-      rev = "494617d132c59fceeb10cc70c865b3065e6070c1";
-      hash = "sha256-D9jLaxWNce8XHfYePyOF2HEmJuDMKhuty+VO0CP8I38=";
+      rev = "e6927b075f66ba7b12db94402cca35fa4979707c";
+      hash = "sha256-h9DsVcwDDfj5P9uPp5fCR/BSWIQg3JntCcQwAWVu+Cw=";
     };
 
     cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
