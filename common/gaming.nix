@@ -50,7 +50,7 @@
     wine64
     winetricks
     protonplus
-    r2modman
+    gale
     prismlauncher
     lutris
     pcsx2

@@ -198,7 +198,6 @@
           "model/stl" = "OrcaSlicer.desktop";
           "model/3mf" = "OrcaSlicer.desktop";
           "text/x.gcode" = "OrcaSlicer.desktop";
-          "x-scheme-handler/ror2mm" = "r2modman.desktop";
           "image/svg+xml" = "code.desktop";
           "application/json" = "code.desktop";
           "application/xml" = "code.desktop";
