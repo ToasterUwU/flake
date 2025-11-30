@@ -242,11 +242,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1764371600,
-        "narHash": "sha256-xb9B4pwT/IE/YYXbl67BflRDVK5FRvsFhnq9dkCEoyU=",
+        "lastModified": 1764405884,
+        "narHash": "sha256-TnvBRPmcpcyinvLgsitHS7w5soSa6yNBfRYEI2TK1Ts=",
         "owner": "sodiboo",
         "repo": "niri-flake",
-        "rev": "ec3eee4ffda762d6c3df1644ea29eaa40ed45e88",
+        "rev": "10aae4855ee275f7d80d85f4328c24265fb20f1f",
         "type": "github"
       },
       "original": {
@@ -275,11 +275,11 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1764306526,
-        "narHash": "sha256-Lwz8CwV4ryaqbKNZ4ftnNrhwZI29aoHQ5MRJponTDTY=",
+        "lastModified": 1764399944,
+        "narHash": "sha256-FC9eYtSmplgxllCX4/3hJq5J3sXWKLSc7at8ZUxycVw=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "0652342df8fffa93abcc5e567be1afb3eab002f6",
+        "rev": "b35bcae35b3f9665043c335e55ed5828af77db85",
         "type": "github"
       },
       "original": {
@@ -355,11 +355,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1763967611,
-        "narHash": "sha256-7ywoN1F5NvjLHmpm66GAY1CwDAZW0s231ti7OlCdx3E=",
+        "lastModified": 1764402944,
+        "narHash": "sha256-NfG8GSaDIcAf7xRlHofVgTMRRrduVd0sRuwsbbXJ5Ps=",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "bc955b1b2e306de78abb6eeb7f116fd3f2ac7e71",
+        "rev": "aa824a870db830d21d5530ed2eaedec54ed0c5c4",
         "type": "github"
       },
       "original": {
@@ -377,11 +377,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1764379639,
-        "narHash": "sha256-K6jCTlShW2b+PaEs9hgH+iXlq8/uBXVc9GEHwddWGTQ=",
+        "lastModified": 1764467194,
+        "narHash": "sha256-cZXruFjkW4BZvL9Fb5AIhf/cW2HHQoHeoc5Dn5rXuIg=",
         "owner": "nix-community",
         "repo": "nixpkgs-xr",
-        "rev": "84c9867b8991e4cd330628ec1651fd19292b07e6",
+        "rev": "10c8c007f20754f823bacb9cb8d2f6bfccae224d",
         "type": "github"
       },
       "original": {
@@ -518,11 +518,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764383863,
-        "narHash": "sha256-KA5F0137hLvk576mfucWvFu8Z8g8MTm+6c3gw2mZcKI=",
+        "lastModified": 1764470739,
+        "narHash": "sha256-sa9f81B1dWO16QtgDTWHX8DQbiHKzHndpaunY5EQtwE=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "4f5a90bf043a57add9b3288bbd25ed534bfaffb5",
+        "rev": "3bfa664055e1a09c6aedab5533c5fc8d6ca5741a",
         "type": "github"
       },
       "original": {
