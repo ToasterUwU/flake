@@ -1,0 +1,26 @@
+From 999f87e484faef37e849758ec6878c8c871eec1d Mon Sep 17 00:00:00 2001
+From: 0x8081 <0x8081@gmail.com>
+Date: Fri, 28 Nov 2025 13:23:03 -0700
+Subject: [PATCH] Change device uvc_version check on dwMaxVideoFrameSize fixup
+ to include UVC version 1.1 for the Bigscreen Bigeye cameras
+
+---
+ drivers/media/usb/uvc/uvc_video.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/usb/uvc/uvc_video.c b/drivers/media/usb/uvc/uvc_video.c
+index a5013a7fb..966ea340e 100644
+--- a/drivers/media/usb/uvc/uvc_video.c
++++ b/drivers/media/usb/uvc/uvc_video.c
+@@ -213,7 +213,7 @@ static void uvc_fixup_video_ctrl(struct uvc_streaming *stream,
+ 
+ 	if (!(format->flags & UVC_FMT_FLAG_COMPRESSED) ||
+ 	     (ctrl->dwMaxVideoFrameSize == 0 &&
+-	      stream->dev->uvc_version < 0x0110))
++	      stream->dev->uvc_version <= 0x0110))
+ 		ctrl->dwMaxVideoFrameSize =
+ 			frame->dwMaxVideoFrameBufferSize;
+ 
+-- 
+2.52.0
+

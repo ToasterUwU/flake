@@ -45,6 +45,10 @@ in
       name = "0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid";
       patch = ../../assets/kernel/0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch;
     }
+    {
+      name = "0001-Change-device-uvc_version-check-on-dwMaxVideoFrameSize";
+      patch = ../../assets/kernel/0001-Change-device-uvc_version-check-on-dwMaxVideoFrameSize.patch;
+    }
   ];
 
   # Udev rules for Bigscreen devices
