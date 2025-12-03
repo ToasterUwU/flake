@@ -1,34 +1,5 @@
 { pkgs, ... }:
 let
-  go-bsb-cams = pkgs.buildGoModule {
-    pname = "go-bsb-cams";
-    version = "8a2728ccf20d1a1a2a51c9ad9ebf364aa18e78cb";
-    src = pkgs.fetchFromGitHub {
-      owner = "Red-M";
-      repo = "go-bsb-cams";
-      rev = "8a2728ccf20d1a1a2a51c9ad9ebf364aa18e78cb";
-      fetchSubmodules = false;
-      hash = "sha256-iExK4l0eHX2Lm27vs84NDuHEoA50t7NB8aRE9kyidtk=";
-    };
-
-    buildInputs = [ pkgs.libusb1 ];
-    nativeBuildInputs = [ pkgs.pkg-config ];
-
-    ld-flags = [
-      "-s"
-      "-w"
-    ];
-
-    vendorHash = "sha256-qFe8doA3L/77XsmIhZsqsjlCFxmlsZfvqwTPtBHgOHA=";
-
-    meta = {
-      mainProgram = "go-bsb-cams";
-      platforms = pkgs.lib.platforms.linux;
-      homepage = "https://github.com/LilliaElaine/go-bsb-cams";
-      description = "Simple program to take and output the Bigscreen Beyond 2e cameras to a webserver";
-    };
-  };
-
   monado-start-desktop = pkgs.makeDesktopItem {
     exec = "monado-start";
     icon = "steamvr";
@@ -52,8 +23,7 @@ let
           lighthouse-steamvr
           kdePackages.kde-cli-tools
           lovr-playspace
-        ]
-        ++ [ go-bsb-cams ];
+        ];
 
       checkPhase = ''
         echo "I dont care" # Fix shellcheck being upset about no direct call of "off"
@@ -86,11 +56,9 @@ let
           systemctl --user restart monado.service
 
           setsid sh -c '
-            go-bsb-cams --port 8000 --verbose &
             lovr-playspace &
             wlx-overlay-s --replace &
             kde-inhibit --power --screenSaver sleep infinity &
-            steam steam://rungameid/12777107318529589248 & # Baballonia on Steam as non-steam game
             wait
           ' &
           PGID=$!
@@ -122,6 +90,5 @@ in
 {
   environment.systemPackages = [
     monado-start
-    go-bsb-cams
   ];
 }
