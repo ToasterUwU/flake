@@ -1,0 +1,119 @@
+[Application]
+WindowWidth = 1000
+WindowHeight = 801
+LastCheckedVersion = 'v0.19.0'
+LastLaunchedVersion = 'v0.19.0'
+EnableSystemTray = true
+CloseToSystemTray = true
+StartupPage = 'Albums'
+SettingsTab = ''
+AllowMultiInstance = false
+MaxImageCacheSizeMB = 50
+SavePlayQueue = true
+SaveQueueToServer = true
+DefaultPlaylistID = 'eMIs3AmXPieXFsKxRV0VX6'
+AddToPlaylistSkipDuplicates = false
+ShowTrackChangeNotification = false
+EnableLrcLib = true
+CustomLrcLibUrl = ''
+EnablePasswordStorage = true
+SkipSSLVerify = false
+EnqueueBatchSize = 100
+Language = 'auto'
+DisableDPIDetection = false
+EnableAutoUpdateChecker = true
+RequestTimeoutSeconds = 15
+EnableOSMediaPlayerAPIs = true
+ShowSidebar = false
+SidebarWidthFraction = 0.8
+FontNormalTTF = ''
+FontBoldTTF = ''
+UIScaleSize = 'Normal'
+
+[[Servers]]
+ServerType = 'Subsonic'
+Hostname = 'https://navidrome.toasteruwu.com'
+AltHostname = ''
+Username = 'Aki'
+LegacyAuth = false
+ID = '5d838ded-042a-4741-9fa7-9cb132cbe212'
+Nickname = 'Navidrome'
+Default = true
+SelectedLibrary = ''
+
+[AlbumPage]
+TracklistColumns = ['Artist', 'Time', 'Plays', 'Favorite', 'Rating']
+
+[AlbumsPage]
+SortOrder = 'Recently Added'
+ShowYears = false
+ShuffleMode = 'Tracks'
+PlayInOrder = false
+
+[ArtistPage]
+InitialView = 'Discography'
+DiscographySort = ''
+TracklistColumns = ['Album', 'Time', 'Plays', 'Favorite', 'Rating']
+
+[ArtistsPage]
+SortOrder = 'Name (A-Z)'
+
+[FavoritesPage]
+InitialView = 'Albums'
+TracklistColumns = ['Album', 'Time', 'Plays']
+ShowAlbumYears = false
+
+[GridView]
+CardSize = 200.0
+
+[PlaylistPage]
+TracklistColumns = ['Album', 'Time', 'Plays']
+
+[PlaylistsPage]
+InitialView = 'List'
+
+[TracksPage]
+TracklistColumns = ['Album', 'Time', 'Plays']
+
+[NowPlayingConfig]
+InitialView = 'Play Queue'
+
+[Playback]
+Autoplay = false
+RepeatMode = 'None'
+SkipOneStarWhenShuffling = false
+SkipKeywordWhenShuffling = ''
+UseWaveformSeekbar = true
+
+[LocalPlayback]
+AudioDeviceName = 'auto'
+AudioExclusive = false
+InMemoryCacheSizeMB = 30
+Volume = 58
+EqualizerEnabled = false
+EqualizerPreamp = 0.0
+GraphicEqualizerBands = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+[Scrobbling]
+Enabled = true
+ThresholdTimeSeconds = 240
+ThresholdPercent = 50
+
+[ReplayGain]
+Mode = 'no'
+PreampGainDB = 0.0
+PreventClipping = true
+
+[Transcoding]
+ForceRawFile = false
+RequestTranscode = false
+Codec = 'opus'
+MaxBitRateKBPS = 160
+
+[Theme]
+ThemeFile = 'catppuccin-mocha-pink.toml'
+Appearance = 'Dark'
+
+[PeakMeter]
+WindowHeight = 100
+WindowWidth = 375
