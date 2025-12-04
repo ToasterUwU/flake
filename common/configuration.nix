@@ -17,12 +17,6 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   zramSwap.enable = true;
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024;
-    }
-  ];
 
   programs.nix-ld.enable = true;
   programs.appimage = {
