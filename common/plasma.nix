@@ -13,7 +13,10 @@ in
 
   programs.kdeconnect.enable = true;
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [ kate ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    kate
+    discover
+  ];
 
   environment.systemPackages = with pkgs; [
     krename
