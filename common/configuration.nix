@@ -290,5 +290,10 @@
     options = "--delete-older-than 7d";
   };
 
+  nix.optimise = {
+    automatic = true;
+    dates = "15:00";
+  };
+
   system.stateVersion = "23.11";
 }
