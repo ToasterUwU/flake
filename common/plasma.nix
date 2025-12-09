@@ -116,7 +116,7 @@ in
                     "applications:supersonic.desktop"
                     "applications:firefox.desktop"
                     "applications:vesktop.desktop"
-                    "applications:code.desktop"
+                    "applications:code-url-handler.desktop"
                     "applications:steam.desktop"
                   ];
                 };
