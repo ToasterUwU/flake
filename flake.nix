@@ -39,6 +39,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
+    proton-cachyos.url = "github:powerofthe69/proton-cachyos-nix";
     nixpkgs-patch-baballonia = {
       url = "https://github.com/NixOS/nixpkgs/pull/459868.diff";
       flake = false;

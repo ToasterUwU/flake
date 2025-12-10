@@ -2,10 +2,11 @@
   pkgs,
   lib,
   steam-config-nix,
+  proton-cachyos,
   ...
 }:
 {
-  imports = [ ];
+  nixpkgs.overlays = [ proton-cachyos.overlays.default ];
 
   services.hardware.openrgb.enable = true;
   services.ratbagd.enable = true;
@@ -18,7 +19,10 @@
 
   programs.steam = {
     enable = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+      proton-cachyos-x86_64_v4
+    ];
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
     protontricks.enable = true;
