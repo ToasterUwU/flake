@@ -30,7 +30,6 @@ in
 {
   imports = [
     home-manager.nixosModules.home-manager
-    ../../pkgs/vr.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -77,7 +76,8 @@ in
       lovr-playspace
       resolute
       lighthouse-steamvr
-      baballonia
+      baballonia-git
+      monado-start
     ]
     ++ [ buttplug-lite.packages.x86_64-linux.default ];
 

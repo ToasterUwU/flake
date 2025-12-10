@@ -1,13 +1,11 @@
 {
   pkgs,
   config,
-  rust-overlay,
   agenix,
   ...
 }:
 {
-  imports = [ ../pkgs/general-utils.nix ];
-  nixpkgs.overlays = [ rust-overlay.overlays.default ];
+  nixpkgs.overlays = [ (self: super: import ../pkgs { pkgs = super; }) ];
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -162,6 +160,7 @@
       wget
       curl
       yt-dlp
+      extract-audio
       gnupg
       git
       nano

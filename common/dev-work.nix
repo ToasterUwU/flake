@@ -2,9 +2,12 @@
   pkgs,
   config,
   nixpkgs-update,
+  rust-overlay,
   ...
 }:
 {
+  nixpkgs.overlays = [ rust-overlay.overlays.default ];
+
   age.secrets = {
     "aki-nixpkgs-review-github-token" = {
       file = ../secrets/common/aki-nixpkgs-review-github-token.age;
