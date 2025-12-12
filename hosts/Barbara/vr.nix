@@ -17,13 +17,13 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ImSapphire";
       repo = "xrizer";
-      rev = "e6927b075f66ba7b12db94402cca35fa4979707c";
-      hash = "sha256-h9DsVcwDDfj5P9uPp5fCR/BSWIQg3JntCcQwAWVu+Cw=";
+      rev = "ad7f108d9622be10fba07e32fff7066ad07b0e05";
+      hash = "sha256-Ax1nyI3OJd7UdFoQFZCb8E1iQweNZBvUFR/6493NM04=";
     };
 
     cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
       inherit src;
-      hash = "sha256-tLPwiwKkEBdsRxXgdcTM9TLJeNRZV32W11qUbyCVdHw=";
+      hash = "sha256-VwfBb/pEaxcPbOzA+naXT28wmyP7UMxH4xoaHCKvlsQ=";
     };
   };
 in
