@@ -233,6 +233,10 @@
             enable = true;
             settings = {
               window.decorations = "None";
+              font.normal = {
+                family = "FiraCode Nerd Font Mono";
+                style = "Regular";
+              };
             };
           };
           waybar = {
