@@ -395,19 +395,6 @@ in
         skybox_texture: ${../../assets/battlefront-2.dds}
       '';
 
-      xdg.configFile."index_camera_passthrough/index_camera_passthrough.toml".text = ''
-        backend="openxr"
-        open_delay = "0s"
-
-        [overlay.position]
-        mode = "Hmd"
-        distance = 0.7
-
-        [display_mode]
-        mode = "Stereo"
-        projection_mode = "FromEye"
-      '';
-
       xdg.dataFile."LOVR/lovr-playspace/fade_start.txt".text = ''
         0.1
       '';
