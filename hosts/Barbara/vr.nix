@@ -28,10 +28,6 @@ let
   };
 in
 {
-  imports = [
-    home-manager.nixosModules.home-manager
-  ];
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Bigscreen Beyond Kernel patches from LVRA Discord Thread
