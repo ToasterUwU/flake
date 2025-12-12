@@ -54,7 +54,7 @@
 
         modules = [
           ./hosts/Barbara
-          # inputs.niri.nixosModules.niri
+          inputs.niri.nixosModules.niri
           inputs.home-manager.nixosModules.home-manager
           inputs.catppuccin.nixosModules.catppuccin
           inputs.agenix.nixosModules.default
@@ -69,7 +69,7 @@
 
         modules = [
           ./hosts/Gertrude
-          # inputs.niri.nixosModules.niri
+          inputs.niri.nixosModules.niri
           inputs.home-manager.nixosModules.home-manager
           inputs.catppuccin.nixosModules.catppuccin
           inputs.agenix.nixosModules.default
