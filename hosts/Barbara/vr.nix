@@ -4,14 +4,6 @@
   ...
 }:
 let
-  custom-monado = pkgs.monado.overrideAttrs (old: {
-    src = pkgs.fetchgit {
-      url = "https://tangled.org/@matrixfurry.com/monado";
-      rev = "ecf484dd36c2bb475616189dbc222f5dc9c1c396";
-      hash = "sha256-+Y6Y3J+UDa7UuYAlEMPwlhl2+FRxu7diXdBr5m8TIYs=";
-    };
-  });
-
   custom-xrizer = pkgs.xrizer.overrideAttrs rec {
     src = pkgs.fetchFromGitHub {
       owner = "ImSapphire";
@@ -80,7 +72,6 @@ in
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = custom-monado;
   };
 
   systemd.user.services.monado = {
@@ -97,7 +88,7 @@ in
 
   home-manager = {
     users.aki = {
-      xdg.configFile."openxr/1/active_runtime.json".source = "${custom-monado}/share/openxr/1/openxr_monado.json";
+      xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
       xdg.configFile."openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
