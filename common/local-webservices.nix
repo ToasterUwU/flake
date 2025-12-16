@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [ ];
-
   environment.systemPackages = with pkgs; [ rqbit ];
 
   systemd.user.services.rqbit-webserver = {

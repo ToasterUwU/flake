@@ -1,6 +1,0 @@
-{ ... }:
-{
-  imports = [ ];
-
-  nixpkgs.config.permittedInsecurePackages = [ ];
-}

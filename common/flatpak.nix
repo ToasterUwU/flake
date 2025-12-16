@@ -1,7 +1,5 @@
 { flatpaks, ... }:
 {
-  imports = [ ];
-
   services.flatpak.enable = true;
 
   home-manager = {
