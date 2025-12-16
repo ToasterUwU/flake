@@ -746,7 +746,7 @@
             };
 
             layout = {
-              gaps = 12;
+              gaps = 8;
 
               center-focused-column = "never";
 
