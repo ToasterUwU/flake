@@ -23,11 +23,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     catppuccin.url = "github:catppuccin/nix";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flake-utils.url = "github:numtide/flake-utils";
     arion = {
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +46,7 @@
   };
 
   outputs =
-    { nixpkgs-patcher, flake-utils, ... }@inputs:
+    { nixpkgs-patcher, ... }@inputs:
     {
       nixosConfigurations.Barbara = nixpkgs-patcher.lib.nixosSystem {
         system = "x86_64-linux";
