@@ -10,10 +10,5 @@ let
   );
 in
 {
-  imports =
-    imports
-    + [
-      ../../common
-      ../../common/optional/amd-gpu.nix
-    ];
+  inherit imports;
 }
