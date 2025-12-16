@@ -41,7 +41,6 @@
             enable = true;
             settings = {
               default-timeout = 30000;
-              output = "DP-3";
             };
             # Dont ever remove notifications that are important
             extraConfig = ''
@@ -743,27 +742,6 @@
 
               focus-follows-mouse = {
                 max-scroll-amount = "0%";
-              };
-            };
-
-            outputs = {
-              "HDMI-A-2" = {
-                position = {
-                  x = 0;
-                  y = 0;
-                };
-              };
-              "DP-3" = {
-                position = {
-                  x = 2560;
-                  y = 0;
-                };
-              };
-              "HDMI-A-1" = {
-                position = {
-                  x = 5120;
-                  y = 0;
-                };
               };
             };
 
