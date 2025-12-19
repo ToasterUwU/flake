@@ -147,6 +147,11 @@
     };
   };
 
+  fonts.packages = with pkgs; [
+    fira-code
+    nerd-fonts.fira-code
+  ];
+
   environment.systemPackages =
     with pkgs;
     [
@@ -154,8 +159,6 @@
       sshfs
       sshpass
       pciutils
-      fira-code
-      nerd-fonts.fira-code
       uutils-coreutils-noprefix
       wget
       curl
