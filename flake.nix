@@ -34,6 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
     proton-cachyos.url = "github:powerofthe69/proton-cachyos-nix";
     nixpkgs-patch-baballonia = {
       url = "https://github.com/NixOS/nixpkgs/pull/459868.diff";

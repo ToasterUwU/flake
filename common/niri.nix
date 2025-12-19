@@ -1,6 +1,23 @@
-{ pkgs, niri, ... }:
+{
+  lib,
+  pkgs,
+  niri,
+  walker,
+  ...
+}:
 {
   nixpkgs.overlays = [ niri.overlays.niri ];
+
+  nix.settings = {
+    extra-substituters = [
+      "https://walker.cachix.org"
+      "https://walker-git.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+      "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+    ];
+  };
 
   # Higher ulimit as fix for https://github.com/YaLTeR/niri/issues/2377
   security.pam.loginLimits = [
@@ -14,22 +31,42 @@
 
   programs.niri = {
     enable = true;
+    package = pkgs.niri-stable;
   };
   programs.waybar = {
     enable = true;
   };
 
+  programs.kdeconnect.enable = true;
+
+  # xdg.portal = {
+  #   enable = true;
+  #   xdgOpenUsePortal = true;
+  #   extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+  #   configPackages = [ pkgs.xdg-desktop-portal-gnome ];
+  #   config.common.default = "gnome";
+  # };
+
+  # Needed for iwmenu
+  networking.wireless.iwd.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
+
   environment.systemPackages = with pkgs; [
     xwayland-satellite
-    kdePackages.dolphin
     pavucontrol
     brillo
+
+    pwmenu
+    iwmenu
+    bzmenu
   ];
 
   home-manager = {
     users.aki =
       { config, ... }:
       {
+        imports = [ walker.homeManagerModules.default ];
+
         dconf.settings = {
           "org/gnome/desktop/interface" = {
             color-scheme = "prefer-dark";
@@ -60,171 +97,14 @@
               };
             };
           };
-          walker = {
-            enable = true;
-            settings = {
-              force_keyboard_focus = false; # forces keyboard forcus to stay in Walker
-              close_when_open = true; # close walker when invoking while already opened
-              selection_wrap = false; # wrap list if at bottom or top
-              global_argument_delimiter = "#"; # query: firefox#https://benz.dev => part after delimiter will be ignored when querying. this should be the same as in the elephant config
-              keep_open_modifier = "shift"; # won't close on activation, but rather select the next item in the list
-              exact_search_prefix = "'"; # disable fuzzy searching
-              theme = "default"; # theme to use
-              disable_mouse = false; # disable mouse (on input and list only)
-
-              shell = {
-                anchor_top = true;
-                anchor_bottom = true;
-                anchor_left = true;
-                anchor_right = true;
-              };
-              placeholders = {
-                "default" = {
-                  input = "Search";
-                  list = "No Results";
-                }; # placeholders for input and empty list, key is the providers name, so f.e. "desktopapplications" or "menus:other"
-              };
-
-              keybinds = {
-                close = "Escape";
-                next = "Down";
-                previous = "Up";
-                toggle_exact = "ctrl e";
-                resume_last_query = "ctrl r";
-                quick_activate = [
-                  "F1"
-                  "F2"
-                  "F3"
-                  "F4"
-                ];
-              };
-              providers = {
-                default = [
-                  "desktopapplications"
-                  "calc"
-                  "runner"
-                  "menus"
-                  "websearch"
-                ]; # providers to be queried by default
-                empty = [ "desktopapplications" ]; # providers to be queried when query is empty
-
-                prefixes = [
-                  {
-                    prefix = ";";
-                    provider = "providerlist";
-                  }
-                  {
-                    prefix = "/";
-                    provider = "files";
-                  }
-                  {
-                    prefix = ".";
-                    provider = "symbols";
-                  }
-                  {
-                    prefix = "!";
-                    provider = "todo";
-                  }
-                  {
-                    prefix = "=";
-                    provider = "calc";
-                  }
-                  {
-                    prefix = "@";
-                    provider = "websearch";
-                  }
-                  {
-                    prefix = ":";
-                    provider = "clipboard";
-                  }
-                ];
-
-                calc = {
-
-                  default = "copy";
-                  copy = "Return";
-                  save = "ctrl s";
-                  delete = "ctrl d";
-                };
-
-                websearch = {
-                  default = "search";
-                  search = "Return";
-                  remove_history = "ctrl BackSpace";
-                };
-
-                providerlist = {
-                  default = "activate";
-                  activate = "Return";
-                };
-
-                clipboard = {
-                  time_format = "%d.%m. - %H:%M"; # format for the clipboard item date
-                  default = "copy";
-                  copy = "Return";
-                  delete = "ctrl d";
-                  edit = "ctrl o";
-                  toggle_images_only = "ctrl i";
-                };
-
-                desktopapplications = {
-                  default = "start";
-                  start = "Return";
-                  start_keep_open = "shift Return";
-                  remove_history = "ctrl BackSpace";
-                  toggle_pin = "ctrl p";
-                };
-
-                files = {
-                  default = "open";
-                  open = "Return";
-                  open_dir = "ctrl Return";
-                  copy_path = "ctrl shift c";
-                  copy_file = "ctrl c";
-                };
-
-                todo = {
-                  default = "save";
-                  save = "Return";
-                  delete = "ctrl d";
-                  mark_active = "ctrl a";
-                  mark_done = "ctrl f";
-                  clear = "ctrl x";
-                };
-
-                runner = {
-                  default = "start";
-                  start = "Return";
-                  start_terminal = "shift Return";
-                  remove_history = "ctrl BackSpace";
-                };
-
-                dmenu = {
-                  default = "select";
-                  select = "Return";
-                };
-
-                symbols = {
-                  default = "copy";
-                  copy = "Return";
-                  remove_history = "ctrl BackSpace";
-                };
-
-                unicode = {
-                  default = "copy";
-                  copy = "Return";
-                  remove_history = "ctrl BackSpace";
-                };
-
-                menus = {
-                  default = "activate";
-                  activate = "Return";
-                  remove_history = "ctrl BackSpace";
-                };
-              };
-            };
-          };
         };
+
+        xdg.configFile."elephant/websearch.toml".text = ''
+          [[entries]]
+          default = true
+          name = "DuckDuckGo"
+          url = "https://duckduckgo.com/?q=%TERM%"
+        '';
 
         programs = {
           swaylock.enable = true;
@@ -236,6 +116,73 @@
                 family = "FiraCode Nerd Font Mono";
                 style = "Regular";
               };
+            };
+          };
+          walker = {
+            enable = true;
+            runAsService = true;
+
+            # All options from the config.toml can be used here https://github.com/abenz1267/walker/blob/master/resources/config.toml
+            config = {
+              force_keyboard_focus = true;
+              # theme = "your theme name";
+              placeholders."default" = {
+                input = "Search";
+                list = "Empty List";
+              };
+              providers = {
+                default = [
+                  "desktopapplications"
+                  "calc"
+                ];
+                prefixes = [
+                  {
+                    provider = "providerlist";
+                    prefix = ";";
+                  }
+                  {
+                    provider = "clipboard";
+                    prefix = ":";
+                  }
+                  {
+                    provider = "calc";
+                    prefix = "=";
+                  }
+                  {
+                    provider = "files";
+                    prefix = "/";
+                  }
+                  {
+                    provider = "runner";
+                    prefix = ">";
+                  }
+                ];
+              };
+              keybinds.quick_activate = [
+                "F1"
+                "F2"
+                "F3"
+                "F4"
+              ];
+            };
+
+            # Set `programs.walker.config.theme="your theme name"` to choose the default theme
+            themes = {
+              # "your theme name" = {
+              #   # Check out the default css theme as an example https://github.com/abenz1267/walker/blob/master/resources/themes/default/style.css
+              #   style = " /* css */ ";
+
+              #   # Check out the default layouts for examples https://github.com/abenz1267/walker/tree/master/resources/themes/default
+              #   layouts = {
+              #     "layout" = " <!-- xml --> ";
+              #     "item_calc" = " <!-- xml --> ";
+              #     # other provider layouts
+              #   };
+              # };
+              # "other theme name" = {
+              #   # ...
+              # };
+              # # more themes
             };
           };
           waybar = {
@@ -258,6 +205,7 @@
                   "tray"
                   "wireplumber#sink"
                   "backlight"
+                  "bluetooth"
                   "network"
                   "battery"
                   "group/session"
@@ -313,19 +261,19 @@
                 };
                 "custom/lock" = {
                   format = "<span color='#00FFFF'>  </span>";
-                  "on-click" = "swaylock -c 000000";
+                  "on-click" = "${pkgs.swaylock} -c 000000";
                   tooltip = true;
                   "tooltip-format" = "Lock screen";
                 };
                 "custom/reboot" = {
                   format = "<span color='#FFD700'>  </span>";
-                  "on-click" = "systemctl reboot";
+                  "on-click" = "${pkgs.systemd}/bin/systemctl reboot";
                   tooltip = true;
                   "tooltip-format" = "Reboot";
                 };
                 "custom/power" = {
                   format = "<span color='#FF4040'>  </span>";
-                  "on-click" = "systemctl poweroff";
+                  "on-click" = "${pkgs.systemd}/bin/systemctl poweroff";
                   tooltip = true;
                   "tooltip-format" = "Power Off";
                 };
@@ -359,12 +307,12 @@
                   format = "󰘚 {usage}%";
                   tooltip = true;
                   interval = 1;
-                  "on-click" = "alacritty -e htop";
+                  "on-click" = "${lib.getExe pkgs.alacritty} -e ${lib.getExe pkgs.bottom}";
                 };
                 memory = {
                   format = "󰍛 {}%";
                   interval = 1;
-                  "on-click" = "alacritty -e htop";
+                  "on-click" = "${lib.getExe pkgs.alacritty} -e ${lib.getExe pkgs.bottom}";
                 };
                 temperature = {
                   "critical-threshold" = 80;
@@ -406,7 +354,13 @@
                   "format-disconnected" = "󰖪 Disconnected";
                   "format-alt" = "{ifname}: {ipaddr}/{cidr}";
                   "tooltip-format" = "{ifname}: {ipaddr}";
-                  "on-click-right" = "alacritty -e nmtui";
+                  "on-click-right" = "${lib.getExe pkgs.iwmenu} --launcher walker";
+                };
+                bluetooth = {
+                  "format" = " {status}";
+                  "format-connected" = " {device_alias}";
+                  "format-connected-battery" = " {device_alias} {device_battery_percentage}%";
+                  "on-click-right" = "${lib.getExe pkgs.bzmenu} --launcher walker";
                 };
                 "wireplumber#sink" = {
                   format = "{icon} {volume}%";
@@ -416,9 +370,10 @@
                     ""
                     ""
                   ];
-                  "on-click" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-                  "on-scroll-down" = "wpctl set-volume @DEFAULT_SINK@ 1%-";
-                  "on-scroll-up" = "wpctl set-volume @DEFAULT_SINK@ 1%+";
+                  "on-click" = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+                  "on-scroll-down" = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 1%-";
+                  "on-scroll-up" = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 1%+";
+                  on-click-right = "${lib.getExe pkgs.pwmenu} --launcher walker";
                 };
                 backlight = {
                   format = "{icon} {percent}%";
@@ -427,8 +382,8 @@
                     "󰃟"
                     "󰃠"
                   ];
-                  "on-scroll-up" = "brightnessctl set +5%";
-                  "on-scroll-down" = "brightnessctl set 5%-";
+                  "on-scroll-up" = "${lib.getExe pkgs.brillo} -A 5";
+                  "on-scroll-down" = "${lib.getExe pkgs.brillo} -U 5";
                 };
                 disk = {
                   interval = 30;
@@ -489,6 +444,8 @@
               @define-color battery-critical-color @red;
               @define-color network-color @blue;
               @define-color network-disconnected-color @red;
+              @define-color bluetooth-color @blue;
+              @define-color bluetooth-off-color @red;
               @define-color pulseaudio-color @orange;
               @define-color pulseaudio-muted-color @red;
               @define-color wireplumber-color @orange;
@@ -508,7 +465,7 @@
                   /* Base styling for all modules */
                   border: none;
                   border-radius: 0;
-                  font-family: "JetBrainsMono Nerd Font Propo";
+                  font-family: "Fira Code Nerd Font Propo";
                   font-size: 14px;
                   min-height: 0;
               }
@@ -528,6 +485,7 @@
               #temperature,
               #battery,
               #network,
+              #bluetooth,
               #pulseaudio,
               #wireplumber,
               #backlight,
@@ -657,6 +615,16 @@
                   border-bottom-color: @network-disconnected-color;
               }
 
+              #bluetooth {
+                  color: @bluetooth-color;
+                  border-bottom-color: @bluetooth-color;
+              }
+
+              #bluetooth.off {
+                  color: @bluetooth-off-color;
+                  border-bottom-color: @bluetooth-off-color;
+              }
+
               #pulseaudio {
                   color: @pulseaudio-color;
                   border-bottom-color: @pulseaudio-color;
@@ -730,8 +698,8 @@
 
               touchpad = {
                 tap = true;
-                natural-scroll = true;
-                disabled-on-external-mouse = true;
+                natural-scroll = false;
+                disabled-on-external-mouse = false;
               };
 
               mouse = {
@@ -802,34 +770,37 @@
               with config.lib.niri.actions;
               let
                 playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
+                wpctl = spawn "${pkgs.wireplumber}/bin/wpctl";
+                brillo-add = spawn "${lib.getExe pkgs.brillo}" "-A";
+                brillo-sub = spawn "${lib.getExe pkgs.brillo}" "-U";
               in
               {
                 "Mod+Shift+Slash".action = show-hotkey-overlay;
                 "Mod+T" = {
                   hotkey-overlay.title = "Open a Terminal: alacritty";
-                  action = spawn "alacritty";
+                  action = spawn "${lib.getExe pkgs.alacritty}";
                 };
                 "Mod+D" = {
                   hotkey-overlay.title = "Run an Application: walker";
-                  action = spawn "walker";
+                  action = spawn "${lib.getExe pkgs.walker}";
                 };
                 "Super+Alt+L" = {
                   hotkey-overlay.title = "Lock the Screen: swaylock";
-                  action = spawn "swaylock";
+                  action = spawn "${lib.getExe pkgs.swaylock}";
                 };
 
-                "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
-                "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
-                "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+";
-                "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-";
+                "XF86AudioMute".action = wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+                "XF86AudioMicMute".action = wpctl "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
+                "XF86AudioRaiseVolume".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+";
+                "XF86AudioLowerVolume".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-";
 
                 "XF86AudioPlay".action = playerctl "play-pause";
                 "XF86AudioStop".action = playerctl "pause";
                 "XF86AudioPrev".action = playerctl "previous";
                 "XF86AudioNext".action = playerctl "next";
 
-                "XF86MonBrightnessUp".action = spawn "brillo" "-A" "5";
-                "XF86MonBrightnessDown".action = spawn "brillo" "-U" "5";
+                "XF86MonBrightnessUp".action = brillo-add "5";
+                "XF86MonBrightnessDown".action = brillo-sub "5";
 
                 "Mod+O" = {
                   repeat = false;
