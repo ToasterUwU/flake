@@ -182,7 +182,7 @@
       element-desktop
       signal-desktop
       tor-browser
-      chromium
+      ungoogled-chromium
       supersonic
       mpv
       simple-scan
