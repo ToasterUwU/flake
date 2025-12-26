@@ -44,10 +44,6 @@
       url = "https://github.com/NixOS/nixpkgs/pull/459868.diff";
       flake = false;
     };
-    nixpkgs-patch-edmarketconnector = {
-      url = "https://github.com/NixOS/nixpkgs/pull/470854.diff";
-      flake = false;
-    };
   };
 
   outputs =
