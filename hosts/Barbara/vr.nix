@@ -1,8 +1,4 @@
-{
-  pkgs,
-  buttplug-lite,
-  ...
-}:
+{ pkgs, buttplug-lite, ... }:
 let
   custom-xrizer = pkgs.xrizer.overrideAttrs rec {
     src = pkgs.fetchFromGitHub {

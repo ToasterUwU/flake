@@ -96,8 +96,6 @@ pyPkgs.buildPythonPackage {
   meta = {
     description = "BabbleTrainer built with PyInstaller";
     platforms = pkgs.lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      naraenda
-    ];
+    maintainers = with lib.maintainers; [ naraenda ];
   };
 }
