@@ -251,18 +251,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-patch-baballonia": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-NfQQt6rVTGICJwkxD3mB2U0fkN7E9weQ6o2UqusZOeA=",
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/459868.diff"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/459868.diff"
-      }
-    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1765447685,
@@ -463,7 +451,6 @@
         "flatpaks": "flatpaks",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-patch-baballonia": "nixpkgs-patch-baballonia",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",
