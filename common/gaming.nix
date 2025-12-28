@@ -177,6 +177,22 @@
               };
             };
           };
+          rumble = {
+            id = 890550;
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+            };
+          };
+          myst = {
+            id = 1255560;
+            launchOptions = {
+              env = {
+                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+              };
+            };
+          };
           unravel-two = {
             id = 1225570;
             # EA Launcher Fix
