@@ -430,11 +430,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1766985326,
-        "narHash": "sha256-FdIsWB1OiiKQWMlRJQzsI4f1XVsK+STrEQqDsWMzoMw=",
+        "lastModified": 1767195551,
+        "narHash": "sha256-PJhVqryyAdjsP9Eb4incez4gLDFhs2xj5+dV+eAIcy8=",
         "owner": "powerofthe69",
         "repo": "proton-cachyos-nix",
-        "rev": "8955d3216c860ac418f3ba3364acedfebc9c6e64",
+        "rev": "1139c7b19b4f4517377b23d68b672b0bc03c265d",
         "type": "github"
       },
       "original": {
