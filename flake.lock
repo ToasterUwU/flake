@@ -251,6 +251,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-fix-vesktop": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-JRjIH194gP3tlJFGwadXxownT3aEYTDmeSjgxbNt4yM=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/476347.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/476347.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1765447685,
@@ -452,6 +464,7 @@
         "flatpaks": "flatpaks",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patch-fix-vesktop": "nixpkgs-patch-fix-vesktop",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",

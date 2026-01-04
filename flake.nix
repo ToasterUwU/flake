@@ -34,6 +34,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     proton-cachyos.url = "github:powerofthe69/proton-cachyos-nix";
+    nixpkgs-patch-fix-vesktop = {
+      url = "https://github.com/NixOS/nixpkgs/pull/476347.diff";
+      flake = false;
+    };
   };
 
   outputs =

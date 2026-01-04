@@ -61,9 +61,9 @@
               "git.enableSmartCommit" = true;
               "git.confirmSync" = false;
               "nix.enableLanguageServer" = true;
-              "nix.serverPath" = "nil";
+              "nix.serverPath" = "nixd";
               "nix.serverSettings" = {
-                "nil" = {
+                "nixd" = {
                   "formatting" = {
                     "command" = [ "nixfmt" ];
                   };
@@ -82,7 +82,7 @@
           package = pkgs.vscode.fhsWithPackages (
             ps: with ps; [
               nodejs_22
-              nil
+              nixd
               act
             ]
           );
@@ -93,7 +93,6 @@
 
   users.users.aki = {
     packages = with pkgs; [
-      nil
       nixfmt-rfc-style
       (writeScriptBin "nixpkgs-review" ''
         #!/usr/bin/env bash
