@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  nixpkgs,
   nixpkgs-update,
   ...
 }:
@@ -90,6 +91,8 @@
       };
     };
   };
+
+  nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
 
   users.users.aki = {
     packages = with pkgs; [
