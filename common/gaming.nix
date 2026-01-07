@@ -36,7 +36,6 @@
   programs.corectrl.enable = true;
 
   services.ananicy = {
-    # https://github.com/NixOS/nixpkgs/issues/351516
     enable = true;
     package = pkgs.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
