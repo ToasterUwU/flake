@@ -107,147 +107,160 @@
       programs.steam.config = {
         enable = true;
         closeSteam = true;
-        apps = {
-          elite-dangerous = {
-            id = 359320;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-                VR_OVERRIDE = "${pkgs.opencomposite}/lib/opencomposite";
-                OXR_PARALLEL_VIEWS = true;
-              };
-              wrappers = [ "${lib.getExe pkgs.min-ed-launcher}" ];
-              args = [
-                "/autorun"
-                "/autoquit"
-                "/edo"
-                "/vr"
-                "/restart"
-                "15"
-              ];
-            };
-          };
-          resonite = {
-            id = 2519830;
-            compatTool = "GE-Proton";
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-              wrappers = [ "./run_monkeyloader.sh" ];
-            };
-          };
-          vrchat = {
-            id = 438100;
-            compatTool = "GE-Proton-rtsp";
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+        apps =
+          let
+            # Figures out the internal Proton CachyOS Proton name, the way steam expects it.
+            cachyos-proton-name =
+              (
+                p:
+                builtins.replaceStrings [ "x86_64_v4-" ] [ "" ] (
+                  builtins.elemAt (builtins.match "^[^-]*-(.*)$" (baseNameOf (toString p))) 0
+                )
+              )
+                (pkgs.proton-cachyos-x86_64_v4)
+              + "-x86_64_v4";
+          in
+          {
+            elite-dangerous = {
+              id = 359320;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                  VR_OVERRIDE = "${pkgs.opencomposite}/lib/opencomposite";
+                  OXR_PARALLEL_VIEWS = true;
+                };
+                wrappers = [ "${lib.getExe pkgs.min-ed-launcher}" ];
+                args = [
+                  "/autorun"
+                  "/autoquit"
+                  "/edo"
+                  "/vr"
+                  "/restart"
+                  "15"
+                ];
               };
             };
-          };
-          stride = {
-            id = 1292040;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+            resonite = {
+              id = 2519830;
+              compatTool = cachyos-proton-name;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+                wrappers = [ "./run_monkeyloader.sh" ];
+              };
+            };
+            vrchat = {
+              id = 438100;
+              compatTool = "GE-Proton-rtsp";
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+              };
+            };
+            stride = {
+              id = 1292040;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+              };
+            };
+            beat-saber = {
+              id = 620980;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+              };
+            };
+            underdogs = {
+              id = 2441700;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+              };
+            };
+            last-clockwinder = {
+              id = 1755100;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+              };
+            };
+            rumble = {
+              id = 890550;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+              };
+            };
+            myst = {
+              id = 1255560;
+              launchOptions = {
+                env = {
+                  PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+                };
+              };
+            };
+            unravel-two = {
+              id = 1225570;
+              # EA Launcher Fix
+              launchOptions = {
+                extraConfig = ''
+                  for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                  do
+                    export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                  done
+                '';
+              };
+            };
+            mirrors-edge-catalyst = {
+              id = 1233570;
+              # EA Launcher Fix
+              launchOptions = {
+                extraConfig = ''
+                  for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                  do
+                    export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                  done
+                '';
+              };
+            };
+            burnout-paradise-remastered = {
+              id = 1238080;
+              # EA Launcher Fix
+              launchOptions = {
+                extraConfig = ''
+                  for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                  do
+                    export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                  done
+                '';
+              };
+            };
+            h3vr = {
+              id = 450540;
+              launchOptions = {
+                extraConfig = ''
+                  for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
+                  do
+                    export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
+                  done
+                '';
+              };
+            };
+            space-engineers = {
+              id = 244850;
+              launchOptions = {
+                args = [ "-useallavailablecores" ];
               };
             };
           };
-          beat-saber = {
-            id = 620980;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          underdogs = {
-            id = 2441700;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          last-clockwinder = {
-            id = 1755100;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          rumble = {
-            id = 890550;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          myst = {
-            id = 1255560;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          unravel-two = {
-            id = 1225570;
-            # EA Launcher Fix
-            launchOptions = {
-              extraConfig = ''
-                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
-                do
-                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
-                done
-              '';
-            };
-          };
-          mirrors-edge-catalyst = {
-            id = 1233570;
-            # EA Launcher Fix
-            launchOptions = {
-              extraConfig = ''
-                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
-                do
-                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
-                done
-              '';
-            };
-          };
-          burnout-paradise-remastered = {
-            id = 1238080;
-            # EA Launcher Fix
-            launchOptions = {
-              extraConfig = ''
-                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
-                do
-                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
-                done
-              '';
-            };
-          };
-          h3vr = {
-            id = 450540;
-            launchOptions = {
-              extraConfig = ''
-                for var in $(printenv | awk -F= 'length($2) > 2000 {print $1}');
-                do
-                  export $var=$(echo $\{!var} | rev | cut -c 1-2000 | rev);
-                done
-              '';
-            };
-          };
-          space-engineers = {
-            id = 244850;
-            launchOptions = {
-              args = [ "-useallavailablecores" ];
-            };
-          };
-        };
       };
     };
   };
