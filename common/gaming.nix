@@ -3,10 +3,18 @@
   lib,
   steam-config-nix,
   proton-cachyos,
+  nix-cachyos-kernel,
   ...
 }:
 {
-  nixpkgs.overlays = [ proton-cachyos.overlays.default ];
+  nixpkgs.overlays = [
+    proton-cachyos.overlays.default
+    nix-cachyos-kernel.overlays.pinned
+  ];
+
+  # CachyOS Kernel Substituter
+  nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+  nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
   services.hardware.openrgb.enable = true;
   services.ratbagd.enable = true;

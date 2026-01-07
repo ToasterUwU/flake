@@ -15,7 +15,7 @@ let
   };
 in
 {
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
 
   # Bigscreen Beyond Kernel patches from LVRA Discord Thread
   boot.kernelPatches = [
