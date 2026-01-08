@@ -1,4 +1,10 @@
-{ pkgs, buttplug-lite, ... }:
+{
+  pkgs,
+  lib,
+  nix-gaming-edge,
+  buttplug-lite,
+  ...
+}:
 let
   custom-xrizer = pkgs.xrizer.overrideAttrs rec {
     src = pkgs.fetchFromGitHub {
@@ -15,6 +21,12 @@ let
   };
 in
 {
+  nixpkgs.overlays = [ nix-gaming-edge.overlays.mesa-git ];
+
+  drivers.mesa-git = {
+    enable = true;
+  };
+
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
 
   # Bigscreen Beyond Kernel patches from LVRA Discord Thread
@@ -34,16 +46,22 @@ in
   ];
 
   # Udev rules for Bigscreen devices
-  services.udev.extraRules = ''
-    # Bigscreen Beyond
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0101", MODE="0660", TAG+="uaccess", GROUP="video"
-    # Bigscreen Bigeye
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0202", MODE="0660", TAG+="uaccess", GROUP="video"
-    # Bigscreen Beyond Audio Strap
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0105", MODE="0660", TAG+="uaccess", GROUP="video"
-    # Bigscreen Beyond Firmware Mode?
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="4004", MODE="0660", TAG+="uaccess", GROUP="video"
-  '';
+  services.udev.packages = lib.singleton (
+    pkgs.writeTextFile {
+      name = "bigscreen-beyond-udev-rules";
+      text = ''
+        # Bigscreen Beyond
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0101", MODE="0660", TAG+="uaccess"
+        # Bigscreen Bigeye
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0202", MODE="0660", TAG+="uaccess"
+        # Bigscreen Beyond Audio Strap
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0105", MODE="0660", TAG+="uaccess"
+        # Bigscreen Beyond Firmware Mode?
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="4004", MODE="0660", TAG+="uaccess"
+      '';
+      destination = "/etc/udev/rules.d/60-bigscreen-beyond.rules";
+    }
+  );
 
   programs.steam = {
     extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];

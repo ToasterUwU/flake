@@ -48,6 +48,7 @@
       agenix,
       arion,
       nixpkgs-xr,
+      nix-gaming-edge,
       ...
     }@inputs:
     {
@@ -61,6 +62,7 @@
           agenix.nixosModules.default
           arion.nixosModules.arion
           nixpkgs-xr.nixosModules.nixpkgs-xr
+          nix-gaming-edge.nixosModules.mesa-git
         ];
 
         specialArgs = inputs;
