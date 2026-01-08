@@ -41,18 +41,26 @@
   };
 
   outputs =
-    { nixpkgs-patcher, ... }@inputs:
+    {
+      nixpkgs-patcher,
+      home-manager,
+      catppuccin,
+      agenix,
+      arion,
+      nixpkgs-xr,
+      ...
+    }@inputs:
     {
       nixosConfigurations.Barbara = nixpkgs-patcher.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
           ./hosts/Barbara
-          inputs.home-manager.nixosModules.home-manager
-          inputs.catppuccin.nixosModules.catppuccin
-          inputs.agenix.nixosModules.default
-          inputs.arion.nixosModules.arion
-          inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+          home-manager.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
+          agenix.nixosModules.default
+          arion.nixosModules.arion
+          nixpkgs-xr.nixosModules.nixpkgs-xr
         ];
 
         specialArgs = inputs;
@@ -62,10 +70,10 @@
 
         modules = [
           ./hosts/Gertrude
-          inputs.home-manager.nixosModules.home-manager
-          inputs.catppuccin.nixosModules.catppuccin
-          inputs.agenix.nixosModules.default
-          inputs.arion.nixosModules.arion
+          home-manager.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
+          agenix.nixosModules.default
+          arion.nixosModules.arion
         ];
 
         specialArgs = inputs;
