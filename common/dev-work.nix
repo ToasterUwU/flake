@@ -96,7 +96,7 @@
 
   users.users.aki = {
     packages = with pkgs; [
-      nixfmt-rfc-style
+      nixfmt
       (writeScriptBin "nixpkgs-review" ''
         #!/usr/bin/env bash
 
