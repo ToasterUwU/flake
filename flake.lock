@@ -375,6 +375,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-wayvr": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-/J72rgDVNEtVxiPruBo+hsJfZVlS373g2IFjc8wD54g=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/478553.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/478553.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1765447685,
@@ -560,6 +572,7 @@
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix-gaming-edge": "nix-gaming-edge",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-patch-wayvr": "nixpkgs-patch-wayvr",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-xr": "nixpkgs-xr",

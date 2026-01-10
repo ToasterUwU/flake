@@ -2,8 +2,8 @@
   makeDesktopItem,
   stdenv,
   writeShellApplication,
-  wlx-overlay-s,
-  wayvr-dashboard,
+  lib,
+  wayvr,
   lighthouse-steamvr,
   kdePackages,
   lovr-playspace,
@@ -20,14 +20,13 @@ let
 in
 stdenv.mkDerivation {
   pname = "monado-start";
-  version = "3.1.0";
+  version = "3.2.0";
 
   src = writeShellApplication {
     name = "monado-start";
 
     runtimeInputs = [
-      wlx-overlay-s
-      wayvr-dashboard
+      wayvr
       lighthouse-steamvr
       kdePackages.kde-cli-tools
       lovr-playspace
@@ -51,7 +50,7 @@ stdenv.mkDerivation {
         fi
 
         systemctl --user --no-block stop monado.service
-        lighthouse -vv --state off &
+        ${lib.getExe lighthouse-steamvr} -vv --state off &
         wait
 
         exit 0
@@ -60,12 +59,12 @@ stdenv.mkDerivation {
       function on() {
         echo "Starting Monado and other stuff..."
 
-        lighthouse -vv --state on &
+        ${lib.getExe lighthouse-steamvr} -vv --state on &
         systemctl --user restart monado.service
 
         setsid sh -c '
-          lovr-playspace &
-          wlx-overlay-s --replace &
+          ${lib.getExe lovr-playspace} &
+          ${lib.getExe wayvr} --replace &
           kde-inhibit --power --screenSaver sleep infinity &
           wait
         ' &

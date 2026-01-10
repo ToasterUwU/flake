@@ -38,6 +38,10 @@
       url = "github:powerofthe69/nix-gaming-edge";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-patch-wayvr = {
+      url = "https://github.com/NixOS/nixpkgs/pull/478553.diff";
+      flake = false;
+    };
   };
 
   outputs =
