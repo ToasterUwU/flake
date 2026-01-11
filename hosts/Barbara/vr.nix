@@ -5,23 +5,28 @@
   buttplug-lite,
   ...
 }:
-let
-  custom-xrizer = pkgs.xrizer.overrideAttrs rec {
-    src = pkgs.fetchFromGitHub {
-      owner = "ImSapphire";
-      repo = "xrizer";
-      rev = "0046aae8bab66a6a7ad69d5dac481ea294e0a803";
-      hash = "sha256-NnNYzoekeZeNQVoy8phcnWkyORFvxizDVkWGArg316g=";
-    };
-
-    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-      inherit src;
-      hash = "sha256-orfK5pwWv91hA7Ra3Kk+isFTR+qMHSZ0EYZTVbf0fO0=";
-    };
-  };
-in
 {
-  nixpkgs.overlays = [ nix-gaming-edge.overlays.mesa-git ];
+  nixpkgs.overlays = [
+    nix-gaming-edge.overlays.mesa-git
+    (final: prev: {
+      xrizer = prev.xrizer.overrideAttrs {
+        src = pkgs.fetchFromGitHub {
+          owner = "ImSapphire";
+          repo = "xrizer";
+          rev = "0046aae8bab66a6a7ad69d5dac481ea294e0a803";
+          hash = "sha256-NnNYzoekeZeNQVoy8phcnWkyORFvxizDVkWGArg316g=";
+        };
+
+        cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+          src = final.src;
+          hash = "sha256-orfK5pwWv91hA7Ra3Kk+isFTR+qMHSZ0EYZTVbf0fO0=";
+        };
+      };
+      monado = prev.monado.overrideAttrs {
+        cmakeFlags = prev.monado.cmakeFlags ++ [ (lib.cmakeBool "XRT_FEATURE_OPENXR_VISIBILITY_MASK" false) ];
+      };
+    })
+  ];
 
   drivers.mesa-git = {
     enable = true;
@@ -110,7 +115,7 @@ in
           ],
           "runtime" :
           [
-            "${custom-xrizer}/lib/xrizer",
+            "${pkgs.xrizer}/lib/xrizer",
             "/home/aki/.local/share/Steam/steamapps/common/SteamVR"
           ],
           "version" : 1

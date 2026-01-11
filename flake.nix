@@ -60,13 +60,13 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/Barbara
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           agenix.nixosModules.default
           arion.nixosModules.arion
           nixpkgs-xr.nixosModules.nixpkgs-xr
           nix-gaming-edge.nixosModules.mesa-git
+          ./hosts/Barbara
         ];
 
         specialArgs = inputs;
@@ -75,11 +75,11 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/Gertrude
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           agenix.nixosModules.default
           arion.nixosModules.arion
+          ./hosts/Gertrude
         ];
 
         specialArgs = inputs;
