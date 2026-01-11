@@ -42,6 +42,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/478553.diff";
       flake = false;
     };
+    nixpkgs-patch-supersonic-update = {
+      url = "https://github.com/NixOS/nixpkgs/pull/478892.diff";
+      flake = false;
+    };
   };
 
   outputs =
