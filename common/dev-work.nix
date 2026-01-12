@@ -78,6 +78,7 @@
               };
               "python.analysis.typeCheckingMode" = "standard";
               "lldb.suppressUpdateNotifications" = true;
+              "chat.disableAIFeatures" = true;
             };
           };
           package = pkgs.vscode.fhsWithPackages (
