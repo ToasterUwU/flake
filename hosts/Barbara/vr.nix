@@ -23,7 +23,7 @@
         };
       };
       monado = prev.monado.overrideAttrs {
-        cmakeFlags = prev.monado.cmakeFlags ++ [ (lib.cmakeBool "XRT_FEATURE_OPENXR_VISIBILITY_MASK" false) ];
+        cmakeFlags = prev.monado.cmakeFlags ++ [ "-DXRT_FEATURE_OPENXR_VISIBILITY_MASK=OFF" ];
       };
     })
   ];
