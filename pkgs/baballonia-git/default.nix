@@ -10,8 +10,8 @@ let
 
   # TODO: figure out how to build & run Godot OpenXR projects.
   calibZip = pkgs.fetchurl {
-    url = "https://github.com/Project-Babble/BabbleCalibration/releases/download/1.0.5/Linux.zip";
-    hash = "sha256-L5ssy6nLvwzpWeSMvVMZoWnmCY9uK/5LVckJmf3hGdo=";
+    url = "https://github.com/Project-Babble/BabbleCalibration/releases/download/1.0.6/Linux.zip";
+    hash = "sha256-ytKGg+qVZwHtZUWfJwesvodjIjhffortX6zPs7nWBpU=";
     executable = true;
   };
 
@@ -47,22 +47,25 @@ pkgs.buildDotnetModule (finalAttrs: {
   version = "0.0.0";
   pname = "baballonia";
 
-  # https://github.com/Naraenda/Baballonia/tree/next-v3
-  # - bsb2e camera through libuvc
-  # - vft fix
-  # - packaging fix for nix
-  # - no micros*ft onnxruntime
   src = pkgs.fetchFromGitHub {
-    owner = "naraenda";
+    owner = "Project-Babble";
     repo = "Baballonia";
-    rev = "a8c813e267c26f51f1d62bf0c8ba687ef92c618b";
-    sha256 = "sha256-H5W+QsvccLOKzqqDIp7Xio5DZlUbRkT5HB4I66NBDhE=";
+    rev = "v1.1.0.9rc9";
+    sha256 = "sha256-nBSi3GaMPt3+FqYSpZd/ObYUzMB+Id3nfhkN9ERzk1M=";
     fetchSubmodules = true;
   };
   projectFile = "src/Baballonia.Desktop/Baballonia.Desktop.csproj";
   nugetDeps = ./deps.json;
   dotnetSdk = pkgs.dotnetCorePackages.dotnet_8.sdk;
   dotnetRuntime = pkgs.dotnetCorePackages.dotnet_8.runtime;
+
+  patches = [
+    # Remove VCPKG dependancy on "Microsoft.ML.OnnxRuntime" in favor of using the native onnx runtime provided locally
+    (pkgs.fetchpatch {
+      url = "https://github.com/Project-Babble/Baballonia/commit/1c60dbffab7fa1689d8a441ff52bfd4b0cfecc0c.diff";
+      hash = "sha256-k4vTgKgKJg595502TPujEDZIIv6UhZjt23AzPd2IW0s=";
+    })
+  ];
 
   buildInputs = with pkgs; [
     cmake

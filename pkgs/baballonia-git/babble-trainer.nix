@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
   lib,
-  enableCuda ? config.cudaSupport,
   ...
 }:
 let
@@ -10,7 +8,7 @@ let
 
   onnxscript = pyPkgs.buildPythonPackage rec {
     pname = "onnxscript";
-    version = "0.5.6";
+    version = "0.5.7";
     format = "wheel";
     src = pkgs.fetchPypi {
       inherit pname version format;
@@ -18,13 +16,13 @@ let
       dist = "py3";
       abi = "none";
       platform = "any";
-      hash = "sha256-sMM1X+o+7KuMopHai3ev3cqs062l7lkpQ5CgSeoSOTg=";
+      hash = "sha256-+UpmBZxW0TtEkI6bf9na5LT6pmgceE8/1MKc+oY+RU4=";
     };
   };
 
   onnx-ir = pyPkgs.buildPythonPackage rec {
     pname = "onnx-ir";
-    version = "0.1.12";
+    version = "0.1.14";
     format = "wheel";
     src = pkgs.fetchPypi {
       inherit version format;
@@ -33,7 +31,7 @@ let
       dist = "py3";
       abi = "none";
       platform = "any";
-      hash = "sha256-F/hvr4pTuXlDC94bxgIsehYrDRU0VQ3bF6HTfrmT52U=";
+      hash = "sha256-ibIS+nhAmBxdtdxHgZDxtzaVNil8PG6uaPscIjfdJVQ=";
     };
   };
 
@@ -41,7 +39,7 @@ let
   # nixpkgs do not include all ONNX support packages so
   # we have to fetch them ourselves.
   pythonEnv = pkgs.python3.withPackages (ps: [
-    (if enableCuda then ps.torchWithCuda else ps.torch)
+    ps.torch
     # Direct depedencies:
     ps.numpy
     ps.onnx
@@ -55,24 +53,16 @@ let
   ]);
 in
 pyPkgs.buildPythonPackage {
-  # TODO: figure out how this works on ROCm...
-  # * It should just be the same package because of HIP.
-  # * Need to verify and test.
-
   pname = "babble-trainer";
-  version = "0.0.0";
+  version = "1.3.8";
   pyproject = false;
   doCheck = false;
 
-  # https://github.com/Naraenda/BabbleTrainer/commits/various-fixes/
-  #
-  # TODO: move this over to main once this gets merged:
-  #   https://github.com/Project-Babble/BabbleTrainer/pull/4
   src = pkgs.fetchFromGitHub {
-    owner = "Naraenda";
+    owner = "Project-Babble";
     repo = "BabbleTrainer";
-    rev = "5c0da3da660e4f70f9d6c8ea00a02c57b4e3d170";
-    hash = "sha256-o2WFfhQHxsdK3xbTQYN2z+jOQqUJeJ1YTVnfOqUA5Hk=";
+    rev = "1.3.8-linux-paths";
+    hash = "sha256-ECK4ApmPl2X41w8yshjUTdZleR4X3Tmh47r0CO28f0Y=";
   };
 
   # The original project uses pyinstaller with a .spec-file.
@@ -85,7 +75,7 @@ pyPkgs.buildPythonPackage {
   buildPhase = ''
     mkdir -p $out/bin
     echo "#!${pythonEnv}/bin/python3" > $out/bin/babble-trainer
-    cat trainermin.py >> $out/bin/babble-trainer
+    cat main.py >> $out/bin/babble-trainer
     chmod +x $out/bin/babble-trainer
   '';
 
@@ -94,8 +84,8 @@ pyPkgs.buildPythonPackage {
   '';
 
   meta = {
-    description = "BabbleTrainer built with PyInstaller";
+    description = "BabbleTrainer";
     platforms = pkgs.lib.platforms.linux;
-    maintainers = with lib.maintainers; [ naraenda ];
+    maintainers = with lib.maintainers; [ toasteruwu ];
   };
 }

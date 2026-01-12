@@ -75,7 +75,7 @@
       lovr-playspace
       resolute
       lighthouse-steamvr
-      baballonia-git
+      baballonia
       monado-start
     ]
     ++ [ buttplug-lite.packages.x86_64-linux.default ];
