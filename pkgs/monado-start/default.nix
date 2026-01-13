@@ -7,6 +7,7 @@
   lighthouse-steamvr,
   kdePackages,
   lovr-playspace,
+  baballonia,
   ...
 }:
 let
@@ -30,6 +31,7 @@ stdenv.mkDerivation {
       lighthouse-steamvr
       kdePackages.kde-cli-tools
       lovr-playspace
+      baballonia
     ];
 
     checkPhase = ''
@@ -65,6 +67,7 @@ stdenv.mkDerivation {
         setsid sh -c '
           ${lib.getExe lovr-playspace} &
           ${lib.getExe wayvr} --replace &
+          ${lib.getExe baballonia} &
           kde-inhibit --power --screenSaver sleep infinity &
           wait
         ' &
