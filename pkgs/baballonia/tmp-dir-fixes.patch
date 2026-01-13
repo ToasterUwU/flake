@@ -1,122 +1,70 @@
 diff --git a/data.py b/data.py
-index 4a9d342..f6d6190 100644
+index 4a9d342..95fee0a 100644
 --- a/data.py
 +++ b/data.py
-@@ -11,6 +11,9 @@ from PIL import Image, ImageFile
- import binascii
- import os
- import time
-+import tempfile
-+
-+tmp_dir = tempfile.TemporaryDirectory(prefix="babble-trainer-data")
- 
- def calculate_row_pattern_consistency(image):
-     """
-@@ -400,6 +403,7 @@ def decode_jpeg(jpeg_data):
-     Returns:
-         OpenCV image (BGR format) or a red error image if decoding fails
-     """
-+    tmp_dir = tempfile.TemporaryDirectory(prefix="babble-trainer-trainer-distsampler")
-     try:
-         ImageFile.LOAD_TRUNCATED_IMAGES = True
-         # Method 1: Try using PIL first
-@@ -420,7 +424,7 @@ def decode_jpeg(jpeg_data):
+@@ -420,7 +420,7 @@ def decode_jpeg(jpeg_data):
              img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
              
              if img is None:
 -                with open("./bad_Data.jpg", "wb") as w:
-+                with open(f"{tmp_dir.name}/bad_Data.jpg", "wb") as w:
++                with open("/tmp/bad_Data.jpg", "wb") as w:
                      w.write(jpeg_data)
                      quit()
                  raise Exception("OpenCV decoding failed")
-@@ -460,6 +464,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
-     total_frames = 0
- 
-     crc = 0
-+    
-+    tmp_dir = tempfile.TemporaryDirectory(prefix="babble-trainer-trainer-distsampler")
- 
-     with open(filename, 'rb') as f:
-         while True:
-@@ -512,8 +518,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
+@@ -512,8 +512,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
      #print("Detecting corrupted BSB frames...", flush=True)
      last_was_safe = False
      ibl_db = {}
 -    if os.path.exists("./ibl_db_%d.pt" % crc):
 -        ibl_db = torch.load("./ibl_db_%d.pt" % crc, weights_only=False)
-+    if os.path.exists(f"{tmp_dir.name}/ibl_db_%d.pt" % crc):
-+        ibl_db = torch.load(f"{tmp_dir.name}/ibl_db_%d.pt" % crc, weights_only=False)
++    if os.path.exists("/tmp/ibl_db_%d.pt" % crc):
++        ibl_db = torch.load("/tmp/ibl_db_%d.pt" % crc, weights_only=False)
      with open(filename, 'rb') as f:
          progress = range(total_frames)
          for e in progress:
-@@ -596,8 +602,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
+@@ -596,8 +596,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
                                              routine_widen, routine_squint, routine_dilate, routine_state)
              
              #print(f"Read frame: Pitch={routine_pitch}, Yaw={routine_yaw}, sizeRight={len(image_right_data)}, sizeLeft={len(image_left_data)}, timeData={timestamp}, timeLeft={video_timestamp_left}, timeRight={video_timestamp_right}")
 -    if not os.path.exists("./ibl_db_%d.pt" % crc):
 -        torch.save(ibl_db, "./ibl_db_%d.pt" % crc)
-+    if not os.path.exists(f"{tmp_dir.name}/ibl_db_%d.pt" % crc):
-+        torch.save(ibl_db, f"{tmp_dir.name}/ibl_db_%d.pt" % crc)
++    if not os.path.exists("/tmp/ibl_db_%d.pt" % crc):
++        torch.save(ibl_db, "/tmp/ibl_db_%d.pt" % crc)
  
      # Convert to sorted lists for processing
      left_frames = sorted([(ts, img) for ts, img in all_eye_frames_left.items()])
 diff --git a/trainer_distsampler.py b/trainer_distsampler.py
-index 2305d72..249960d 100644
+index 2305d72..c30eb2b 100644
 --- a/trainer_distsampler.py
 +++ b/trainer_distsampler.py
-@@ -11,6 +11,7 @@ from PIL import Image, ImageFile
- import binascii
- import os
- import time
-+import tempfile
- 
- def calculate_row_pattern_consistency(image):
-     """
-@@ -400,6 +401,7 @@ def decode_jpeg(jpeg_data):
-     Returns:
-         OpenCV image (BGR format) or a red error image if decoding fails
-     """
-+    tmp_dir = tempfile.TemporaryDirectory(prefix="babble-trainer-trainer-distsampler")
-     try:
-         ImageFile.LOAD_TRUNCATED_IMAGES = True
-         # Method 1: Try using PIL first
-@@ -420,7 +422,7 @@ def decode_jpeg(jpeg_data):
+@@ -420,7 +420,7 @@ def decode_jpeg(jpeg_data):
              img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
              
              if img is None:
 -                with open("./bad_Data.jpg", "wb") as w:
-+                with open(f"{tmp_dir.name}/bad_Data.jpg", "wb") as w:
++                with open("/tmp/bad_Data.jpg", "wb") as w:
                      w.write(jpeg_data)
                      quit()
                  raise Exception("OpenCV decoding failed")
-@@ -461,6 +463,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
- 
-     crc = 0
- 
-+    tmp_dir = tempfile.TemporaryDirectory(prefix="babble-trainer-trainer-distsampler")
-+
-     with open(filename, 'rb') as f:
-         while True:
-             # Updated struct format to include all new parameters - use packed format (=) to match C struct
-@@ -512,8 +516,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
+@@ -512,8 +512,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
      #print("Detecting corrupted BSB frames...", flush=True)
      last_was_safe = False
      ibl_db = {}
 -    if os.path.exists("./ibl_db_%d.pt" % crc):
 -        ibl_db = torch.load("./ibl_db_%d.pt" % crc, weights_only=False)
-+    if os.path.exists(f"{tmp_dir.name}/ibl_db_%d.pt" % crc):
-+        ibl_db = torch.load(f"{tmp_dir.name}/ibl_db_%d.pt" % crc, weights_only=False)
++    if os.path.exists("/tmp/ibl_db_%d.pt" % crc):
++        ibl_db = torch.load("/tmp/ibl_db_%d.pt" % crc, weights_only=False)
      with open(filename, 'rb') as f:
          progress = range(total_frames)
          for e in progress:
-@@ -596,8 +600,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
+@@ -596,8 +596,8 @@ def read_capture_file(filename, exclude_after=0, exclude_before=0):
                                              routine_widen, routine_squint, routine_dilate, routine_state)
              
              #print(f"Read frame: Pitch={routine_pitch}, Yaw={routine_yaw}, sizeRight={len(image_right_data)}, sizeLeft={len(image_left_data)}, timeData={timestamp}, timeLeft={video_timestamp_left}, timeRight={video_timestamp_right}")
 -    if not os.path.exists("./ibl_db_%d.pt" % crc):
 -        torch.save(ibl_db, "./ibl_db_%d.pt" % crc)
-+    if not os.path.exists(f"{tmp_dir.name}/ibl_db_%d.pt" % crc):
-+        torch.save(ibl_db, f"{tmp_dir.name}/ibl_db_%d.pt" % crc)
++    if not os.path.exists("/tmp/ibl_db_%d.pt" % crc):
++        torch.save(ibl_db, "/tmp/ibl_db_%d.pt" % crc)
  
      # Convert to sorted lists for processing
      left_frames = sorted([(ts, img) for ts, img in all_eye_frames_left.items()])
