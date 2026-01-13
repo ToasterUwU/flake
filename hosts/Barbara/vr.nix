@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   nix-gaming-edge,
   buttplug-lite,
   ...
