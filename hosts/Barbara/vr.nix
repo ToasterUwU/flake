@@ -2,6 +2,7 @@
   pkgs,
   nix-gaming-edge,
   buttplug-lite,
+  nixpkgs-xr,
   ...
 }:
 {
@@ -21,7 +22,7 @@
           hash = "sha256-orfK5pwWv91hA7Ra3Kk+isFTR+qMHSZ0EYZTVbf0fO0=";
         };
       };
-      monado = prev.monado.overrideAttrs {
+      monado = nixpkgs-xr.packages.${pkgs.stdenv.hostPlatform.system}.monado.overrideAttrs {
         cmakeFlags = prev.monado.cmakeFlags ++ [ "-DXRT_FEATURE_OPENXR_VISIBILITY_MASK=OFF" ];
       };
     })
