@@ -37,6 +37,7 @@
     package = pkgs.steam.override {
       extraProfile = ''
         unset TZ
+        export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
       '';
     };
   };
@@ -111,11 +112,6 @@
           elite-dangerous = {
             id = 359320;
             launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-                VR_OVERRIDE = "${pkgs.opencomposite}/lib/opencomposite";
-                OXR_PARALLEL_VIEWS = true;
-              };
               wrappers = [ "${lib.getExe pkgs.min-ed-launcher}" ];
               args = [
                 "/autorun"
@@ -131,67 +127,7 @@
             id = 2519830;
             compatTool = "Proton CachyOS x86_64-v4";
             launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
               wrappers = [ "./run_monkeyloader.sh" ];
-            };
-          };
-          vrchat = {
-            id = 438100;
-            compatTool = "GE-Proton-rtsp";
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          stride = {
-            id = 1292040;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          beat-saber = {
-            id = 620980;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          underdogs = {
-            id = 2441700;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          last-clockwinder = {
-            id = 1755100;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          rumble = {
-            id = 890550;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
-            };
-          };
-          myst = {
-            id = 1255560;
-            launchOptions = {
-              env = {
-                PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
-              };
             };
           };
           unravel-two = {
