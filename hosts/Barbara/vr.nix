@@ -130,7 +130,7 @@
         0.1
       '';
       xdg.dataFile."LOVR/lovr-playspace/fade_stop.txt".text = ''
-        0.3
+        0.2
       '';
     };
   };
