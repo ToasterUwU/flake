@@ -97,6 +97,7 @@ pkgs.buildDotnetModule (finalAttrs: {
       opencvsharp
       udev
       libGL
+      libv4l
     ]
     ++ lib.optionals (!enableCuda) [ onnxruntime ]
     ++ lib.optionals enableCuda [ pkgsCuda.onnxruntime ];
