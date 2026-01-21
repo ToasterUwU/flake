@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   nix-gaming-edge,
   buttplug-lite,
   nixpkgs-xr,
@@ -23,7 +24,17 @@
         };
       };
       monado = nixpkgs-xr.packages.${pkgs.stdenv.hostPlatform.system}.monado.overrideAttrs {
-        cmakeFlags = prev.monado.cmakeFlags ++ [ "-DXRT_FEATURE_OPENXR_VISIBILITY_MASK=OFF" ];
+        cmakeFlags = prev.monado.cmakeFlags ++ [
+          (lib.cmakeBool "XRT_FEATURE_OPENXR_VISIBILITY_MASK" false)
+        ];
+
+        patches = prev.monado.patches ++ [
+          (pkgs.fetchpatch {
+            name = "shutdown-on-SIGINT-or-SIGTERM";
+            url = "https://gitlab.freedesktop.org/openglfreak/monado/-/commit/eda2379de0281c8c950837c06cc2220e35bd9b1d.diff";
+            hash = "sha256-CYAdIuUXp5eOqcdQPRPp/TTYLZ/LW16CwLK0/f+S4sU=";
+          })
+        ];
       };
     })
   ];
