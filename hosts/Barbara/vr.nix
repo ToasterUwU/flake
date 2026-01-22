@@ -10,7 +10,7 @@
   nixpkgs.overlays = [
     nix-gaming-edge.overlays.mesa-git
     (final: prev: {
-      xrizer = prev.xrizer.overrideAttrs {
+      xrizer = nixpkgs-xr.packages.${pkgs.stdenv.hostPlatform.system}.xrizer.overrideAttrs {
         src = pkgs.fetchFromGitHub {
           owner = "ImSapphire";
           repo = "xrizer";
