@@ -20,7 +20,7 @@ let
 in
 stdenv.mkDerivation {
   pname = "monado-start";
-  version = "3.2.0";
+  version = "3.3.0";
 
   src = writeShellApplication {
     name = "monado-start";
@@ -39,6 +39,10 @@ stdenv.mkDerivation {
     text = ''
       GROUP_PID_FILE="/tmp/monado-group-pid-$$"
 
+      function lighthouse_off() {
+        ${lib.getExe lighthouse-steamvr} -vv --state off
+      }
+
       function off() {
         echo "Stopping Monado and other stuff..."
 
@@ -50,16 +54,24 @@ stdenv.mkDerivation {
         fi
 
         systemctl --user --no-block stop monado.service
-        ${lib.getExe lighthouse-steamvr} -vv --state off &
+      }
+
+      function full_off() {
+        lighthouse_off &
+        off
+
         wait
 
         exit 0
       }
 
+      function lighthouse_on() {
+        ${lib.getExe lighthouse-steamvr} -vv --state on &
+      }
+
       function on() {
         echo "Starting Monado and other stuff..."
 
-        ${lib.getExe lighthouse-steamvr} -vv --state on &
         systemctl --user restart monado.service
 
         setsid sh -c '
@@ -72,12 +84,16 @@ stdenv.mkDerivation {
         echo "$PGID" > "$GROUP_PID_FILE"
       }
 
-      trap off EXIT INT TERM
-      echo "Press ENTER to turn everything OFF."
+      trap full_off INT TERM
 
-      on
-      read -r
-      exit
+      lighthouse_on &
+      while :
+      do
+        on
+        echo "Press CTRL+C to turn everything OFF, anything else to restart Monado and reliant programs"
+        read -r
+        off
+      done
     '';
   };
 
