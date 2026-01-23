@@ -50,8 +50,8 @@ pkgs.buildDotnetModule (finalAttrs: {
   src = pkgs.fetchFromGitHub {
     owner = "Project-Babble";
     repo = "Baballonia";
-    rev = "v1.1.0.9rc9";
-    sha256 = "sha256-nBSi3GaMPt3+FqYSpZd/ObYUzMB+Id3nfhkN9ERzk1M=";
+    rev = "v1.1.0.9rc12";
+    sha256 = "sha256-0DjgQmUqndPLIHfV+/4QxfS7wngAmnMwU9Q7vLD5vjM=";
     fetchSubmodules = true;
   };
   projectFile = "src/Baballonia.Desktop/Baballonia.Desktop.csproj";

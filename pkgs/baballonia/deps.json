@@ -1115,11 +1115,6 @@
     "hash": "sha256-rXTD0dhqJyk5oK54MIdsq3qJ1NbeTByxyrdHq2thv0w="
   },
   {
-    "pname": "System.Numerics.Tensors",
-    "version": "9.0.0",
-    "hash": "sha256-t1AkPDYAKmKyixrF0/vChK00C6FJTMNqyhEGEaCx+Vk="
-  },
-  {
     "pname": "System.Numerics.Vectors",
     "version": "4.4.0",
     "hash": "sha256-auXQK2flL/JpnB/rEcAcUm4vYMCYMEMiWOCAlIaqu2U="
