@@ -82,6 +82,8 @@
     pwmenu
     iwmenu
     bzmenu
+
+    catppuccin-cursors.mochaPink
   ];
 
   home-manager = {
@@ -713,6 +715,11 @@
 
             hotkey-overlay.skip-at-startup = true;
             gestures.hot-corners.enable = false;
+
+            cursor = {
+              theme = "catppuccin-mocha-pink-cursors";
+              size = 24;
+            };
 
             input = {
               keyboard = {
