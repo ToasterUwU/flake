@@ -302,14 +302,14 @@
           enableFishIntegration = true;
           options = [ "--cmd cd" ];
         };
-        zellij = {
-          enable = true;
-          enableFishIntegration = true;
-          settings = {
-            show_startup_tips = false;
-          };
-          exitShellOnExit = true;
-        };
+        # zellij = {
+        #   enable = true;
+        #   enableFishIntegration = true;
+        #   settings = {
+        #     show_startup_tips = false;
+        #   };
+        #   exitShellOnExit = true;
+        # };
         tealdeer = {
           enable = true;
           settings.updates = {

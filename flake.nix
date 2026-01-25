@@ -38,6 +38,12 @@
       url = "github:powerofthe69/nix-gaming-edge";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri.url = "github:sodiboo/niri-flake";
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
   outputs =
@@ -67,6 +73,7 @@
           arion.nixosModules.arion
           nixpkgs-xr.nixosModules.nixpkgs-xr
           nix-gaming-edge.nixosModules.mesa-git
+          inputs.niri.nixosModules.niri
           ./hosts/Barbara
         ];
 
@@ -80,6 +87,7 @@
           catppuccin.nixosModules.catppuccin
           agenix.nixosModules.default
           arion.nixosModules.arion
+          inputs.niri.nixosModules.niri
           ./hosts/Gertrude
         ];
 
