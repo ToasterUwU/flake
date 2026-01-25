@@ -76,6 +76,7 @@
 
     xwayland-satellite
 
+    nemo-with-extensions
     pavucontrol
     brillo
 
@@ -92,10 +93,34 @@
       {
         imports = [ walker.homeManagerModules.default ];
 
-        dconf.settings = {
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
+        xdg.desktopEntries.nemo = {
+          name = "Nemo";
+          exec = "${pkgs.nemo-with-extensions}/bin/nemo";
+        };
+        xdg.mimeApps = {
+          enable = true;
+          defaultApplications = {
+            "inode/directory" = [ "nemo.desktop" ];
+            "application/x-gnome-saved-search" = [ "nemo.desktop" ];
           };
+        };
+        dconf = {
+          settings = {
+            "org/cinnamon/desktop/applications/terminal" = {
+              exec = "alacritty";
+            };
+            "org/cinnamon/desktop/interface" = {
+              can-change-accels = true;
+            };
+            "org/gnome/desktop/interface" = {
+              color-scheme = "prefer-dark";
+            };
+          };
+        };
+        home.file = {
+          ".gnome2/accels/nemo".text = ''
+            (gtk_accel_path "<Actions>/DirViewActions/OpenInTerminal" "F4")
+          '';
         };
 
         services = {
