@@ -179,7 +179,7 @@
       bitwarden-desktop
       vesktop
       mprisence
-      element-desktop
+      nheko
       signal-desktop
       tor-browser
       ungoogled-chromium
