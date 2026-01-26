@@ -179,7 +179,7 @@
       bitwarden-desktop
       vesktop
       mprisence
-      nheko
+      fluffychat
       signal-desktop
       tor-browser
       ungoogled-chromium
