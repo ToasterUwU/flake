@@ -179,7 +179,6 @@
       bitwarden-desktop
       vesktop
       mprisence
-      fluffychat
       signal-desktop
       tor-browser
       ungoogled-chromium
