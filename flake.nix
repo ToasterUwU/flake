@@ -48,7 +48,6 @@
 
   outputs =
     {
-      nixpkgs,
       nixpkgs-patcher,
       home-manager,
       catppuccin,
@@ -58,10 +57,6 @@
       nix-gaming-edge,
       ...
     }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-    in
     {
       nixosConfigurations.Barbara = nixpkgs-patcher.lib.nixosSystem {
         system = "x86_64-linux";
@@ -94,9 +89,19 @@
         specialArgs = inputs;
       };
 
-
-      packages.x86_64-linux = {
-        baballonia = pkgs.callPackage ./pkgs/baballonia { };
-      };
+      packages.x86_64-linux =
+        let
+          system = "x86_64-linux";
+          nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
+          pkgs-patched = import nixpkgs-patched {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+          };
+        in
+        {
+          baballonia = pkgs-patched.callPackage ./pkgs/baballonia { };
+        };
     };
 }
