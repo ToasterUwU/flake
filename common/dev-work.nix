@@ -79,6 +79,7 @@
               "python.analysis.typeCheckingMode" = "standard";
               "lldb.suppressUpdateNotifications" = true;
               "chat.disableAIFeatures" = true;
+              "diffEditor.ignoreTrimWhitespace" = false;
             };
           };
           package = pkgs.vscode.fhsWithPackages (
