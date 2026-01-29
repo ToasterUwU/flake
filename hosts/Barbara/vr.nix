@@ -1,4 +1,5 @@
 {
+  self,
   pkgs,
   lib,
   nix-gaming-edge,
@@ -106,7 +107,7 @@
       lovr-playspace
       resolute
       lighthouse-steamvr
-      baballonia
+      self.packages.x86_64-linux.baballonia
       monado-start
     ]
     ++ [ buttplug-lite.packages.x86_64-linux.default ];
