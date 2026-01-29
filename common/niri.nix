@@ -77,6 +77,7 @@
     xwayland-satellite
 
     nemo-with-extensions
+    xviewer
     pavucontrol
     brillo
 
@@ -102,6 +103,8 @@
           defaultApplications = {
             "inode/directory" = [ "nemo.desktop" ];
             "application/x-gnome-saved-search" = [ "nemo.desktop" ];
+            "image/jpeg" = [ "xviewer.desktop" ];
+            "image/png" = [ "xviewer.desktop" ];
           };
         };
         dconf = {
