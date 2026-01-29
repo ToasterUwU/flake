@@ -162,6 +162,7 @@
       uutils-coreutils-noprefix
       wget
       curl
+      file
       yt-dlp
       extract-audio
       gnupg
