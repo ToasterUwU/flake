@@ -11,7 +11,7 @@
   nixpkgs.overlays = [
     nix-gaming-edge.overlays.mesa-git
     (final: prev: {
-      xrizer = nixpkgs-xr.packages.${pkgs.stdenv.hostPlatform.system}.xrizer.overrideAttrs {
+      xrizer = nixpkgs-xr.packages.${pkgs.stdenv.hostPlatform.system}.xrizer.overrideAttrs rec {
         src = pkgs.fetchFromGitHub {
           owner = "ImSapphire";
           repo = "xrizer";
@@ -20,7 +20,7 @@
         };
 
         cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-          src = final.src;
+          inherit src;
           hash = "sha256-orfK5pwWv91hA7Ra3Kk+isFTR+qMHSZ0EYZTVbf0fO0=";
         };
       };
