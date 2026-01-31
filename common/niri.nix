@@ -7,7 +7,26 @@
   ...
 }:
 {
-  nixpkgs.overlays = [ niri.overlays.niri ];
+  nixpkgs.overlays = [
+    niri.overlays.niri
+    (final: prev: {
+      wpaperd = prev.wpaperd.overrideAttrs rec {
+        version = "master";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "danyspin97";
+          repo = "wpaperd";
+          rev = "7a0fbc954a3009f522e664ce7a6f261ecbf1b172";
+          hash = "sha256-WByb493PT3RcH9RH/VQTabjQUC1jgXO12ZXMSZgoS0M=";
+        };
+
+        cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+          inherit src;
+          hash = "sha256-Vz5x9V+q5OwRR/GdiM/kEEfENSQ+KyN3DKM35NHuzAk=";
+        };
+      };
+    })
+  ];
 
   nix.settings = {
     extra-substituters = [
