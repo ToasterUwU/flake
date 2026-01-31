@@ -1,11 +1,11 @@
 [Application]
-WindowWidth = 1000
-WindowHeight = 801
-LastCheckedVersion = 'v0.19.0'
-LastLaunchedVersion = 'v0.19.0'
+WindowWidth = 1268
+WindowHeight = 1394
+LastCheckedVersion = 'v0.20.0'
+LastLaunchedVersion = 'v0.20.0'
 EnableSystemTray = true
 CloseToSystemTray = true
-StartupPage = 'Albums'
+StartupPage = 'Favorites'
 SettingsTab = ''
 AllowMultiInstance = false
 MaxImageCacheSizeMB = 50
@@ -26,6 +26,8 @@ RequestTimeoutSeconds = 15
 EnableOSMediaPlayerAPIs = true
 ShowSidebar = false
 SidebarWidthFraction = 0.8
+SidebarTab = 'Play Queue'
+PreventScreensaverOnNowPlayingPage = true
 FontNormalTTF = ''
 FontBoldTTF = ''
 UIScaleSize = 'Normal'
@@ -43,6 +45,7 @@ SelectedLibrary = ''
 
 [AlbumPage]
 TracklistColumns = ['Artist', 'Time', 'Plays', 'Favorite', 'Rating']
+CompactHeader = false
 
 [AlbumsPage]
 SortOrder = 'Recently Added'
@@ -54,12 +57,13 @@ PlayInOrder = false
 InitialView = 'Discography'
 DiscographySort = ''
 TracklistColumns = ['Album', 'Time', 'Plays', 'Favorite', 'Rating']
+CompactHeader = false
 
 [ArtistsPage]
 SortOrder = 'Name (A-Z)'
 
 [FavoritesPage]
-InitialView = 'Albums'
+InitialView = 'Songs'
 TracklistColumns = ['Album', 'Time', 'Plays']
 ShowAlbumYears = false
 
@@ -68,6 +72,7 @@ CardSize = 200.0
 
 [PlaylistPage]
 TracklistColumns = ['Album', 'Time', 'Plays']
+CompactHeader = false
 
 [PlaylistsPage]
 InitialView = 'List'
@@ -77,11 +82,12 @@ TracklistColumns = ['Album', 'Time', 'Plays']
 
 [NowPlayingConfig]
 InitialView = 'Play Queue'
+UseBackgroundImage = true
 
 [Playback]
 Autoplay = false
 RepeatMode = 'None'
-SkipOneStarWhenShuffling = false
+SkipOneStarWhenShuffling = true
 SkipKeywordWhenShuffling = ''
 UseWaveformSeekbar = true
 
@@ -113,6 +119,7 @@ MaxBitRateKBPS = 160
 [Theme]
 ThemeFile = 'catppuccin-mocha-pink.toml'
 Appearance = 'Dark'
+UseRoundedImageCorners = true
 
 [PeakMeter]
 WindowHeight = 100
