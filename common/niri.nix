@@ -90,6 +90,9 @@
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
 
+  # Needed for Nemo Networking
+  services.gvfs.enable = true;
+
   environment.systemPackages = with pkgs; [
     config.services.greetd.package
 
