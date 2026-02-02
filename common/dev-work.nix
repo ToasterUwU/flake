@@ -3,6 +3,7 @@
   config,
   nixpkgs,
   nixpkgs-update,
+  direnv-instant,
   ...
 }:
 {
@@ -22,6 +23,7 @@
   };
 
   home-manager = {
+    sharedModules = [ direnv-instant.homeModules.direnv-instant ];
     users.aki = {
       programs = {
         git = {
@@ -46,6 +48,9 @@
         direnv = {
           enable = true;
           nix-direnv.enable = true;
+        };
+        direnv-instant = {
+          enable = true;
         };
 
         vscode = {

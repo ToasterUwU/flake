@@ -39,6 +39,7 @@
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
     };
+    direnv-instant.url = "github:Mic92/direnv-instant";
   };
 
   outputs =
