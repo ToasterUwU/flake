@@ -25,6 +25,7 @@
                   x = 2560;
                   y = 0;
                 };
+                variable-refresh-rate = true;
               };
               "HDMI-A-1" = {
                 position = {
