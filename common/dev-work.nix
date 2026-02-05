@@ -85,6 +85,9 @@
               "lldb.suppressUpdateNotifications" = true;
               "chat.disableAIFeatures" = true;
               "diffEditor.ignoreTrimWhitespace" = false;
+              "[json]" = {
+                "editor.defaultFormatter" = "vscode.json-language-features";
+              };
             };
           };
           package = pkgs.vscode.fhsWithPackages (
