@@ -102,7 +102,6 @@
     with pkgs;
     [
       bs-manager
-      eepyxr
       wayvr
       lovr-playspace
       resolute
