@@ -39,6 +39,25 @@ stdenv.mkDerivation {
     text = ''
       GROUP_PID_FILE="/tmp/monado-group-pid-$$"
 
+      function gpu_vr_mode() {
+        # Enable manual override
+        echo "manual" | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level
+
+        # Translate "VR" into profile number
+        vr_profile=$(cat /sys/class/drm/card1/device/pp_power_profile_mode | grep ' VR ' | awk '{ print $1; }')
+
+        # Set profile to VR
+        echo $vr_profile | sudo tee /sys/class/drm/card1/device/pp_power_profile_mode
+      }
+
+      function gpu_auto_mode() {
+        # Disable manual override
+        echo "auto" | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level
+
+        # Set profile to DEFAULT
+        echo 0 | sudo tee /sys/class/drm/card1/device/pp_power_profile_mode
+      }
+
       function lighthouse_off() {
         ${lib.getExe lighthouse-steamvr} -vv --state off
       }
@@ -57,6 +76,7 @@ stdenv.mkDerivation {
       }
 
       function full_off() {
+        gpu_auto_mode
         lighthouse_off &
         off
 
@@ -86,6 +106,7 @@ stdenv.mkDerivation {
 
       trap full_off INT TERM
 
+      gpu_vr_mode
       lighthouse_on &
       while :
       do
