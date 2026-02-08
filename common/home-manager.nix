@@ -144,19 +144,6 @@
         };
       };
 
-      systemd.user.services."vdhcoapp" = {
-        Unit = {
-          Description = "Makes sure vdhcoapp is setup to work with all browsers";
-        };
-        Service = {
-          ExecStart = "${pkgs.vdhcoapp}/bin/vdhcoapp install --user";
-          Type = "oneshot";
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
-
       xdg.mimeApps = {
         enable = true;
         associations.added = {
