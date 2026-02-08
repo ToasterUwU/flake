@@ -20,7 +20,7 @@ let
 in
 stdenv.mkDerivation {
   pname = "monado-start";
-  version = "3.3.0";
+  version = "3.4.0";
 
   src = writeShellApplication {
     name = "monado-start";
@@ -44,7 +44,7 @@ stdenv.mkDerivation {
         echo "manual" | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level >/dev/null
 
         # Translate "VR" into profile number
-        vr_profile=$(cat /sys/class/drm/card1/device/pp_power_profile_mode | grep ' VR ' | awk '{ print $1; }')
+        vr_profile=$(cat /sys/class/drm/card1/device/pp_power_profile_mode | grep ' VR' | awk '{ print $1; }')
 
         # Set profile to VR
         echo $vr_profile | sudo tee /sys/class/drm/card1/device/pp_power_profile_mode >/dev/null
