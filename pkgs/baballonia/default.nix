@@ -29,6 +29,10 @@ let
     };
     sourceRoot = "${src.name}/src";
 
+    patches = [
+      ./cvsharp-cv4-compat.patch
+    ];
+
     buildInputs = [ pkgs.opencv ] ++ lib.optionals enableCuda [ pkgs.cudaPackages.cudatoolkit ];
 
     nativeBuildInputs = [ pkgs.cmake ];
