@@ -124,7 +124,7 @@
         config = {
           enable = true;
           onSteamRunning = "close";
-          defaultCompatTool = "dwproton-x86_64";
+          defaultCompatTool = "dwproton";
 
           apps = {
             "359320" = {
