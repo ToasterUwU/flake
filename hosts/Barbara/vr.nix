@@ -50,7 +50,7 @@ in
   ];
 
   drivers.mesa-git = {
-    enable = false;
+    enable = true;
   };
 
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
